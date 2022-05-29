@@ -7,6 +7,7 @@ export default function Layout({ children, pageTitle }) {
     <>
       <Head>
         <link rel="icon" href="favicon.ico" />
+        <meta name="description" content="Atempo for practitioners" />
         <title>{pageTitle}</title>
       </Head>
       <header>
