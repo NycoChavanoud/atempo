@@ -1,0 +1,12 @@
+.header {
+  background-color: #412e68;
+  height: 10vh;
+  color: white;
+}
+
+.link {
+  font-size: 2.5vh;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3vh;
+}
