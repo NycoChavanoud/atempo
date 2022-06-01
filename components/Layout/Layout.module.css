@@ -1,0 +1,12 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+}
+
+.wave_layout {
+  background-image: url(/bg_wave.png);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  width: 100vw;
+  height: 100vh;
+}

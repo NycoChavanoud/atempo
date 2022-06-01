@@ -1,0 +1,61 @@
+.component {
+  -webkit-tap-highlight-color: transparent;
+  width: 50px;
+  height: 50px;
+}
+
+.menu_checkbox {
+  display: none;
+}
+
+.burger {
+  position: absolute;
+  top: 40px;
+  left: 15px;
+  display: block;
+  width: 50px;
+  cursor: pointer;
+}
+
+.burger:before {
+  transition: 1.2s cubic-bezier(0, 0.96, 1, 0.02);
+}
+
+.burger .bar {
+  border-top: white solid 0.2rem;
+  transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
+    0.3s ease right;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.burger .bar:first-child {
+  transform-origin: 0;
+}
+
+.burger .bar:last-child {
+  margin-bottom: 0;
+  transform-origin: 60px;
+}
+
+.burger .bar:nth-child(2) {
+  right: 0;
+  width: 60px;
+}
+
+.menu_checkbox:checked + .burger .bar:first-child {
+  top: -6px;
+  transform: rotateZ(45deg);
+}
+
+.menu_checkbox:checked + .burger .bar:last-child {
+  top: 6px;
+  transform: rotateZ(45deg);
+}
+
+.menu_checkbox:checked + .burger .bar:nth-child(2) {
+  width: 85px;
+  top: 0;
+  right: 13px;
+  transform: rotateZ(-45deg);
+}
