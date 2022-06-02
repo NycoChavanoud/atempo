@@ -10,8 +10,8 @@
 
 .burger {
   position: absolute;
-  top: 40px;
-  left: 15px;
+  top: 35px;
+  left: 28px;
   display: block;
   width: 50px;
   cursor: pointer;
@@ -31,16 +31,18 @@
 
 .burger .bar:first-child {
   transform-origin: 0;
+  width: 18px;
 }
 
 .burger .bar:last-child {
   margin-bottom: 0;
+  width: 18px;
+  margin-left: 16px;
   transform-origin: 60px;
 }
 
 .burger .bar:nth-child(2) {
-  right: 0;
-  width: 60px;
+  width: 30px;
 }
 
 .menu_checkbox:checked + .burger .bar:first-child {
