@@ -66,7 +66,7 @@ export default function MobileMenu() {
                 alt="stars"
               />
             </div>
-            <Link href="/sessions">
+            <Link href="/seances">
               <a className={style.text}>Séances</a>
             </Link>
             <div className={style.arrow}>

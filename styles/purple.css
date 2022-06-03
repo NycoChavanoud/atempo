@@ -1,0 +1,29 @@
+/* exemple
+
+import style from "./dashboard.module.css";
+import Layout from "../../components/Layout/Layout";
+
+export default function Dashboard() {
+  return (
+    <Layout purple pageTitle="Profil">
+      <div className={style.purpleBackground}>
+        <h1 className={style.title}>Dashboard</h1>
+      </div>
+    </Layout>
+  );
+}
+
+
+.purpleBackground {
+  height: 100vh;
+  background-color: var(--main-bg-color);
+  background-image: url("/images/white_background.png");
+}
+
+.title {
+  text-align: center;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+*/
