@@ -9,6 +9,7 @@ export default function MobileMenu() {
       <div classe={style.container}>
         <img className={style.user} src="/images/add1.png" alt="add a user" />
         <div className={style.links}>
+          <button className={style.button}>Créer une séance</button>
           <div className={style.link}>
             <div className={style.icon}>
               <Image
@@ -19,7 +20,7 @@ export default function MobileMenu() {
                 alt="dashboard"
               />
             </div>
-            <Link href="/">
+            <Link href="/dashboard">
               <a className={style.text}>Tableau de bord</a>
             </Link>
             <div className={style.arrow}>
@@ -101,7 +102,6 @@ export default function MobileMenu() {
               />
             </div>
           </div>
-          <button className={style.button}>Créer une séance</button>
         </div>
       </div>
     </Layout>

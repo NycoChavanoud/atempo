@@ -1,7 +1,6 @@
 .user {
   width: 30%;
   margin-top: -10vh;
-  margin-bottom: 3vh;
   margin-left: 5vw;
 }
 
@@ -31,6 +30,7 @@
 
 .text {
   padding-left: 5vw;
+  font-size: 1em;
 }
 
 .arrow {
@@ -48,6 +48,7 @@
   color: white;
   font-weight: bold;
   margin-top: 2vh;
+  margin-bottom: 2vh;
   font-family: "Roboto", sans-serif;
 }
 
@@ -66,10 +67,23 @@
   .user {
     margin-top: -8vh;
   }
+  .text {
+    font-size: 1.5em;
+  }
+  .button {
+    font-size: 1.2em;
+  }
 }
 
 @media screen and (min-width: 540px) {
-  .container {
-    display: none;
+  .user {
+    width: 22%;
+    margin-top: -15vh;
+  }
+  .text {
+    font-size: 2em;
+  }
+  .button {
+    font-size: 1.5em;
   }
 }
