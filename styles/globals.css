@@ -13,5 +13,17 @@ a {
 
 * {
   box-sizing: border-box;
-  text-align: center;
+}
+
+:root {
+  --main-bg-color: #412e68;
+  --color1: #f98f83;
+  --color2: #899edd;
+  --color3: #bace94;
+  --color4: #f1bb77;
+  --color5: #ffc498;
+}
+
+button {
+  cursor: pointer;
 }

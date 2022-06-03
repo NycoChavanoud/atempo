@@ -1,0 +1,52 @@
+.background {
+  background-image: url("/images/header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 23vh;
+}
+
+.burger {
+  filter: brightness(100);
+  cursor: pointer;
+  margin-top: 4vh;
+  margin-left: 5vw;
+  width: 8%;
+}
+
+.cross {
+  filter: invert(1);
+  cursor: pointer;
+  margin-top: 3vh;
+  margin-left: 5vw;
+  width: 10%;
+}
+
+@media screen and (min-width: 375px) {
+  .burger {
+    margin-top: 5vh;
+  }
+  .cross {
+    margin-top: 4vh;
+  }
+}
+
+@media screen and (min-width: 390px) {
+  .burger {
+    margin-top: 4vh;
+  }
+  .cross {
+    margin-top: 3vh;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .background {
+    display: none;
+  }
+  .burger {
+    display: none;
+  }
+  .cross {
+    display: none;
+  }
+}

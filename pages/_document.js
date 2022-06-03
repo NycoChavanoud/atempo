@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/google-font-display */
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -9,7 +10,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="fr">
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@500&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

@@ -1,8 +1,9 @@
+import style from "./Layout.module.css";
 import Head from "next/head";
-import NavBar from "./Nav";
-// import style from "./Layout.module.css";
+import Link from "next/link";
+import Router from "next/router";
 
-export default function Layout({ children, pageTitle }) {
+export default function Layout({ children, pageTitle, menu, page }) {
   return (
     <>
       <Head>
@@ -10,7 +11,22 @@ export default function Layout({ children, pageTitle }) {
         <meta name="description" content="Atempo for practitioners" />
         <title>{pageTitle}</title>
       </Head>
-      <NavBar />
+      <header className={style.background}>
+        {!menu && (
+          <Link href="/menu">
+            <img className={style.burger} src="/images/grey_burger.svg" />
+          </Link>
+        )}
+        {!page && (
+          <Link href="/menu">
+            <img
+              onClick={() => Router.back()}
+              className={style.cross}
+              src="/images/X.png"
+            />
+          </Link>
+        )}
+      </header>
       {children}
     </>
   );
