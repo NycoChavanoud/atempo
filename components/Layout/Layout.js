@@ -25,6 +25,7 @@ export default function Layout({
               <img
                 className={style.whiteBurger}
                 src="/images/grey_burger.svg"
+                alt="menu burger gris"
               />
             </Link>
           </div>
@@ -36,13 +37,18 @@ export default function Layout({
                 onClick={() => Router.back()}
                 className={style.cross}
                 src="/images/X.png"
+                alt="croix fermante blanche"
               />
             </Link>
           </div>
         )}
         {nude && (
           <Link href="/menu">
-            <img className={style.blackBurger} src="/images/grey_burger.svg" />
+            <img
+              className={style.blackBurger}
+              src="/images/grey_burger.svg"
+              alt="menu burger gris"
+            />
           </Link>
         )}
         {purple && (
@@ -51,6 +57,7 @@ export default function Layout({
               <img
                 className={style.whiteBurger}
                 src="/images/grey_burger.svg"
+                alt="menu burger gris"
               />
             </Link>
           </div>
