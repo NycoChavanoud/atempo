@@ -1,7 +1,7 @@
 import style from "./menu.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 
 export default function MobileMenu() {
   return (
@@ -20,7 +20,7 @@ export default function MobileMenu() {
                 alt="dashboard"
               />
             </div>
-            <Link href="/dashboard">
+            <Link data-cy="dashboardBtn" href="/dashboard">
               <a className={style.text}>Tableau de bord</a>
             </Link>
             <div className={style.arrow}>
