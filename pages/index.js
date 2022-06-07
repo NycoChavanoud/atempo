@@ -10,16 +10,15 @@ const Connexion = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+
     try {
       await signin(email, password);
       router.push("/account");
     } catch (error) {
-      setError(error);
+      alert("Merci de rentrer des données valides");
     }
   };
 
@@ -32,6 +31,7 @@ const Connexion = () => {
         <form className={style.form} onSubmit={handleSubmit}>
           <label htmlFor="email"></label>
           <input
+            data-cy="email"
             className={style.emailInput}
             type="email"
             name=""
@@ -43,6 +43,7 @@ const Connexion = () => {
 
           <label htmlFor="pwd"></label>
           <input
+            data-cy="password"
             className={style.pwdInput}
             type="password"
             name=""
@@ -52,9 +53,11 @@ const Connexion = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error ? error.message : null}
-
-          <button className={style.btnConnexion} type="submit">
+          <button
+            data-cy="signInButton"
+            className={style.btnConnexion}
+            type="submit"
+          >
             Connexion
           </button>
         </form>
