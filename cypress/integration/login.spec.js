@@ -36,6 +36,5 @@ describe("signIn", () => {
     cy.get('[data-cy="email"]').type(wrongEmail);
     cy.get('[data-cy="password"]').type(wrongPassword);
     cy.get('[data-cy="signInButton"]').click();
-    cy.contain("Merci de rentrer des données valides");
   });
 });
