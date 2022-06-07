@@ -1,7 +1,8 @@
 .user {
-  width: 30%;
-  margin-top: -10vh;
+  margin-top: -6vh;
   margin-left: 5vw;
+  width: 35vw;
+  height: 15vh;
 }
 
 .links {
@@ -55,8 +56,8 @@
 @media screen and (min-width: 375px) {
   .user {
     margin-top: -6vh;
-    width: 29%;
-    margin-bottom: 0;
+    margin-bottom: 2vh;
+    width: 30vw;
   }
   .button {
     margin-top: 0;
@@ -66,6 +67,7 @@
 @media screen and (min-width: 390px) {
   .user {
     margin-top: -8vh;
+    height: 12vh;
   }
   .text {
     font-size: 1.5em;
@@ -77,7 +79,9 @@
 
 @media screen and (min-width: 540px) {
   .user {
-    width: 22%;
+    margin-top: -14vh;
+    width: 25vw;
+    height: 15vh;
   }
   .text {
     font-size: 2em;

@@ -2,12 +2,13 @@ import style from "./menu.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../../components/Layout/Layout";
+import { Avatar } from "@mui/material";
 
 export default function MobileMenu() {
   return (
     <Layout menu>
       <div classe={style.container}>
-        <img className={style.user} src="/images/add1.png" alt="add a user" />
+        <Avatar className={style.user} alt="your picture" />
         <div className={style.links}>
           <button className={style.button}>Créer une séance</button>
           <Link data-cy="dashboardBtn" href="/dashboard">
