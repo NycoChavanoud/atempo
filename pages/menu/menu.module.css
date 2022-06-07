@@ -78,12 +78,20 @@
 @media screen and (min-width: 540px) {
   .user {
     width: 22%;
-    margin-top: -15vh;
   }
   .text {
     font-size: 2em;
   }
   .button {
     font-size: 1.5em;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .user {
+    display: none;
+  }
+  .links {
+    display: none;
   }
 }

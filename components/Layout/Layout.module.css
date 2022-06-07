@@ -2,7 +2,7 @@
   background-image: url("/images/header.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 23vh;
+  height: 20vh;
 }
 
 .whiteBurger {
@@ -33,7 +33,13 @@
 }
 
 @media screen and (min-width: 375px) {
+  .waveBackground {
+    height: 23vh;
+  }
   .burger {
+    margin-top: 5vh;
+  }
+  .whiteBurger {
     margin-top: 5vh;
   }
   .cross {
@@ -42,7 +48,13 @@
 }
 
 @media screen and (min-width: 390px) {
+  .waveBackground {
+    height: 20vh;
+  }
   .burger {
+    margin-top: 4vh;
+  }
+  .whiteBurger {
     margin-top: 4vh;
   }
   .cross {
@@ -51,13 +63,22 @@
 }
 
 @media screen and (min-width: 540px) {
-  .background {
+  .waveBackground {
     height: 32vh;
   }
   .burger {
-    margin-top: 5vh;
+    margin-top: 6vh;
+  }
+  .whiteBurger {
+    margin-top: 6vh;
   }
   .cross {
     margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .waveBackground {
+    display: none;
   }
 }
