@@ -17,8 +17,8 @@ async function resetFireBaseDB() {
   const clientID2 = uniqid();
   const clientID3 = uniqid();
 
-  const praticionerID1 = "0YyjBGd7xuZXmnqb460jGG0mWie2";
-  const praticionerID2 = "WGmwfESfBkUzuTLlLV5dt4prIrQ2";
+  const praticionerID1 = "yCxZx9y1f3aKWUGYEnUKh5XBeOa2";
+  const praticionerID2 = "OxlCRIlPNaMAytZ7dSiGS9CIYKK2";
 
   const seanceID1 = uniqid();
   const seanceID2 = uniqid();
@@ -156,4 +156,4 @@ async function resetFireBaseDB() {
   });
 }
 
-export default resetFireBaseDB;
+resetFireBaseDB();
