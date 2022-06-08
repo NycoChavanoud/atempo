@@ -1,3 +1,9 @@
 .bg {
   position: relative;
 }
+
+@media screen and (min-width: 1000px) {
+  .bg {
+    display: none;
+  }
+}

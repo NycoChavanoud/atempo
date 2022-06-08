@@ -1,3 +1,8 @@
+.container {
+  height: 100%;
+  width: 100%;
+}
+
 .title {
   text-align: center;
   color: #412e68;
@@ -17,7 +22,7 @@
 }
 
 .emailInput {
-  width: 350px;
+  width: 90%;
   height: 65px;
   border: 1px solid #ffff;
   border-radius: 20px;
@@ -28,10 +33,11 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   text-align: center;
+  font-size: 1rem;
 }
 
 .pwdInput {
-  width: 350px;
+  width: 90%;
   height: 65px;
   border: 1px solid #ffff;
   border-radius: 20px;
@@ -42,10 +48,11 @@
   background-position: left;
   background-repeat: no-repeat;
   text-align: center;
+  font-size: 1rem;
 }
 
 .btnConnexion {
-  width: 270px;
+  width: 70%;
   height: 52px;
   background-color: #ff9083;
   color: #ffff;
@@ -53,6 +60,7 @@
   border-radius: 80px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  font-size: 1rem;
 }
 
 .links {
@@ -71,4 +79,25 @@
 .link2forgotpwd {
   color: #412e68;
   text-decoration: underline;
+}
+
+@media screen and (min-width: 700px) {
+  .title {
+    font-size: 3rem;
+  }
+  .emailInput {
+    font-size: 1.5rem;
+  }
+  .pwdInput {
+    font-size: 1.5rem;
+  }
+  .btnConnexion {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .wave {
+    display: none;
+  }
 }
