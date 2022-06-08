@@ -1,0 +1,12 @@
+.bg {
+  position: relative;
+}
+
+.cross {
+  filter: invert(1);
+  cursor: pointer;
+  position: absolute;
+  top: 17%;
+  left: 6%;
+  width: 8%;
+}

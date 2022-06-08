@@ -1,0 +1,9 @@
+.box {
+  height: 10vh;
+}
+
+.greyBurger {
+  position: absolute;
+  top: 4%;
+  left: 6%;
+}

@@ -1,0 +1,21 @@
+import style from "./GreyBurger.module.css";
+import Image from "next/image";
+import Link from "next/link";
+
+export default function GreyBurger() {
+  return (
+    <div className={style.box}>
+      <div className={style.greyBurger}>
+        <Link href="/menu">
+          <Image
+            quality={100}
+            height={25}
+            width={30}
+            src="/images/grey_burger.svg"
+            alt="menu burger gris"
+          />
+        </Link>
+      </div>
+    </div>
+  );
+}

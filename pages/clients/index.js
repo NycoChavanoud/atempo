@@ -1,9 +1,9 @@
-import Layout from "../../components/Layout/Layout";
+import style from "./clients.module.css";
 
 export default function Clients() {
   return (
-    <Layout page pageTitle="Clients">
-      <h1>Clients</h1>
-    </Layout>
+    <div className={style.purple}>
+      <h1 className={style.title}>Clients</h1>
+    </div>
   );
 }
