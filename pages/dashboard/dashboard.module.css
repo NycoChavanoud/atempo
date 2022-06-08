@@ -1,0 +1,56 @@
+.user {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-bottom: 50px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin-right: 10px;
+}
+
+.name {
+  color: #412e68;
+  font-size: 29px;
+  text-align: center;
+  margin-top: 90px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin-top: 1rem;
+  border-bottom: 20px;
+}
+
+.button {
+  text-decoration: none;
+  color: #412e68;
+  font-size: 1.25rem;
+  font-weight: 500;
+  width: 300px;
+  cursor: pointer;
+  border-bottom: solid 3px;
+}
+
+.button:hover {
+  color: #6d4fa3;
+}
+
+.sections {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.content {
+  width: 80%;
+}
+
+.hr {
+  width: 350px;
+  height: 2px;
+}

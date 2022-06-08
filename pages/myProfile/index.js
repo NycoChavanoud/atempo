@@ -1,5 +1,7 @@
 import { Avatar } from "@mui/material";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import style from "./profile.module.css";
 
 export default function MyProfile() {
@@ -23,10 +25,10 @@ export default function MyProfile() {
         <section className={style.form}>
           <div className={style.infos}>
             <p className={style.contacts}>
-              prenom.nom@gmail.com
+              Prénom.nom@gmail.com
               <br />
               <br />
-              06.76.06.76.06
+              06 76 06 76 06
               <br />
               <br />
               praticienatempo.com
@@ -35,27 +37,33 @@ export default function MyProfile() {
         </section>
 
         <div className={style.reseaux}>
-          <a href="https://fr-fr.facebook.com/" className={style.link}>
-            <img
-              src="../img/fb.png"
-              alt="logo facebook"
-              className={style.logos}
-            />
-            <p>@Sophrologue</p>
-          </a>
+          <Link href="https://fr-fr.facebook.com/">
+            <a className={style.link}>
+              <Image
+                width={43}
+                height={43}
+                src="/img/fb.png"
+                alt="logo facebook"
+              />
+              <p className={style.lnk}>@Sophrologue</p>
+            </a>
+          </Link>
 
-          <a href="https://www.instagram.com/?hl=fr" className={style.link}>
-            <img
-              src="../img/insta.png"
-              alt="logo instagram"
-              className={style.logos}
-            />
-            <p>@Sophrologue</p>
-          </a>
+          <Link href="https://www.instagram.com/?hl=fr">
+            <a className={style.link}>
+              <Image
+                width={43}
+                height={43}
+                src="/img/insta.png"
+                alt="logo instagram"
+              />
+              <p className={style.lnk}>@Sophrologue</p>
+            </a>
+          </Link>
         </div>
 
         <div className={style.btn}>
-          <button className={style.button}>Modifier le profil</button>
+          <button className={style.button}>Modifier le profil </button>
         </div>
       </main>
 

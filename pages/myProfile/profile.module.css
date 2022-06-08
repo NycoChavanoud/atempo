@@ -5,6 +5,7 @@
   font-size: 30px;
   margin: 30px;
   margin-bottom: 40px;
+  letter-spacing: 0.01px;
 }
 
 .user {
@@ -15,8 +16,8 @@
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 131px;
+  height: 137px;
   margin-right: 30px;
   border: solid #ff9083;
 }
@@ -26,6 +27,7 @@
   font-size: 23px;
   width: 100px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .title2 {
@@ -34,6 +36,7 @@
   font-size: 24px;
   color: #ff9083;
   margin-bottom: 40px;
+  letter-spacing: 1px;
 }
 
 .form {
@@ -58,6 +61,7 @@
   font-weight: bold;
   color: #fff;
   padding: 10px;
+  letter-spacing: 1px;
 }
 
 .reseaux {
@@ -77,15 +81,24 @@
   height: 43px;
 }
 
+.lnk {
+  color: #412e68;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .btn {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .button {
+  font-weight: bold;
+  letter-spacing: 1px;
   color: white;
   font-size: 16px;
-  width: 200px;
+  width: 230px;
   height: 40px;
   border: none;
   background-color: #412e68;
