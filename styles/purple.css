@@ -1,29 +1,25 @@
 /* exemple
 
-import style from "./dashboard.module.css";
-import Layout from "../../components/Layout/Layout";
+import style from "./clients.module.css";
 
-export default function Dashboard() {
+export default function Clients() {
   return (
-    <Layout purple pageTitle="Profil">
-      <div className={style.purpleBackground}>
-        <h1 className={style.title}>Dashboard</h1>
-      </div>
-    </Layout>
+    <div className={style.purple}>
+      <h1 className={style.title}>Clients</h1>
+    </div>
   );
 }
 
 
-.purpleBackground {
-  height: 100vh;
+.purple {
   background-color: var(--main-bg-color);
   background-image: url("/images/white_background.png");
-}
-
-.title {
-  text-align: center;
-  color: white;
-  margin-top: 0;
-  margin-bottom: 0;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: 94% 80%;
+  width: 100vw;
+  height: 100vh;
+  padding: 30px;
+  background-position: bottom left;
 }
 */

@@ -1,9 +1,11 @@
-import style from "./clients.module.css";
+import Layout from "../../components/Layout/Layout";
+import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 
 export default function Clients() {
   return (
-    <div className={style.purple}>
-      <h1 className={style.title}>Clients</h1>
-    </div>
+    <Layout pageTitle="Clients">
+      <WhiteBurger />
+      <h1>Clients</h1>
+    </Layout>
   );
 }
