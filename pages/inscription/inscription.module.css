@@ -1,0 +1,76 @@
+.inscriptionContainer {
+  margin-top: 28vh;
+}
+
+.title {
+  text-align: center;
+  color: #412e68;
+}
+
+.formContainer {
+  padding: 15px;
+}
+
+.form {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.label {
+  color: #412e68;
+}
+
+.nameInput {
+  width: 350px;
+  height: 50px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  text-align: center;
+}
+
+.emailInput {
+  width: 350px;
+  height: 50px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  text-align: center;
+}
+
+.pwdInput {
+  width: 350px;
+  height: 50px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  text-align: center;
+}
+
+.pwdConfirmationInput {
+  width: 350px;
+  height: 50px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  text-align: center;
+}
+
+.btnInscription {
+  width: 270px;
+  height: 52px;
+  background-color: #ff9083;
+  color: #ffff;
+  border: 1px solid #ff9083;
+  border-radius: 80px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
