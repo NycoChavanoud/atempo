@@ -1,6 +1,6 @@
 const { remove, ref, set } = require("firebase/database");
 const uniqid = require("uniqid");
-const { db } = require("../firebase/firebaseConfig");
+const { db } = require("../config/firebaseConfig");
 
 async function resetFireBaseDB() {
   remove(ref(db));
@@ -22,28 +22,37 @@ async function resetFireBaseDB() {
 
   const seanceID1 = uniqid();
   const seanceID2 = uniqid();
+  const seanceID3 = uniqid();
+  const seanceID4 = uniqid();
 
   await set(ref(db, "methods/" + yogaID), {
+    id: yogaID,
     name: "yoga",
   });
   await set(ref(db, "methods/" + meditationID), {
+    id: meditationID,
     name: "meditation",
   });
   await set(ref(db, "methods/" + sophroID), {
+    id: sophroID,
     name: "sophrologie",
   });
 
   await set(ref(db, "thematics/" + stressID), {
+    id: stressID,
     name: "stress",
   });
   await set(ref(db, "thematics/" + grossesseID), {
+    id: grossesseID,
     name: "grossesse",
   });
   await set(ref(db, "thematics/" + sommeilID), {
+    id: sommeilID,
     name: "sommeil",
   });
 
   await set(ref(db, "clients/" + clientID1), {
+    id: clientID1,
     firstname: "Nicolas",
     lastname: "Cha",
     email: "client1@gmail.com",
@@ -52,6 +61,7 @@ async function resetFireBaseDB() {
   });
 
   await set(ref(db, "clients/" + clientID2), {
+    id: clientID2,
     firstname: "Pedro",
     lastname: "Shanchez",
     email: "client2@gmail.com",
@@ -60,6 +70,7 @@ async function resetFireBaseDB() {
   });
 
   await set(ref(db, "clients/" + clientID3), {
+    id: clientID3,
     firstname: "Léo",
     lastname: "Lab",
     email: "client3@gmail.com",
@@ -68,6 +79,7 @@ async function resetFireBaseDB() {
   });
 
   await set(ref(db, "practitioners/" + praticionerID1), {
+    id: praticionerID1,
     firstname: "Benjamin",
     lastname: "X",
     email: "bx@gmail.com",
@@ -83,6 +95,7 @@ async function resetFireBaseDB() {
   });
 
   await set(ref(db, "practitioners/" + praticionerID2), {
+    id: praticionerID2,
     firstname: "Jean-Marie",
     lastname: "X",
     email: "jmx@gmail.com",
@@ -98,6 +111,7 @@ async function resetFireBaseDB() {
   });
 
   await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID1), {
+    id: seanceID1,
     title: "Découverte méditation",
     description:
       "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
@@ -108,7 +122,30 @@ async function resetFireBaseDB() {
     method_id: meditationID,
   });
 
+  await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID3), {
+    id: seanceID3,
+    title: "Méditation débutant",
+    description:
+      "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
+    media_url: "",
+    members: [clientID3],
+    thematic_id: sommeilID,
+    method_id: sophroID,
+  });
+
+  await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID4), {
+    id: seanceID4,
+    title: "Méditation pour les pros !",
+    description:
+      "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
+    media_url: "",
+    members: [clientID3],
+    thematic_id: sommeilID,
+    method_id: sophroID,
+  });
+
   await set(ref(db, "seances/" + praticionerID2 + "/" + seanceID2), {
+    id: seanceID2,
     title: "Mieux dormir",
     description:
       "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",

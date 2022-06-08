@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "../../components/Layout/Layout";
-import styles from "../../styles/Sessions.module.css";
+import Layout from "../../../components/Layout/Layout";
+import styles from "../../../styles/Seances.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
-export default function CreateSession() {
+export default function EditSeance() {
   return (
     <Layout pageTitle="Création d'une séance" shape={true}>
-      <h1 className={styles.create_title}>Création de la séance</h1>
+      <h1 className={styles.create_title}>Modifier de la séance</h1>
       <form className="mt-20">
         <label className={styles.create_label} htmlFor="titre">
           {" "}

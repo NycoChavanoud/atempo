@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SessionDetails.module.css";
+import styles from "./SeanceDetails.module.css";
 
 export default function SessionDetails() {
   return (

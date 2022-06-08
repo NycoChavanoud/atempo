@@ -32,7 +32,8 @@
     "prisma": "^3.14.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-firebase-hooks": "^5.0.3"
+    "react-firebase-hooks": "^5.0.3",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

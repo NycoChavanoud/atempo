@@ -64,3 +64,11 @@
   margin-bottom: 30px;
   font-size: 0.6em;
 }
+
+.createContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 80vh;
+}
