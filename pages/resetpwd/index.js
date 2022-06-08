@@ -13,7 +13,7 @@ export default function PasswordReset() {
     await sendPasswordResetEmail(auth, email)
       .then(() => {
         setMessage(
-          "Merci de regarder dans votre boite mail pour réinitialiser votre mot de passe"
+          "Un mail pour réinitialiser votre mot de passe vous a été envoyé"
         );
       })
       .catch((error) => {
@@ -40,6 +40,7 @@ export default function PasswordReset() {
               type="email"
               name="passwordReset"
               id="passwordReset"
+              placeholder="Votre e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -47,7 +48,9 @@ export default function PasswordReset() {
               className={style.btnReset}
               type="submit"
               onClick={ResetPassword}
-            ></button>
+            >
+              Réinitialiser
+            </button>
           </form>
         </div>
       </div>
