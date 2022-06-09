@@ -18,7 +18,7 @@ export default function Dashboard() {
       <main>
         <div className={style.user}>
           <Avatar className={style.avatar} />
-          <h2 className={style.name}>Prénom Nom</h2>
+          <h2 className={style.name}>Hello Prénom</h2>
         </div>
 
         <div className={style.container}>

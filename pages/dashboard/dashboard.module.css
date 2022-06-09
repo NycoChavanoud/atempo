@@ -2,20 +2,20 @@
   display: flex;
   align-items: center;
   margin-left: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
-  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
 }
 
 .name {
   color: #412e68;
   font-size: 29px;
   text-align: center;
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 .tabs {
@@ -23,7 +23,7 @@
   justify-content: space-evenly;
   text-align: center;
   margin-top: 1rem;
-  border-bottom: 20px;
+  border-bottom: 10px;
 }
 
 .button {
@@ -31,9 +31,10 @@
   color: #412e68;
   font-size: 1.25rem;
   font-weight: 500;
-  width: 300px;
+  width: 200px;
   cursor: pointer;
   border-bottom: solid 3px;
+  padding: 10px;
 }
 
 .button:hover {
@@ -43,7 +44,7 @@
 .sections {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 70px;
 }
 
 .content {

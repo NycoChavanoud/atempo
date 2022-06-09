@@ -30,6 +30,7 @@
     "@prisma/client": "3.14.0",
     "@uploadcare/react-widget": "^2.1.1",
     "chart.js": "^3.8.0",
+    "firebase": "^9.8.2",
     "next": "12.1.6",
     "npm-run-all": "^4.1.5",
     "prisma": "^3.14.0",
