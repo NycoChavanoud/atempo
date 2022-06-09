@@ -1,0 +1,18 @@
+.bg {
+  position: relative;
+}
+
+.whiteBurger {
+  filter: brightness(100);
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  left: 6%;
+  width: 7%;
+}
+
+@media screen and (min-width: 1000px) {
+  .bg {
+    display: none;
+  }
+}
