@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function GreyBurger() {
   return (
-    <div className={style.box}>
+    <div className={style.bg}>
       <div className={style.greyBurger}>
         <Link href="/menu">
           <Image

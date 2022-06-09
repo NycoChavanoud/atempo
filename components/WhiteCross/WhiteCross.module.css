@@ -10,3 +10,9 @@
   left: 6%;
   width: 8%;
 }
+
+@media screen and (min-width: 1000px) {
+  .bg {
+    display: none;
+  }
+}
