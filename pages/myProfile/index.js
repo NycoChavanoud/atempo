@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import style from "./profile.module.css";
+// import { Widget } from "@uploadcare/react-widget";
 
 export default function MyProfile() {
   return (
@@ -17,6 +18,10 @@ export default function MyProfile() {
 
         <div className={style.user}>
           <Avatar className={style.avatar} />
+          {/* <p>
+            <label htmlFor="file">Your file:</label>{" "}
+            <Widget publicKey="YOUR_PUBLIC_KEY" id="file" />
+          </p> */}
           <h3 className={style.name}>Prénom Nom</h3>
         </div>
 
