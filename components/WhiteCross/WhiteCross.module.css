@@ -1,0 +1,18 @@
+.bg {
+  position: relative;
+}
+
+.cross {
+  filter: invert(1);
+  cursor: pointer;
+  position: absolute;
+  top: 17%;
+  left: 6%;
+  width: 8%;
+}
+
+@media screen and (min-width: 1000px) {
+  .bg {
+    display: none;
+  }
+}
