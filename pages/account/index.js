@@ -1,6 +1,7 @@
 import style from "./account.module.css";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Account = () => {
   const router = useRouter();
@@ -24,6 +25,12 @@ const Account = () => {
       <button className={style.btn} type="submit" onClick={handleLogout}>
         Déconnexion
       </button>
+
+      <Link href="/seances">
+        <button className={style.btn} type="submit">
+          Mes séances
+        </button>
+      </Link>
     </div>
   );
 };

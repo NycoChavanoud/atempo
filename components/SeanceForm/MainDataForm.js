@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
 
 export default function MainDataForm() {
+  const { seanceData, setSeanceData, setSubmitStep } =
+    useContext(createSeanceContext);
   const [title, setTitle] = useState("Titre de la séance");
   const [method, setMethod] = useState("");
   const [thematic, setThematic] = useState("");
@@ -14,10 +17,22 @@ export default function MainDataForm() {
   const handleOtherMethod = (e) => setOtherMethod(e.target.value);
   const handleOtherThematic = (e) => setOtherThematic(e.target.value);
 
-  useEffect(() => {}, [thematic, method]);
+  const submitMainData = () => {
+    setSeanceData({ ...seanceData, title });
+    if (method === "other") {
+      setSeanceData({ ...seanceData, otherMethod });
+    } else setSeanceData({ ...seanceData, method });
+    if (thematic === "other") {
+      setSeanceData({ ...seanceData, otherThematic });
+    } else setSeanceData({ ...seanceData, thematic });
+  };
+
+  useEffect(() => {
+    setSubmitStep(submitMainData());
+  }, [thematic, method]);
 
   return (
-    <form className={styles.MainDataContainer}>
+    <div className={styles.MainDataContainer}>
       <label className={styles.create_label} htmlFor="titre">
         {" "}
         <input
@@ -87,6 +102,6 @@ export default function MainDataForm() {
           />
         )}
       </label>
-    </form>
+    </div>
   );
 }

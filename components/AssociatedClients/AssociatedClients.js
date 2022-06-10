@@ -25,14 +25,16 @@ export default function AssociatedClients() {
             margin: "10px",
           }}
         />
-        <AddCircleIcon
-          sx={{
-            color: "#DADADA",
-            width: "90px",
-            height: "90px",
-            margin: "10px",
-          }}
-        />
+        <button>
+          <AddCircleIcon
+            sx={{
+              color: "#DADADA",
+              width: "90px",
+              height: "90px",
+              margin: "10px",
+            }}
+          />
+        </button>
       </div>
     </>
   );

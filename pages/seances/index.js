@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
-import getSeancesList from "../../model/Seances/getSeancesList";
+import { getSeancesList } from "../../model/seances.js";
 import styles from "../../styles/Seances.module.css";
 
 export default function MySeances() {
@@ -12,8 +12,6 @@ export default function MySeances() {
   useEffect(() => {
     getSeancesList().then(setSeanceList);
   }, []);
-
-  console.log("log", seanceList);
 
   return (
     <Layout pageTitle={"Mes séances"}>

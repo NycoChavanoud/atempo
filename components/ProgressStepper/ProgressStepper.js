@@ -1,13 +1,17 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import MobileStepper from "@mui/material/MobileStepper";
 import Button from "@mui/material/Button";
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import createSeanceContext from "../../context/createSeanceContext";
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
+  const { submitStep } = useContext(createSeanceContext);
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    submitStep();
   };
 
   const handleBack = () => {

@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getMethod, getSeanceData, getThematic } from "../../model/seances";
 import styles from "./SeanceDetails.module.css";
 
-export default function SessionDetails() {
-  return (
-    <>
-      <h2 className={`${styles.h2} mb-10`}>Titre</h2>
-      <h2 className={styles.h2}>Description</h2>
-      <p className={styles.p}>
-        Description : Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Condimentum diam orci pretium a pharetra, feugiat cursus. Dictumst
-        risus, sem egestas odio cras adipiscing vulputate. Nisi, risus in susc
-      </p>
-    </>
-  );
+export default function SessionDetails({ id }) {
+  const [seanceData, setSeanceData] = useState();
+  const [thematic, setThematic] = useState({ name: "" });
+  const [method, setMethod] = useState({ name: "" });
+
+  useEffect(() => {
+    getSeanceData(id).then((data) => setSeanceData(data));
+
+    if (seanceData) {
+      getThematic(seanceData.thematic_id).then((data) => setThematic(data));
+      getMethod(seanceData.method_id).then((data) => setMethod(data));
+    }
+  }, [id, seanceData]);
+
+  if (seanceData) {
+    return (
+      <>
+        <h2 className={`${styles.h2} mb-10`}>{seanceData.title}</h2>
+        <h3>{method.name}</h3>
+        <h3>{thematic.name}</h3>
+        <p className={styles.p}>{seanceData.description}</p>
+        <audio controls src={seanceData.media_url}>
+          Your browser does not support the
+          <code>audio</code> element.
+        </audio>
+      </>
+    );
+  }
 }
