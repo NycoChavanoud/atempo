@@ -3,7 +3,7 @@ describe("signUp", () => {
     cy.viewport("iphone-6");
   });
 
-  xit("is accessible from the connexion page", () => {
+  it("is accessible from the connexion page", () => {
     cy.visit("/inscription");
     cy.contains("Inscription").click();
     cy.url().should("include", "/inscription");
@@ -21,18 +21,18 @@ describe("signIn", () => {
     cy.visit("/");
   });
 
-  xit("is accessible from the connexion page", () => {
+  it("is accessible from the connexion page", () => {
     cy.contains("Connectez-vous").click();
     cy.url().should("include", "/");
   });
 
-  xit("Can login with correct credentials", () => {
+  it("Can login with correct credentials", () => {
     cy.get('[data-cy="email"]').type(email);
     cy.get('[data-cy="password"]').type(password);
     cy.get('[data-cy="signInButton"]').click();
   });
 
-  xit("login with incorrect credentials", () => {
+  it("login with incorrect credentials", () => {
     cy.get('[data-cy="email"]').type(wrongEmail);
     cy.get('[data-cy="password"]').type(wrongPassword);
     cy.get('[data-cy="signInButton"]').click();
