@@ -2,6 +2,8 @@ import style from "./inscription.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
+import { Avatar } from "@mui/material";
+import Layout from "../../components/Layout/Layout";
 
 const Inscription = () => {
   const [lastName, SetLastName] = useState("");
@@ -25,13 +27,18 @@ const Inscription = () => {
   };
 
   return (
-    <>
-      <div className={style.inscriptionContainer}>
+    <Layout pageTitle="Inscription">
+      <div className={style.purple}>
         <h1 className={style.title}>Inscription</h1>
+        <Avatar
+          className={style.user}
+          alt="votre photo"
+          sx={{ width: 100, height: 100 }}
+        />
 
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
-            <label className={style.label} htmlFor="firstName"></label>
+            <label htmlFor="firstName"></label>
             <input
               className={style.emailInput}
               type="text"
@@ -42,7 +49,7 @@ const Inscription = () => {
               onChange={(e) => SetFirstName(e.target.value)}
             />
 
-            <label className={style.label} htmlFor="lastName"></label>
+            <label htmlFor="lastName"></label>
             <input
               className={style.emailInput}
               type="text"
@@ -53,7 +60,7 @@ const Inscription = () => {
               onChange={(e) => SetLastName(e.target.value)}
             />
 
-            <label className={style.label} htmlFor="email"></label>
+            <label htmlFor="email"></label>
             <input
               className={style.emailInput}
               type="email"
@@ -64,7 +71,7 @@ const Inscription = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <label className={style.label} htmlFor="pwd"></label>
+            <label htmlFor="pwd"></label>
             <input
               className={style.pwdInput}
               type="password"
@@ -83,7 +90,7 @@ const Inscription = () => {
           </form>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

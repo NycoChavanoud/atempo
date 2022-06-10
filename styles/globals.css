@@ -4,6 +4,7 @@
 
 html,
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
@@ -19,4 +20,17 @@ a {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: #412e68;
+  --color1: #f98f83;
+  --color2: #899edd;
+  --color3: #bace94;
+  --color4: #f1bb77;
+  --color5: #ffc498;
+}
+
+button {
+  cursor: pointer;
 }
