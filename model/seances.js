@@ -1,6 +1,6 @@
 import { set, child, get, ref, startAt, endAt } from "firebase/database";
-import { db, auth } from "../config/firebaseConfig";
-import uniqid from "uniqid";
+import { ref as refStorage, uploadBytes } from "firebase/storage";
+import { db, auth, storage } from "../config/firebaseConfig";
 
 export async function createSeance(
   title,
@@ -8,9 +8,9 @@ export async function createSeance(
   media_url,
   thematic_id,
   method_id,
-  members = []
+  members = [],
+  sessionId
 ) {
-  const sessionId = uniqid();
   const user = auth.currentUser;
   if (user !== null) {
     set(ref(db, `seances/${user.uid}/${sessionId}`), {
@@ -123,5 +123,18 @@ export async function getMethodList() {
     }
   } catch (error) {
     console.error(error);
+  }
+}
+
+export async function postSeanceMedia(filePath, seanceId, fileName) {
+  const user = auth.currentUser;
+
+  if (user !== null) {
+    const storageRef = refStorage(
+      storage,
+      `${user.id}/${seanceId}/${fileName}`
+    );
+    uploadBytes(storageRef, filePath);
+    return storageRef;
   }
 }

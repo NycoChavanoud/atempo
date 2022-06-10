@@ -5,7 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
 import { getSeancesList } from "../../model/seances.js";
 import styles from "../../styles/Seances.module.css";
-import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
+import GreyBurger from "../../components/GreyBurger/GreyBurger";
 
 export default function MySeances() {
   const [seanceList, setSeanceList] = useState([]);
@@ -16,18 +16,19 @@ export default function MySeances() {
 
   return (
     <Layout pageTitle={"Mes séances"}>
-      <WhiteBurger />
+      <GreyBurger />
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-row items-center justify-around">
+          <Avatar sx={{ width: 80, height: 80 }} />
+          <h1 className={styles.title}>Mes séances</h1>
+        </div>
 
-      <div className="flex flex-row items-center justify-between mb-8">
-        <Avatar sx={{ width: 80, height: 80 }} />
-        <h1 className={styles.title}>Mes séances</h1>
+        <SeanceCardList seanceList={seanceList} />
+
+        <Link href="/seances/create">
+          <button className={styles.add_btn}>Ajouter une séance</button>
+        </Link>
       </div>
-
-      <SeanceCardList seanceList={seanceList} />
-
-      <Link href="/seances/create">
-        <button className={styles.add_btn}>Ajouter une séance</button>
-      </Link>
     </Layout>
   );
 }

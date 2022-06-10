@@ -1,6 +1,8 @@
 .card {
-  width: 150px;
-  height: 20vh;
+  max-width: 150px;
+  max-height: 20vh;
+  min-height: 18vh;
+
   border-radius: 40px;
   display: flex;
   flex-direction: column;
@@ -17,7 +19,7 @@
   line-height: 18px;
 }
 
-.thematic {
+.method {
   width: fit-content;
   background: rgba(65, 45, 104, 0.5);
   border-radius: 60px;
@@ -42,4 +44,10 @@
   padding: 5px 10px 5px 10px;
 
   line-height: 14px;
+}
+
+.a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

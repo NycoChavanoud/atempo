@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import createSeanceContext from "../../context/createSeanceContext";
+import React, { useEffect, useState } from "react";
+// import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
+// import uniqid from "uniqid";
 
 export default function MainDataForm() {
-  const { seanceData, setSeanceData, setSubmitStep } =
-    useContext(createSeanceContext);
+  // const { seanceData, setSeanceData } = useContext(createSeanceContext);
   const [title, setTitle] = useState("Titre de la séance");
   const [method, setMethod] = useState("");
   const [thematic, setThematic] = useState("");
@@ -17,22 +17,21 @@ export default function MainDataForm() {
   const handleOtherMethod = (e) => setOtherMethod(e.target.value);
   const handleOtherThematic = (e) => setOtherThematic(e.target.value);
 
-  const submitMainData = () => {
-    setSeanceData({ ...seanceData, title });
-    if (method === "other") {
-      setSeanceData({ ...seanceData, otherMethod });
-    } else setSeanceData({ ...seanceData, method });
-    if (thematic === "other") {
-      setSeanceData({ ...seanceData, otherThematic });
-    } else setSeanceData({ ...seanceData, thematic });
-  };
+  // const submitMainData = async () => {
+  //   const id = uniqid();
+  //   await setSeanceData({ ...seanceData, title, id });
+  //   if (method === "other") {
+  //     await setSeanceData({ ...seanceData, otherMethod });
+  //   } else await setSeanceData({ ...seanceData, method });
+  //   if (thematic === "other") {
+  //     await setSeanceData({ ...seanceData, otherThematic });
+  //   } else await setSeanceData({ ...seanceData, thematic });
+  // };
 
-  useEffect(() => {
-    setSubmitStep(submitMainData());
-  }, [thematic, method]);
+  useEffect(() => {}, [thematic, method]);
 
   return (
-    <div className={styles.MainDataContainer}>
+    <form className={styles.MainDataContainer}>
       <label className={styles.create_label} htmlFor="titre">
         {" "}
         <input
@@ -102,6 +101,7 @@ export default function MainDataForm() {
           />
         )}
       </label>
-    </div>
+      <button type="submit"></button>
+    </form>
   );
 }

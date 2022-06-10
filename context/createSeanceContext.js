@@ -13,7 +13,6 @@ export function CreateSeanceContextProvider({ children }) {
       value={{
         seanceData,
         setSeanceData,
-
         submitStep,
         setSubmitStep,
       }}
