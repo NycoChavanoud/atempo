@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   margin-left: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .avatar {
@@ -15,7 +15,7 @@
   color: #412e68;
   font-size: 29px;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .tabs {
@@ -44,9 +44,6 @@
 .sections {
   display: flex;
   justify-content: center;
-  margin-top: 70px;
-}
-
-.content {
-  width: 80%;
+  margin-top: 50px;
+  height: 35vh;
 }
