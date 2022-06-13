@@ -20,7 +20,7 @@ const Inscription = () => {
     setError("");
     try {
       await createUser(email, password);
-      router.push("/account");
+      router.push("/dashboard");
     } catch (error) {
       setError(error.message);
     }
