@@ -1,0 +1,5 @@
+.title {
+  display: flex;
+  justify-content: space-around;
+  color: var(--main-bg-color);
+}
