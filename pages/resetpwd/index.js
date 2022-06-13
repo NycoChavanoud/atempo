@@ -2,12 +2,13 @@ import style from "./passwordReset.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import Wave from "../../components/Wave/Wave";
+import swal from "sweetalert";
 
 export default function PasswordReset() {
   const { resetPwd } = useAuth();
 
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -15,29 +16,16 @@ export default function PasswordReset() {
 
     try {
       await resetPwd(email);
-      setMessage(
-        "Un mail pour réinitialiser votre mot de passe vous a été envoyé"
+      swal(
+        "E-mail envoyé",
+        "Un mail de réinitialisation de votre mot de passe vous a été envoyé, vérifiez vos SPAM ",
+        "success"
       );
     } catch (error) {
       console.log(error);
       setError("Email introuvable");
     }
   };
-
-  // const ResetPassword = async (e) => {
-  //   e.preventDefault();
-
-  //   await sendPasswordResetEmail(auth, email)
-  //     .then(() => {
-  //       setMessage(
-  //         "Un mail pour réinitialiser votre mot de passe vous a été envoyé"
-  //       );
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       setError("Email introuvable");
-  //     });
-  // };
 
   return (
     <>
@@ -47,11 +35,11 @@ export default function PasswordReset() {
 
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
-            {message && <p>{message}</p>}
+            {/* {message && <p>{message}</p>} */}
             {error && <p>{error}</p>}
 
             <label className={style.label} htmlFor="passwordReset">
-              Réinitialisé votre mot de passe
+              Réinitialisez votre mot de passe
             </label>
             <input
               className={style.passwordResetInput}
