@@ -1,5 +1,4 @@
 .accountContainer {
-  margin-top: 28vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,4 +22,5 @@
   border-radius: 80px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  margin-bottom: 5%;
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
+import Account from "../../components/account";
 
 export default function MobileMenu() {
   return (
@@ -111,6 +112,7 @@ export default function MobileMenu() {
           </div>
         </Link>
       </div>
+      <Account />
     </Layout>
   );
 }

@@ -18,7 +18,7 @@ const Connexion = () => {
 
     try {
       await signin(email, password);
-      router.push("/account");
+      router.push("/menu");
     } catch (error) {
       alert("Merci de vérifier vos données ou inscrivez-vous");
     }

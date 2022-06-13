@@ -1,6 +1,7 @@
 import style from "./passwordReset.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
+import Wave from "../../components/Wave/Wave";
 
 export default function PasswordReset() {
   const { resetPwd } = useAuth();
@@ -40,6 +41,7 @@ export default function PasswordReset() {
 
   return (
     <>
+      <Wave />
       <div className={style.passwordResetContainer}>
         <h1 className={style.title}>Modifier votre mot de passe</h1>
 

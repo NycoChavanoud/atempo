@@ -18,8 +18,7 @@ const Account = () => {
 
   return (
     <div className={style.accountContainer}>
-      <h1 className={style.title}>Compte Utilisateur</h1>
-      <p className={style.p}>Email utilisateur : {user && user.email}</p>
+      <p className={style.p}>{user && user.email}</p>
 
       <button className={style.btn} type="submit" onClick={handleLogout}>
         Déconnexion
