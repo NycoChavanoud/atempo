@@ -1,4 +1,4 @@
-import style from "./create.module.css";
+import style from "./creationClient.module.css";
 import Layout from "../../components/Layout/Layout";
 import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import ClientForm from "../../components/ClientForm/ClientForm";

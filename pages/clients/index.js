@@ -12,7 +12,7 @@ export default function Clients() {
         <Avatar alt="votre photo" sx={{ width: 100, height: 100 }} />
         <h1 className={style.title}>Mes clients</h1>
       </div>
-      <Link href="/clients/create" className={style.purple}>
+      <Link href="/clients/creationClient" className={style.purple}>
         <button>Ajouter un client</button>
       </Link>
     </Layout>
