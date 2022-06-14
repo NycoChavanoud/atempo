@@ -1,0 +1,29 @@
+.purple {
+  background-color: var(--main-bg-color);
+  background-image: url("/images/white_background.png");
+  background-repeat: no-repeat;
+  background-size: 94% 80%;
+  width: 100vw;
+  height: 100%;
+  background-position: bottom left;
+  padding-top: 1px;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+.user {
+  margin: auto auto;
+  margin-bottom: 5vh;
+}
+
+@media screen and (min-width: 700px) {
+  .title {
+    font-size: 3rem;
+  }
+}

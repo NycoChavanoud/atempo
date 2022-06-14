@@ -1,5 +1,10 @@
-.title {
+.box {
   display: flex;
   justify-content: space-around;
+}
+
+.title {
   color: var(--main-bg-color);
+  text-decoration: underline #ff9083 10px;
+  text-underline-offset: -5px;
 }

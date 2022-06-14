@@ -4,14 +4,14 @@ import StatsSeances from "../../components/stats-seance";
 import style from "./dashboard.module.css";
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
+import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 
 export default function Dashboard() {
   const [tabToShow, setTabToShow] = useState("clients");
 
   return (
     <Layout pageTitle="Tableau de bord">
-      <WhiteBurger />
+      <WaveWhiteBurger />
       <div className={style.user}>
         <Avatar className={style.avatar} />
         <h2 className={style.name}>Hello Prénom</h2>

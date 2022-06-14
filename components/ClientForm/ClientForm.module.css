@@ -1,0 +1,48 @@
+.form {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 70%;
+  height: 70vh;
+  margin-left: 2%;
+}
+
+.input::placeholder {
+  color: var(--main-bg-color);
+  font-size: 1em;
+}
+
+.input {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.btn {
+  background-color: var(--color1);
+  border-radius: 20px;
+  color: #fff;
+  border: transparent;
+  margin-left: auto;
+  width: 50%;
+  height: 50px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10%;
+}
+
+@media screen and (min-width: 700px) {
+  .input {
+    font-size: 1.5em;
+  }
+  .btn {
+    font-size: 1.5em;
+  }
+}
