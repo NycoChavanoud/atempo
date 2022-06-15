@@ -1,9 +1,10 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@mui/styles";
+import { useTheme } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   formControl: {
-    margin: theme.spacing(1),
-    width: 400,
+    margin: useTheme().spacing(1, "auto"),
+    width: 300,
   },
   indeterminateColor: {
     color: "#f50057",
