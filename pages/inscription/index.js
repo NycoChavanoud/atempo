@@ -41,7 +41,7 @@ const Inscription = () => {
             <label htmlFor="firstName"></label>
             <input
               style={{ opacity: 0.5 }}
-              className={style.emailInput}
+              className={style.inscriptionInput}
               type="text"
               name="firstName"
               id="firstName"
@@ -53,7 +53,7 @@ const Inscription = () => {
             <label htmlFor="lastName"></label>
             <input
               style={{ opacity: 0.5 }}
-              className={style.emailInput}
+              className={style.inscriptionInput}
               type="text"
               name="lastName"
               id="lastName"
@@ -64,7 +64,7 @@ const Inscription = () => {
 
             <label htmlFor="email"></label>
             <input
-              className={style.emailInput}
+              className={style.inscriptionInput}
               type="email"
               name="email"
               id="email"
@@ -75,7 +75,7 @@ const Inscription = () => {
 
             <label htmlFor="pwd"></label>
             <input
-              className={style.pwdInput}
+              className={style.inscriptionInput}
               type="password"
               name="password"
               id="pwd"

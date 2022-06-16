@@ -32,7 +32,7 @@
   align-items: center;
 }
 
-.emailInput {
+.inscriptionInput {
   width: 80%;
   height: 50px;
   border: 1px solid #ffff;
@@ -40,22 +40,15 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   text-align: center;
-  font-size: 1rem;
 }
 
-.pwdInput {
-  width: 80%;
-  height: 50px;
-  border: 1px solid #ffff;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  text-align: center;
+.inscriptionInput::placeholder {
   font-size: 1rem;
+  color: #412e68;
 }
 
 .btnInscription {
-  width: 60%;
+  width: 70%;
   height: 52px;
   background-color: #ff9083;
   color: #ffff;
