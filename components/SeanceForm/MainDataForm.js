@@ -1,34 +1,9 @@
-import React, { useEffect, useState } from "react";
-// import createSeanceContext from "../../context/createSeanceContext";
+import React, { useContext } from "react";
+import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
-// import uniqid from "uniqid";
 
 export default function MainDataForm() {
-  // const { seanceData, setSeanceData } = useContext(createSeanceContext);
-  const [title, setTitle] = useState("Titre de la séance");
-  const [method, setMethod] = useState("");
-  const [thematic, setThematic] = useState("");
-  const [otherMethod, setOtherMethod] = useState("Précisez ici");
-  const [otherThematic, setOtherThematic] = useState("Précisez ici");
-
-  const handleTitle = (e) => setTitle(e.target.value);
-  const handleMethod = (e) => setMethod(e.target.value);
-  const handleThematic = (e) => setThematic(e.target.value);
-  const handleOtherMethod = (e) => setOtherMethod(e.target.value);
-  const handleOtherThematic = (e) => setOtherThematic(e.target.value);
-
-  // const submitMainData = async () => {
-  //   const id = uniqid();
-  //   await setSeanceData({ ...seanceData, title, id });
-  //   if (method === "other") {
-  //     await setSeanceData({ ...seanceData, otherMethod });
-  //   } else await setSeanceData({ ...seanceData, method });
-  //   if (thematic === "other") {
-  //     await setSeanceData({ ...seanceData, otherThematic });
-  //   } else await setSeanceData({ ...seanceData, thematic });
-  // };
-
-  useEffect(() => {}, [thematic, method]);
+  const { seanceData, setSeanceData } = useContext(createSeanceContext);
 
   return (
     <form className={styles.MainDataContainer}>
@@ -38,9 +13,14 @@ export default function MainDataForm() {
           className={styles.create_input_title}
           type="text"
           id="title"
-          placeholder={title}
+          placeholder="Titre de la séance"
           required
-          onChange={handleTitle}
+          onChange={(e) =>
+            setSeanceData({
+              ...seanceData,
+              title: e.target.value,
+            })
+          }
         />
       </label>
       <label className={styles.create_label} htmlFor="method-select" required>
@@ -50,7 +30,9 @@ export default function MainDataForm() {
           name="method"
           id="method-select"
           required
-          onChange={handleMethod}
+          onChange={(e) =>
+            setSeanceData({ ...seanceData, method: e.target.value })
+          }
         >
           <option value="">--Choisissez une méthode--</option>
           <option value="sophrology">Sophrologie</option>
@@ -60,14 +42,16 @@ export default function MainDataForm() {
           <option value="coherence">Cohérence Cardiaque</option>
           <option value="other">Autre</option>
         </select>{" "}
-        {method === "other" && (
+        {seanceData.method === "other" && (
           <input
             className={styles.otherInput}
             type="text"
             id="other_method"
-            placeholder={otherMethod}
+            placeholder="Précisez ici"
             required
-            onChange={handleOtherMethod}
+            onChange={(e) =>
+              setSeanceData({ ...seanceData, method: e.target.value })
+            }
           />
         )}
       </label>
@@ -78,7 +62,9 @@ export default function MainDataForm() {
           name="thematic"
           id="thematic-select"
           required
-          onChange={handleThematic}
+          onChange={(e) =>
+            setSeanceData({ ...seanceData, thematic: e.target.value })
+          }
         >
           <option value="">--Choisissez un théme--</option>
           <option value="discover">Découverte</option>
@@ -90,18 +76,19 @@ export default function MainDataForm() {
           <option value="mental">Mental</option>
           <option value="other">Autre</option>
         </select>
-        {thematic === "other" && (
+        {seanceData.thematic === "other" && (
           <input
             className={styles.otherInput}
             type="text"
             id="other_thematic"
-            placeholder={otherThematic}
+            placeholder="Précisez ici"
             required
-            onChange={handleOtherThematic}
+            onChange={(e) =>
+              setSeanceData({ ...seanceData, thematic: e.target.value })
+            }
           />
         )}
       </label>
-      <button type="submit"></button>
     </form>
   );
 }

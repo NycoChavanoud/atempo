@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
-import { postSeanceMedia } from "../../model/seances";
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData } = useContext(createSeanceContext);
@@ -15,15 +14,14 @@ export default function UploadMediaForm() {
 
   const handleFile = (e) => setFile(e.target.value);
 
-  useEffect(() => {
+  const uploadFile = async () => {
     if (file) {
-      postSeanceMedia();
-      setSeanceData({ ...seanceData, media_url: file });
+      setSeanceData({ ...seanceData, media_path: file });
     }
-  });
+  };
 
   return (
-    <form>
+    <form className={styles.uploadFileContainer}>
       <label className={styles.create_label} htmlFor="mp3_url">
         {" "}
         Télécharger le fichier de la séance :
@@ -50,6 +48,23 @@ export default function UploadMediaForm() {
           }}
         />
       </button>
+      {file && (
+        <button
+          onClick={uploadFile}
+          type="submit"
+          className="flex justify-center items-center m-auto"
+        >
+          {" "}
+          <AddCircleIcon
+            sx={{
+              color: "#F98F83",
+              width: "120px",
+              height: "120px",
+              margin: "10px",
+            }}
+          />
+        </button>
+      )}
     </form>
   );
 }

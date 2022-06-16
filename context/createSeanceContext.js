@@ -4,6 +4,7 @@ const createSeanceContext = createContext();
 
 export function CreateSeanceContextProvider({ children }) {
   const [seanceData, setSeanceData] = useState({});
+  const [currentSeanceId, setCurrentSeanceId] = useState();
   const [submitStep, setSubmitStep] = useState(() => {
     setSeanceData({ ...seanceData });
   });
@@ -11,6 +12,8 @@ export function CreateSeanceContextProvider({ children }) {
   return (
     <createSeanceContext.Provider
       value={{
+        currentSeanceId,
+        setCurrentSeanceId,
         seanceData,
         setSeanceData,
         submitStep,

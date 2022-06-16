@@ -1,26 +1,32 @@
-import { set, child, get, ref, startAt, endAt } from "firebase/database";
+import {
+  set,
+  child,
+  get,
+  ref,
+  startAt,
+  endAt,
+  update,
+} from "firebase/database";
 import { ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
+import uniqid from "uniqid";
 
-export async function createSeance(
-  title,
-  description = "",
-  media_url,
-  thematic_id,
-  method_id,
-  members = [],
-  sessionId
-) {
+export async function createSeance(seanceData) {
+  const user = auth.currentUser;
+  const seanceId = uniqid();
+  if (user !== null) {
+    set(ref(db, `seances/${user.uid}/${seanceId}`), {
+      ...seanceData,
+      seanceId,
+    });
+    return seanceId;
+  }
+}
+
+export async function updateSeance(sessionId, seanceData) {
   const user = auth.currentUser;
   if (user !== null) {
-    set(ref(db, `seances/${user.uid}/${sessionId}`), {
-      title,
-      description,
-      media_url,
-      thematic_id,
-      method_id,
-      members,
-    });
+    update(ref(db, `seances/${user.uid}/${sessionId}`), seanceData);
   }
 }
 
@@ -33,7 +39,7 @@ export async function getSeanceData(seanceId) {
         child(ref(db), `/seances/${user.uid}/${seanceId}`)
       );
       if (snapshot.exists()) {
-        return snapshot.val();
+        return await snapshot.val();
       } else {
         console.log("No data available");
       }
@@ -72,7 +78,7 @@ export async function getThematic(thematicId) {
   try {
     const snapshot = await get(child(ref(db), `/thematics/${thematicId}`));
     if (snapshot.exists()) {
-      return snapshot.val();
+      return await snapshot.val();
     } else {
       console.log("No data available");
     }
@@ -102,7 +108,7 @@ export async function getMethod(methodId) {
   try {
     const snapshot = await get(child(ref(db), `/methods/${methodId}`));
     if (snapshot.exists()) {
-      return snapshot.val();
+      return await snapshot.val();
     } else {
       console.log("No data available");
     }

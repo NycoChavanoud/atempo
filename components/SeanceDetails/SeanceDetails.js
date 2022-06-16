@@ -4,8 +4,8 @@ import styles from "./SeanceDetails.module.css";
 
 export default function SessionDetails({ id }) {
   const [seanceData, setSeanceData] = useState({});
-  const [thematic, setThematic] = useState({ name: "" });
-  const [method, setMethod] = useState({ name: "" });
+  const [thematic, setThematic] = useState({ name: "/" });
+  const [method, setMethod] = useState({ name: "/" });
 
   useEffect(() => {
     getSeanceData(id).then((data) => setSeanceData(data));

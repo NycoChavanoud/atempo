@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
 
 export default function DescriptionForm() {
-  const [description, setDescription] = useState(
-    "Vous pouvez décrire ici la séance en quelques phrases..."
-  );
-
-  const handleDescription = (e) => setDescription(e.target.value);
+  const { seanceData, setSeanceData } = useContext(createSeanceContext);
 
   return (
     <form className={styles.DescriptionContainer}>
-      <label className={styles.create_label} htmlFor="description">
+      <label className={styles.create_label_description} htmlFor="description">
         {" "}
-        Description{" "}
-        <span className={styles.description_option}>(Optionnelle)</span> :
+        <h2>
+          Description{" "}
+          <span className={styles.description_option}>(Optionnelle)</span> :
+        </h2>
         <textarea
           className={styles.create_description}
           id="description"
-          placeholder={description}
-          onChange={handleDescription}
+          placeholder="Vous pouvez décrire ici la séance en quelques phrases..."
+          onChange={(e) =>
+            setSeanceData({ ...seanceData, description: e.target.value })
+          }
         />
       </label>
     </form>
