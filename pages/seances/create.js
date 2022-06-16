@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import styles from "../../styles/Seances.module.css";
 import MainDataForm from "../../components/SeanceForm/MainDataForm";
@@ -12,8 +12,6 @@ import Summary from "../../components/SeanceForm/Summary";
 
 export default function CreateSeance() {
   const [activeStep, setActiveStep] = useState(0);
-
-  useEffect(() => {}, [activeStep]);
 
   return (
     <CreateSeanceContextProvider>

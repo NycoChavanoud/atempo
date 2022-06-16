@@ -14,7 +14,6 @@ export default function UploadMediaForm() {
 
   const handleFile = (e) => {
     setFile(e.target.value);
-    console.log(fileInput);
     setSeanceData({ ...seanceData, media: fileInput.current.files[0] });
   };
 
