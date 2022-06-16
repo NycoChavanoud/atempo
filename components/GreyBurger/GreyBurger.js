@@ -8,6 +8,7 @@ export default function GreyBurger({ grey = true }) {
       <div className={grey ? style.greyBurger : style.whiteBurger}>
         <Link href="/menu">
           <Image
+            layout="responsive"
             quality={100}
             height={25}
             width={30}

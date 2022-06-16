@@ -5,7 +5,7 @@ import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
 import { getSeancesList } from "../../model/seances.js";
 import styles from "../../styles/Seances.module.css";
-import GreyBurger from "../../components/GreyBurger/GreyBurger";
+import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 
 export default function MySeances() {
   const [seanceList, setSeanceList] = useState([]);
@@ -16,7 +16,7 @@ export default function MySeances() {
 
   return (
     <Layout pageTitle={"Mes séances"}>
-      <GreyBurger />
+      <WaveWhiteBurger />
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-row items-center justify-around">
           <Avatar sx={{ width: 80, height: 80 }} />
