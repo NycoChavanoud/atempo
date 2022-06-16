@@ -5,11 +5,15 @@ import Button from "@mui/material/Button";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import createSeanceContext from "../../context/createSeanceContext";
-import { createSeance } from "../../model/seances";
+import {
+  createSeance,
+  postSeanceMedia,
+  updateSeance,
+} from "../../model/seances";
 import Link from "next/link";
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
-  const { seanceData } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData } = useContext(createSeanceContext);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -19,8 +23,15 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const submitSeanceForm = () => {
-    createSeance(seanceData);
+  const submitSeanceForm = async () => {
+    const id = await createSeance(seanceData);
+    const media_url = await postSeanceMedia(
+      seanceData.media,
+      id,
+      seanceData.title
+    );
+    await updateSeance(id, { ...seanceData, media_url: media_url });
+    await setSeanceData(null);
   };
 
   if (activeStep < 4) {

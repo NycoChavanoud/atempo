@@ -23,10 +23,10 @@ export async function createSeance(seanceData) {
   }
 }
 
-export async function updateSeance(sessionId, seanceData) {
+export async function updateSeance(sessionId, data) {
   const user = auth.currentUser;
   if (user !== null) {
-    update(ref(db, `seances/${user.uid}/${sessionId}`), seanceData);
+    update(ref(db, `seances/${user.uid}/${sessionId}`), data);
   }
 }
 
@@ -132,15 +132,15 @@ export async function getMethodList() {
   }
 }
 
-export async function postSeanceMedia(filePath, seanceId, fileName) {
+export async function postSeanceMedia(file, seanceId, fileName) {
   const user = auth.currentUser;
 
   if (user !== null) {
     const storageRef = refStorage(
       storage,
-      `${user.id}/${seanceId}/${fileName}`
+      `${user.uid}/${seanceId}/${fileName}`
     );
-    uploadBytes(storageRef, filePath);
+    uploadBytes(storageRef, file);
     return storageRef;
   }
 }

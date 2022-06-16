@@ -12,12 +12,10 @@ export default function UploadMediaForm() {
     fileInput.current.click();
   };
 
-  const handleFile = (e) => setFile(e.target.value);
-
-  const uploadFile = async () => {
-    if (file) {
-      setSeanceData({ ...seanceData, media_path: file });
-    }
+  const handleFile = (e) => {
+    setFile(e.target.value);
+    console.log(fileInput);
+    setSeanceData({ ...seanceData, media: fileInput.current.files[0] });
   };
 
   return (
@@ -35,7 +33,7 @@ export default function UploadMediaForm() {
 
       <button
         onClick={selectFile}
-        type="submit"
+        type="button"
         className="flex justify-center items-center m-auto"
       >
         {" "}
@@ -48,23 +46,7 @@ export default function UploadMediaForm() {
           }}
         />
       </button>
-      {file && (
-        <button
-          onClick={uploadFile}
-          type="submit"
-          className="flex justify-center items-center m-auto"
-        >
-          {" "}
-          <AddCircleIcon
-            sx={{
-              color: "#F98F83",
-              width: "120px",
-              height: "120px",
-              margin: "10px",
-            }}
-          />
-        </button>
-      )}
+      <h1>{file}</h1>
     </form>
   );
 }
