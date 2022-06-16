@@ -12,6 +12,7 @@ const Connexion = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const Connexion = () => {
       await signin(email, password);
       router.push("/menu");
     } catch (error) {
-      alert("Merci de vérifier vos données ou inscrivez-vous");
+      setError(error.message);
     }
   };
 
@@ -55,6 +56,8 @@ const Connexion = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            {error && <p>{error}</p>}
 
             <button
               data-cy="signInButton"
