@@ -35,14 +35,14 @@ export default function MainDataForm() {
           }
         >
           <option value="">--Choisissez une méthode--</option>
-          <option value="sophrology">Sophrologie</option>
+          <option value="sophrologie">Sophrologie</option>
           <option value="meditation">Méditation</option>
           <option value="yoga">Yoga</option>
-          <option value="travel">Voyages Sonores</option>
-          <option value="coherence">Cohérence Cardiaque</option>
-          <option value="other">Autre</option>
+          <option value="voyages_sonores">Voyages Sonores</option>
+          <option value="coherence_cardiaque">Cohérence Cardiaque</option>
+          <option value="autre">Autre</option>
         </select>{" "}
-        {seanceData.method === "other" && (
+        {seanceData.method === "autre" && (
           <input
             className={styles.otherInput}
             type="text"
@@ -67,16 +67,17 @@ export default function MainDataForm() {
           }
         >
           <option value="">--Choisissez un théme--</option>
-          <option value="discover">Découverte</option>
-          <option value="sleep">Sommeil</option>
-          <option value="pregnancy">Grossesse</option>
+          <option value="decouverte">Découverte</option>
+          <option value="sommeil">Sommeil</option>
+          <option value="energie">Energie</option>
+          <option value="grossesse">Grossesse</option>
           <option value="stress">Stress</option>
-          <option value="children">Enfants</option>
+          <option value="enfant">Enfant</option>
           <option value="emotion">Emotion</option>
           <option value="mental">Mental</option>
-          <option value="other">Autre</option>
+          <option value="autre">Autre</option>
         </select>
-        {seanceData.thematic === "other" && (
+        {seanceData.thematic === "autre" && (
           <input
             className={styles.otherInput}
             type="text"

@@ -13,13 +13,13 @@ import uniqid from "uniqid";
 
 export async function createSeance(seanceData) {
   const user = auth.currentUser;
-  const seanceId = uniqid();
+  const id = uniqid();
   if (user !== null) {
-    set(ref(db, `seances/${user.uid}/${seanceId}`), {
+    set(ref(db, `seances/${user.uid}/${id}`), {
       ...seanceData,
-      seanceId,
+      id,
     });
-    return seanceId;
+    return id;
   }
 }
 
@@ -74,9 +74,9 @@ export async function getSeancesList(page = 0) {
   } else return null;
 }
 
-export async function getThematic(thematicId) {
+export async function getThematic(thematic) {
   try {
-    const snapshot = await get(child(ref(db), `/thematics/${thematicId}`));
+    const snapshot = await get(child(ref(db), `/thematics/${thematic}`));
     if (snapshot.exists()) {
       return await snapshot.val();
     } else {
@@ -104,9 +104,9 @@ export async function getThematicList() {
   }
 }
 
-export async function getMethod(methodId) {
+export async function getMethod(method) {
   try {
-    const snapshot = await get(child(ref(db), `/methods/${methodId}`));
+    const snapshot = await get(child(ref(db), `/methods/${method}`));
     if (snapshot.exists()) {
       return await snapshot.val();
     } else {

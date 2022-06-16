@@ -19,7 +19,7 @@ export default function CreateSeance() {
     <CreateSeanceContextProvider>
       <Layout pageTitle="Création d'une séance" shape={true}>
         <GreyBurger grey={false} />
-        <form>
+        <div>
           <div className={styles.createContainer}>
             <h1 className={styles.create_title}>Création de la séance</h1>
 
@@ -35,7 +35,7 @@ export default function CreateSeance() {
               className={styles.progressStepper}
             />
           </div>
-        </form>
+        </div>
       </Layout>
     </CreateSeanceContextProvider>
   );

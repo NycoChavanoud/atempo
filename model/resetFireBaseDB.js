@@ -5,14 +5,6 @@ const { db } = require("../config/firebaseConfig");
 async function resetFireBaseDB() {
   remove(ref(db));
 
-  const yogaID = uniqid();
-  const meditationID = uniqid();
-  const sophroID = uniqid();
-
-  const stressID = uniqid();
-  const grossesseID = uniqid();
-  const sommeilID = uniqid();
-
   const clientID1 = uniqid();
   const clientID2 = uniqid();
   const clientID3 = uniqid();
@@ -25,30 +17,77 @@ async function resetFireBaseDB() {
   const seanceID3 = uniqid();
   const seanceID4 = uniqid();
 
-  await set(ref(db, "methods/" + yogaID), {
-    id: yogaID,
+  await set(ref(db, "methods/yoga"), {
+    id: 1,
     name: "yoga",
   });
-  await set(ref(db, "methods/" + meditationID), {
-    id: meditationID,
-    name: "meditation",
+
+  await set(ref(db, "methods/voyages_sonores"), {
+    id: 2,
+    name: "Voyages Sonores",
   });
-  await set(ref(db, "methods/" + sophroID), {
-    id: sophroID,
-    name: "sophrologie",
+  await set(ref(db, "methods/coherence_cardiaque"), {
+    id: 3,
+    name: "Cohérence Cardiaque",
   });
 
-  await set(ref(db, "thematics/" + stressID), {
-    id: stressID,
-    name: "stress",
+  await set(ref(db, "methods/meditation"), {
+    id: 4,
+    name: "Méditation",
   });
-  await set(ref(db, "thematics/" + grossesseID), {
-    id: grossesseID,
-    name: "grossesse",
+
+  await set(ref(db, "methods/sophrologie"), {
+    id: 5,
+    name: "Sophrologie",
   });
-  await set(ref(db, "thematics/" + sommeilID), {
-    id: sommeilID,
-    name: "sommeil",
+
+  await set(ref(db, "thematics/stress"), {
+    id: 1,
+    name: "Stress",
+    color: "#F3AF58",
+  });
+  await set(ref(db, "thematics/grossesse"), {
+    id: 2,
+    name: "Grossesse",
+    color: "#F5D479",
+  });
+  await set(ref(db, "thematics/sommeil"), {
+    id: 3,
+    name: "Sommeil",
+    color: "#7991DB",
+  });
+  await set(ref(db, "thematics/decouverte"), {
+    id: 4,
+    name: "Découverte",
+    color: "#BBCE95",
+  });
+  await set(ref(db, "thematics/enfants"), {
+    id: 5,
+    name: "Enfants",
+    color: "#E7C9A7",
+  });
+  await set(ref(db, "thematics/emotion"), {
+    id: 6,
+    name: "Emotion",
+    color: "#FF9083",
+  });
+
+  await set(ref(db, "thematics/energie"), {
+    id: 7,
+    name: "Energie",
+    color: "#F3E591",
+  });
+
+  await set(ref(db, "thematics/mental"), {
+    id: 8,
+    name: "Mental",
+    color: "#FFC498",
+  });
+
+  await set(ref(db, "thematics/default"), {
+    id: 3,
+    name: "default",
+    color: "#C5C5DB",
   });
 
   await set(ref(db, "clients/" + clientID1), {
@@ -118,8 +157,8 @@ async function resetFireBaseDB() {
     media_url:
       "gs://zenegopro.appspot.com/dev/data/practitioner_id/seance_id/mixkit-birds-in-the-jungle-2434.wav",
     members: [clientID1, clientID2],
-    thematic_id: stressID,
-    method_id: meditationID,
+    thematic: "stress",
+    method: "meditation",
   });
 
   await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID3), {
@@ -129,8 +168,8 @@ async function resetFireBaseDB() {
       "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
     media_url: "",
     members: [clientID3],
-    thematic_id: sommeilID,
-    method_id: sophroID,
+    thematic: "sommeil",
+    method: "sophrologie",
   });
 
   await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID4), {
@@ -140,8 +179,8 @@ async function resetFireBaseDB() {
       "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
     media_url: "",
     members: [clientID3],
-    thematic_id: sommeilID,
-    method_id: sophroID,
+    thematic: "sommeil",
+    method: "sophrologie",
   });
 
   await set(ref(db, "seances/" + praticionerID2 + "/" + seanceID2), {
@@ -151,8 +190,8 @@ async function resetFireBaseDB() {
       "Lorem ipsum dolor sit amet. Eos voluptate sint qui veniam maiores a sunt quibusdam. Ut laborum quis aliquam vero aut iste temporibus et enim placeat est facere omnis. Eum ducimus quidem qui voluptatem enim et enim obcaecati et quae atque est quidem cumque et delectus nisi.",
     media_url: "",
     members: [clientID3],
-    thematic_id: sommeilID,
-    method_id: sophroID,
+    thematic: "sommeil",
+    method: "sophrologie",
   });
 }
 
