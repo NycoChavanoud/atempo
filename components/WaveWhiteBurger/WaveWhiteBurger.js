@@ -1,9 +1,8 @@
-import style from "./WhiteCross.module.css";
+import style from "./WaveWhiteBurger.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import Router from "next/router";
 
-export default function WhiteCross() {
+export default function WaveWhiteBurger() {
   return (
     <div className={style.bg}>
       <Image
@@ -16,14 +15,14 @@ export default function WhiteCross() {
         alt="vagues violettes"
       />
       <Link href="/menu">
-        <div onClick={() => Router.back()} className={style.cross}>
+        <div className={style.whiteBurger}>
           <Image
             layout="responsive"
             quality={100}
-            height={30}
+            height={25}
             width={30}
-            src="/images/X.png"
-            alt="croix blanche"
+            src="/images/grey_burger.svg"
+            alt="menu burger blanc"
           />
         </div>
       </Link>

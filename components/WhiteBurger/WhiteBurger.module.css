@@ -1,12 +1,11 @@
 .bg {
-  position: relative;
+  height: 10vh;
 }
 
 .whiteBurger {
   filter: brightness(100);
-  cursor: pointer;
   position: absolute;
-  top: 20%;
+  top: 4%;
   left: 6%;
   width: 7%;
 }
