@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
-import Account from "../../components/account";
+import Account from "../../components/Account/Account";
 
 export default function MobileMenu() {
   return (
