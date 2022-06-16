@@ -4,29 +4,26 @@ import styles from "./SeanceDetails.module.css";
 
 export default function SessionDetails({ id }) {
   const [seanceData, setSeanceData] = useState({});
-  const [thematic, setThematic] = useState({ name: "/" });
-  const [method, setMethod] = useState({ name: "/" });
+  const [thematic, setThematic] = useState({ name: "-" });
+  const [method, setMethod] = useState({ name: "-" });
 
   useEffect(() => {
     getSeanceData(id).then((data) => setSeanceData(data));
-
     if (seanceData) {
-      getThematic(seanceData.thematic_id).then((data) => setThematic(data));
-      getMethod(seanceData.method_id).then((data) => setMethod(data));
+      getThematic(seanceData.thematic).then((data) => setThematic(data));
+      getMethod(seanceData.method).then((data) => setMethod(data));
     }
-  }, [id, seanceData]);
+  }, [id, seanceData, thematic, method]);
 
-  if (seanceData) {
+  if (seanceData && method && thematic) {
     return (
       <div className="mb-5">
         <h2 className={`${styles.h2} mb-5`}>{seanceData.title}</h2>
-        <h3>{method.name}</h3>
-        <h3>{thematic.name}</h3>
+        <h3>
+          {method.name} - {thematic.name}
+        </h3>
+
         <p className={styles.p}>{seanceData.description}</p>
-        <audio controls src={seanceData.media_url}>
-          Your browser does not support the
-          <code>audio</code> element.
-        </audio>
       </div>
     );
   }

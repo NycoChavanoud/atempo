@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import Link from "next/link";
 import styles from "../../../styles/Seances.module.css";
@@ -10,10 +10,6 @@ import WhiteBurger from "../../../components/WhiteBurger/WhiteBurger";
 export default function Seance() {
   const router = useRouter();
   const { id } = router.query;
-
-  useEffect(() => {
-    console.log(id);
-  }, [id]);
 
   return (
     <Layout pageTitle={"Séance"}>
