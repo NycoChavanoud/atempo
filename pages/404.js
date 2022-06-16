@@ -7,8 +7,8 @@ export default function NotFound() {
   useEffect(() => {
     setTimeout(() => {
       router.push("/dashboard");
-    }, 3000);
-  }, []);
+    }, 1000);
+  });
   return (
     <div className={style.notFound}>
       <h1 className={style.title}>Oups,</h1>
