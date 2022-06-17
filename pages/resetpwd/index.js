@@ -34,7 +34,6 @@ export default function PasswordReset() {
 
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
-            {/* {message && <p>{message}</p>} */}
             {error && <p>{error}</p>}
 
             <label className={style.label} htmlFor="passwordReset"></label>
