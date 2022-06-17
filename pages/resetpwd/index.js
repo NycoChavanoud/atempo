@@ -8,7 +8,6 @@ export default function PasswordReset() {
   const { resetPwd } = useAuth();
 
   const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
