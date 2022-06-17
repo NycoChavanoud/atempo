@@ -20,9 +20,9 @@ const Inscription = () => {
     setError("");
     try {
       await createUser(email, password);
-      router.push("/account");
+      router.push("/dashboard");
     } catch (error) {
-      setError(error.message);
+      setError("erreur");
     }
   };
 
@@ -40,7 +40,8 @@ const Inscription = () => {
           <form className={style.form} onSubmit={handleSubmit}>
             <label htmlFor="firstName"></label>
             <input
-              className={style.emailInput}
+              style={{ opacity: 0.5 }}
+              className={style.inscriptionInput}
               type="text"
               name="firstName"
               id="firstName"
@@ -51,7 +52,8 @@ const Inscription = () => {
 
             <label htmlFor="lastName"></label>
             <input
-              className={style.emailInput}
+              style={{ opacity: 0.5 }}
+              className={style.inscriptionInput}
               type="text"
               name="lastName"
               id="lastName"
@@ -62,7 +64,7 @@ const Inscription = () => {
 
             <label htmlFor="email"></label>
             <input
-              className={style.emailInput}
+              className={style.inscriptionInput}
               type="email"
               name="email"
               id="email"
@@ -73,7 +75,7 @@ const Inscription = () => {
 
             <label htmlFor="pwd"></label>
             <input
-              className={style.pwdInput}
+              className={style.inscriptionInput}
               type="password"
               name="password"
               id="pwd"
@@ -82,7 +84,7 @@ const Inscription = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {error ? error.message : null}
+            {error && <p>{error}</p>}
 
             <button className={style.btnInscription} type="submit">
               Inscription
