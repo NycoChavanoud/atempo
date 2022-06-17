@@ -30,16 +30,13 @@ export default function PasswordReset() {
     <>
       <Wave />
       <div className={style.passwordResetContainer}>
-        <h1 className={style.title}>Modifier votre mot de passe</h1>
+        <h1 className={style.title}>Réinitialisez votre mot de passe</h1>
 
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
-            {/* {message && <p>{message}</p>} */}
             {error && <p>{error}</p>}
 
-            <label className={style.label} htmlFor="passwordReset">
-              Réinitialisez votre mot de passe
-            </label>
+            <label className={style.label} htmlFor="passwordReset"></label>
             <input
               className={style.passwordResetInput}
               type="email"

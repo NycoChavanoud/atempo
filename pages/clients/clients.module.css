@@ -5,7 +5,12 @@
 }
 
 .title {
-  color: var(--main-bg-color);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: -40px;
+  letter-spacing: 0.01em;
+  color: #412e68;
+
   text-decoration: underline #ff9083 10px;
   text-underline-offset: -5px;
 }
@@ -16,7 +21,7 @@
 
 .btn {
   width: 80%;
-  height: 40px;
+  height: 50px;
   background-color: var(--color1);
   border-radius: 80px;
   border: transparent;
@@ -31,6 +36,6 @@
   letter-spacing: 1px;
   margin-top: 8vh;
   position: absolute;
-  bottom: 10px;
+  bottom: 5vh;
   margin-left: 10%;
 }

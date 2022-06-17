@@ -6,6 +6,7 @@
 .title {
   text-align: center;
   color: #412e68;
+  font-size: 2rem;
 }
 
 .formContainer {
@@ -17,7 +18,7 @@
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -34,9 +35,11 @@
     rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
   text-align: center;
   font-size: 1rem;
+  margin: 2vh;
 }
 
 .pwdInput {
+  margin: 2vh;
   width: 90%;
   height: 65px;
   border: 1px solid #ffff;
@@ -61,7 +64,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   font-size: 18px;
-  margin-top: 20%;
+  margin-top: 5vh;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -70,7 +73,7 @@
   height: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 }
 

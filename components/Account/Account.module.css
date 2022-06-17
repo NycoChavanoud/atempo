@@ -8,16 +8,20 @@
   color: #412e68;
 }
 .p {
+  margin-top: 3vh;
   color: #412e68;
 }
 .btn {
-  width: 270px;
-  height: 52px;
+  margin-bottom: 5%;
+  width: 80%;
+  height: 50px;
   background-color: #ff9083;
   color: #ffff;
   border: 1px solid #ff9083;
   border-radius: 80px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  margin-bottom: 5%;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
