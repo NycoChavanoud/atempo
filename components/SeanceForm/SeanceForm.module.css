@@ -42,7 +42,8 @@
 }
 
 .create_input {
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
   width: 80%;
   border-radius: 20px;
   margin: 5px;
@@ -98,11 +99,14 @@
   font-size: 1em;
   border: #412e68 solid;
   color: #412e68;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
 }
 
 .otherInput {
   text-align: center;
-  box-shadow: inset 0px 4px 4px;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
   height: 40px;
   width: 70vw;
   padding: 10px;
@@ -111,7 +115,8 @@
 }
 
 .create_description {
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
   width: 80%;
   height: 300px;
   border-radius: 20px;
