@@ -1,0 +1,17 @@
+.bg {
+  height: 10vh;
+}
+
+.whiteBurger {
+  filter: brightness(100);
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  width: 7%;
+}
+
+@media screen and (min-width: 1000px) {
+  .bg {
+    display: none;
+  }
+}

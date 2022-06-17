@@ -1,0 +1,28 @@
+.notFound {
+  background-image: url("/images/drop.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+  color: var(--main-bg-color);
+  font-weight: bold;
+}
+
+.title {
+  margin-top: 0;
+  padding-top: 2%;
+}
+
+.text {
+  margin: auto auto;
+}
+
+@media screen and (min-width: 700px) {
+  .title {
+    font-size: 3em;
+  }
+  .text {
+    font-size: 1.8em;
+  }
+}
