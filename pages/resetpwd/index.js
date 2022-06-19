@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import Wave from "../../components/Wave/Wave";
 import swal from "sweetalert";
+import Layout from "../../components/Layout/Layout";
 
 export default function PasswordReset() {
   const { resetPwd } = useAuth();
 
   const [email, setEmail] = useState("");
-  // const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -28,14 +28,13 @@ export default function PasswordReset() {
   };
 
   return (
-    <>
+    <Layout pageTitle="Réinitialisation mot de passe">
       <Wave />
       <div className={style.passwordResetContainer}>
         <h1 className={style.title}>Modifier votre mot de passe</h1>
 
         <div className={style.formContainer}>
           <form className={style.form} onSubmit={handleSubmit}>
-            {/* {message && <p>{message}</p>} */}
             {error && <p>{error}</p>}
 
             <label className={style.label} htmlFor="passwordReset">
@@ -56,6 +55,6 @@ export default function PasswordReset() {
           </form>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

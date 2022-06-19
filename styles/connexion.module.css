@@ -77,11 +77,13 @@
 .link2inscription {
   color: #412e68;
   text-decoration: underline;
+  padding-bottom: 5%;
 }
 
 .link2forgotpwd {
   color: #412e68;
   text-decoration: underline;
+  padding-top: 5%;
 }
 
 @media screen and (min-width: 700px) {

@@ -6,9 +6,9 @@ const ProtectedRoute = ({ children }) => {
   const router = useRouter();
 
   if (!user) {
-    return router.push("/inscription");
+    return router.push("/");
   }
-  return children;
+  return { children };
 };
 
 export default ProtectedRoute;
