@@ -1,13 +1,14 @@
 import Link from "next/link";
 import style from "../styles/connexion.module.css";
 import { useAuth } from "../context/authContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout/Layout";
 import Wave from "../components/Wave/Wave";
+import { GoogleButton } from "react-google-button";
 
 const Connexion = () => {
-  const { signin } = useAuth();
+  const { signIn, googleSignIn, user } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -18,12 +19,26 @@ const Connexion = () => {
     e.preventDefault();
 
     try {
-      await signin(email, password);
+      await signIn(email, password);
       router.push("/menu");
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (user != null) {
+      router.push("/menu");
+    }
+  }, [router, user]);
 
   return (
     <Layout pageTitle="Connexion">
@@ -55,6 +70,11 @@ const Connexion = () => {
               placeholder="Votre mot de passe"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <GoogleButton
+              className={style.googleBtn}
+              onClick={handleGoogleSignIn}
             />
 
             {error && <p>{error}</p>}

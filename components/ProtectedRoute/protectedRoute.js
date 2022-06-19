@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
   if (!user) {
     return router.push("/");
   }
-  return { children };
+  return children;
 };
 
 export default ProtectedRoute;

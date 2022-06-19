@@ -3,10 +3,11 @@ import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
 const Account = () => {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user, logOut } = useAuth();
+
   const handleLogout = async () => {
     try {
-      await logout();
+      await logOut();
       router.push("/");
     } catch (error) {
       console.log(error.message);

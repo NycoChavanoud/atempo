@@ -17,7 +17,7 @@
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -51,6 +51,10 @@
   font-size: 1rem;
 }
 
+.googleBtn {
+  margin-top: 5%;
+}
+
 .btnConnexion {
   width: 80%;
   height: 50px;
@@ -61,7 +65,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   font-size: 18px;
-  margin-top: 20%;
+  margin-top: 13%;
   font-weight: 700;
   letter-spacing: 1px;
 }
