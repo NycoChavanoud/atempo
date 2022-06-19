@@ -71,11 +71,11 @@ const Connexion = () => {
 
         <div className={style.links}>
           <Link href="/inscription">
-            <a className={style.link2inscription}>Pas encore inscrit ?</a>
+            <a className={style.link}>Pas encore inscrit ?</a>
           </Link>
 
           <Link href="/resetpwd">
-            <a className={style.link2forgotpwd}>Mot de passe oublié ?</a>
+            <a className={style.link}>Mot de passe oublié ?</a>
           </Link>
         </div>
       </div>
