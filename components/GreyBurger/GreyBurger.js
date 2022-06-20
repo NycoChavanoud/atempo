@@ -2,10 +2,10 @@ import style from "./GreyBurger.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function GreyBurger() {
+export default function GreyBurger({ grey = true }) {
   return (
     <div className={style.bg}>
-      <div className={style.greyBurger}>
+      <div className={grey ? style.greyBurger : style.whiteBurger}>
         <Link href="/menu">
           <Image
             layout="responsive"

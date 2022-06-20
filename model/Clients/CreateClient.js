@@ -19,11 +19,7 @@ export default function createClient(
     phoneNumber,
     problematic,
     adress,
-  })
-    .then(() => {
-      console.log("Client sauvegardé.");
-    })
-    .catch((error) => {
-      console.log("Une erreur est survenue lors de l'enregistrement.") + error;
-    });
+  }).catch((error) => {
+    console.log("Une erreur est survenue lors de l'enregistrement.") + error;
+  });
 }

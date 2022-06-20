@@ -16,7 +16,9 @@ export default function MobileMenu() {
           alt="votre photo"
           sx={{ width: 100, height: 100 }}
         />
-        <button className={style.button}>Créer une séance</button>
+        <button className={style.button} style={{ opacity: "0.5" }}>
+          Créer une séance
+        </button>
       </div>
       <div className={style.links}>
         <Link data-cy="dashboardBtn" href="/dashboard">

@@ -27,70 +27,68 @@ const Inscription = () => {
   };
 
   return (
-    <Layout pageTitle="Inscription">
-      <div className={style.purple}>
-        <h1 className={style.title}>Inscription</h1>
-        <Avatar
-          className={style.user}
-          alt="votre photo"
-          sx={{ width: 100, height: 100 }}
-        />
+    <Layout pageTitle="Inscription" shape={true}>
+      <h1 className={style.title}>Inscription</h1>
+      <Avatar
+        className={style.user}
+        alt="votre photo"
+        sx={{ width: 100, height: 100 }}
+      />
 
-        <div className={style.formContainer}>
-          <form className={style.form} onSubmit={handleSubmit}>
-            <label htmlFor="firstName"></label>
-            <input
-              style={{ opacity: 0.5 }}
-              className={style.inscriptionInput}
-              type="text"
-              name="firstName"
-              id="firstName"
-              placeholder="Prénom"
-              value={firstName}
-              onChange={(e) => SetFirstName(e.target.value)}
-            />
+      <div className={style.formContainer}>
+        <form className={style.form} onSubmit={handleSubmit}>
+          <label htmlFor="firstName"></label>
+          <input
+            style={{ opacity: 0.5 }}
+            className={style.inscriptionInput}
+            type="text"
+            name="firstName"
+            id="firstName"
+            placeholder="Prénom"
+            value={firstName}
+            onChange={(e) => SetFirstName(e.target.value)}
+          />
 
-            <label htmlFor="lastName"></label>
-            <input
-              style={{ opacity: 0.5 }}
-              className={style.inscriptionInput}
-              type="text"
-              name="lastName"
-              id="lastName"
-              placeholder="Nom"
-              value={lastName}
-              onChange={(e) => SetLastName(e.target.value)}
-            />
+          <label htmlFor="lastName"></label>
+          <input
+            style={{ opacity: 0.5 }}
+            className={style.inscriptionInput}
+            type="text"
+            name="lastName"
+            id="lastName"
+            placeholder="Nom"
+            value={lastName}
+            onChange={(e) => SetLastName(e.target.value)}
+          />
 
-            <label htmlFor="email"></label>
-            <input
-              className={style.inscriptionInput}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="E-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+          <label htmlFor="email"></label>
+          <input
+            className={style.inscriptionInput}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-            <label htmlFor="pwd"></label>
-            <input
-              className={style.inscriptionInput}
-              type="password"
-              name="password"
-              id="pwd"
-              placeholder="Mot de passe"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <label htmlFor="pwd"></label>
+          <input
+            className={style.inscriptionInput}
+            type="password"
+            name="password"
+            id="pwd"
+            placeholder="Mot de passe"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-            {error && <p>{error}</p>}
+          {error && <p>{error}</p>}
 
-            <button className={style.btnInscription} type="submit">
-              Inscription
-            </button>
-          </form>
-        </div>
+          <button className={style.btnInscription} type="submit">
+            Inscription
+          </button>
+        </form>
       </div>
     </Layout>
   );
