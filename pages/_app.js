@@ -3,7 +3,7 @@ import { AuthContextProvider } from "../context/authContext";
 import ProtectedRoute from "../components/ProtectedRoute/protectedRoute";
 import { useRouter } from "next/router";
 
-const noAuthRequired = ["/", "/inscription", "resetpwd"];
+const noAuthRequired = ["/", "/inscription", "/resetpwd"];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
