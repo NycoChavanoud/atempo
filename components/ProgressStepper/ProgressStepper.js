@@ -30,7 +30,11 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
       id,
       seanceData.title
     );
-    updateSeance(id, { ...seanceData, media_url: media_url._location.path_ });
+    updateSeance(id, {
+      ...seanceData,
+      media_url: media_url._location.path_,
+      creation_date: Date.now(),
+    });
     setSeanceData({});
   };
 
