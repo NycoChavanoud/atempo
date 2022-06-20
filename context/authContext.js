@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   GoogleAuthProvider,
-  // signInWithPopup,
+  // signInWithPopup, === Sera utilisé pour la version desktop ===
   signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";

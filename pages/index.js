@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout/Layout";
 import Wave from "../components/Wave/Wave";
-import { GoogleButton } from "react-google-button";
 
 const Connexion = () => {
   const { signIn, googleSignIn, user } = useAuth();
@@ -59,21 +58,25 @@ const Connexion = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             <label htmlFor="pwd"></label>
             <input
               data-cy="password"
               className={style.pwdInput}
               type="password"
-              name=""
+              name="password"
               id="pwd"
               placeholder="Votre mot de passe"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
-            <GoogleButton
-              className={style.googleBtn}
+            <label htmlFor="google"></label>
+            <input
+              data-cy="google"
+              type="text"
+              name="google"
+              id="google"
+              placeholder="Connectez vous avec Google"
+              className={style.googleInput}
               onClick={handleGoogleSignIn}
             />
 
