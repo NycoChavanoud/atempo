@@ -138,7 +138,7 @@ export async function postSeanceMedia(file, seanceId, fileName) {
   if (user !== null) {
     const storageRef = refStorage(
       storage,
-      `${user.uid}/${seanceId}/${fileName}`
+      `practitioners/${user.uid}/seances/${seanceId}/${fileName}`
     );
     uploadBytes(storageRef, file);
     return storageRef;

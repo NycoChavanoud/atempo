@@ -28,7 +28,7 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
     const media_url = await postSeanceMedia(
       seanceData.media,
       id,
-      seanceData.title
+      `${seanceData.title}-${seanceData.media.name}`
     );
     updateSeance(id, {
       ...seanceData,
