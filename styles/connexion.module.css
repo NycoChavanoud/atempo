@@ -59,8 +59,8 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   background-image: url(/images/google-logo.png);
-  background-size: 45px;
-  background-position: left;
+  background-size: 40px;
+  background-position: bottom 7px left 10px;
   background-repeat: no-repeat;
   text-align: center;
   font-size: 1rem;

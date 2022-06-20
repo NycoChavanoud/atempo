@@ -6,7 +6,7 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   GoogleAuthProvider,
-  // signInWithPopup, === Sera utilisé pour la version desktop ===
+  signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
@@ -24,9 +24,14 @@ export const AuthContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const googleSignIn = () => {
+  const googleSignInMobile = () => {
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
+  };
+
+  const googleSignInDesktop = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
   };
 
   const logOut = () => {
@@ -48,7 +53,15 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ createUser, user, logOut, signIn, resetPwd, googleSignIn }}
+      value={{
+        createUser,
+        user,
+        logOut,
+        signIn,
+        resetPwd,
+        googleSignInMobile,
+        googleSignInDesktop,
+      }}
     >
       {children}
     </UserContext.Provider>

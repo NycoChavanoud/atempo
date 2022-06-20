@@ -7,7 +7,7 @@ import Layout from "../components/Layout/Layout";
 import Wave from "../components/Wave/Wave";
 
 const Connexion = () => {
-  const { signIn, googleSignIn, user } = useAuth();
+  const { signIn, googleSignInMobile, user } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -25,9 +25,9 @@ const Connexion = () => {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignInMobile = async () => {
     try {
-      await googleSignIn();
+      await googleSignInMobile();
     } catch (error) {
       setError(error.message);
     }
@@ -77,7 +77,7 @@ const Connexion = () => {
               id="google"
               placeholder="Connectez vous avec Google"
               className={style.googleInput}
-              onClick={handleGoogleSignIn}
+              onClick={handleGoogleSignInMobile}
             />
 
             {error && <p>{error}</p>}
