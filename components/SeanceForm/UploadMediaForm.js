@@ -6,6 +6,7 @@ import createSeanceContext from "../../context/createSeanceContext";
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData } = useContext(createSeanceContext);
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState();
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -14,7 +15,12 @@ export default function UploadMediaForm() {
 
   const handleFile = (e) => {
     setFile(e.target.value);
-    setSeanceData({ ...seanceData, media: fileInput.current.files[0] });
+    setFileName(String(file).slice(12));
+    setSeanceData({
+      ...seanceData,
+      media: fileInput.current.files[0],
+      media_name: fileName,
+    });
   };
 
   return (
@@ -45,7 +51,7 @@ export default function UploadMediaForm() {
           }}
         />
       </button>
-      <h1>{file}</h1>
+      <h1>{fileName}</h1>
     </form>
   );
 }
