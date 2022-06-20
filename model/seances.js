@@ -6,6 +6,7 @@ import {
   startAt,
   endAt,
   update,
+  orderByChild,
 } from "firebase/database";
 import { ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
@@ -56,6 +57,7 @@ export async function getSeancesList(page = 0) {
     try {
       const snapshot = await get(
         child(ref(db), `seances/${user.uid}`),
+        orderByChild("creation_date"),
         startAt(page * 6),
         endAt(page * 6 + 6)
       );
@@ -64,7 +66,7 @@ export async function getSeancesList(page = 0) {
         const seanceTab = Object.keys(snapshot.val()).map(
           (seance) => snapshot.val()[seance]
         );
-        return seanceTab;
+        return seanceTab.reverse();
       } else {
         console.log("No data available");
       }
