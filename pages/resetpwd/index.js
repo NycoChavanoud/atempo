@@ -4,9 +4,11 @@ import { useAuth } from "../../context/authContext";
 import Wave from "../../components/Wave/Wave";
 import swal from "sweetalert";
 import Layout from "../../components/Layout/Layout";
+import { useRouter } from "next/router";
 
 export default function PasswordReset() {
   const { resetPwd } = useAuth();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -21,6 +23,7 @@ export default function PasswordReset() {
         "Un mail de réinitialisation de votre mot de passe vous a été envoyé, vérifiez vos SPAM ",
         "success"
       );
+      router.push("/");
     } catch (error) {
       console.log(error);
       setError("Email introuvable");
