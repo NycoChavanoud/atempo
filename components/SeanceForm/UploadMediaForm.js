@@ -5,7 +5,7 @@ import createSeanceContext from "../../context/createSeanceContext";
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData } = useContext(createSeanceContext);
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(seanceData.media_name || "");
 
   const fileInput = useRef();
   const selectFile = () => {

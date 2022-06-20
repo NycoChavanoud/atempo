@@ -13,7 +13,8 @@ export default function MainDataForm() {
           className={styles.create_input_title}
           type="text"
           id="title"
-          placeholder="Titre de la séance"
+          placeholder={"Titre de la séance"}
+          value={seanceData.title}
           required
           onChange={(e) =>
             setSeanceData({
@@ -29,6 +30,7 @@ export default function MainDataForm() {
           className={styles.select}
           name="method"
           id="method-select"
+          value={seanceData.method || ""}
           required
           onChange={(e) =>
             setSeanceData({ ...seanceData, method: e.target.value })
@@ -47,11 +49,12 @@ export default function MainDataForm() {
             className={styles.otherInput}
             type="text"
             id="other_method"
-            placeholder="Précisez ici"
+            placeholder={"Précisez ici"}
+            value={seanceData.other_method}
             required
-            onChange={(e) =>
-              setSeanceData({ ...seanceData, method: e.target.value })
-            }
+            onChange={(e) => {
+              setSeanceData({ ...seanceData, other_method: e.target.value });
+            }}
           />
         )}
       </label>
@@ -61,6 +64,7 @@ export default function MainDataForm() {
           className={styles.select}
           name="thematic"
           id="thematic-select"
+          value={seanceData.thematic || ""}
           required
           onChange={(e) =>
             setSeanceData({ ...seanceData, thematic: e.target.value })
@@ -82,10 +86,11 @@ export default function MainDataForm() {
             className={styles.otherInput}
             type="text"
             id="other_thematic"
-            placeholder="Précisez ici"
+            placeholder={"Précisez ici"}
+            value={seanceData.other_thematic}
             required
             onChange={(e) =>
-              setSeanceData({ ...seanceData, thematic: e.target.value })
+              setSeanceData({ ...seanceData, other_thematic: e.target.value })
             }
           />
         )}
