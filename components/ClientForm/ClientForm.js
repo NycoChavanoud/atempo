@@ -72,9 +72,11 @@ export default function ClientForm() {
         <input
           className={style.input}
           value={phoneNumber}
-          type="number"
+          type="tel"
           id="phoneNumber"
           placeholder="Téléphone"
+          required
+          pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
 
