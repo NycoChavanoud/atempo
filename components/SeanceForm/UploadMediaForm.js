@@ -6,7 +6,6 @@ import createSeanceContext from "../../context/createSeanceContext";
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData } = useContext(createSeanceContext);
   const [file, setFile] = useState();
-  const [fileName, setFileName] = useState();
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -15,11 +14,10 @@ export default function UploadMediaForm() {
 
   const handleFile = (e) => {
     setFile(e.target.value);
-    setFileName(String(file).slice(12));
     setSeanceData({
       ...seanceData,
       media: fileInput.current.files[0],
-      media_name: fileName,
+      media_name: String(file).slice(12),
     });
   };
 
@@ -42,16 +40,27 @@ export default function UploadMediaForm() {
         className="flex justify-center items-center m-auto"
       >
         {" "}
-        <AddCircleIcon
-          sx={{
-            color: "#F98F83",
-            width: "120px",
-            height: "120px",
-            margin: "10px",
-          }}
-        />
+        {file ? (
+          <AddCircleIcon
+            style={{
+              color: "#412E68",
+              width: "120px",
+              height: "120px",
+              margin: "10px",
+            }}
+          />
+        ) : (
+          <AddCircleIcon
+            style={{
+              color: "#FF9083",
+              width: "120px",
+              height: "120px",
+              margin: "10px",
+            }}
+          />
+        )}
       </button>
-      <h1>{fileName}</h1>
+      <h1>{String(file).slice(12)}</h1>
     </form>
   );
 }
