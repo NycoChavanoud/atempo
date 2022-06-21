@@ -34,7 +34,7 @@ const Connexion = () => {
   };
 
   useEffect(() => {
-    if (user != null) {
+    if (user) {
       router.push("/menu");
     }
   }, [router, user]);
