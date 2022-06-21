@@ -8,17 +8,20 @@ import {
   update,
   orderByChild,
 } from "firebase/database";
-import { ref as refStorage, uploadBytes } from "firebase/storage";
+import { deleteObject, ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 
 export async function createSeance(seanceData) {
   const user = auth.currentUser;
   const id = uniqid();
+  const creation_date = Date.now();
+
   if (user !== null) {
     set(ref(db, `seances/${user.uid}/${id}`), {
       ...seanceData,
       id,
+      creation_date,
     });
     return id;
   }
@@ -26,8 +29,12 @@ export async function createSeance(seanceData) {
 
 export async function updateSeance(sessionId, data) {
   const user = auth.currentUser;
+  const last_update = Date.now();
   if (user !== null) {
-    update(ref(db, `seances/${user.uid}/${sessionId}`), data);
+    update(ref(db, `seances/${user.uid}/${sessionId}`), {
+      ...data,
+      last_update,
+    });
   }
 }
 
@@ -40,7 +47,7 @@ export async function getSeanceData(seanceId) {
         child(ref(db), `/seances/${user.uid}/${seanceId}`)
       );
       if (snapshot.exists()) {
-        return await snapshot.val();
+        return snapshot.val();
       } else {
         console.log("No data available");
       }
@@ -134,7 +141,7 @@ export async function getMethodList() {
   }
 }
 
-export async function postSeanceMedia(file, seanceId, fileName) {
+export function postSeanceMedia(file, seanceId, fileName) {
   const user = auth.currentUser;
 
   if (user !== null) {
@@ -143,6 +150,21 @@ export async function postSeanceMedia(file, seanceId, fileName) {
       `practitioners/${user.uid}/seances/${seanceId}/${fileName}`
     );
     uploadBytes(storageRef, file);
-    return storageRef;
+    return storageRef._location.path_;
   }
+}
+
+export function deleteSeanceMedia(oldMediaUrl) {
+  const user = auth.currentUser;
+
+  if (user !== null) {
+    const oldStorageRef = refStorage(storage, oldMediaUrl);
+    deleteObject(oldStorageRef);
+  }
+}
+
+export async function updateSeanceMedia(file, seanceId, fileName, oldMediaUrl) {
+  const newMediaUrl = postSeanceMedia(file, seanceId, fileName);
+  deleteSeanceMedia(oldMediaUrl);
+  return newMediaUrl;
 }

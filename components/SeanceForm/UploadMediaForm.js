@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 
 export default function UploadMediaForm() {
-  const { seanceData, setSeanceData } = useContext(createSeanceContext);
-  const [file, setFile] = useState(seanceData.media_name || "");
+  const { seanceData, setSeanceData, setMedia, media } =
+    useContext(createSeanceContext);
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -13,11 +13,10 @@ export default function UploadMediaForm() {
   };
 
   const handleFile = () => {
-    setFile(fileInput.current.files[0].name);
+    setMedia(fileInput.current.files[0]);
     setSeanceData({
       ...seanceData,
-      media: fileInput.current.files[0],
-      media_name: file,
+      media_name: fileInput.current.files[0].name,
     });
   };
 
@@ -40,7 +39,7 @@ export default function UploadMediaForm() {
         className="flex justify-center items-center m-auto"
       >
         {" "}
-        {file ? (
+        {media.name ? (
           <AddCircleIcon
             style={{
               color: "#412E68",
@@ -61,7 +60,7 @@ export default function UploadMediaForm() {
           />
         )}
       </button>
-      <h1>{file}</h1>
+      <h1>{media.name || "Aucun fichier sélectionné"}</h1>
     </form>
   );
 }

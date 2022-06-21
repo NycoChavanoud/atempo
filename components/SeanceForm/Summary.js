@@ -15,11 +15,8 @@ export default function Summary() {
         <h3 className={styles.summaryDataTitle}>Description : </h3>
         <p className={styles.summaryData}>{seanceData.description}</p>
         <h3 className={styles.summaryDataTitle}>Fichier Audio :</h3>
-        {seanceData.media ? (
-          <p>{seanceData.media.name}</p>
-        ) : (
-          <p>Aucun média associé</p>
-        )}
+        <p>{seanceData.media_name || "Aucun média associé"}</p>
+
         <div>
           <h3 className={styles.summaryDataTitle}>Clients associés : </h3>
           {seanceData.clientList ? (
