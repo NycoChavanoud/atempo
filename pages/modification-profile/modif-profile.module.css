@@ -1,0 +1,106 @@
+.purple {
+  background-color: var(--main-bg-color);
+  background-image: url("/images/white_background.png");
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: 94% 83%;
+  width: 100vw;
+  height: 100vh;
+  background-position: bottom left;
+  padding-top: 1px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.circleIcon {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin-top: 15%;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  color: #412e68;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  height: 35px;
+  border-radius: 20px;
+  border: transparent;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+}
+
+.input::placeholder {
+  color: var(--main-bg-color);
+  font-size: 1em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.networks {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.btnNet {
+  border-radius: 40px;
+  border: transparent;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 20px;
+}
+
+.btn {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 15px;
+  width: 39vw;
+  height: 5vh;
+  border: none;
+  background-color: #ff9083;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
+  cursor: pointer;
+}
+
+@media screen and (min-height: 740px) {
+  .form {
+    margin-top: 20%;
+  }
+
+  .title {
+    margin-top: 15%;
+  }
+
+  .field {
+    margin-top: 30px;
+  }
+}
