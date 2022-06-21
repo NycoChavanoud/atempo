@@ -26,14 +26,25 @@
   margin-top: 25px;
 }
 
-.btn {
+.problematic {
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
   width: 80%;
+  height: 300px;
+  border-radius: 20px;
+  margin: 20px 0 20px 0;
+  font-size: 0.8em;
+  padding: 20px;
+  margin-top: 20vh;
+}
+
+.btn {
+  width: 150px;
   height: 50px;
   background-color: var(--color1);
-  border-radius: 80px;
+  border-radius: 20px;
   border: transparent;
   padding: 20px;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +52,8 @@
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 1px;
-  margin-top: 8vh;
+  position: absolute;
+  bottom: 10vh;
 }
 
 @media screen and (min-width: 700px) {
