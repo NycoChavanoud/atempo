@@ -1,13 +1,13 @@
 import Link from "next/link";
 import style from "../styles/connexion.module.css";
 import { useAuth } from "../context/authContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout/Layout";
 import Wave from "../components/Wave/Wave";
 
 const Connexion = () => {
-  const { signin } = useAuth();
+  const { signIn, googleSignInMobile, user } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -18,12 +18,26 @@ const Connexion = () => {
     e.preventDefault();
 
     try {
-      await signin(email, password);
+      await signIn(email, password);
       router.push("/menu");
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleGoogleSignInMobile = async () => {
+    try {
+      await googleSignInMobile();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      router.push("/menu");
+    }
+  }, [router, user]);
 
   return (
     <Layout pageTitle="Connexion">
@@ -44,18 +58,26 @@ const Connexion = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             <label htmlFor="pwd"></label>
             <input
               data-cy="password"
               className={style.pwdInput}
               type="password"
-              name=""
+              name="password"
               id="pwd"
               placeholder="Votre mot de passe"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            <button
+              data-cy="google"
+              type="button"
+              className={style.googleBtn}
+              onClick={handleGoogleSignInMobile}
+            >
+              Connectez vous avec Google
+            </button>
 
             {error && <p>{error}</p>}
 
@@ -69,11 +91,11 @@ const Connexion = () => {
           </form>
           <div className={style.links}>
             <Link href="/inscription">
-              <a className={style.link2inscription}>Pas encore inscrit ?</a>
+              <a className={style.link}>Pas encore inscrit ?</a>
             </Link>
 
             <Link href="/resetpwd">
-              <a className={style.link2forgotpwd}>Mot de passe oublié ?</a>
+              <a className={style.link}>Mot de passe oublié ?</a>
             </Link>
           </div>
         </div>
