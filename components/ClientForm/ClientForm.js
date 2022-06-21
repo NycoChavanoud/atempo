@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import createClientContext from "../../context/createClientContext";
 import style from "./ClientForm.module.css";
-import Link from "next/link";
 
 export default function ClientForm() {
   const { clientData, setClientData } = useContext(createClientContext);
@@ -10,7 +9,6 @@ export default function ClientForm() {
     <form className={style.form}>
       <label htmlFor="prénom"> </label>
       <input
-        data-cy="firstname"
         className={style.input}
         type="text"
         id="firstname"
@@ -26,7 +24,6 @@ export default function ClientForm() {
 
       <label htmlFor="nom"> </label>
       <input
-        data-cy="lastname"
         className={style.input}
         type="text"
         id="lastname"
@@ -42,7 +39,6 @@ export default function ClientForm() {
 
       <label htmlFor="email"> </label>
       <input
-        data-cy="email"
         className={style.input}
         type="email"
         id="email"
@@ -85,11 +81,6 @@ export default function ClientForm() {
           })
         }
       />
-      <Link href="/clients/addProblematic">
-        <button data-cy="nextBtn" id="btn" className={style.btn}>
-          Suivant
-        </button>
-      </Link>
     </form>
   );
 }
