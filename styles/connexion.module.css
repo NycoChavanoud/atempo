@@ -54,19 +54,19 @@
   font-size: 1rem;
 }
 
-.googleInput {
+.googleBtn {
   width: 90%;
   height: 65px;
-  border: 1px solid #ffff;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   background-image: url(/images/google-logo.png);
   background-size: 40px;
   background-position: bottom 7px left 10px;
   background-repeat: no-repeat;
   text-align: center;
   font-size: 1rem;
+  color: #412e68;
   margin-top: 5%;
 }
 
@@ -77,8 +77,8 @@
   color: #ffff;
   border: 1px solid #ff9083;
   border-radius: 80px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
-    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   font-size: 18px;
   margin-top: 13%;
   font-weight: 700;

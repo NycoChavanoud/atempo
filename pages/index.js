@@ -69,16 +69,15 @@ const Connexion = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <label htmlFor="google"></label>
-            <input
+
+            <button
               data-cy="google"
-              type="text"
-              name="google"
-              id="google"
-              placeholder="Connectez vous avec Google"
-              className={style.googleInput}
+              type="button"
+              className={style.googleBtn}
               onClick={handleGoogleSignInMobile}
-            />
+            >
+              Connectez vous avec Google
+            </button>
 
             {error && <p>{error}</p>}
 
