@@ -9,7 +9,8 @@ export default function Layout({ children, pageTitle, shape = false }) {
         <meta name="description" content="Atempo for practitioners" />
         <title>{pageTitle}</title>
       </Head>
-      <main>{children}</main>
+
+      {children}
     </div>
   );
 }
