@@ -49,7 +49,6 @@ const Inscription = () => {
         <form className={style.form} onSubmit={handleSubmit}>
           <label htmlFor="firstName"></label>
           <input
-            style={{ opacity: 0.5 }}
             className={style.inscriptionInput}
             type="text"
             name="firstName"
@@ -61,7 +60,6 @@ const Inscription = () => {
 
           <label htmlFor="lastName"></label>
           <input
-            style={{ opacity: 0.5 }}
             className={style.inscriptionInput}
             type="text"
             name="lastName"
