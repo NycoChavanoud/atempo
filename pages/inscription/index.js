@@ -20,10 +20,10 @@ const Inscription = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      createUser(email, password, firstName, lastName);
+      await createUser(email, password, firstName, lastName);
       const user = auth.currentUser;
 
-      set(ref(db, `practitioners/${user.uid}`), {
+      await set(ref(db, `practitioners/${user.uid}`), {
         lastname: lastName,
         firstname: firstName,
         id: user.uid,
