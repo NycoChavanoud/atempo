@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
-  const { seanceData, setSeanceData } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData, media } = useContext(createSeanceContext);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -26,11 +26,13 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
   const submitSeanceForm = async () => {
     const id = await createSeance(seanceData);
     const media_url = await postSeanceMedia(
-      seanceData.media,
+      media,
       id,
-      seanceData.title
+      `${seanceData.title}-${seanceData.media_name}`
     );
-    updateSeance(id, { ...seanceData, media_url: media_url._location.path_ });
+    updateSeance(id, {
+      media_url,
+    });
     setSeanceData({});
   };
 
