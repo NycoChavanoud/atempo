@@ -4,23 +4,23 @@ import uniqid from "uniqid";
 import { get } from "http";
 
 export function createClient(clientData) {
-  const clientId = uniqid();
+  const id = uniqid();
 
-  set(ref(db, "clients/" + clientId), {
+  set(ref(db, "clients/" + id), {
     ...clientData,
-    clientId,
+    id,
   }).catch((error) => {
     console.log("Une erreur est survenue lors de l'enregistrement.") + error;
   });
 }
 
-export function updateSeance(clientId, data) {
-  update(ref(db, `clients/${clientId}`), data);
+export function updateSeance(id, data) {
+  update(ref(db, `clients/${id}`), data);
 }
 
-export async function getClientData(clientId) {
+export async function getClientData(id) {
   try {
-    const snapshot = await get(child(ref(db), `clients/${clientId}`));
+    const snapshot = await get(child(ref(db), `clients/${id}`));
     if (snapshot.exists()) {
       return await snapshot.val();
     } else {
