@@ -4,6 +4,8 @@ import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
+import { set, ref } from "firebase/database";
+import { db, auth } from "../../config/firebaseConfig";
 
 const Inscription = () => {
   const [lastName, SetLastName] = useState("");
@@ -17,12 +19,20 @@ const Inscription = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
     try {
-      await createUser(email, password);
-      router.push("/dashboard");
+      createUser(email, password, firstName, lastName);
+      const user = auth.currentUser;
+
+      set(ref(db, `practitioners/${user.uid}`), {
+        lastname: lastName,
+        firstname: firstName,
+        id: user.uid,
+        email,
+      });
+      console.log(user);
+      router.push("/profile");
     } catch (error) {
-      setError("erreur");
+      setError(error.message);
     }
   };
 
