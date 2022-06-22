@@ -19,7 +19,7 @@ export default function MySeances() {
       <WaveWhiteBurger />
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-row items-center justify-around">
-          <Avatar sx={{ width: 80, height: 80 }} />
+          <Avatar sx={{ width: 80, height: 80, margin: "10px" }} />
           <h1 className={styles.title}>Mes séances</h1>
         </div>
 
