@@ -7,23 +7,24 @@ import {
   endAt,
   update,
   orderByChild,
+  push,
 } from "firebase/database";
 import { deleteObject, ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
-import uniqid from "uniqid";
 
 export async function createSeance(seanceData) {
   const user = auth.currentUser;
-  const id = uniqid();
   const creation_date = Date.now();
 
   if (user !== null) {
-    set(ref(db, `seances/${user.uid}/${id}`), {
+    const seanceRef = ref(db, `seances/${user.uid}`);
+    const newSeanceRef = push(seanceRef);
+    set(newSeanceRef, {
       ...seanceData,
-      id,
+      id: newSeanceRef.key,
       creation_date,
     });
-    return id;
+    return newSeanceRef.key;
   }
 }
 

@@ -4,7 +4,6 @@
   line-height: -40px;
   letter-spacing: 0.01em;
   color: #412e68;
-  margin: 10px;
   text-decoration: underline #ff9083 10px;
   text-underline-offset: -5px;
 }
@@ -36,7 +35,7 @@
   font-size: 18px;
   letter-spacing: 1px;
   position: absolute;
-  bottom: 5vh;
+  bottom: 1vh;
 }
 
 .create_label {
