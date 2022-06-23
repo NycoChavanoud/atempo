@@ -8,8 +8,8 @@ import { set, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 
 const Inscription = () => {
-  const [lastName, SetLastName] = useState("");
-  const [firstName, SetFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -29,8 +29,8 @@ const Inscription = () => {
         id: user.uid,
         email,
       });
-      console.log(user);
-      router.push("/profile");
+
+      router.push("/menu");
     } catch (error) {
       setError(error.message);
     }
@@ -54,8 +54,9 @@ const Inscription = () => {
             name="firstName"
             id="firstName"
             placeholder="Prénom"
+            required
             value={firstName}
-            onChange={(e) => SetFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
           />
 
           <label htmlFor="lastName"></label>
@@ -65,8 +66,9 @@ const Inscription = () => {
             name="lastName"
             id="lastName"
             placeholder="Nom"
+            required
             value={lastName}
-            onChange={(e) => SetLastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
           />
 
           <label htmlFor="email"></label>

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import style from "../ChangeAvatar/changeAvatar.module.css";
+
 const ChangeAvatar = () => {
   const fileImputRef = useRef();
 
@@ -16,12 +17,8 @@ const ChangeAvatar = () => {
 
   return (
     <div className={style.avatarContainer}>
-      <h1 className={style.title}>
-        On peut changer sa photo de profil, Merveilleux
-      </h1>
-
       <div className={style.aroundAvatar} onClick={handleAvatar}>
-        <Avatar size={120} src={image} />
+        <Avatar size={50} src={image} />
       </div>
 
       <form className={style.form}>
