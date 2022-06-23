@@ -1,5 +1,4 @@
 import style from "./ClientCardList.module.css";
-import React from "react";
 import ClientCard from "../ClientCard/ClientCard";
 
 export default function ClientCardList({ clientList }) {

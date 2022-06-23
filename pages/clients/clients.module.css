@@ -26,7 +26,6 @@
   border-radius: 80px;
   border: transparent;
   padding: 20px;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +33,6 @@
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 1px;
-  margin-top: 8vh;
-  position: absolute;
-  bottom: 5vh;
   margin-left: 10%;
+  margin-top: 5vh;
 }

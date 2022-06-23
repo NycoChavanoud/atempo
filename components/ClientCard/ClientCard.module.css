@@ -2,7 +2,6 @@
   width: 150px;
   max-height: 20vh;
   min-height: 18vh;
-
   border-radius: 40px;
   display: flex;
   flex-direction: column;
@@ -13,8 +12,8 @@
 .title {
   text-align: center;
   letter-spacing: 2px;
-  color: black;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 18px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
 }

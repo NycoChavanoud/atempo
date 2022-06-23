@@ -41,8 +41,6 @@ export async function getClientList() {
   if (user) {
     try {
       const snapshot = await get(child(ref(db), `clients/${user.uid}`));
-      console.log(snapshot.val());
-
       if (snapshot.exists()) {
         const showClient = Object.keys(snapshot.val()).map(
           (client) => snapshot.val()[client]
