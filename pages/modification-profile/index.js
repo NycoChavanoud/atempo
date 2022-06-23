@@ -149,7 +149,7 @@ export default function ModificationProfile() {
             />
           </div>
 
-          <div className={styles.fb_url}>
+          <div className={styles.network}>
             <Button className={styles.btnNet} onClick={handleOpen}>
               <Image
                 width={40}
@@ -183,7 +183,7 @@ export default function ModificationProfile() {
                   component="h2"
                 ></Typography>
                 <input
-                  className={styles.input}
+                  className={styles.inputNetwork}
                   type="text"
                   id="fb_url"
                   placeholder="Lien"
@@ -192,9 +192,7 @@ export default function ModificationProfile() {
                 />
               </Box>
             </Modal>
-          </div>
 
-          <div className={styles.inst_url}>
             <Button className={styles.btnNet} onClick={handleOpen}>
               <Image
                 width={40}
@@ -228,7 +226,7 @@ export default function ModificationProfile() {
                   component="h2"
                 ></Typography>
                 <input
-                  className={styles.input}
+                  className={styles.inputNetwork}
                   type="text"
                   id="insta_url"
                   placeholder="Lien"
