@@ -18,7 +18,7 @@ const ChangeAvatar = () => {
   return (
     <div className={style.avatarContainer}>
       <div className={style.aroundAvatar} onClick={handleAvatar}>
-        <Avatar size={50} src={image} />
+        <Avatar src={image} />
       </div>
 
       <form className={style.form}>

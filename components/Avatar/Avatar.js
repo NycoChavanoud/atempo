@@ -1,13 +1,13 @@
 import style from "../Avatar/avatar.module.css";
 
-export default function Avatar({ size = 32, src, alt }) {
+export default function Avatar({ src, alt }) {
   return (
     <>
       {/* eslint-disable-next-line */}
       <img
         data-cy="currentUserAvatar"
-        width={size}
-        height={size}
+        width={110}
+        height={110}
         src={
           src ||
           "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
