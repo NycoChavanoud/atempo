@@ -55,6 +55,7 @@ const Connexion = () => {
               name=""
               id="email"
               placeholder="Votre e-mail"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -66,6 +67,7 @@ const Connexion = () => {
               name="password"
               id="pwd"
               placeholder="Votre mot de passe"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
