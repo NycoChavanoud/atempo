@@ -34,8 +34,8 @@ export default function ModificationProfile() {
       const user = auth.currentUser;
 
       await update(ref(db, `practitioners/${user.uid}`), {
-        lastname: lastName,
         firstname: firstName,
+        lastname: lastName,
         email,
         phone,
         address,
@@ -77,6 +77,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label htmlFor="firstName"></label>
             <input
+              data-cy="firstname"
               className={styles.input}
               type="text"
               id="firstName"
@@ -89,6 +90,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label className={styles.label} htmlFor="lastName"></label>
             <input
+              data-cy="lastName"
               className={styles.input}
               type="text"
               id="lastName"
@@ -101,6 +103,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label className={styles.label} htmlFor="email"></label>
             <input
+              data-cy="email"
               className={styles.input}
               type="email"
               id="email"
@@ -113,6 +116,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label className={styles.label} htmlFor="phone"></label>
             <input
+              data-cy="phone"
               className={styles.input}
               type="tel"
               id="phone"
@@ -128,6 +132,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label className={styles.label} htmlFor="address"></label>
             <input
+              data-cy="address"
               className={styles.input}
               type="text"
               id="address"
@@ -140,6 +145,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label className={styles.label} htmlFor="website_url"></label>
             <input
+              data-cy="website_url"
               className={styles.input}
               type="text"
               id="website_url"
@@ -183,6 +189,7 @@ export default function ModificationProfile() {
                   component="h2"
                 ></Typography>
                 <input
+                  data-cy="fb_url"
                   className={styles.inputNetwork}
                   type="text"
                   id="fb_url"
@@ -226,6 +233,7 @@ export default function ModificationProfile() {
                   component="h2"
                 ></Typography>
                 <input
+                  data-cy="insta_url"
                   className={styles.inputNetwork}
                   type="text"
                   id="insta_url"
@@ -244,7 +252,13 @@ export default function ModificationProfile() {
               <button className={styles.btn}>Annuler</button>
             </Link>
 
-            <button className={styles.btn} onClick={notify}>
+            <button
+              className={styles.btn}
+              type="submit"
+              id="submitBtn"
+              onClick={notify}
+              data-cy="submitBtn"
+            >
               Sauvegarder
             </button>
             <ToastContainer
