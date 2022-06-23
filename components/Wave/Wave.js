@@ -6,6 +6,7 @@ export default function Wave() {
     <div className={style.bg}>
       <Image
         layout="responsive"
+        priority
         quality={100}
         height={6}
         width={15}

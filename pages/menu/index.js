@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
+import Account from "../../components/Account/Account";
 
 export default function MobileMenu() {
   return (
@@ -15,7 +16,9 @@ export default function MobileMenu() {
           alt="votre photo"
           sx={{ width: 100, height: 100 }}
         />
-        <button className={style.button}>Créer une séance</button>
+        <button className={style.button} style={{ opacity: "0.5" }}>
+          Créer une séance
+        </button>
       </div>
       <div className={style.links}>
         <Link data-cy="dashboardBtn" href="/dashboard">
@@ -111,6 +114,7 @@ export default function MobileMenu() {
           </div>
         </Link>
       </div>
+      <Account />
     </Layout>
   );
 }

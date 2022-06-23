@@ -1,0 +1,77 @@
+.title {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: -40px;
+  letter-spacing: 0.01em;
+  color: #412e68;
+  margin: 10px;
+  text-decoration: underline #ff9083 10px;
+  text-underline-offset: -5px;
+}
+
+.create_title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  position: absolute;
+  top: 10vh;
+  left: 15%;
+}
+
+.add_btn {
+  width: 80%;
+  height: 50px;
+  background-color: #ff9083;
+  border-radius: 80px;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 5vh;
+}
+
+.create_label {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.01em;
+  color: #412e68;
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.create_input {
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+  width: 80%;
+  border-radius: 20px;
+  margin: 5px;
+  margin-bottom: 30px;
+  padding-left: 10px;
+  font-size: 0.8em;
+}
+
+.add_mp3 {
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 80%;
+  margin: 5px;
+  margin-bottom: 30px;
+  font-size: 0.6em;
+}
+
+.createContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}

@@ -53,7 +53,11 @@ export default function Profile() {
       </div>
 
       <div className={style.btn}>
-        <button className={style.button}>Modifier le profil </button>
+        <Link href="/modification-profile">
+          <button className={style.button} style={{ opacity: "0.5" }}>
+            Modifier le profil{" "}
+          </button>
+        </Link>
       </div>
     </Layout>
   );

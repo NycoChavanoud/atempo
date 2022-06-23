@@ -8,6 +8,7 @@ export default function WhiteCross() {
     <div className={style.bg}>
       <Image
         layout="responsive"
+        priority
         quality={100}
         height={6}
         width={15}
@@ -15,12 +16,16 @@ export default function WhiteCross() {
         alt="vagues violettes"
       />
       <Link href="/menu">
-        <img
-          onClick={() => Router.back()}
-          className={style.cross}
-          src="/images/X.png"
-          alt="croix fermante blanche"
-        />
+        <div onClick={() => Router.back()} className={style.cross}>
+          <Image
+            layout="responsive"
+            quality={100}
+            height={30}
+            width={30}
+            src="/images/X.png"
+            alt="croix blanche"
+          />
+        </div>
       </Link>
     </div>
   );

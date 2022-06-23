@@ -1,0 +1,21 @@
+.title {
+  color: white;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 5%;
+  font-size: 2rem;
+}
+
+.user {
+  margin-left: 70%;
+  margin-bottom: 5vh;
+  border: solid #ff9083;
+}
+
+@media screen and (min-width: 700px) {
+  .title {
+    font-size: 3rem;
+  }
+}

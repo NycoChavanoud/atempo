@@ -6,6 +6,17 @@
   position: absolute;
   top: 4%;
   left: 6%;
+  width: 7%;
+  cursor: pointer;
+}
+
+.whiteBurger {
+  filter: brightness(100);
+  position: absolute;
+  top: 4%;
+  left: 6%;
+  width: 7%;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {
