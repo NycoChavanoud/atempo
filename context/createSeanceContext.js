@@ -4,6 +4,7 @@ const createSeanceContext = createContext();
 
 export function CreateSeanceContextProvider({ children }) {
   const [seanceData, setSeanceData] = useState({});
+  const [media, setMedia] = useState({});
   const [currentSeanceId, setCurrentSeanceId] = useState();
   const [submitStep, setSubmitStep] = useState(() => {
     setSeanceData({ ...seanceData });
@@ -18,6 +19,8 @@ export function CreateSeanceContextProvider({ children }) {
         setSeanceData,
         submitStep,
         setSubmitStep,
+        media,
+        setMedia,
       }}
     >
       {children}

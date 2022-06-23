@@ -15,14 +15,8 @@ export default function Summary() {
         <h3 className={styles.summaryDataTitle}>Description : </h3>
         <p className={styles.summaryData}>{seanceData.description}</p>
         <h3 className={styles.summaryDataTitle}>Fichier Audio :</h3>
-        {seanceData.media_path ? (
-          <audio controls src={seanceData.media_path}>
-            Your browser does not support the
-            <code>audio</code> element.
-          </audio>
-        ) : (
-          <p>Aucun média associé</p>
-        )}
+        <p>{seanceData.media_name || "Aucun média associé"}</p>
+
         <div>
           <h3 className={styles.summaryDataTitle}>Clients associés : </h3>
           {seanceData.clientList ? (

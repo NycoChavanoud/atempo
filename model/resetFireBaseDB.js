@@ -159,6 +159,7 @@ async function resetFireBaseDB() {
     members: [clientID1, clientID2],
     thematic: "stress",
     method: "meditation",
+    creation_date: 1655729397197,
   });
 
   await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID3), {
@@ -170,6 +171,7 @@ async function resetFireBaseDB() {
     members: [clientID3],
     thematic: "sommeil",
     method: "sophrologie",
+    creation_date: 1655729198,
   });
 
   await set(ref(db, "seances/" + praticionerID1 + "/" + seanceID4), {
@@ -181,6 +183,7 @@ async function resetFireBaseDB() {
     members: [clientID3],
     thematic: "sommeil",
     method: "sophrologie",
+    creation_date: 1655729199,
   });
 
   await set(ref(db, "seances/" + praticionerID2 + "/" + seanceID2), {
@@ -192,6 +195,7 @@ async function resetFireBaseDB() {
     members: [clientID3],
     thematic: "sommeil",
     method: "sophrologie",
+    creation_date: 1655729201,
   });
 }
 

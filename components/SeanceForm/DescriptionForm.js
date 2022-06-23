@@ -17,6 +17,7 @@ export default function DescriptionForm() {
           className={styles.create_description}
           id="description"
           placeholder="Vous pouvez décrire ici la séance en quelques phrases..."
+          value={seanceData.description || ""}
           onChange={(e) =>
             setSeanceData({ ...seanceData, description: e.target.value })
           }

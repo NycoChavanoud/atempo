@@ -8,10 +8,10 @@ export default function SessionDetails({ id }) {
   const [method, setMethod] = useState({ name: "-" });
 
   useEffect(() => {
-    getSeanceData(id).then((data) => setSeanceData(data));
+    getSeanceData(id).then(setSeanceData);
     if (seanceData) {
-      getThematic(seanceData.thematic).then((data) => setThematic(data));
-      getMethod(seanceData.method).then((data) => setMethod(data));
+      getThematic(seanceData.thematic).then(setThematic);
+      getMethod(seanceData.method).then(setMethod);
     }
   }, [id, seanceData, thematic, method]);
 
