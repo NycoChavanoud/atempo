@@ -12,7 +12,7 @@ describe("createClient", () => {
     cy.viewport("iphone-6");
     cy.visit("/modification-profile");
   });
-  xit("should edit my profile", () => {
+  it("should edit my profile", () => {
     cy.get('[data-cy="firstname"]').type(firstname);
     cy.get('[data-cy="lastname"]').type(lastname);
     cy.get('[data-cy="email"]').type(email);
