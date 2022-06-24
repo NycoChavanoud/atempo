@@ -1,6 +1,6 @@
 import Layout from "../../../components/Layout/Layout";
 import ClientDetails from "../../../components/ClientDetails/ClientDetails";
-import GreyBurger from "../../../components/GreyBurger/GreyBurger0";
+import GreyBurger from "../../../components/GreyBurger/GreyBurger";
 import { useRouter } from "next/router";
 
 export default function Client() {

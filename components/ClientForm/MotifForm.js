@@ -12,14 +12,14 @@ export default function ProblematicForm() {
         justifyContent: "center",
       }}
     >
-      <label htmlFor="problématique"> </label>
+      <label htmlFor="motif"> </label>
       <textarea
-        className={style.problematic}
-        id="problematic"
-        placeholder="Problématique(s)"
+        className={style.motif}
+        id="motif"
+        placeholder="Motif(s)"
         required
         onChange={(e) =>
-          setClientData({ ...clientData, problematic: e.target.value })
+          setClientData({ ...clientData, motif: e.target.value })
         }
       />
     </form>

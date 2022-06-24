@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import ClientForm from "../../components/ClientForm/ClientForm";
-import ProblematicForm from "../../components/ClientForm/ProblematicForm";
+import ProblematicForm from "../../components/ClientForm/MotifForm";
 import ClientsSteps from "../../components/ClientSteps/ClientsSteps";
 import { Avatar } from "@mui/material";
 import { CreateClientContextProvider } from "../../context/createClientContext";

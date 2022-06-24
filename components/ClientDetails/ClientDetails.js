@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getClientData } from "../../model/clients";
+import { getClientData } from "../../model/client";
 import style from "./ClientDetails.module.css";
 
 export default function ClientDetails({ id }) {
