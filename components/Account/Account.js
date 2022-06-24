@@ -1,9 +1,13 @@
 import style from "./Account.module.css";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
+import { auth } from "../../config/firebaseConfig";
+
 const Account = () => {
   const router = useRouter();
-  const { user, logOut } = useAuth();
+  const { logOut } = useAuth();
+  const user = auth.currentUser;
+  console.log(auth);
 
   const handleLogout = async () => {
     try {

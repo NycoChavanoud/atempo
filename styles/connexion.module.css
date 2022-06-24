@@ -54,22 +54,6 @@
   font-size: 1rem;
 }
 
-.googleBtn {
-  width: 90%;
-  height: 65px;
-  border-radius: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  background-image: url(/images/google-logo.png);
-  background-size: 40px;
-  background-position: bottom 7px left 10px;
-  background-repeat: no-repeat;
-  text-align: center;
-  font-size: 1rem;
-  color: #412e68;
-  margin-top: 5%;
-}
-
 .btnConnexion {
   width: 80%;
   height: 50px;
@@ -80,9 +64,25 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   font-size: 18px;
-  margin-top: 13%;
+  margin-top: 15%;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.googleBtn {
+  width: 80%;
+  height: 50px;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-image: url(/images/google-logo.png);
+  background-size: 25px;
+  background-position: bottom 13px left 10px;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 1rem;
+  color: #412e68;
+  margin-top: 15%;
 }
 
 .links {
@@ -91,6 +91,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-top: 10%;
 }
 
 .link {
