@@ -1,18 +1,18 @@
 describe("edit profile user", () => {
-  const firstname = "Alain";
-  const lastname = "Chabat";
+  const firstname = "giovani";
+  const lastname = "Ferrari";
   const email = "pwet@gmail.com";
   const phone = "0909090909";
   const address = "6 pont des oeufs";
-  const website_url = "chabaland.com";
-  const fb_url = "facebook.com/chabattt";
-  const insta_url = "instagram.com/chabattt";
+  const website_url = "vroum.com";
+  const fb_url = "facebook.com/ilovepizza";
+  const insta_url = "instagram.com/pizzzzz";
 
   beforeEach(() => {
     cy.viewport("iphone-6");
     cy.visit("/modification-profile");
   });
-  it("should edit my profile", () => {
+  xit("should edit my profile", () => {
     cy.get('[data-cy="firstname"]').type(firstname);
     cy.get('[data-cy="lastname"]').type(lastname);
     cy.get('[data-cy="email"]').type(email);
