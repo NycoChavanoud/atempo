@@ -1,4 +1,4 @@
-describe("createClient", () => {
+describe("edit profile user", () => {
   const firstname = "Alain";
   const lastname = "Chabat";
   const email = "pwet@gmail.com";

@@ -48,7 +48,7 @@
     "autoprefixer": "^10.4.7",
     "cypress": "^9.6.1",
     "cypress-firebase": "^2.2.1",
-    "eslint": "8.16.0",
+    "eslint": "^8.16.0",
     "eslint-config-next": "12.1.6",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.0.0",
