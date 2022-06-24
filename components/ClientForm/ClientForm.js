@@ -12,7 +12,9 @@ export default function ClientForm() {
         className={style.input}
         type="text"
         id="firstname"
+        name="firstname"
         placeholder="Prénom"
+        value={clientData.firstname}
         required
         onChange={(e) =>
           setClientData({
@@ -27,7 +29,9 @@ export default function ClientForm() {
         className={style.input}
         type="text"
         id="lastname"
+        name="lastname"
         placeholder="Nom"
+        value={clientData.lasttname}
         required
         onChange={(e) =>
           setClientData({
@@ -42,7 +46,9 @@ export default function ClientForm() {
         className={style.input}
         type="email"
         id="email"
+        name="email"
         placeholder="email"
+        value={clientData.email}
         required
         onChange={(e) =>
           setClientData({
@@ -57,7 +63,9 @@ export default function ClientForm() {
         className={style.input}
         type="tel"
         id="phoneNumber"
+        name="phoneNumber"
         placeholder="Téléphone"
+        value={clientData.phoneNumber}
         required
         pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
@@ -73,7 +81,10 @@ export default function ClientForm() {
         className={style.input}
         type="text"
         id="adress"
+        name="adress"
         placeholder="Adresse"
+        value={clientData.adress}
+        required
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -81,6 +92,49 @@ export default function ClientForm() {
           })
         }
       />
+
+      <label htmlFor="thématique"> </label>
+      <select
+        className={style.input}
+        type="text"
+        id="thematic"
+        name="thematic"
+        placeholder="Thématique"
+        value={clientData.thematic || ""}
+        required
+        onChange={(e) =>
+          setClientData({
+            ...clientData,
+            thematic: e.target.value,
+          })
+        }
+      >
+        {" "}
+        <option value="">--Choisissez un théme--</option>
+        <option value="decouverte">Découverte</option>
+        <option value="sommeil">Sommeil</option>
+        <option value="energie">Energie</option>
+        <option value="grossesse">Grossesse</option>
+        <option value="stress">Stress</option>
+        <option value="enfant">Enfant</option>
+        <option value="emotion">Emotion</option>
+        <option value="mental">Mental</option>
+        <option value="autre">Autre</option>
+      </select>
+      {clientData.thematic === "autre" && (
+        <input
+          className={style.input}
+          type="text"
+          id="other_thematic"
+          name="other_thematic"
+          placeholder="Précisez ici"
+          value={clientData.other_thematic}
+          required
+          onChange={(e) =>
+            setClientData({ ...clientData, other_thematic: e.target.value })
+          }
+        />
+      )}
     </form>
   );
 }

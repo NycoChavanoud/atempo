@@ -1,34 +1,23 @@
 import style from "./ClientCard.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getClientData } from "../../model/client";
-
-const colors = [
-  "var(--main-bg-color)",
-  "var(--color1)",
-  "var(--color2)",
-  "var(--color3)",
-  "var(--color4)",
-  "var(--color5)",
-];
-const randomColors = colors[Math.floor(Math.random() * colors.length)];
+import { getClientData, getThematic } from "../../model/client";
 
 export default function ClientCard({ id }) {
   const [clientData, setClientData] = useState();
+  const [thematic, setThematic] = useState({ color: "#C5C5DB" });
 
   useEffect(() => {
     getClientData(id).then((data) => setClientData(data));
+    if (clientData) {
+      getThematic(clientData.thematic).then((data) => setThematic(data));
+    }
   }, [id, clientData]);
 
   if (clientData) {
     return (
       <Link href={`/clients/${id}`}>
-        <a
-          className={style.card}
-          style={{
-            backgroundColor: randomColors,
-          }}
-        >
+        <a className={style.card} style={{ backgroundColor: thematic.color }}>
           <h2 className={style.title}>
             {clientData.firstname}
             <br />

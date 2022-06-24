@@ -25,14 +25,14 @@ export async function getClientData(clientId) {
         child(ref(db), `/clients/${user.uid}/${clientId}`)
       );
       if (snapshot.exists()) {
-        return await snapshot.val();
+        return snapshot.val();
       } else {
         console.log("No data available");
       }
     } catch (error) {
       console.error(error);
     }
-  } else return null;
+  }
 }
 
 export async function getClientList() {
@@ -52,5 +52,18 @@ export async function getClientList() {
     } catch (error) {
       console.error(error);
     }
+  }
+}
+
+export async function getThematic(thematic) {
+  try {
+    const snapshot = await get(child(ref(db), `/thematics/${thematic}`));
+    if (snapshot.exists()) {
+      return await snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
   }
 }

@@ -6,7 +6,7 @@ export default function ClientDetails({ id }) {
   const [clientData, setClientData] = useState({});
 
   useEffect(() => {
-    getClientData(id).then((data) => setClientData(data));
+    getClientData(id).then(setClientData);
   }, [id, clientData]);
   if (clientData) {
     return <h2 className={style.title}>{clientData.firstname}</h2>;

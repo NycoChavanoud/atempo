@@ -5,11 +5,11 @@ import { useRouter } from "next/router";
 
 export default function Client() {
   const router = useRouter();
-  const { clientId } = router.query;
+  const { id } = router.query;
   return (
     <Layout pageTitle={"Client"}>
       <GreyBurger />
-      <ClientDetails id={clientId} />
+      <ClientDetails id={id} />
       <p>Coucou</p>
     </Layout>
   );
