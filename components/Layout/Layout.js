@@ -18,7 +18,8 @@ export default function Layout({
         <meta name="description" content="Atempo for practitioners" />
         <title>{pageTitle}</title>
       </Head>
-      <main>{children}</main>
+
+      {children}
     </div>
   );
 }

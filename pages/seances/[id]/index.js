@@ -19,14 +19,8 @@ export default function Seance() {
         <SeanceDetails id={id} />
         <AssociatedClients />
         <div className="flex item-center justify-center">
-          <Link href="/seances/id/edit">
-            <button
-              className={styles.add_btn}
-              style={{ opacity: "0.5" }}
-              disabled
-            >
-              Modifier
-            </button>
+          <Link href={`/seances/${id}/edit`}>
+            <button className={styles.add_btn}>Modifier</button>
           </Link>
         </div>
       </div>
