@@ -1,0 +1,29 @@
+.text {
+  text-align: center;
+  margin-top: 5vh;
+}
+
+.title {
+  color: var(--main-bg-color);
+  text-align: center;
+  margin-top: 2vh;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.box {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.btn {
+  background-color: var(--color1);
+  border-radius: 80px;
+  height: 50px;
+  width: 43%;
+  font-weight: bold;
+  margin-top: 5vh;
+  opacity: 0.5;
+}

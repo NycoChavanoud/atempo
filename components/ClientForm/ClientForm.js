@@ -14,7 +14,6 @@ export default function ClientForm() {
         id="firstname"
         name="firstname"
         placeholder="Prénom"
-        value={clientData.firstname}
         required
         onChange={(e) =>
           setClientData({
@@ -31,7 +30,6 @@ export default function ClientForm() {
         id="lastname"
         name="lastname"
         placeholder="Nom"
-        value={clientData.lasttname}
         required
         onChange={(e) =>
           setClientData({
@@ -48,7 +46,6 @@ export default function ClientForm() {
         id="email"
         name="email"
         placeholder="email"
-        value={clientData.email}
         required
         onChange={(e) =>
           setClientData({
@@ -65,7 +62,6 @@ export default function ClientForm() {
         id="phoneNumber"
         name="phoneNumber"
         placeholder="Téléphone"
-        value={clientData.phoneNumber}
         required
         pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
@@ -83,7 +79,6 @@ export default function ClientForm() {
         id="adress"
         name="adress"
         placeholder="Adresse"
-        value={clientData.adress}
         required
         onChange={(e) =>
           setClientData({
@@ -100,7 +95,6 @@ export default function ClientForm() {
         id="thematic"
         name="thematic"
         placeholder="Thématique"
-        value={clientData.thematic || ""}
         required
         onChange={(e) =>
           setClientData({
@@ -128,7 +122,6 @@ export default function ClientForm() {
           id="other_thematic"
           name="other_thematic"
           placeholder="Précisez ici"
-          value={clientData.other_thematic}
           required
           onChange={(e) =>
             setClientData({ ...clientData, other_thematic: e.target.value })

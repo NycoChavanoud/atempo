@@ -15,7 +15,7 @@ export default function WaveWhiteBurger() {
         alt="vagues violettes"
       />
       <Link href="/menu">
-        <div className={style.whiteBurger}>
+        <a className={style.whiteBurger}>
           <Image
             layout="responsive"
             quality={100}
@@ -24,7 +24,7 @@ export default function WaveWhiteBurger() {
             src="/images/grey_burger.svg"
             alt="menu burger blanc"
           />
-        </div>
+        </a>
       </Link>
     </div>
   );
