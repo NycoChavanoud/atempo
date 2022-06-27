@@ -9,6 +9,7 @@ import {
 } from "../../../model/seances";
 import EditIcon from "@mui/icons-material/Edit";
 import WhiteBurger from "../../../components/WhiteBurger/WhiteBurger";
+import { toast } from "react-toastify";
 
 export default function EditSeance() {
   const [seanceData, setSeanceData] = useState();
@@ -29,6 +30,17 @@ export default function EditSeance() {
     setMedia(fileInput.current.files[0]);
   };
 
+  const success = () =>
+    toast.success("Les modifications ont été enregistrées", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   const submitChange = () => {
     updateSeance(id, {
       ...seanceData,
@@ -44,6 +56,7 @@ export default function EditSeance() {
         media_url: newMediaUrl,
       });
     }
+    success();
     router.push(`/seances/${id}`);
   };
 

@@ -9,6 +9,8 @@ import { CreateSeanceContextProvider } from "../../context/createSeanceContext";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
 import AddClientsForm from "../../components/SeanceForm/AddClientsForm";
 import Summary from "../../components/SeanceForm/Summary";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateSeance() {
   const [activeStep, setActiveStep] = useState(0);
@@ -33,6 +35,17 @@ export default function CreateSeance() {
               className={styles.progressStepper}
             />
           </div>
+          <ToastContainer
+            position="bottom-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
       </Layout>
     </CreateSeanceContextProvider>

@@ -5,6 +5,8 @@ import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
 import styles from "../../styles/Seances.module.css";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MySeances() {
   return (
@@ -17,7 +19,17 @@ export default function MySeances() {
         </div>
 
         <SeanceCardList />
-
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Link href="/seances/create">
           <button className={styles.add_btn}>Ajouter une séance</button>
         </Link>

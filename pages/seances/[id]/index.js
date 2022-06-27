@@ -6,6 +6,8 @@ import SeanceDetails from "../../../components/SeanceDetails/SeanceDetails";
 import AssociatedClients from "../../../components/AssociatedClients/AssociatedClients";
 import { useRouter } from "next/router";
 import WaveWhiteBurger from "../../../components/WaveWhiteBurger/WaveWhiteBurger";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Seance() {
   const router = useRouter();
@@ -23,6 +25,17 @@ export default function Seance() {
             <button className={styles.add_btn}>Modifier</button>
           </Link>
         </div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </div>
     </Layout>
   );
