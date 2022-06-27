@@ -32,7 +32,7 @@
 }
 
 .inscriptionInput::placeholder {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: var(--main-bg-color);
   opacity: 0.7;
 }

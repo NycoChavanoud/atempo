@@ -38,6 +38,10 @@
   margin: 2vh;
 }
 
+.emailInput::placeholder {
+  font-size: 1.3rem;
+}
+
 .pwdInput {
   margin: 2vh;
   width: 90%;
@@ -52,6 +56,9 @@
   background-repeat: no-repeat;
   text-align: center;
   font-size: 1rem;
+}
+.pwdInput::placeholder {
+  font-size: 1.3rem;
 }
 
 .btnConnexion {
