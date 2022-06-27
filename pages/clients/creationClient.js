@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import ClientForm from "../../components/ClientForm/ClientForm";
-import ProblematicForm from "../../components/ClientForm/MotifForm";
+import MotifForm from "../../components/ClientForm/MotifForm";
 import ClientsSteps from "../../components/ClientSteps/ClientsSteps";
 import { Avatar } from "@mui/material";
 import { CreateClientContextProvider } from "../../context/createClientContext";
@@ -21,7 +21,7 @@ export default function CreateClient() {
           sx={{ width: 80, height: 80 }}
         />
         {activeStep === 0 && <ClientForm />}
-        {activeStep === 1 && <ProblematicForm />}
+        {activeStep === 1 && <MotifForm />}
 
         <ClientsSteps activeStep={activeStep} setActiveStep={setActiveStep} />
       </Layout>

@@ -5,6 +5,7 @@ import GreyBurger from "../../../components/GreyBurger/GreyBurger";
 import { useRouter } from "next/router";
 import { getClientData } from "../../../model/client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Client() {
   const router = useRouter();
@@ -21,7 +22,9 @@ export default function Client() {
         <p className={style.text}>{clientData.motif}</p>
         <h2 className={style.title}>Séances écoutées</h2>
         <div className={style.box}>
-          <button className={style.btn}>Modifier la fiche</button>
+          <Link href={`/clients/${id}/edit`}>
+            <button className={style.btn}>Modifier la fiche</button>
+          </Link>
           <button className={style.btn}>Envoyer une séance</button>
         </div>
       </Layout>

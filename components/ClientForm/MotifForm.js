@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import createClientContext from "../../context/createClientContext";
 import style from "./ClientForm.module.css";
 
-export default function ProblematicForm() {
+export default function MotifForm() {
   const { clientData, setClientData } = useContext(createClientContext);
 
   return (

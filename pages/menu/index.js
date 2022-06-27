@@ -17,9 +17,7 @@ export default function MobileMenu() {
           sx={{ width: 100, height: 100 }}
         />
         <Link href="/seances/createFromMenu">
-          <a>
-            <button className={style.button}>Créer une séance</button>
-          </a>
+          <button className={style.button}>Créer une séance</button>
         </Link>
       </div>
       <div className={style.links}>

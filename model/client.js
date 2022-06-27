@@ -1,9 +1,10 @@
-import { ref, set, child, get } from "firebase/database";
+import { ref, set, child, get, update } from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 
+const user = auth.currentUser;
+
 export async function createClient(clientData) {
-  const user = auth.currentUser;
   const id = uniqid();
   if (user) {
     await set(ref(db, `clients/${user.uid}/${id}`), {
@@ -17,8 +18,6 @@ export async function createClient(clientData) {
 }
 
 export async function getClientData(clientId) {
-  const user = auth.currentUser;
-
   if (user) {
     try {
       const snapshot = await get(
@@ -35,9 +34,15 @@ export async function getClientData(clientId) {
   }
 }
 
-export async function getClientList() {
-  const user = auth.currentUser;
+export async function updateClient(clientId, data) {
+  if (user) {
+    update(ref(db, `clients/${user.uid}/${clientId}`), {
+      ...data,
+    });
+  }
+}
 
+export async function getClientList() {
   if (user) {
     try {
       const snapshot = await get(child(ref(db), `clients/${user.uid}`));
