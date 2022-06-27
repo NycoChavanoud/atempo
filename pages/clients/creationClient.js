@@ -1,10 +1,10 @@
 import style from "./creationClient.module.css";
-import React, { useState } from "react";
+import { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import ClientForm from "../../components/ClientForm/ClientForm";
 import MotifForm from "../../components/ClientForm/MotifForm";
-import ClientsSteps from "../../components/ClientSteps/ClientsSteps";
+import ClientsSteps from "../../components/ClientsSteps/ClientsSteps";
 import { Avatar } from "@mui/material";
 import { CreateClientContextProvider } from "../../context/createClientContext";
 
