@@ -20,7 +20,7 @@
   left: 15%;
 }
 
-.add_btn {
+.btn {
   width: 80%;
   height: 50px;
   background-color: #ff9083;
@@ -34,8 +34,6 @@
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 1px;
-  position: absolute;
-  bottom: 1vh;
 }
 
 .create_label {

@@ -31,7 +31,7 @@ export default function MySeances() {
           pauseOnHover
         />
         <Link href="/seances/create">
-          <button className={styles.add_btn}>Ajouter une séance</button>
+          <button className={styles.btn}>Ajouter une séance</button>
         </Link>
       </div>
     </Layout>

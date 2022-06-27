@@ -9,6 +9,7 @@ import {
   query,
   limitToLast,
   endAt,
+  remove,
 } from "firebase/database";
 import { deleteObject, ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
@@ -33,6 +34,15 @@ export async function createSeance(seanceData) {
   }
 }
 
+export function deleteSeance(id) {
+  const user = auth.currentUser;
+
+  if (user) {
+    const deletedRef = ref(db, `seances/${user.uid}/${id}`);
+    remove(deletedRef);
+  }
+}
+
 export async function getSeanceNumber() {
   const user = auth.currentUser;
   const seance_nb = await get(ref(db, `practitioners/${user.uid}/seance_nb`));
@@ -45,7 +55,7 @@ export async function getSeanceNumber() {
 export async function updateSeance(sessionId, data) {
   const user = auth.currentUser;
   const last_update = Date.now();
-  if (user !== null) {
+  if (user) {
     update(ref(db, `seances/${user.uid}/${sessionId}`), {
       ...data,
       last_update,
@@ -56,7 +66,7 @@ export async function updateSeance(sessionId, data) {
 export async function getSeanceData(seanceId) {
   const user = auth.currentUser;
 
-  if (user !== null) {
+  if (user) {
     try {
       const snapshot = await get(
         child(ref(db), `/seances/${user.uid}/${seanceId}`)
@@ -161,7 +171,7 @@ export async function getMethodList() {
 export function postSeanceMedia(file, seanceId, fileName) {
   const user = auth.currentUser;
 
-  if (user !== null) {
+  if (user) {
     const storageRef = refStorage(
       storage,
       `practitioners/${user.uid}/seances/${seanceId}/${fileName}`
@@ -174,7 +184,7 @@ export function postSeanceMedia(file, seanceId, fileName) {
 export function deleteSeanceMedia(oldMediaUrl) {
   const user = auth.currentUser;
 
-  if (user !== null) {
+  if (user) {
     const oldStorageRef = refStorage(storage, oldMediaUrl);
     deleteObject(oldStorageRef);
   }
