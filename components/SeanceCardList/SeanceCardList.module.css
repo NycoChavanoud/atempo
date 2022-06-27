@@ -6,3 +6,10 @@
   gap: 15px 15px;
   max-height: 60vh;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

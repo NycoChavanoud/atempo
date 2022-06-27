@@ -1,19 +1,12 @@
 import { Avatar } from "@mui/material";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
-import { getSeancesList } from "../../model/seances.js";
 import styles from "../../styles/Seances.module.css";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 
 export default function MySeances() {
-  const [seanceList, setSeanceList] = useState([]);
-
-  useEffect(() => {
-    getSeancesList().then(setSeanceList);
-  }, []);
-
   return (
     <Layout pageTitle={"Mes séances"}>
       <WaveWhiteBurger />
@@ -23,7 +16,7 @@ export default function MySeances() {
           <h1 className={styles.title}>Mes séances</h1>
         </div>
 
-        <SeanceCardList seanceList={seanceList} />
+        <SeanceCardList />
 
         <Link href="/seances/create">
           <button className={styles.add_btn}>Ajouter une séance</button>

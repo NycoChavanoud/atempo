@@ -3,11 +3,12 @@ import {
   child,
   get,
   ref,
-  startAt,
-  endAt,
   update,
   orderByChild,
   push,
+  query,
+  limitToLast,
+  endAt,
 } from "firebase/database";
 import { deleteObject, ref as refStorage, uploadBytes } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
@@ -16,7 +17,7 @@ export async function createSeance(seanceData) {
   const user = auth.currentUser;
   const creation_date = Date.now();
 
-  if (user !== null) {
+  if (user) {
     const seanceRef = ref(db, `seances/${user.uid}`);
     const newSeanceRef = push(seanceRef);
     set(newSeanceRef, {
@@ -24,7 +25,20 @@ export async function createSeance(seanceData) {
       id: newSeanceRef.key,
       creation_date,
     });
+
+    const seance_nb = await getSeanceNumber();
+    update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb + 1 });
+
     return newSeanceRef.key;
+  }
+}
+
+export async function getSeanceNumber() {
+  const user = auth.currentUser;
+  const seance_nb = await get(ref(db, `practitioners/${user.uid}/seance_nb`));
+
+  if (seance_nb) {
+    return seance_nb.val();
   }
 }
 
@@ -58,18 +72,20 @@ export async function getSeanceData(seanceId) {
   } else return null;
 }
 
-export async function getSeancesList(page = 0) {
+export async function getSeancesList(page, lastDate, limit = 6) {
   const user = auth.currentUser;
+  if (!lastDate || page === 1) lastDate = Date.now();
+  else lastDate = lastDate - 2000;
 
-  if (user !== null) {
+  if (user) {
     try {
-      const snapshot = await get(
-        child(ref(db), `seances/${user.uid}`),
+      const queryConstraints = [
         orderByChild("creation_date"),
-        startAt(page * 6),
-        endAt(page * 6 + 6)
-      );
-
+        endAt(lastDate, "creation_date"),
+        limitToLast(limit),
+      ];
+      const seancesRef = ref(db, `seances/${user.uid}`);
+      const snapshot = await get(query(seancesRef, ...queryConstraints));
       if (snapshot.exists()) {
         const seanceTab = Object.keys(snapshot.val()).map(
           (seance) => snapshot.val()[seance]
