@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
-    "cypress": "^9.7.0",
+    "cypress": "^9.6.1",
     "cypress-firebase": "^2.2.1",
     "eslint": "^8.16.0",
     "eslint-config-next": "12.1.6",
