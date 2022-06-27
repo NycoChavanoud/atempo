@@ -77,7 +77,7 @@ export default function ModificationProfile() {
           <div className={styles.field}>
             <label htmlFor="firstName"></label>
             <input
-              data-cy="firstname"
+              data-cy="firstName"
               className={styles.input}
               type="text"
               id="firstName"

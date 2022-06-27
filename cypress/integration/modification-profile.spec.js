@@ -1,6 +1,6 @@
-describe("edit profile user", () => {
-  const firstname = "giovani";
-  const lastname = "Ferrari";
+describe("practitioners", () => {
+  const firstName = "giovani";
+  const lastName = "Ferrari";
   const email = "pwet@gmail.com";
   const phone = "0909090909";
   const address = "6 pont des oeufs";
@@ -13,8 +13,8 @@ describe("edit profile user", () => {
     cy.visit("/modification-profile");
   });
   xit("should edit my profile", () => {
-    cy.get('[data-cy="firstname"]').type(firstname);
-    cy.get('[data-cy="lastname"]').type(lastname);
+    cy.get('[data-cy="firstname"]').type(firstName);
+    cy.get('[data-cy="lastname"]').type(lastName);
     cy.get('[data-cy="email"]').type(email);
     cy.get('[data-cy="phone"]').type(phone);
     cy.get('[data-cy="address"]').type(address);
