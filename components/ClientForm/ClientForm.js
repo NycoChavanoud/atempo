@@ -110,13 +110,13 @@ export default function ClientForm() {
         }
       >
         {" "}
-        <option value="">--Choisissez un théme--</option>
+        <option value="">--Choisissez un thème--</option>
         <option value="decouverte">Découverte</option>
         <option value="sommeil">Sommeil</option>
         <option value="energie">Energie</option>
         <option value="grossesse">Grossesse</option>
         <option value="stress">Stress</option>
-        <option value="enfant">Enfant</option>
+        <option value="enfants">Enfant</option>
         <option value="emotion">Emotion</option>
         <option value="mental">Mental</option>
         <option value="autre">Autre</option>

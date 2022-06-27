@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import ClientDetails from "../../../components/ClientDetails/ClientDetails";
 import GreyBurger from "../../../components/GreyBurger/GreyBurger";
@@ -10,7 +11,6 @@ export default function Client() {
     <Layout pageTitle={"Client"}>
       <GreyBurger />
       <ClientDetails id={id} />
-      <p>Coucou</p>
     </Layout>
   );
 }
