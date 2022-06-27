@@ -30,7 +30,7 @@ export default function Clients() {
         <ClientCardList clientList={clientList} />
 
         <Link href="/clients/creationClient">
-          <button className={style.btn}>Ajouter un client</button>
+          <button className={style.btn}>Ajouter une fiche client</button>
         </Link>
       </div>
     </Layout>

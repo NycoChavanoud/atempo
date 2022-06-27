@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
   const { clientData, setClientData } = useContext(createClientContext);
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };

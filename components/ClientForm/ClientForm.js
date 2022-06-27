@@ -12,9 +12,7 @@ export default function ClientForm() {
         className={style.input}
         type="text"
         id="firstname"
-        name="firstname"
         placeholder="Prénom"
-        required
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -22,15 +20,12 @@ export default function ClientForm() {
           })
         }
       />
-
       <label htmlFor="nom"> </label>
       <input
         className={style.input}
         type="text"
         id="lastname"
-        name="lastname"
         placeholder="Nom"
-        required
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -38,15 +33,12 @@ export default function ClientForm() {
           })
         }
       />
-
       <label htmlFor="email"> </label>
       <input
         className={style.input}
         type="email"
         id="email"
-        name="email"
         placeholder="email"
-        required
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -54,15 +46,12 @@ export default function ClientForm() {
           })
         }
       />
-
       <label htmlFor="téléphone"> </label>
       <input
         className={style.input}
         type="tel"
         id="phoneNumber"
-        name="phoneNumber"
         placeholder="Téléphone"
-        required
         pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
           setClientData({
@@ -71,15 +60,12 @@ export default function ClientForm() {
           })
         }
       />
-
       <label htmlFor="adresse"> </label>
       <input
         className={style.input}
         type="text"
         id="adress"
-        name="adress"
         placeholder="Adresse"
-        required
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -87,15 +73,12 @@ export default function ClientForm() {
           })
         }
       />
-
-      <label htmlFor="thématique"> </label>
+      <label htmlFor="thématique-select"> </label>{" "}
       <select
         className={style.input}
-        type="text"
-        id="thematic"
+        id="thematic-select"
         name="thematic"
-        placeholder="Thématique"
-        required
+        value={clientData.thematic || ""}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -103,7 +86,6 @@ export default function ClientForm() {
           })
         }
       >
-        {" "}
         <option value="">--Choisissez un thème--</option>
         <option value="decouverte">Découverte</option>
         <option value="sommeil">Sommeil</option>
@@ -120,9 +102,8 @@ export default function ClientForm() {
           className={style.input}
           type="text"
           id="other_thematic"
-          name="other_thematic"
-          placeholder="Précisez ici"
-          required
+          placeholder={"Précisez ici"}
+          value={clientData.other_thematic}
           onChange={(e) =>
             setClientData({ ...clientData, other_thematic: e.target.value })
           }
