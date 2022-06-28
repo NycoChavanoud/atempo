@@ -21,8 +21,8 @@ export default function CreateSeance() {
           <div className={styles.createContainer}>
             <h1 className={styles.create_title}>Création de la séance</h1>
 
-            {activeStep === 0 && <MainDataForm />}
-            {activeStep === 1 && <UploadMediaForm />}
+            {activeStep === 0 && <UploadMediaForm />}
+            {activeStep === 1 && <MainDataForm />}
             {activeStep === 2 && <DescriptionForm />}
             {activeStep === 3 && <AddClientsForm />}
             {activeStep === 4 && <Summary />}
