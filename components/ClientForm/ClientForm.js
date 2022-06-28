@@ -1,9 +1,22 @@
-import React, { useContext } from "react";
+import { useContext, useEffect } from "react";
 import createClientContext from "../../context/createClientContext";
 import style from "./ClientForm.module.css";
 
 export default function ClientForm() {
-  const { clientData, setClientData } = useContext(createClientContext);
+  const { clientData, setClientData, setValidation } =
+    useContext(createClientContext);
+
+  useEffect(() => {
+    if (
+      clientData.firstname &&
+      clientData.lastname &&
+      clientData.email &&
+      clientData.phoneNumber &&
+      clientData.adress &&
+      clientData.thematic
+    )
+      setValidation(true);
+  }, [clientData]);
 
   return (
     <form className={style.form}>
@@ -13,6 +26,7 @@ export default function ClientForm() {
         type="text"
         id="firstname"
         placeholder="Prénom"
+        value={clientData.firstname}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -26,6 +40,7 @@ export default function ClientForm() {
         type="text"
         id="lastname"
         placeholder="Nom"
+        value={clientData.lastname}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -39,6 +54,7 @@ export default function ClientForm() {
         type="email"
         id="email"
         placeholder="email"
+        value={clientData.email}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -52,6 +68,7 @@ export default function ClientForm() {
         type="tel"
         id="phoneNumber"
         placeholder="Téléphone"
+        value={clientData.phoneNumber}
         pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
           setClientData({
@@ -66,6 +83,7 @@ export default function ClientForm() {
         type="text"
         id="adress"
         placeholder="Adresse"
+        value={clientData.adress}
         onChange={(e) =>
           setClientData({
             ...clientData,

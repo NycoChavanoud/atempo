@@ -4243,10 +4243,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-toastify@^9.0.4":
-  "integrity" "sha512-MYmJ1V5F6DEU+TFxBb+pGGsveFPt4tjr4yK+TopXkU3sXPD9F2tFhX+G2HBLZpqObT2O6Z9jbXSg3JpaxuWtWw=="
-  "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.0.4.tgz"
-  "version" "9.0.4"
+"react-toastify@^9.0.5":
+  "integrity" "sha512-dszPCeQINY+Nm6HmsiAXT/7wsazPqv0S/RuhIYLAW+fTKcd3T1iRjZG0XqrN9nvAzqaE5J6uxMaiBrOevxjY8g=="
+  "resolved" "https://registry.npmjs.org/react-toastify/-/react-toastify-9.0.5.tgz"
+  "version" "9.0.5"
   dependencies:
     "clsx" "^1.1.1"
 

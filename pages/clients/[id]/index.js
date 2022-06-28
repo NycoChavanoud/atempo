@@ -17,7 +17,12 @@ export default function Client() {
   if (clientData) {
     return (
       <Layout pageTitle={"Client"}>
-        <GreyBurger />
+        <div className={style.container}>
+          <GreyBurger />
+          <Link href="/clients">
+            <button className={style.backBtn}>Mes clients</button>
+          </Link>
+        </div>
         <ClientDetails id={id} />
         <p className={style.text}>{clientData.motif}</p>
         <h2 className={style.title}>Séances écoutées</h2>

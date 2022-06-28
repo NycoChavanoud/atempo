@@ -6,6 +6,8 @@ import { Avatar } from "@mui/material";
 import ClientCardList from "../../components/ClientCardList/ClientCardList";
 import React, { useState, useEffect } from "react";
 import { getClientList } from "../../model/client.js";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Clients() {
   const [clientList, setClientList] = useState([]);
@@ -28,6 +30,7 @@ export default function Clients() {
         </div>
 
         <ClientCardList clientList={clientList} />
+        <ToastContainer />
 
         <Link href="/clients/creationClient">
           <button className={style.btn}>Ajouter une fiche client</button>

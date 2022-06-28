@@ -1,20 +1,54 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import createClientContext from "../../context/createClientContext";
 import { createClient } from "../../model/client";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { setTimeout } from "timers";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
-  const { clientData, setClientData } = useContext(createClientContext);
+  const { clientData, setClientData, validation, setValidation } =
+    useContext(createClientContext);
+
+  const warn = () => {
+    toast.warn("Veuillez renseigner tout les champs.", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const success = () => {
+    toast.success("Client enregistré.", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (validation) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setValidation(true);
+    } else {
+      warn();
+    }
   };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   const handleSubmit = async () => {
     await createClient(clientData);
+    success();
+    setTimeout(2000);
     setClientData({});
   };
   if (activeStep < 1) {

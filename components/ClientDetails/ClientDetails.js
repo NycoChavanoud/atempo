@@ -19,6 +19,7 @@ export default function ClientDetails({ id }) {
         <p className={style.text}>{clientData.phoneNumber}</p>
         <h3 className={style.subtitle}>Thématique</h3>
         <p className={style.text}>{clientData.thematic}</p>
+        <p>{clientData.other_thematic}</p>
       </section>
     );
   }

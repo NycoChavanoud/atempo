@@ -4,20 +4,53 @@ import createClientContext from "../../context/createClientContext";
 import { getClientData, updateClient } from "../../model/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
-  const { clientData, setClientData } = useContext(createClientContext);
+  const { clientData, setClientData, validation, setValidation } =
+    useContext(createClientContext);
+
   const router = useRouter();
   const { id } = router.query;
 
+  const warn = () => {
+    toast.warn("Veuillez renseigner tout les champs.", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  const success = () => {
+    toast.success("Client enregistré.", {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (validation) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setValidation(true);
+    } else {
+      warn();
+    }
   };
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   const handleSubmit = async () => {
     await updateClient(id, { ...clientData });
+    success();
     router.push(`/clients/${id}`);
   };
   useEffect(() => {
