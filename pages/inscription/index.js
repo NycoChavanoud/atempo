@@ -2,10 +2,10 @@ import style from "./inscription.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
-import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
 import { set, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
+import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
 
 const Inscription = () => {
   const [lastName, setLastName] = useState("");
@@ -39,11 +39,9 @@ const Inscription = () => {
   return (
     <Layout pageTitle="Inscription" shape={true}>
       <h1 className={style.title}>Inscription</h1>
-      <Avatar
-        className={style.user}
-        alt="votre photo"
-        sx={{ width: 100, height: 100 }}
-      />
+      <div className={style.user}>
+        <ChangeAvatar />
+      </div>
 
       <div className={style.formContainer}>
         <form className={style.form} onSubmit={handleSubmit}>

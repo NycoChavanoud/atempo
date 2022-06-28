@@ -4,7 +4,6 @@ import style from "../ChangeAvatar/changeAvatar.module.css";
 
 const ChangeAvatar = () => {
   const fileImputRef = useRef();
-
   const [image, setImage] = useState("");
 
   const handleAvatar = () => {

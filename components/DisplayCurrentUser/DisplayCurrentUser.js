@@ -1,20 +1,22 @@
 import style from "../DisplayCurrentUser/DisplayCurrentUser.module.css";
 import { auth } from "../../config/firebaseConfig";
-import { get, ref } from "firebase/database";
-import { db } from "../../config/firebaseConfig";
+import { useEffect } from "react";
+import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import { useState } from "react";
 
 const DisplayCurrentUser = () => {
   const user = auth.currentUser;
-  console.log(user);
-  if (user) {
-    get(ref(db, `practitioners/${user.uid}/${user.firstname}`));
-    get(ref(db, `practitioners/${user.uid}/${user.lastname}`));
-  }
+  const [practitionersData, setPractitionersData] = useState();
 
+  useEffect(() => {
+    getAllPractitionersData().then(setPractitionersData);
+    console.log(practitionersData);
+  }, []);
   return (
     <div className={style.displayCurrentUserContainer}>
       <p className={style.displayUser}>
         {user?.auth?.currentUser?.displayName}
+        {practitionersData?.firstname} {practitionersData?.lastname}
       </p>
     </div>
   );

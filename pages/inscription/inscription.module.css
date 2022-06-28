@@ -5,7 +5,8 @@
 }
 
 .user {
-  margin: auto auto;
+  display: flex;
+  justify-content: center;
 }
 
 .formContainer {
@@ -33,8 +34,7 @@
 
 .inscriptionInput::placeholder {
   font-size: 1.3rem;
-  color: var(--main-bg-color);
-  opacity: 0.7;
+  font-weight: 900;
 }
 
 .btnInscription {
@@ -59,7 +59,8 @@
     font-size: 3rem;
   }
   .user {
-    margin-top: 7%;
+    display: flex;
+    justify-content: center;
   }
   .formContainer {
     margin-top: 15vh;
@@ -81,7 +82,8 @@
     font-size: 2.5rem;
   }
   .user {
-    display: none;
+    display: flex;
+    justify-content: center;
   }
   .formContainer {
     margin-top: 10%;

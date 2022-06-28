@@ -1,5 +1,13 @@
 .avatar {
-  width: 200px;
-  height: 200px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
+  border: 1px solid #361776;
+}
+
+@media screen and (min-width: 1024px) {
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
 }
