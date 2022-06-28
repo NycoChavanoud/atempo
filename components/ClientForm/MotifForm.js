@@ -1,9 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import createClientContext from "../../context/createClientContext";
 import style from "./ClientForm.module.css";
 
 export default function MotifForm() {
-  const { clientData, setClientData } = useContext(createClientContext);
+  const { clientData, setClientData, setValidation } =
+    useContext(createClientContext);
+
+  useEffect(() => {
+    if (clientData.motif) {
+      setValidation(true);
+    } else {
+      setValidation(false);
+    }
+  }, [clientData, setValidation]);
 
   return (
     <form

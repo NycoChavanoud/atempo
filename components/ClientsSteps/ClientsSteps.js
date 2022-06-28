@@ -14,11 +14,9 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     toast.warn("Veuillez renseigner tout les champs.", {
       position: "bottom-center",
       autoClose: 2000,
-      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
@@ -26,18 +24,16 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     toast.success("Client enregistré.", {
       position: "bottom-center",
       autoClose: 2000,
-      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
   const handleNext = () => {
     if (validation) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      setValidation(true);
+      setValidation(false);
     } else {
       warn();
     }
