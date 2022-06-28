@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
+import ReactPlayer from "react-player";
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
@@ -70,7 +71,7 @@ export default function UploadMediaForm() {
         )}
       </button>
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
-      <audio src={urlSource} controls />
+      <ReactPlayer url={urlSource} width="80%" height="20%" controls />
     </form>
   );
 }

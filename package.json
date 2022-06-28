@@ -38,6 +38,7 @@
     "react-chartjs-2": "^4.2.0",
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-player": "^2.10.1",
     "react-toastify": "^9.0.5",
     "sweetalert": "^2.1.2",
     "uniqid": "^5.4.0"

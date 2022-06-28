@@ -15,12 +15,13 @@ import {
   getSeanceMediaUrl,
 } from "../../../model/seances";
 import { Modal } from "@mui/material";
+import ReactPlayer from "react-player";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
   const [deleteInput, setDeleteInput] = useState("");
   const [seanceData, setSeanceData] = useState({});
-  const [urlSource, setUrlSource] = useState({});
+  const [urlSource, setUrlSource] = useState();
   const [loadingData, setLoadingData] = useState(true);
 
   const router = useRouter();
@@ -78,8 +79,7 @@ export default function Seance() {
         <div>
           <h1 className={`${styles.title} mb-8`}>Séance</h1>
           <SeanceDetails seanceData={seanceData} />
-          <audio src={urlSource} controls />
-
+          <ReactPlayer url={urlSource} width="80%" height="20%" controls />
           <AssociatedClients />
         </div>
 
