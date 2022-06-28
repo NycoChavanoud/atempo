@@ -19,6 +19,9 @@
 .user {
   border: solid #ff9083;
 }
+.container {
+  height: 80px;
+}
 
 .btn {
   width: 80%;

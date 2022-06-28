@@ -31,10 +31,11 @@ export default function Clients() {
 
         <ClientCardList clientList={clientList} />
         <ToastContainer />
-
-        <Link href="/clients/creationClient">
-          <button className={style.btn}>Ajouter une fiche client</button>
-        </Link>
+        <div className={style.container}>
+          <Link href="/clients/creationClient">
+            <button className={style.btn}>Ajouter une fiche client</button>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
