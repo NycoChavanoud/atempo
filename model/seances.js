@@ -73,8 +73,6 @@ export async function getSeanceData(seanceId) {
       );
       if (snapshot.exists()) {
         return snapshot.val();
-      } else {
-        console.log("No data available");
       }
     } catch (error) {
       console.error(error);
@@ -101,8 +99,6 @@ export async function getSeancesList(page, lastDate, limit = 6) {
           (seance) => snapshot.val()[seance]
         );
         return seanceTab.reverse();
-      } else {
-        console.log("No data available");
       }
     } catch (error) {
       console.error(error);
@@ -115,8 +111,6 @@ export async function getThematic(thematic) {
     const snapshot = await get(child(ref(db), `/thematics/${thematic}`));
     if (snapshot.exists()) {
       return await snapshot.val();
-    } else {
-      console.log("No data available");
     }
   } catch (error) {
     console.error(error);
@@ -132,8 +126,6 @@ export async function getThematicList() {
         (t) => snapshot.val()[t]
       );
       return thematics;
-    } else {
-      console.log("No data available");
     }
   } catch (error) {
     console.error(error);
@@ -145,8 +137,6 @@ export async function getMethod(method) {
     const snapshot = await get(child(ref(db), `/methods/${method}`));
     if (snapshot.exists()) {
       return await snapshot.val();
-    } else {
-      console.log("No data available");
     }
   } catch (error) {
     console.error(error);
@@ -160,8 +150,6 @@ export async function getMethodList() {
     if (snapshot.exists()) {
       const methods = Object.keys(snapshot.val()).map((m) => snapshot.val()[m]);
       return methods;
-    } else {
-      console.log("No data available");
     }
   } catch (error) {
     console.error(error);

@@ -93,9 +93,9 @@ export default function SeanceCardList() {
     handleMouseUp();
   };
 
-  getSeanceNumber().then((nb) => setPageNumber(Math.ceil(nb / 6)));
-
   useEffect(() => {
+    getSeanceNumber().then((nb) => setPageNumber(Math.ceil(nb / 6) - 1));
+
     getSeancesList(page, lastDate).then(setSeanceList);
     console.log("lastitem", lastDate);
   }, [page]);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../../components/Layout/Layout";
 import Link from "next/link";
 import styles from "../../../styles/Seances.module.css";
@@ -6,14 +6,19 @@ import SeanceDetails from "../../../components/SeanceDetails/SeanceDetails";
 import AssociatedClients from "../../../components/AssociatedClients/AssociatedClients";
 import { useRouter } from "next/router";
 import WaveWhiteBurger from "../../../components/WaveWhiteBurger/WaveWhiteBurger";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { deleteSeance } from "../../../model/seances";
+import {
+  deleteSeance,
+  deleteSeanceMedia,
+  getSeanceData,
+} from "../../../model/seances";
 import { Modal } from "@mui/material";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
   const [deleteInput, setDeleteInput] = useState("");
+  const [seanceData, setSeanceData] = useState({});
 
   const router = useRouter();
   const { id } = router.query;
@@ -47,6 +52,7 @@ export default function Seance() {
     e.preventDefault();
 
     if (deleteInput === "supprimer") {
+      deleteSeanceMedia(seanceData.media_url);
       deleteSeance(id);
       success();
       router.push("/seances");
@@ -56,13 +62,17 @@ export default function Seance() {
       );
   };
 
+  useEffect(() => {
+    getSeanceData(id).then(setSeanceData);
+  }, [id]);
+
   return (
     <Layout pageTitle={"Séance"}>
       <WaveWhiteBurger />
       <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh]">
         <div>
           <h1 className={`${styles.title} mb-8`}>Séance</h1>
-          <SeanceDetails id={id} />
+          <SeanceDetails seanceData={seanceData} />
           <AssociatedClients />
         </div>
 
@@ -74,17 +84,6 @@ export default function Seance() {
             Supprimer
           </button>
         </div>
-        <ToastContainer
-          position="bottom-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </div>
       <Modal open={open} onClose={handleClose}>
         <div
