@@ -3,12 +3,16 @@ import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 import ReactPlayer from "react-player";
+import Recorder from "../Recorder/Recorder";
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
     useContext(createSeanceContext);
 
   const [urlSource, setUrlSource] = useState();
+  const [mediaDuration, setMediaDuration] = useState();
+
+  const fileReader = new FileReader();
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -17,12 +21,13 @@ export default function UploadMediaForm() {
 
   const handleFile = () => {
     setMedia(fileInput.current.files[0]);
-    const fileReader = new FileReader();
     fileReader.onload = () => setUrlSource(fileReader.result);
     fileReader.readAsDataURL(media);
+
     setSeanceData({
       ...seanceData,
       media_name: fileInput.current.files[0].name,
+      media_duration: mediaDuration,
     });
   };
 
@@ -71,7 +76,14 @@ export default function UploadMediaForm() {
         )}
       </button>
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
-      <ReactPlayer url={urlSource} width="80%" height="20%" controls />
+      <ReactPlayer
+        url={urlSource}
+        width="80%"
+        height="20%"
+        controls
+        onDuration={(d) => setMediaDuration(d)}
+      />
+      <Recorder />
     </form>
   );
 }

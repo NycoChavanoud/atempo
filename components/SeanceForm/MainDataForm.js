@@ -9,6 +9,7 @@ export default function MainDataForm() {
   useEffect(() => {
     if (seanceData.title && seanceData.thematic && seanceData.method)
       setCompletedStep(true);
+    else setCompletedStep(false);
   }, [seanceData.method, seanceData.thematic, seanceData.title]);
 
   return (
