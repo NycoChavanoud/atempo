@@ -1,0 +1,26 @@
+.box {
+  color: white;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  text-align: center;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin-top: 5vh;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 26px;
+}
+
+.subtitle {
+  color: var(--color1);
+  font-size: 22px;
+}
+
+.text {
+  font-size: 20px;
+}

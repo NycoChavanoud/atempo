@@ -11,11 +11,11 @@ export default function WaveWhiteBurger() {
         quality={100}
         height={6}
         width={15}
-        src="/images/header.png"
+        src="/images/header.jpg"
         alt="vagues violettes"
       />
       <Link href="/menu">
-        <div className={style.whiteBurger}>
+        <a className={style.whiteBurger}>
           <Image
             layout="responsive"
             quality={100}
@@ -24,7 +24,7 @@ export default function WaveWhiteBurger() {
             src="/images/grey_burger.svg"
             alt="menu burger blanc"
           />
-        </div>
+        </a>
       </Link>
     </div>
   );
