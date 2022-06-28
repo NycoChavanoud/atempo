@@ -97,7 +97,6 @@ export default function SeanceCardList() {
     getSeanceNumber().then((nb) => setPageNumber(Math.ceil(nb / 6) - 1));
 
     getSeancesList(page, lastDate).then(setSeanceList);
-    console.log("lastitem", lastDate);
   }, [page]);
 
   return (

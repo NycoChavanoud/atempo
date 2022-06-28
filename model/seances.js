@@ -11,7 +11,12 @@ import {
   endAt,
   remove,
 } from "firebase/database";
-import { deleteObject, ref as refStorage, uploadBytes } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  ref as refStorage,
+  uploadBytes,
+} from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
 
 export async function createSeance(seanceData) {
@@ -182,4 +187,31 @@ export async function updateSeanceMedia(file, seanceId, fileName, oldMediaUrl) {
   const newMediaUrl = postSeanceMedia(file, seanceId, fileName);
   deleteSeanceMedia(oldMediaUrl);
   return newMediaUrl;
+}
+
+export async function getSeanceMediaUrl(media_url) {
+  const user = auth.currentUser;
+
+  try {
+    if (user) {
+      const storageRef = refStorage(storage, media_url);
+      const url = await getDownloadURL(storageRef);
+      return url;
+    }
+  } catch (error) {
+    switch (error.code) {
+      case "storage/object-not-found":
+        // File doesn't exist
+        break;
+      case "storage/unauthorized":
+        // User doesn't have permission to access the object
+        break;
+      case "storage/canceled":
+        // User canceled the upload
+        break;
+      case "storage/unknown":
+        // Unknown error occurred, inspect the server response
+        break;
+    }
+  }
 }

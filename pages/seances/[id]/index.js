@@ -12,6 +12,7 @@ import {
   deleteSeance,
   deleteSeanceMedia,
   getSeanceData,
+  getSeanceMediaUrl,
 } from "../../../model/seances";
 import { Modal } from "@mui/material";
 
@@ -19,6 +20,8 @@ export default function Seance() {
   const [open, setOpen] = useState(false);
   const [deleteInput, setDeleteInput] = useState("");
   const [seanceData, setSeanceData] = useState({});
+  const [urlSource, setUrlSource] = useState({});
+  const [loadingData, setLoadingData] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -63,8 +66,10 @@ export default function Seance() {
   };
 
   useEffect(() => {
-    getSeanceData(id).then(setSeanceData);
-  }, [id]);
+    if (loadingData)
+      getSeanceData(id).then(setSeanceData).then(setLoadingData(false));
+    else getSeanceMediaUrl(seanceData.media_url).then(setUrlSource);
+  }, [id, loadingData, seanceData.media_url]);
 
   return (
     <Layout pageTitle={"Séance"}>
@@ -73,6 +78,8 @@ export default function Seance() {
         <div>
           <h1 className={`${styles.title} mb-8`}>Séance</h1>
           <SeanceDetails seanceData={seanceData} />
+          <audio src={urlSource} controls />
+
           <AssociatedClients />
         </div>
 

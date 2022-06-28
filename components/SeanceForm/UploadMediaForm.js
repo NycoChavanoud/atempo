@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
@@ -7,6 +7,8 @@ export default function UploadMediaForm() {
   const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
     useContext(createSeanceContext);
 
+  const [urlSource, setUrlSource] = useState();
+
   const fileInput = useRef();
   const selectFile = () => {
     fileInput.current.click();
@@ -14,6 +16,9 @@ export default function UploadMediaForm() {
 
   const handleFile = () => {
     setMedia(fileInput.current.files[0]);
+    const fileReader = new FileReader();
+    fileReader.onload = () => setUrlSource(fileReader.result);
+    fileReader.readAsDataURL(media);
     setSeanceData({
       ...seanceData,
       media_name: fileInput.current.files[0].name,
@@ -65,6 +70,7 @@ export default function UploadMediaForm() {
         )}
       </button>
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
+      <audio src={urlSource} controls />
     </form>
   );
 }
