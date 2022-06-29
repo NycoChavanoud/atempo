@@ -4,15 +4,6 @@
   padding: 30px;
 }
 
-.wave_layout {
-  background-image: url(/wave.svg);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: top right;
-  width: 100vw;
-  height: 100vh;
-}
-
 .shape_layout {
   background-color: #412e68;
   background-image: url(/bg_shape_white.png);
