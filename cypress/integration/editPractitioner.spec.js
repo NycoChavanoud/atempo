@@ -10,7 +10,7 @@ describe("practitioners", () => {
 
   beforeEach(() => {
     cy.viewport("iphone-6");
-    cy.visit("/modification-profile");
+    cy.visit("/profile/editPractitioner");
   });
   xit("should edit my profile", () => {
     cy.get('[data-cy="firstname"]').type(firstName);

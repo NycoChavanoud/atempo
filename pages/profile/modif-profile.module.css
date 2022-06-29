@@ -15,7 +15,6 @@
   justify-content: center;
   color: #fff;
   font-size: 28px;
-  margin-top: 30px;
 }
 
 .circleIcon {
@@ -24,7 +23,7 @@
 }
 
 .form {
-  margin-top: 15%;
+  margin-top: 11%;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -32,7 +31,7 @@
 .field {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
 }
 
 .label {
@@ -42,33 +41,42 @@
 .input {
   display: flex;
   align-items: center;
+  text-align: center;
   width: 85%;
   height: 35px;
   border-radius: 20px;
   border: transparent;
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
     rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
 }
 
 .input::placeholder {
   color: var(--main-bg-color);
-  font-size: 1em;
+  font-size: 1, 8em;
   opacity: 0.7;
   text-align: center;
 }
 
 .network {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   margin-top: 20px;
+  margin-right: 10px;
+}
+
+.networkLink {
+  display: flex;
+  justify-content: center;
 }
 
 .inputNetwork {
   display: flex;
   align-items: center;
-  width: 100%;
+  text-align: center;
+  width: 50%;
+  margin-left: 10px;
   height: 35px;
   border-radius: 20px;
   border: transparent;
@@ -92,7 +100,7 @@
 
 .buttonContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
   margin: 20px;
 }
@@ -102,8 +110,8 @@
   letter-spacing: 1px;
   color: white;
   font-size: 15px;
-  width: 39vw;
-  height: 5vh;
+  width: 80%;
+  height: 40px;
   border: none;
   background-color: #ff9083;
   border-radius: 50px;
@@ -113,21 +121,34 @@
 
 @media screen and (min-height: 740px) {
   .form {
-    margin-top: 20%;
+    margin-top: 10%;
   }
 
   .title {
-    margin-top: 15%;
+    margin-top: 5%;
   }
 
   .field {
+    margin-top: 45px;
+  }
+
+  .buttonContainer {
     margin-top: 30px;
   }
 }
 
 @media screen and (min-height: 840px) {
   .form {
-    margin-top: 30%;
+    margin-top: 20%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 40px;
+    font-size: 1.3rem;
   }
 
   .network {
@@ -135,6 +156,21 @@
   }
 
   .buttonContainer {
-    margin-top: 50px;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .form {
+    margin-top: 25%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 45px;
+    font-size: 1.3rem;
   }
 }
