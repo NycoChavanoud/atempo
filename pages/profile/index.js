@@ -1,7 +1,6 @@
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
-import Image from "next/image";
 import Link from "next/link";
 import style from "./profile.module.css";
 import { useEffect, useState } from "react";
@@ -9,9 +8,6 @@ import { getAllPractitionersData } from "../../model/PractitionersData/practitio
 
 export default function Profile() {
   const [practitionersData, setPractitionersData] = useState();
-
-  // let urlFb = {practitionersData?.fb_url};
-  // let newUrlFb = {
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
@@ -48,8 +44,8 @@ export default function Profile() {
           href={practitionersData?.fb_url}
           className={style.link}
         >
-          <Image width={43} height={43} src="/img/fb.png" alt="logo facebook" />
-          <p className={style.lnk}>Facebook</p>
+          <img className={style.logo} src="/img/fb.png" alt="logo facebook" />
+          <p className={style.lnkString}>Facebook</p>
         </a>
 
         <a
@@ -58,13 +54,12 @@ export default function Profile() {
           href={practitionersData?.insta_url}
           className={style.link}
         >
-          <Image
-            width={43}
-            height={43}
+          <img
+            className={style.logo}
             src="/img/insta.png"
             alt="logo instagram"
           />
-          <p className={style.lnk}>Instagram</p>
+          <p className={style.lnkString}>Instagram</p>
         </a>
       </div>
 

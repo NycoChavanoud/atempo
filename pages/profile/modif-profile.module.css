@@ -10,6 +10,12 @@
   padding-top: 1px;
 }
 
+.imgBack {
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -23,7 +29,7 @@
 }
 
 .form {
-  margin-top: 11%;
+  margin-top: 10%;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -120,6 +126,10 @@
 }
 
 @media screen and (min-height: 740px) {
+  .imgBack {
+    height: 40px;
+    width: 40px;
+  }
   .form {
     margin-top: 10%;
   }
@@ -138,6 +148,11 @@
 }
 
 @media screen and (min-height: 840px) {
+  .imgBack {
+    height: 45px;
+    width: 45px;
+  }
+
   .form {
     margin-top: 20%;
   }

@@ -43,12 +43,8 @@ export default function Profile() {
       <div className={styles.purple}>
         <button className="btnBack">
           <Link href="/profile">
-            <Image
-              sx={{
-                margin: "10px",
-              }}
-              width={35}
-              height={35}
+            <img
+              className={styles.imgBack}
               src="/img/retour.png"
               alt="bouton annuler"
             />
