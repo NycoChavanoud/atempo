@@ -1,6 +1,6 @@
 .purple {
   background-color: var(--main-bg-color);
-  background-image: url("/images/white_background.png");
+  background-image: url("/bg_shape_white.png");
   background-repeat: no-repeat;
   z-index: -1;
   background-size: 94% 83%;
@@ -87,7 +87,7 @@
   border-radius: 20px;
   border: transparent;
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
     rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
 }
@@ -97,11 +97,6 @@
   font-size: 1em;
   opacity: 0.7;
   text-align: center;
-}
-
-.btnNet {
-  border-radius: 40px;
-  border: transparent;
 }
 
 .buttonContainer {

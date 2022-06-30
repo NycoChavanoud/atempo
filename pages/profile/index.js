@@ -5,6 +5,8 @@ import Link from "next/link";
 import style from "./profile.module.css";
 import { useEffect, useState } from "react";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Profile() {
   const [practitionersData, setPractitionersData] = useState();
@@ -68,6 +70,17 @@ export default function Profile() {
           <button className={style.button}>Modifier</button>
         </Link>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }

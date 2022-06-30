@@ -5,7 +5,7 @@ import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
 import styles from "./modif-profile.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { update, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
@@ -95,7 +95,7 @@ export default function Profile() {
               onChange={(e) =>
                 setPractitionersData({
                   ...practitionersData,
-                  firstname: e.target.value,
+                  lastname: e.target.value,
                 })
               }
             />
@@ -219,17 +219,6 @@ export default function Profile() {
             >
               Sauvegarder
             </button>
-            <ToastContainer
-              position="bottom-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-            />
           </div>
         </form>
       </div>
