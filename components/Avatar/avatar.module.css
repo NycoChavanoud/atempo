@@ -2,7 +2,7 @@
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  border: 1px solid #361776;
+  border: 1px solid black;
 }
 
 @media screen and (min-width: 1024px) {
