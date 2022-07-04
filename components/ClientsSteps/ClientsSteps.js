@@ -43,9 +43,9 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
   };
   const handleSubmit = async () => {
     await createClient(clientData);
+    setClientData({});
     success();
     setTimeout(2000);
-    setClientData({});
   };
   if (activeStep < 1) {
     return (
