@@ -9,8 +9,6 @@ export async function getAllPractitionersData() {
       const snapshot = await get(child(ref(db), `/practitioners/${user.uid}`));
       if (snapshot.exists()) {
         return snapshot.val();
-      } else {
-        console.log("No data available");
       }
     } catch (error) {
       console.error(error);

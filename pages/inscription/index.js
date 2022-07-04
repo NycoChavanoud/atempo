@@ -6,6 +6,7 @@ import Layout from "../../components/Layout/Layout";
 import { set, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
+import { BsPencil } from "react-icons/bs";
 
 const Inscription = () => {
   const [lastName, setLastName] = useState("");
@@ -39,8 +40,9 @@ const Inscription = () => {
   return (
     <Layout pageTitle="Inscription" shape={true}>
       <h1 className={style.title}>Inscription</h1>
-      <div className={style.user}>
-        <ChangeAvatar />
+      <div className={style.userAvatar}>
+        <ChangeAvatar className={style.avatar} />
+        <BsPencil className={style.pencil} />
       </div>
 
       <div className={style.formContainer}>

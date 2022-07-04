@@ -15,8 +15,9 @@ const DisplayCurrentUser = () => {
   return (
     <div className={style.displayCurrentUserContainer}>
       <p className={style.displayUser}>
-        {user?.auth?.currentUser?.displayName}
-        {practitionersData?.firstname} {practitionersData?.lastname}
+        {user
+          ? user?.auth?.currentUser?.displayName
+          : practitionersData?.firstname + practitionersData?.lastname}
       </p>
     </div>
   );
