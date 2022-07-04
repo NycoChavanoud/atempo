@@ -10,7 +10,7 @@ const ChangeAvatar = () => {
     fileImputRef.current.click();
   };
 
-  const handleAvatarSelection = () => {
+  const handleAvatarSelection = async () => {
     setImage(URL.createObjectURL(fileImputRef.current.files[0]));
   };
 
