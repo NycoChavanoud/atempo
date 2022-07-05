@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
-import StatsClients from "../../components/stats-clients";
-import StatsSeances from "../../components/stats-seance";
+import StatsClients from "../../components/Stats-clients";
+import StatsSeances from "../../components/Stats-seance";
 import style from "./dashboard.module.css";
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
