@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const DisplayCurrentUser = () => {
   const user = auth.currentUser;
-  const [practitionersData, setPractitionersData] = useState();
+  const [practitionersData, setPractitionersData] = useState("");
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
