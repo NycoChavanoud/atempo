@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+/* eslint-disable @next/next/no-img-element */
 import Layout from "../../components/Layout/Layout";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Avatar from "../../components/Avatar/Avatar";
 
 export default function Profile() {
   const [practitionersData, setPractitionersData] = useState();

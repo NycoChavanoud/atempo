@@ -1,15 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
 import styles from "./modif-profile.module.css";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { update, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
+import { BsPencil } from "react-icons/bs";
 
 export default function Profile() {
   const [practitionersData, setPractitionersData] = useState();
@@ -33,7 +35,6 @@ export default function Profile() {
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
-    console.log(practitionersData);
   }, []);
 
   const notify = () => toast("C'est sauvegardé !");
@@ -51,17 +52,9 @@ export default function Profile() {
           </Link>
         </button>
         <h1 className={styles.title}>Modifier votre profil</h1>
-        <div className={styles.circleIcon}>
-          <AddCircleIcon
-            sx={{
-              color: "#DADADA",
-              width: "70px",
-              height: "70px",
-              margin: "6px",
-              borderRadius: "100px",
-              cursor: "pointer",
-            }}
-          />
+        <div className={styles.userAvatar}>
+          <ChangeAvatar className={styles.avatar} />
+          <BsPencil className={styles.pencil} />
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -73,6 +66,7 @@ export default function Profile() {
               type="text"
               id="firstName"
               placeholder="Prénom"
+              required
               value={practitionersData?.firstname}
               onChange={(e) =>
                 setPractitionersData({
@@ -91,6 +85,7 @@ export default function Profile() {
               type="text"
               id="lastName"
               placeholder="Nom"
+              required
               value={practitionersData?.lastname}
               onChange={(e) =>
                 setPractitionersData({
@@ -109,9 +104,9 @@ export default function Profile() {
               type="tel"
               id="phone"
               name="phone"
-              minLength="10"
-              maxLength="20"
               placeholder="Téléphone"
+              required
+              pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
               value={practitionersData?.phone}
               onChange={(e) =>
                 setPractitionersData({
@@ -130,6 +125,7 @@ export default function Profile() {
               type="text"
               id="address"
               placeholder="Adresse"
+              required
               value={practitionersData?.address}
               onChange={(e) =>
                 setPractitionersData({
@@ -148,6 +144,7 @@ export default function Profile() {
               type="text"
               id="website_url"
               placeholder="Site web"
+              required
               value={practitionersData?.website_url}
               onChange={(e) =>
                 setPractitionersData({
