@@ -7,8 +7,6 @@ import MotifForm from "../../components/ClientForm/MotifForm";
 import ClientsSteps from "../../components/ClientsSteps/ClientsSteps";
 import { Avatar } from "@mui/material";
 import { CreateClientContextProvider } from "../../context/createClientContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateClient() {
   const [activeStep, setActiveStep] = useState(0);
@@ -26,7 +24,6 @@ export default function CreateClient() {
         {activeStep === 1 && <MotifForm />}
 
         <ClientsSteps activeStep={activeStep} setActiveStep={setActiveStep} />
-        <ToastContainer />
       </Layout>
     </CreateClientContextProvider>
   );

@@ -30,7 +30,9 @@ export default function Client() {
           <Link href={`/clients/${id}/edit`}>
             <button className={style.btn}>Modifier la fiche</button>
           </Link>
-          <button className={style.btn}>Envoyer une séance</button>
+          <button style={{ opacity: "0.5" }} className={style.btn}>
+            Envoyer une séance
+          </button>
         </div>
       </Layout>
     );

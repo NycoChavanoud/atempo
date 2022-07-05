@@ -16,12 +16,7 @@ export default function UpdateClient() {
     <CreateClientContextProvider>
       <Layout shape pageTitle={"Modification d'une fiche client"}>
         <WhiteBurger />
-        <h1
-          className={style.title}
-          style={{ fontSize: "1.5rem", marginTop: "2vh", marginBottom: "2vh" }}
-        >
-          Modification des informations
-        </h1>
+        <h1 className={style.title}>Modification(s)</h1>
         <Avatar
           className={style.user}
           alt="photo du client"

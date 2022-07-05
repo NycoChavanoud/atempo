@@ -1,0 +1,19 @@
+.bg {
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+  color: white;
+}
+
+.user {
+  border: solid #ff9083;
+  margin: 5vh 0 5vh 20%;
+}
+
+@media screen and (max-width: 1024px) {
+  .bg {
+    display: none;
+  }
+}
