@@ -14,7 +14,6 @@ export default function Profile() {
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
-    console.log(practitionersData);
   }, []);
 
   return (
