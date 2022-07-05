@@ -1,0 +1,186 @@
+.purple {
+  background-color: var(--main-bg-color);
+  background-image: url("/bg_shape_white.png");
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: 94% 83%;
+  width: 100vw;
+  height: 100vh;
+  background-position: bottom left;
+  padding-top: 1px;
+}
+
+.imgBack {
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+}
+
+.circleIcon {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin-top: 10%;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.label {
+  color: #412e68;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 85%;
+  height: 35px;
+  border-radius: 20px;
+  border: transparent;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+}
+
+.input::placeholder {
+  color: var(--main-bg-color);
+  font-size: 1, 8em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.network {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.networkLink {
+  display: flex;
+  justify-content: center;
+}
+
+.inputNetwork {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  margin-left: 10px;
+  height: 35px;
+  border-radius: 20px;
+  border: transparent;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9rem;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+}
+
+.inputNetwork::placeholder {
+  color: var(--main-bg-color);
+  font-size: 1em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+}
+
+.btn {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  font-size: 15px;
+  width: 80%;
+  height: 40px;
+  border: none;
+  background-color: #ff9083;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
+  cursor: pointer;
+}
+
+@media screen and (min-height: 740px) {
+  .imgBack {
+    height: 40px;
+    width: 40px;
+  }
+  .form {
+    margin-top: 10%;
+  }
+
+  .title {
+    margin-top: 5%;
+  }
+
+  .field {
+    margin-top: 45px;
+  }
+
+  .buttonContainer {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-height: 840px) {
+  .imgBack {
+    height: 45px;
+    width: 45px;
+  }
+
+  .form {
+    margin-top: 20%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .network {
+    margin-top: 30px;
+  }
+
+  .buttonContainer {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .form {
+    margin-top: 25%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
