@@ -70,17 +70,24 @@ export default function DesktopMenu() {
             </div>
           </div>
         </Link>
-        <div>
-          <Link href="/profile">
-            <div
-              className={`${style.center} ${
-                currentRoute === "/profile" ? "active" : ""
-              }`}
-            >
-              <a className={style.text}>Profil</a>
+        <Link href="/profile">
+          <div
+            className={`${style.center} ${
+              currentRoute === "/profile" ? "active" : ""
+            }`}
+          >
+            <div className={style.link}>
+              <Image
+                priority
+                height={40}
+                width={40}
+                src="/images/profil.png"
+                alt="icones profils d'utilisateurs"
+              />
+              <a>Profil</a>
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
       <style jsx>{`
         .active {
