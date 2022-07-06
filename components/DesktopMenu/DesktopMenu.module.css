@@ -1,0 +1,51 @@
+.bg {
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+.user {
+  border: solid #ff9083;
+  margin-top: 5vh;
+  margin-bottom: 8vh;
+}
+
+.box {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 8vh;
+  margin-left: 5vh;
+}
+
+.center {
+  display: flex;
+  padding-left: 2vh;
+}
+
+.link {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.text {
+  margin-top: 2vh;
+  height: 5vh;
+}
+
+@media screen and (max-width: 1024px) {
+  .bg {
+    display: none;
+  }
+}

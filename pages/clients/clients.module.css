@@ -2,16 +2,15 @@
   display: flex;
   justify-content: space-around;
   margin-top: 5%;
-  margin-bottom: 15%;
+  margin-bottom: 10vh;
 }
 
 .title {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 34px;
   line-height: -40px;
   letter-spacing: 0.01em;
   color: #412e68;
-
   text-decoration: underline #ff9083 10px;
   text-underline-offset: -5px;
 }
@@ -19,6 +18,7 @@
 .user {
   border: solid #ff9083;
 }
+
 .container {
   height: 80px;
 }
@@ -28,8 +28,6 @@
   height: 50px;
   background-color: var(--color1);
   border-radius: 80px;
-  border: transparent;
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,4 +37,21 @@
   letter-spacing: 1px;
   margin-left: 10%;
   margin-top: 5vh;
+}
+
+@media screen and (min-width: 740px) {
+  .title {
+    font-size: 45px;
+  }
+  .btn {
+    height: 70px;
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
 }
