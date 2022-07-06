@@ -14,7 +14,7 @@ import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
 import { BsPencil } from "react-icons/bs";
 
 export default function Profile() {
-  const [practitionersData, setPractitionersData] = useState();
+  const [practitionersData, setPractitionersData] = useState("");
   const [error, setError] = useState("");
 
   let router = useRouter();
@@ -37,7 +37,7 @@ export default function Profile() {
     getAllPractitionersData().then(setPractitionersData);
   }, []);
 
-  const notify = () => toast("C'est sauvegardé !");
+  const notify = () => toast("Données sauvegardées !");
 
   return (
     <Layout pageTitle="Modifier votre profil">

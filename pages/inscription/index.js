@@ -33,7 +33,7 @@ const Inscription = () => {
 
       router.push("/menu");
     } catch (error) {
-      setError(error.message);
+      setError("Vérifié vos données");
     }
   };
 
