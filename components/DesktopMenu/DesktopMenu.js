@@ -3,6 +3,7 @@ import { Avatar } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Account from "../Account/Account";
 
 export default function DesktopMenu() {
   const router = useRouter();
@@ -97,6 +98,8 @@ export default function DesktopMenu() {
           width: 25vw;
         }
       `}</style>
+
+      <Account />
     </div>
   );
 }

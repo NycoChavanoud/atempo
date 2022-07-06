@@ -7,6 +7,7 @@ import {
   startAt,
   endAt,
   orderByChild,
+  limitToFirst,
 } from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
@@ -61,14 +62,15 @@ export async function getClientList(page = 0) {
       const snapshot = await get(
         child(ref(db), `clients/${user.uid}`),
         orderByChild("creation_date"),
-        startAt(page * 6),
-        endAt(page * 6 + 6)
+        startAt(page * 9),
+        endAt(page * 9 + 9),
+        limitToFirst(9)
       );
       if (snapshot.exists()) {
         const showClient = Object.keys(snapshot.val()).map(
           (client) => snapshot.val()[client]
         );
-        return showClient;
+        return showClient.reverse();
       } else {
         console.log("No data available");
       }

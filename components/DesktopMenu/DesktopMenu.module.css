@@ -39,11 +39,6 @@
   margin-bottom: 2vh;
 }
 
-.text {
-  margin-top: 2vh;
-  height: 5vh;
-}
-
 @media screen and (max-width: 1024px) {
   .bg {
     display: none;
