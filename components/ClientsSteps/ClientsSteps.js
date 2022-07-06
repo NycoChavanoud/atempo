@@ -1,10 +1,10 @@
+import style from "./ClientsSteps.module.css";
 import { useContext } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import createClientContext from "../../context/createClientContext";
 import { createClient } from "../../model/client";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import { setTimeout } from "timers";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
   const { clientData, setClientData, validation, setValidation } =
@@ -14,11 +14,9 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     toast.warn("Veuillez renseigner tout les champs.", {
       position: "bottom-center",
       autoClose: 2000,
-      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
@@ -26,18 +24,16 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     toast.success("Client enregistré.", {
       position: "bottom-center",
       autoClose: 2000,
-      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
     });
   };
 
   const handleNext = () => {
     if (validation) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      setValidation(true);
+      setValidation(false);
     } else {
       warn();
     }
@@ -47,79 +43,36 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
   };
   const handleSubmit = async () => {
     await createClient(clientData);
+    setClientData({});
     success();
     setTimeout(2000);
-    setClientData({});
   };
   if (activeStep < 1) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <button
-          style={{
-            width: "150px",
-            height: "50px",
-            backgroundColor: "var(--color1)",
-            borderRadius: "20px",
-            padding: "20px",
-            color: "white",
-            fontWeight: "700",
-            fontSize: "1.5em",
-            letterSpacing: "1px",
-            position: "absolute",
-            bottom: "6vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          id="btn"
-          onClick={handleNext}
-        >
+      <div className={style.box}>
+        <button className={style.btn} id="btn" onClick={handleNext}>
           Suivant
         </button>
       </div>
     );
   } else {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "5vh",
-        }}
-      >
+      <div className={style.container}>
         <button
           onClick={handleBack}
           style={{ position: "absolute", left: "45px" }}
         >
           <ArrowCircleLeftIcon
-            sx={{
-              width: "40px",
-              height: "40px",
-              color: "var(--color1)",
-            }}
+            style={{ width: "10vw", height: "10vh", color: "var(--color1)" }}
           />
         </button>
 
         <Link href="/clients">
           <button
+            className={style.smtBtn}
             type="submit"
             onClick={handleSubmit}
             id="submitBtn"
-            style={{
-              width: "150px",
-              height: "50px",
-              background: "var(--color1",
-              color: "white",
-              borderRadius: "20px",
-              fontWeight: "bolder",
-              fontSize: "1.5em",
-            }}
           >
             Confirmer
           </button>

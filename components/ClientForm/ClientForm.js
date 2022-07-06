@@ -14,9 +14,12 @@ export default function ClientForm() {
       clientData.phoneNumber &&
       clientData.adress &&
       clientData.thematic
-    )
+    ) {
       setValidation(true);
-  }, [clientData]);
+    } else {
+      setValidation(false);
+    }
+  }, [clientData, setValidation]);
 
   return (
     <form className={style.form}>
@@ -26,7 +29,7 @@ export default function ClientForm() {
         type="text"
         id="firstname"
         placeholder="Prénom"
-        value={clientData.firstname}
+        value={clientData.firstname || ""}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -40,7 +43,7 @@ export default function ClientForm() {
         type="text"
         id="lastname"
         placeholder="Nom"
-        value={clientData.lastname}
+        value={clientData.lastname || ""}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -54,7 +57,7 @@ export default function ClientForm() {
         type="email"
         id="email"
         placeholder="email"
-        value={clientData.email}
+        value={clientData.email || ""}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -68,7 +71,7 @@ export default function ClientForm() {
         type="tel"
         id="phoneNumber"
         placeholder="Téléphone"
-        value={clientData.phoneNumber}
+        value={clientData.phoneNumber || ""}
         pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
           setClientData({
@@ -83,7 +86,7 @@ export default function ClientForm() {
         type="text"
         id="adress"
         placeholder="Adresse"
-        value={clientData.adress}
+        value={clientData.adress || ""}
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -121,7 +124,7 @@ export default function ClientForm() {
           type="text"
           id="other_thematic"
           placeholder={"Précisez ici"}
-          value={clientData.other_thematic}
+          value={clientData.other_thematic || ""}
           onChange={(e) =>
             setClientData({ ...clientData, other_thematic: e.target.value })
           }

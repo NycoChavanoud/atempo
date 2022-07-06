@@ -11,7 +11,7 @@
   width: 8%;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   .bg {
     display: none;
   }
