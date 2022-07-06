@@ -144,3 +144,10 @@
     margin-top: 90px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+}

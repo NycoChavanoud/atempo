@@ -17,6 +17,7 @@ export default function MotifForm() {
         className={style.motif}
         id="motif"
         placeholder="Motif(s)"
+        value={clientData.motif || ""}
         onChange={(e) =>
           setClientData({ ...clientData, motif: e.target.value })
         }
