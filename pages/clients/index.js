@@ -20,10 +20,10 @@ export default function Clients() {
   return (
     <Layout pageTitle="Mes Clients">
       <div className={style.boxes}>
-        <div className={style.left}>
+        <div>
           <DesktopMenu />
         </div>
-        <div className={style.right}>
+        <div>
           <GreyBurger />
           <div className={style.purple}>
             <div className={style.box}>
