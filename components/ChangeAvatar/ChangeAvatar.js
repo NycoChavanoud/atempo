@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import style from "../ChangeAvatar/changeAvatar.module.css";
+import { storage } from "../../config/firebaseConfig";
+import { ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
 
 const ChangeAvatar = () => {
   const fileImputRef = useRef();
@@ -11,7 +14,10 @@ const ChangeAvatar = () => {
   };
 
   const handleAvatarSelection = async () => {
+    if (image == null) return;
     setImage(URL.createObjectURL(fileImputRef.current.files[0]));
+    const imageRef = ref(storage, `avatars/${image.name + v4()}`);
+    uploadBytes(imageRef, image);
   };
 
   return (
