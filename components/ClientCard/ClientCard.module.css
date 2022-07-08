@@ -1,0 +1,27 @@
+.card {
+  width: 150px;
+  height: 125px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+@media screen and (min-width: 740px) {
+  .card {
+    width: 200px;
+    height: 150px;
+  }
+  .title {
+    font-size: 25px;
+  }
+}

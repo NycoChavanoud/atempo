@@ -47,3 +47,10 @@
   margin-top: 50px;
   height: 35vh;
 }
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+}

@@ -10,7 +10,7 @@ export default function Wave() {
         quality={100}
         height={6}
         width={15}
-        src="/images/header.png"
+        src="/images/header.jpg"
         alt="vagues violettes"
       />
     </div>
