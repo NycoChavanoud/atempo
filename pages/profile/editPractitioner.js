@@ -54,6 +54,7 @@ export default function Profile() {
         <h1 className={styles.title}>Modifier votre profil</h1>
         <div className={styles.userAvatar}>
           <ChangeAvatar className={styles.avatar} />
+          {/* <UploadAvatar /> */}
           <BsPencil className={styles.pencil} />
         </div>
 

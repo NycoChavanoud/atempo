@@ -1,4 +1,5 @@
-import { Avatar } from "@mui/material";
+// import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import StatsClients from "../../components/Stats-clients";
 import StatsSeances from "../../components/Stats-seance";
 import style from "./dashboard.module.css";
@@ -15,6 +16,7 @@ export default function Dashboard() {
   useEffect(() => {
     getAllPractitionersData().then(setPratitionerData);
   }, [pratitionerData]);
+
   if (pratitionerData) {
     return (
       <Layout pageTitle="Tableau de bord">
@@ -27,7 +29,9 @@ export default function Dashboard() {
 
             <div className={style.user}>
               <Avatar className={style.avatar} />
-              <h2 className={style.name}>{pratitionerData.lastname}</h2>
+              <h2
+                className={style.name}
+              >{`${pratitionerData.firstname} ${pratitionerData.lastname}`}</h2>
             </div>
 
             <div className={style.container}>
