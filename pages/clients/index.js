@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 import Link from "next/link";
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import ClientCardList from "../../components/ClientCardList/ClientCardList";
 import React, { useState, useEffect } from "react";
 import { getClientList } from "../../model/client.js";
@@ -27,11 +27,7 @@ export default function Clients() {
           <GreyBurger />
           <div className={style.purple}>
             <div className={style.box}>
-              <Avatar
-                className={style.user}
-                alt="votre photo"
-                sx={{ width: 100, height: 100 }}
-              />
+              <Avatar />
               <h1 className={style.title}>Mes clients</h1>
             </div>
 

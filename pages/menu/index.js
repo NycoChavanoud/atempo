@@ -2,7 +2,7 @@ import style from "./menu.module.css";
 import WhiteCross from "../../components/WhiteCross/WhiteCross";
 import Link from "next/link";
 import Image from "next/image";
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import Layout from "../../components/Layout/Layout";
 import Deconnexion from "../../components/Deconnexion/Deconnexion";
 import DisplayCurrentUser from "../../components/DisplayCurrentUser/DisplayCurrentUser";
@@ -12,11 +12,7 @@ export default function MobileMenu() {
     <Layout pageTitle="Menu">
       <WhiteCross />
       <div className={style.container}>
-        <Avatar
-          className={style.user}
-          alt="votre photo"
-          sx={{ width: 100, height: 100 }}
-        />
+        <Avatar />
         <Link href="/seances/createFromMenu">
           <button className={style.button}>Créer une séance</button>
         </Link>

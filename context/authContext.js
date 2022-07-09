@@ -70,7 +70,6 @@ export const AuthContextProvider = ({ children }) => {
     updateProfile(user, { photoURL });
 
     setLoading(false);
-    alert("Photo sauvegardé");
   };
 
   return (
