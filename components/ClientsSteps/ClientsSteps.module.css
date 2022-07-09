@@ -1,0 +1,52 @@
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 150px;
+  height: 50px;
+  background-color: var(--color1);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.smtBtn {
+  width: 150px;
+  height: 50px;
+  background: var(--color1);
+  color: white;
+  border-radius: 20px;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+@media screen and (min-width: 740px) {
+  .btn {
+    width: 180px;
+    height: 65px;
+  }
+  .container {
+    margin-top: 10vh;
+  }
+  .smtBtn {
+    width: 180px;
+    height: 65px;
+  }
+}
