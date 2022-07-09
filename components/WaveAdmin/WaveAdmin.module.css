@@ -2,16 +2,16 @@
   position: relative;
 }
 
-.whiteBurger {
-  filter: brightness(100);
+.cross {
+  filter: invert(1);
   cursor: pointer;
   position: absolute;
-  top: 23%;
+  top: 21%;
   left: 8%;
-  width: 7%;
+  width: 8%;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   .bg {
     display: none;
   }

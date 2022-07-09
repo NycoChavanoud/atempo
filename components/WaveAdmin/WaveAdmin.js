@@ -1,8 +1,8 @@
-import style from "./WaveWhiteBurger.module.css";
+import style from "./WaveAdmin.module.css";
 import Image from "next/image";
-import Link from "next/link";
+import Router from "next/router";
 
-export default function WaveWhiteBurger() {
+export default function WhiteCross() {
   return (
     <div className={style.bg}>
       <Image
@@ -12,20 +12,18 @@ export default function WaveWhiteBurger() {
         height={6}
         width={15}
         src="/images/headerAdmin.png"
-        alt="vagues violettes"
+        alt="vagues rose"
       />
-      <Link href="/menu">
-        <a className={style.whiteBurger}>
-          <Image
-            layout="responsive"
-            quality={100}
-            height={25}
-            width={30}
-            src="/images/white_burger.svg"
-            alt="menu burger blanc"
-          />
-        </a>
-      </Link>
+      <div onClick={() => Router.back()} className={style.cross}>
+        <Image
+          layout="responsive"
+          quality={100}
+          height={30}
+          width={30}
+          src="/images/X.png"
+          alt="croix blanche"
+        />
+      </div>
     </div>
   );
 }
