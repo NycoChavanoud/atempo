@@ -70,7 +70,7 @@ export default function Profile() {
           <Link href="/profile">
             <img
               className={styles.imgBack}
-              src="/img/retour.png"
+              src="/images/arrow2.png"
               alt="bouton annuler"
             />
           </Link>

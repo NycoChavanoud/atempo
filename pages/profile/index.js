@@ -54,7 +54,7 @@ export default function Profile() {
             >
               <img
                 className={style.logo}
-                src="/img/fb.png"
+                src="/images/fb.png"
                 alt="logo facebook"
               />
               <p className={style.lnkString}>Facebook</p>
@@ -68,7 +68,7 @@ export default function Profile() {
             >
               <img
                 className={style.logo}
-                src="/img/insta.png"
+                src="/images/insta.png"
                 alt="logo instagram"
               />
               <p className={style.lnkString}>Instagram</p>
