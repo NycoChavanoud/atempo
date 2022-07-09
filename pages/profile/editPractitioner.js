@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -10,23 +10,47 @@ import "react-toastify/dist/ReactToastify.css";
 import { update, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
-import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
+// import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
 import { BsPencil } from "react-icons/bs";
+import Avatar from "../../components/Avatar/Avatar";
+import { useAuth } from "../../context/authContext";
 
 export default function Profile() {
+  const { user, upload } = useAuth();
+  const fileImputRef = useRef();
+  let router = useRouter();
+
+  const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [photoURL, setPhotoURL] = useState(
+    "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
+  );
   const [practitionersData, setPractitionersData] = useState("");
   const [error, setError] = useState("");
 
-  let router = useRouter();
+  const handleAvatarClick = () => {
+    fileImputRef.current.click();
+  };
+
+  const handleAvatarSelection = async (e) => {
+    if (e.target.files[0]) {
+      setAvatar(e.target.files[0]);
+    }
+  };
+
+  useEffect(() => {
+    if (user?.photoURL) {
+      setPhotoURL(user.photoURL);
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const user = auth.currentUser;
-
-      await update(ref(db, `practitioners/${user.uid}`), practitionersData);
-
+      upload(avatar, user, setLoading);
+      update(ref(db, `practitioners/${user.uid}`), practitionersData);
       router.push("/profile");
     } catch (error) {
       setError("erreur");
@@ -53,8 +77,23 @@ export default function Profile() {
         </button>
         <h1 className={styles.title}>Modifier votre profil</h1>
         <div className={styles.userAvatar}>
-          <ChangeAvatar className={styles.avatar} />
-          {/* <UploadAvatar /> */}
+          <div className={styles.avatarContainer}>
+            <div className={styles.aroundAvatar} onClick={handleAvatarClick}>
+              <Avatar src={photoURL} className={styles.avatar} />
+            </div>
+
+            <form className={styles.form}>
+              <input
+                id="avatar"
+                accept="image/png, image/jpeg, image/jpg"
+                type="file"
+                ref={fileImputRef}
+                onChange={handleAvatarSelection}
+                style={{ display: "none" }}
+              />
+            </form>
+          </div>
+
           <BsPencil className={styles.pencil} />
         </div>
 
@@ -212,7 +251,8 @@ export default function Profile() {
               className={styles.btn}
               type="submit"
               id="submitBtn"
-              onClick={notify}
+              disabled={loading || !avatar}
+              onChange={notify}
               data-cy="submitBtn"
             >
               Sauvegarder
