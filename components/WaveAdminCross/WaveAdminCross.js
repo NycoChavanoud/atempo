@@ -1,8 +1,8 @@
-import style from "./WaveAdmin.module.css";
+import style from "./WaveAdminCross.module.css";
 import Image from "next/image";
 import Router from "next/router";
 
-export default function WhiteCross() {
+export default function WaveAdminCross() {
   return (
     <div className={style.bg}>
       <Image

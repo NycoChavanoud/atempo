@@ -1,5 +1,5 @@
 import style from "./admin.module.css";
-import WaveAdmin from "../../components/WaveAdmin/WaveAdmin";
+import WaveAdminCross from "../../components/WaveAdminCross/WaveAdminCross";
 import Link from "next/link";
 import Image from "next/image";
 import { Avatar } from "@mui/material";
@@ -9,19 +9,21 @@ import Account from "../../components/Account/Account";
 export default function admin() {
   return (
     <Layout pageTitle="Menu">
-      <WaveAdmin />
+      <WaveAdminCross />
+
       <div className={style.container}>
         <Avatar
           className={style.user}
           alt="votre photo"
           sx={{ width: 100, height: 100 }}
         />
+
         <Link href="/seances/createFromMenu">
           <button className={style.button}>Créer une séance</button>
         </Link>
       </div>
       <div className={style.links}>
-        <Link data-cy="dashboardBtn" href="/dashboard">
+        <Link data-cy="dashboardBtn" href="/adminDashboard">
           <div className={style.link}>
             <div className={style.icon}>
               <Image
@@ -44,7 +46,8 @@ export default function admin() {
             </div>
           </div>
         </Link>
-        <Link href="/clients">
+
+        <Link href="/adminClients">
           <div className={style.link}>
             <div className={style.icon}>
               <Image
@@ -67,7 +70,8 @@ export default function admin() {
             </div>
           </div>
         </Link>
-        <Link href="/seances">
+
+        <Link href="/adminSeances">
           <div className={style.link}>
             <div className={style.icon}>
               <Image
@@ -90,7 +94,8 @@ export default function admin() {
             </div>
           </div>
         </Link>
-        <Link href="/profile">
+
+        <Link href="/adminPractitiens">
           <div className={style.link}>
             <div className={style.icon}>
               <Image
@@ -101,7 +106,7 @@ export default function admin() {
                 alt="icones profils d'utilisateurs"
               />
             </div>
-            <a className={style.text}>Profil</a>
+            <a className={style.text}>Practitiens</a>
             <div className={style.arrow}>
               <Image
                 priority

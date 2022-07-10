@@ -1,0 +1,6 @@
+@media screen and (min-width: 1024px) {
+  .mainContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+}
