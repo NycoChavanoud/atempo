@@ -17,7 +17,6 @@ export default function Recorder() {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     const newRecorder = new MediaRecorder(stream);
     setMediaRecorder(newRecorder);
-    console.log(mediaRecorder);
     setIsRecording(true);
     mediaRecorder.start();
   };
@@ -51,7 +50,6 @@ export default function Recorder() {
     if (isRecording) {
       setTimeout(() => setTime(time + 1), 1000);
     }
-    console.log(mediaRecorder.state);
   }, [isRecording, time]);
 
   return (
