@@ -3,7 +3,7 @@ import WaveAdminCross from "../../components/WaveAdminCross/WaveAdminCross";
 import Link from "next/link";
 import Image from "next/image";
 import Layout from "../../components/Layout/Layout";
-import Account from "../../components/Account/Account";
+import Account from "../../../components/Account/Account";
 
 export default function admin() {
   return (
