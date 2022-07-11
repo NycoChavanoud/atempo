@@ -1,7 +1,7 @@
 import style from "../Avatar/avatar.module.css";
 import { useAuth } from "../../context/authContext";
 
-export default function Avatar({ alt }) {
+export default function Avatar({ alt, src }) {
   const { user } = useAuth();
 
   return (
@@ -10,6 +10,7 @@ export default function Avatar({ alt }) {
       <img
         data-cy="currentUserAvatar"
         src={
+          src ||
           user.photoURL ||
           "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
         }

@@ -4,23 +4,8 @@
   font-size: 2rem;
 }
 
-.userAvatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.avatar {
-  cursor: pointer;
-}
-
-.pencil {
-  margin-top: 70px;
-  color: #ff9083;
-}
-
 .formContainer {
-  margin-top: 10vh;
+  margin-top: 25vh;
 }
 
 .form {
@@ -56,7 +41,6 @@
   border-radius: 80px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
     rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  margin-top: 15%;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 1px;
