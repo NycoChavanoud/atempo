@@ -1,5 +1,5 @@
 import { db, auth } from "../../config/firebaseConfig";
-import { child, get, ref } from "firebase/database";
+import { child, get, ref, update } from "firebase/database";
 
 export async function getAllPractitionersData() {
   const user = auth.currentUser;
@@ -15,4 +15,15 @@ export async function getAllPractitionersData() {
       console.error(error);
     }
   } else return null;
+}
+
+export async function updatePractitionersData(data) {
+  const user = auth.currentUser;
+  const last_update = Date.now();
+  if (user) {
+    update(ref(db, `practitioners/${user.uid}`), {
+      ...data,
+      last_update,
+    });
+  }
 }

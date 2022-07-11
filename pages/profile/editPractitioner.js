@@ -1,30 +1,56 @@
-import { useState, useEffect } from "react";
+/* eslint-disable @next/next/no-img-element */
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
 import styles from "./modif-profile.module.css";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { update, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import { BsPencil } from "react-icons/bs";
+import Avatar from "../../components/Avatar/Avatar";
+import { useAuth } from "../../context/authContext";
 
 export default function Profile() {
-  const [practitionersData, setPractitionersData] = useState();
+  const { user, upload } = useAuth();
+  const fileImputRef = useRef();
+  let router = useRouter();
+
+  const [avatar, setAvatar] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [photoURL, setPhotoURL] = useState(
+    "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
+  );
+  const [practitionersData, setPractitionersData] = useState("");
   const [error, setError] = useState("");
 
-  let router = useRouter();
+  const handleAvatarClick = () => {
+    fileImputRef.current.click();
+  };
+
+  const handleAvatarSelection = async (e) => {
+    if (e.target.files[0]) {
+      setAvatar(e.target.files[0]);
+      setPhotoURL(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  useEffect(() => {
+    if (user?.photoURL) {
+      setPhotoURL(user.photoURL);
+    }
+  }, [user]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const user = auth.currentUser;
-
-      await update(ref(db, `practitioners/${user.uid}`), practitionersData);
-
+      upload(avatar, user, setLoading);
+      update(ref(db, `practitioners/${user.uid}`), practitionersData);
       router.push("/profile");
     } catch (error) {
       setError("erreur");
@@ -33,10 +59,9 @@ export default function Profile() {
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
-    console.log(practitionersData);
   }, []);
 
-  const notify = () => toast("C'est sauvegardé !");
+  const notify = () => toast("Données sauvegardées !");
 
   return (
     <Layout pageTitle="Modifier votre profil">
@@ -45,23 +70,31 @@ export default function Profile() {
           <Link href="/profile">
             <img
               className={styles.imgBack}
-              src="/img/retour.png"
+              src="/images/arrow2.png"
               alt="bouton annuler"
             />
           </Link>
         </button>
         <h1 className={styles.title}>Modifier votre profil</h1>
-        <div className={styles.circleIcon}>
-          <AddCircleIcon
-            sx={{
-              color: "#DADADA",
-              width: "70px",
-              height: "70px",
-              margin: "6px",
-              borderRadius: "100px",
-              cursor: "pointer",
-            }}
-          />
+        <div className={styles.userAvatar}>
+          <div className={styles.avatarContainer}>
+            <div className={styles.aroundAvatar} onClick={handleAvatarClick}>
+              <Avatar src={photoURL} className={styles.avatar} />
+            </div>
+
+            <form className={styles.form}>
+              <input
+                id="avatar"
+                accept="image/png, image/jpeg, image/jpg"
+                type="file"
+                ref={fileImputRef}
+                onChange={handleAvatarSelection}
+                style={{ display: "none" }}
+              />
+            </form>
+          </div>
+
+          <BsPencil className={styles.pencil} />
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -73,6 +106,7 @@ export default function Profile() {
               type="text"
               id="firstName"
               placeholder="Prénom"
+              required
               value={practitionersData?.firstname}
               onChange={(e) =>
                 setPractitionersData({
@@ -91,6 +125,7 @@ export default function Profile() {
               type="text"
               id="lastName"
               placeholder="Nom"
+              required
               value={practitionersData?.lastname}
               onChange={(e) =>
                 setPractitionersData({
@@ -109,9 +144,9 @@ export default function Profile() {
               type="tel"
               id="phone"
               name="phone"
-              minLength="10"
-              maxLength="20"
               placeholder="Téléphone"
+              required
+              pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
               value={practitionersData?.phone}
               onChange={(e) =>
                 setPractitionersData({
@@ -130,6 +165,7 @@ export default function Profile() {
               type="text"
               id="address"
               placeholder="Adresse"
+              required
               value={practitionersData?.address}
               onChange={(e) =>
                 setPractitionersData({
@@ -148,6 +184,7 @@ export default function Profile() {
               type="text"
               id="website_url"
               placeholder="Site web"
+              required
               value={practitionersData?.website_url}
               onChange={(e) =>
                 setPractitionersData({
@@ -214,7 +251,8 @@ export default function Profile() {
               className={styles.btn}
               type="submit"
               id="submitBtn"
-              onClick={notify}
+              disabled={loading || !avatar}
+              onChange={notify}
               data-cy="submitBtn"
             >
               Sauvegarder
