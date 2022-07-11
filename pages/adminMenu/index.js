@@ -2,30 +2,15 @@ import style from "./admin.module.css";
 import WaveAdminCross from "../../components/WaveAdminCross/WaveAdminCross";
 import Link from "next/link";
 import Image from "next/image";
-import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
 import Account from "../../components/Account/Account";
-import DesktopMenuAdmin from "../../components/DesktopMenuAdmin/DesktopMenuAdmin";
 
 export default function admin() {
   return (
     <Layout pageTitle="Menu">
-      <div className={style.desktopMenu}>
-        <DesktopMenuAdmin />
-      </div>
       <WaveAdminCross />
 
-      <div className={style.container}>
-        <Avatar
-          className={style.user}
-          alt="votre photo"
-          sx={{ width: 100, height: 100 }}
-        />
-
-        <Link href="/seances/createFromMenu">
-          <button className={style.button}>Créer une séance</button>
-        </Link>
-      </div>
+      <div className={style.container}></div>
       <div className={style.links}>
         <Link data-cy="dashboardBtn" href="/adminDashboard">
           <div className={style.link}>

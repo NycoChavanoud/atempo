@@ -24,7 +24,6 @@ export default function Dashboard() {
 
         <div className={style.donut}>
           <Doughnut
-            height={"200px"}
             data={{
               labels: ["Practitiens", "Séances", "Clients"],
               datasets: [

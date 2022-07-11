@@ -16,10 +16,10 @@ export default function DesktopMenuAdmin() {
       />
 
       <div className={style.box}>
-        <Link href="/dashboard">
+        <Link href="/adminDashboard">
           <div
             className={`${style.center} ${
-              currentRoute === "/dashboard" ? "active" : ""
+              currentRoute === "/adminDashboard" ? "active" : ""
             }`}
           >
             <div className={style.link}>
@@ -34,10 +34,10 @@ export default function DesktopMenuAdmin() {
             </div>
           </div>
         </Link>
-        <Link href="/clients">
+        <Link href="/adminClients">
           <div
             className={`${style.center} ${
-              currentRoute === "/clients" ? "active" : ""
+              currentRoute === "/adminClients" ? "active" : ""
             }`}
           >
             <div className={style.link}>
@@ -52,10 +52,10 @@ export default function DesktopMenuAdmin() {
             </div>
           </div>
         </Link>
-        <Link href="/seances">
+        <Link href="/adminSeances">
           <div
             className={`${style.center} ${
-              currentRoute === "/seances" ? "active" : ""
+              currentRoute === "/adminSeances" ? "active" : ""
             }`}
           >
             <div className={style.link}>
@@ -70,10 +70,10 @@ export default function DesktopMenuAdmin() {
             </div>
           </div>
         </Link>
-        <Link href="/profile">
+        <Link href="/adminPractitiens">
           <div
             className={`${style.center} ${
-              currentRoute === "/profile" ? "active" : ""
+              currentRoute === "/adminPractitiens" ? "active" : ""
             }`}
           >
             <div className={style.link}>
