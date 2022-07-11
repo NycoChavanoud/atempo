@@ -6,7 +6,7 @@ import ClientForm from "../../../components/ClientForm/ClientForm";
 import MotifForm from "../../../components/ClientForm/MotifForm";
 import ClientsEditSteps from "../../../components/ClientEditSteps/ClientsEditSteps";
 import { CreateClientContextProvider } from "../../../context/createClientContext";
-import Avatar from "../../components/Avatar/Avatar";
+import Avatar from "../../../components/Avatar/Avatar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
