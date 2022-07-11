@@ -1,5 +1,5 @@
 import style from "./DesktopMenu.module.css";
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -9,11 +9,7 @@ export default function DesktopMenu() {
   const currentRoute = router.pathname;
   return (
     <div className={style.bg}>
-      <Avatar
-        className={style.user}
-        alt="votre photo"
-        sx={{ width: 100, height: 100 }}
-      />
+      <Avatar />
 
       <div className={style.box}>
         <Link href="/dashboard">

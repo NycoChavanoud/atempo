@@ -1,3 +1,4 @@
+import Avatar from "../../components/Avatar/Avatar";
 import Link from "next/link";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
@@ -6,7 +7,6 @@ import styles from "../../styles/Seances.module.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
-import { Avatar } from "@mui/material";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 
 export default function MySeances() {
@@ -20,7 +20,7 @@ export default function MySeances() {
           <WaveWhiteBurger />
           <div className="flex flex-col justify-center items-center lg:mt-10">
             <div className="flex flex-row items-center justify-around">
-              <Avatar sx={{ width: 80, height: 80, margin: "10px" }} />
+              <Avatar />
               <h1 className={styles.title}>Mes séances</h1>
             </div>
 

@@ -2,14 +2,13 @@ import style from "./inscription.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
-import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
 import { set, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 
 const Inscription = () => {
-  const [lastName, SetLastName] = useState("");
-  const [firstName, SetFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,21 +29,16 @@ const Inscription = () => {
         seance_nb: 0,
         email,
       });
-      console.log(user);
-      router.push("/profile");
+
+      router.push("/menu");
     } catch (error) {
-      setError(error.message);
+      setError("Vérifié vos données");
     }
   };
 
   return (
     <Layout pageTitle="Inscription" shape={true}>
       <h1 className={style.title}>Inscription</h1>
-      <Avatar
-        className={style.user}
-        alt="votre photo"
-        sx={{ width: 100, height: 100 }}
-      />
 
       <div className={style.formContainer}>
         <form className={style.form} onSubmit={handleSubmit}>
@@ -55,8 +49,9 @@ const Inscription = () => {
             name="firstName"
             id="firstName"
             placeholder="Prénom"
+            required
             value={firstName}
-            onChange={(e) => SetFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
           />
 
           <label htmlFor="lastName"></label>
@@ -66,8 +61,9 @@ const Inscription = () => {
             name="lastName"
             id="lastName"
             placeholder="Nom"
+            required
             value={lastName}
-            onChange={(e) => SetLastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
           />
 
           <label htmlFor="email"></label>
