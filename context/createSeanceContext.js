@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const createSeanceContext = createContext();
 
 export function CreateSeanceContextProvider({ children }) {
-  const [seanceData, setSeanceData] = useState({});
+  const [seanceData, setSeanceData] = useState({ title: "" });
   const [media, setMedia] = useState({});
   const [completedStep, setCompletedStep] = useState(false);
   const [currentSeanceId, setCurrentSeanceId] = useState();

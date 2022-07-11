@@ -176,7 +176,26 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
-  .add_btn {
+  .btn {
     width: 50%;
+    height: 100px;
+  }
+
+  .create_title {
+    color: var(--main-bg-color);
+    position: initial;
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+  }
+
+  .editForm {
+    padding-top: 5vh;
+    margin: 0;
+    width: 60%;
+  }
+
+  .edit_label {
+    margin: 30px;
   }
 }

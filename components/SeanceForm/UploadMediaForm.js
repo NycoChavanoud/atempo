@@ -3,16 +3,12 @@ import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 import ReactPlayer from "react-player";
-import Recorder from "../Recorder/Recorder";
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
     useContext(createSeanceContext);
 
   const [urlSource, setUrlSource] = useState();
-  const [mediaDuration, setMediaDuration] = useState();
-
-  const fileReader = new FileReader();
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -21,19 +17,27 @@ export default function UploadMediaForm() {
 
   const handleFile = () => {
     setMedia(fileInput.current.files[0]);
-    fileReader.onload = () => setUrlSource(fileReader.result);
-    fileReader.readAsDataURL(media);
 
     setSeanceData({
       ...seanceData,
       media_name: fileInput.current.files[0].name,
-      media_duration: mediaDuration,
+    });
+  };
+
+  const handleMediaDuration = (duration) => {
+    setSeanceData({
+      ...seanceData,
+      media_duration: Math.ceil(duration),
     });
   };
 
   useEffect(() => {
+    const fileReader = new FileReader();
+    fileReader.onload = () => setUrlSource(fileReader.result);
+
     if (seanceData.media_name) setCompletedStep(true);
-  }, [seanceData]);
+    if (media.type) fileReader.readAsDataURL(media);
+  }, [seanceData, setCompletedStep, media]);
 
   return (
     <form className={styles.uploadFileContainer}>
@@ -81,9 +85,8 @@ export default function UploadMediaForm() {
         width="80%"
         height="20%"
         controls
-        onDuration={(d) => setMediaDuration(d)}
+        onDuration={handleMediaDuration}
       />
-      <Recorder />
     </form>
   );
 }

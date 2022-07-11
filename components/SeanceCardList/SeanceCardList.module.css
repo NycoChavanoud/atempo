@@ -1,8 +1,8 @@
 .list {
   display: grid;
   padding: 10px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 15px 15px;
   max-height: 60vh;
 }
@@ -12,4 +12,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.pagination_btn {
+  display: none;
+  color: #f98f83;
+}
+
+.page_stepper {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 60px 60px;
+  }
+
+  .pagination_btn {
+    display: flex;
+  }
+  .page_stepper {
+    justify-content: space-between;
+  }
 }

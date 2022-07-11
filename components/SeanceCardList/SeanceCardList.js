@@ -1,4 +1,6 @@
 import { MobileStepper } from "@mui/material";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import React, { useEffect, useState } from "react";
 import { getSeanceNumber, getSeancesList } from "../../model/seances";
 import SeanceCard from "../SeanceCard/SeanceCard";
@@ -94,7 +96,9 @@ export default function SeanceCardList() {
   };
 
   useEffect(() => {
-    getSeanceNumber().then((nb) => setPageNumber(Math.ceil(nb / 6) - 1));
+    getSeanceNumber().then((nb) =>
+      nb > 0 ? setPageNumber(Math.ceil(nb / 6)) : setPageNumber(1)
+    );
 
     getSeancesList(page, lastDate).then(setSeanceList);
   }, [page, lastDate]);
@@ -118,13 +122,48 @@ export default function SeanceCardList() {
             ))
           : null}
       </div>
-      <MobileStepper
-        variant="dots"
-        steps={pageNumber}
-        position="static"
-        activeStep={page - 1}
-        sx={{ maxWidth: 400, flexGrow: 1 }}
-      />
+
+      {seanceList?.length > 6 && (
+        <MobileStepper
+          variant="dots"
+          steps={pageNumber}
+          position="static"
+          activeStep={page - 1}
+          sx={{
+            width: "100%",
+            flexGrow: 1,
+          }}
+          className={styles.page_stepper}
+          nextButton={
+            <button
+              onClick={handleNextPage}
+              disabled={page - 1 > pageNumber}
+              className={styles.pagination_btn}
+            >
+              <ArrowCircleRightIcon
+                sx={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              />
+            </button>
+          }
+          backButton={
+            <button
+              className={styles.pagination_btn}
+              onClick={handlePreviousPage}
+              disabled={page - 1 === 0}
+            >
+              <ArrowCircleLeftIcon
+                sx={{
+                  width: "50px",
+                  height: "50px",
+                }}
+              />
+            </button>
+          }
+        />
+      )}
     </div>
   );
 }

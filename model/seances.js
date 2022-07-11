@@ -39,12 +39,18 @@ export async function createSeance(seanceData) {
   }
 }
 
-export function deleteSeance(id) {
+export async function deleteSeance(id) {
   const user = auth.currentUser;
 
   if (user) {
+    const data = await getSeanceData(id);
+    deleteSeanceMedia(data.media_url);
+
     const deletedRef = ref(db, `seances/${user.uid}/${id}`);
     remove(deletedRef);
+
+    const seance_nb = await getSeanceNumber();
+    update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
   }
 }
 

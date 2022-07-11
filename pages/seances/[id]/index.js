@@ -16,6 +16,7 @@ import {
 } from "../../../model/seances";
 import { Modal } from "@mui/material";
 import ReactPlayer from "react-player";
+import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
@@ -74,24 +75,32 @@ export default function Seance() {
 
   return (
     <Layout pageTitle={"Séance"}>
-      <WaveWhiteBurger />
-      <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh]">
+      <div className={styles.boxes}>
         <div>
-          <h1 className={`${styles.title} mb-8`}>Séance</h1>
-          <SeanceDetails seanceData={seanceData} />
-          <ReactPlayer url={urlSource} width="80%" height="20%" controls />
-          <AssociatedClients />
+          <DesktopMenu />
         </div>
+        <div>
+          <WaveWhiteBurger />
+          <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
+            <div>
+              <h1 className={`${styles.title} mb-8`}>Séance</h1>
+              <SeanceDetails seanceData={seanceData} />
+              <ReactPlayer url={urlSource} width="80%" height="20%" controls />
+              <AssociatedClients />
+            </div>
 
-        <div className="flex flex-row lexitem-center justify-center">
-          <Link href={`/seances/${id}/edit`}>
-            <button className={styles.btn}>Modifier</button>
-          </Link>
-          <button className={styles.btn} onClick={handleOpen}>
-            Supprimer
-          </button>
+            <div className="flex flex-row lexitem-center justify-center">
+              <Link href={`/seances/${id}/edit`}>
+                <button className={styles.btn}>Modifier</button>
+              </Link>
+              <button className={styles.btn} onClick={handleOpen}>
+                Supprimer
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
       <Modal open={open} onClose={handleClose}>
         <div
           style={{
