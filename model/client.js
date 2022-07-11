@@ -4,10 +4,8 @@ import {
   child,
   get,
   update,
-  startAt,
-  endAt,
   orderByChild,
-  limitToFirst,
+  query,
 } from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
@@ -16,12 +14,10 @@ const user = auth.currentUser;
 
 export async function createClient(clientData) {
   const id = uniqid();
-  const creation_date = Date.now();
   if (user) {
     await set(ref(db, `clients/${user.uid}/${id}`), {
       ...clientData,
       id,
-      creation_date,
     }).catch((error) => {
       console.log("Une erreur est survenue lors de l'enregistrement.") + error;
     });
@@ -47,25 +43,19 @@ export async function getClientData(clientId) {
 }
 
 export async function updateClient(clientId, data) {
-  const last_update = Date.now();
   if (user) {
     update(ref(db, `clients/${user.uid}/${clientId}`), {
       ...data,
-      last_update,
     });
   }
 }
 
-export async function getClientList(page = 0) {
+export async function getClientList() {
   if (user) {
     try {
-      const snapshot = await get(
-        child(ref(db), `clients/${user.uid}`),
-        orderByChild("creation_date"),
-        startAt(page * 9),
-        endAt(page * 9 + 9),
-        limitToFirst(9)
-      );
+      const querySearch = [orderByChild("lastname")];
+      const clientRef = ref(db, `clients/${user.uid}`);
+      const snapshot = await get(query(clientRef, ...querySearch));
       if (snapshot.exists()) {
         const showClient = Object.keys(snapshot.val()).map(
           (client) => snapshot.val()[client]

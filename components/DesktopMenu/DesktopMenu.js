@@ -95,7 +95,6 @@ export default function DesktopMenu() {
           background: white;
           color: var(--main-bg-color);
           border-radius: 80px 0 0 80px;
-          width: 25vw;
         }
       `}</style>
 
