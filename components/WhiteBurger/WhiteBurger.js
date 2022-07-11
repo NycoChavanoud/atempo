@@ -7,14 +7,16 @@ export default function WhiteBurger() {
     <div className={style.bg}>
       <div className={style.whiteBurger}>
         <Link href="/menu">
-          <Image
-            layout="responsive"
-            quality={100}
-            height={25}
-            width={30}
-            src="/images/grey_burger.svg"
-            alt="menu burger blanc"
-          />
+          <a>
+            <Image
+              layout="responsive"
+              quality={100}
+              height={25}
+              width={30}
+              src="/images/grey_burger.svg"
+              alt="menu burger blanc"
+            />
+          </a>
         </Link>
       </div>
     </div>

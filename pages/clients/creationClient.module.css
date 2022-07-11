@@ -4,17 +4,27 @@
   letter-spacing: 0.01em;
   font-weight: normal;
   margin-top: 0;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   font-size: 2rem;
 }
 
 .user {
   margin-left: 70%;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
   border: solid #ff9083;
 }
 
-@media screen and (min-width: 700px) {
+.probTitle {
+  color: white;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: normal;
+  padding-top: 6vh;
+  margin-bottom: 2%;
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 740px) {
   .title {
     font-size: 3rem;
   }

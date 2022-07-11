@@ -170,3 +170,13 @@
   margin: 10px;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  .add_btn {
+    width: 50%;
+  }
+}

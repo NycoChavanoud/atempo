@@ -4,22 +4,13 @@
 
 .greyBurger {
   position: absolute;
-  top: 4%;
-  left: 6%;
+  top: 5%;
+  left: 9%;
   width: 7%;
   cursor: pointer;
 }
 
-.whiteBurger {
-  filter: brightness(100);
-  position: absolute;
-  top: 4%;
-  left: 6%;
-  width: 7%;
-  cursor: pointer;
-}
-
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   .bg {
     display: none;
   }

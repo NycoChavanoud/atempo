@@ -1,21 +1,18 @@
-import { Avatar } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
 import styles from "../../styles/Seances.module.css";
-import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 
 export default function MySeances() {
   return (
     <Layout pageTitle={"Mes séances"}>
-      <WaveWhiteBurger />
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-row items-center justify-around">
-          <Avatar sx={{ width: 80, height: 80, margin: "10px" }} />
-          <h1 className={styles.title}>Mes séances</h1>
+      <div className={styles.boxes}>
+        <div>
+          <DesktopMenu />
         </div>
 
         <SeanceCardList />

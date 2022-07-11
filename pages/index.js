@@ -19,7 +19,7 @@ const Connexion = () => {
 
     try {
       await signIn(email, password);
-      router.push("/menu");
+      router.push("/dashboard");
     } catch (error) {
       setError(error.message);
     }
@@ -35,7 +35,7 @@ const Connexion = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/menu");
+      router.push("/dashboard");
     }
   }, [router, user]);
 

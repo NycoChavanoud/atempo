@@ -6,7 +6,7 @@ import UploadMediaForm from "../../components/SeanceForm/UploadMediaForm";
 import DescriptionForm from "../../components/SeanceForm/DescriptionForm";
 import ProgressStepper from "../../components/ProgressStepper/ProgressStepper";
 import { CreateSeanceContextProvider } from "../../context/createSeanceContext";
-import GreyBurger from "../../components/GreyBurger/GreyBurger";
+import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import AddClientsForm from "../../components/SeanceForm/AddClientsForm";
 import Summary from "../../components/SeanceForm/Summary";
 import { ToastContainer } from "react-toastify";
@@ -18,7 +18,7 @@ export default function CreateSeance() {
   return (
     <CreateSeanceContextProvider>
       <Layout pageTitle="Création d'une séance" shape={true}>
-        <GreyBurger grey={false} />
+        <WhiteBurger />
         <div>
           <div className={styles.createContainer}>
             <h1 className={styles.create_title}>Création de la séance</h1>

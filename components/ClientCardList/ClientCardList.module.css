@@ -1,0 +1,19 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px 40px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 740px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 40px 60px;
+  }
+}

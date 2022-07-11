@@ -21,7 +21,6 @@
   font-size: 100%;
   margin-top: 2vh;
   margin-bottom: 2vh;
-  font-family: "Roboto", sans-serif;
 }
 
 .links {
@@ -42,6 +41,7 @@
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
+  cursor: pointer;
 }
 
 .icon {
