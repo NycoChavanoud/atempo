@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { update, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
-// import ChangeAvatar from "../../components/ChangeAvatar/ChangeAvatar";
 import { BsPencil } from "react-icons/bs";
 import Avatar from "../../components/Avatar/Avatar";
 import { useAuth } from "../../context/authContext";
