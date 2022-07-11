@@ -1,4 +1,4 @@
-import style from "./adminClients.module.css";
+import style from "./adminSeances.module.css";
 import Layout from "../../components/Layout/Layout";
 import DesktopMenuAdmin from "../../components/DesktopMenuAdmin/DesktopMenuAdmin";
 import WaveAdminMenu from "../../components/WaveAdminMenu/WaveAdminMenu";
@@ -13,7 +13,11 @@ export default function index() {
         <div className={style.waveAdmin}>
           <WaveAdminMenu />
         </div>
-        <div className={style.seances}></div>
+        <div className={style.seances}>
+          <div className={style.title}>
+            <h2>Séances</h2>
+          </div>
+        </div>
       </div>
     </Layout>
   );

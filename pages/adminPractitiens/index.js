@@ -13,7 +13,11 @@ export default function index() {
         <div className={style.waveAdmin}>
           <WaveAdminMenu />
         </div>
-        <div className={style.practitioners}></div>
+        <div className={style.practitioners}>
+          <div className={style.title}>
+            <h2>Practitiens</h2>
+          </div>
+        </div>
       </div>
     </Layout>
   );
