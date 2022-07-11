@@ -5,10 +5,14 @@ import Image from "next/image";
 import { Avatar } from "@mui/material";
 import Layout from "../../components/Layout/Layout";
 import Account from "../../components/Account/Account";
+import DesktopMenuAdmin from "../../components/DesktopMenuAdmin/DesktopMenuAdmin";
 
 export default function admin() {
   return (
     <Layout pageTitle="Menu">
+      <div className={style.desktopMenu}>
+        <DesktopMenuAdmin />
+      </div>
       <WaveAdminCross />
 
       <div className={style.container}>

@@ -14,8 +14,10 @@ export default function Dashboard() {
         <div className={style.desktopMenu}>
           <DesktopMenuAdmin />
         </div>
+        <div className={style.waveAdmin}>
+          <WaveAdminMenu />
+        </div>
 
-        <WaveAdminMenu />
         <div className={style.mainTitle}>
           <h2 className={style.title}>Données globales</h2>
         </div>
