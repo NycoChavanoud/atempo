@@ -13,6 +13,7 @@ import { getAllPractitionersData } from "../../model/PractitionersData/practitio
 import { BsPencil } from "react-icons/bs";
 import Avatar from "../../components/Avatar/Avatar";
 import { useAuth } from "../../context/authContext";
+import { getDownloadURL } from "firebase/storage";
 
 export default function Profile() {
   const { user, upload } = useAuth();
@@ -49,12 +50,15 @@ export default function Profile() {
     try {
       const user = auth.currentUser;
       upload(avatar, user, setLoading);
+      getDownloadURL();
       update(ref(db, `practitioners/${user.uid}`), practitionersData);
+
       router.push("/profile");
     } catch (error) {
       setError("erreur");
     }
   };
+  console.log(avatar, photoURL);
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
