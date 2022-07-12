@@ -86,7 +86,7 @@ export default function Seance() {
               <h1 className={`${styles.title} mb-8`}>Séance</h1>
               <SeanceDetails seanceData={seanceData} />
               <ReactPlayer url={urlSource} width="75%" height="20%" controls />
-              <AssociatedClients />
+              <AssociatedClients clientList={seanceData.clientList} />
             </div>
 
             <div className="flex flex-row lexitem-center justify-center">
