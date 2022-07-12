@@ -13,11 +13,13 @@ export default function UploadMediaForm() {
   };
 
   const handleFile = () => {
-    setMedia(fileInput.current.files[0]);
-    setSeanceData({
-      ...seanceData,
-      media_name: fileInput.current.files[0].name,
-    });
+    if (fileInput.current.files[0].type.indexOf("audio") !== -1) {
+      setMedia(fileInput.current.files[0]);
+      setSeanceData({
+        ...seanceData,
+        media_name: fileInput.current.files[0].name,
+      });
+    } else console.log("autre type");
   };
 
   return (
@@ -30,6 +32,7 @@ export default function UploadMediaForm() {
           className={styles.input_file}
           ref={fileInput}
           onChange={handleFile}
+          accept=".mp3, .aac, .avi, .mpeg, .wav"
         />
       </label>
 
