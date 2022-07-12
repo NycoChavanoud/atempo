@@ -26,6 +26,7 @@ const Inscription = () => {
         lastname: lastName,
         firstname: firstName,
         id: user.uid,
+        seance_nb: 0,
         email,
       });
 
