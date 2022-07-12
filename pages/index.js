@@ -19,7 +19,7 @@ const Connexion = () => {
 
     try {
       await signIn(email, password);
-      router.push("/dashboard");
+      router.push("/profile");
     } catch (error) {
       setError(error.message);
     }
@@ -35,7 +35,7 @@ const Connexion = () => {
 
   useEffect(() => {
     if (user) {
-      router.push("/dashboard");
+      router.push("/profile");
     }
   }, [router, user]);
 
@@ -72,15 +72,6 @@ const Connexion = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button
-              data-cy="google"
-              type="button"
-              className={style.googleBtn}
-              onClick={handleGoogleSignInMobile}
-            >
-              Connectez vous avec Google
-            </button>
-
             {error && <p>{error}</p>}
 
             <button
@@ -89,6 +80,15 @@ const Connexion = () => {
               type="submit"
             >
               Connexion
+            </button>
+
+            <button
+              data-cy="google"
+              type="button"
+              className={style.googleBtn}
+              onClick={handleGoogleSignInMobile}
+            >
+              Connectez vous avec Google
             </button>
           </form>
           <div className={style.links}>

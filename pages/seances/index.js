@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
@@ -27,7 +27,7 @@ export default function MySeances() {
 
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-row items-center justify-around">
-              <Avatar sx={{ width: 80, height: 80, margin: "10px" }} />
+              <Avatar />
               <h1 className={styles.title}>Mes séances</h1>
             </div>
 

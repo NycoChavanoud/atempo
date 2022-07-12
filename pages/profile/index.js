@@ -1,4 +1,4 @@
-import { Avatar } from "@mui/material";
+/* eslint-disable @next/next/no-img-element */
 import Layout from "../../components/Layout/Layout";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Avatar from "../../components/Avatar/Avatar";
 
 export default function Profile() {
   const [practitionersData, setPractitionersData] = useState();
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);
-    console.log(practitionersData);
   }, []);
 
   return (
@@ -54,7 +54,7 @@ export default function Profile() {
             >
               <img
                 className={style.logo}
-                src="/img/fb.png"
+                src="/images/fb.png"
                 alt="logo facebook"
               />
               <p className={style.lnkString}>Facebook</p>
@@ -68,7 +68,7 @@ export default function Profile() {
             >
               <img
                 className={style.logo}
-                src="/img/insta.png"
+                src="/images/insta.png"
                 alt="logo instagram"
               />
               <p className={style.lnkString}>Instagram</p>

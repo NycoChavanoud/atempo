@@ -46,7 +46,7 @@
 
 @media screen and (min-width: 1024px) {
   .list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
   .input {
     width: 40%;

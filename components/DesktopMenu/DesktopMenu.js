@@ -1,20 +1,18 @@
 import style from "./DesktopMenu.module.css";
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Account from "../Account/Account";
+import Deconnexion from "../Deconnexion/Deconnexion";
 
 export default function DesktopMenu() {
   const router = useRouter();
   const currentRoute = router.pathname;
   return (
     <div className={style.bg}>
-      <Avatar
-        className={style.user}
-        alt="votre photo"
-        sx={{ width: 100, height: 100 }}
-      />
+      <div className={style.user}>
+        <Avatar />
+      </div>
 
       <div className={style.box}>
         <Link href="/dashboard">
@@ -98,7 +96,7 @@ export default function DesktopMenu() {
         }
       `}</style>
 
-      <Account />
+      <Deconnexion />
     </div>
   );
 }

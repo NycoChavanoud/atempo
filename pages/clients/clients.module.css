@@ -15,10 +15,6 @@
   text-underline-offset: -5px;
 }
 
-.user {
-  border: solid #ff9083;
-}
-
 .container {
   height: 80px;
 }
@@ -52,6 +48,9 @@
   .boxes {
     display: grid;
     grid-template-columns: 1fr 5fr;
+  }
+  .user {
+    display: none;
   }
   .btn {
     width: 50%;
