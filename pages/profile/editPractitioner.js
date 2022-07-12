@@ -41,7 +41,7 @@ export default function Profile() {
   return (
     <Layout pageTitle="Modifier votre profil">
       <div className={styles.purple}>
-        <button className="btnBack">
+        <button className={styles.btnBack}>
           <Link href="/profile">
             <img
               className={styles.imgBack}
@@ -171,7 +171,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="fb_url"
-                placeholder="Facebook"
+                placeholder="URL"
                 value={practitionersData?.fb_url}
                 onChange={(e) =>
                   setPractitionersData({
@@ -195,7 +195,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="insta_url"
-                placeholder="Instagram"
+                placeholder="URL"
                 value={practitionersData?.insta_url}
                 onChange={(e) =>
                   setPractitionersData({

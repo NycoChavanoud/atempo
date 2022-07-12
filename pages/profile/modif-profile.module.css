@@ -12,15 +12,17 @@
 
 .imgBack {
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: 25px;
+  width: 25px;
+  top: 20px;
+  left: 20px;
 }
 
 .title {
   display: flex;
   justify-content: center;
   color: #fff;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .circleIcon {
@@ -29,7 +31,7 @@
 }
 
 .form {
-  margin-top: 10%;
+  margin-top: 12%;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -121,10 +123,6 @@
 }
 
 @media screen and (min-height: 740px) {
-  .imgBack {
-    height: 40px;
-    width: 40px;
-  }
   .form {
     margin-top: 10%;
   }
@@ -143,9 +141,13 @@
 }
 
 @media screen and (min-height: 840px) {
+  .title {
+    font-size: 28px;
+  }
+
   .imgBack {
-    height: 45px;
-    width: 45px;
+    height: 30px;
+    width: 30px;
   }
 
   .form {
@@ -182,5 +184,92 @@
   .input {
     height: 45px;
     font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .imgBack {
+    height: 35px;
+    width: 35px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .form {
+    margin-top: 17%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 50px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  .form {
+    margin-top: 20%;
+  }
+
+  .field {
+    margin-bottom: 55px;
+  }
+
+  .input {
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .title {
+    margin-top: 2%;
+  }
+  .form {
+    margin-top: 5%;
+  }
+  .field {
+    margin-bottom: 40px;
+  }
+
+  .input {
+    width: 50%;
+    height: 40px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
   }
 }

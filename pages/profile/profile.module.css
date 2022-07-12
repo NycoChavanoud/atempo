@@ -157,4 +157,22 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
+
+  .title {
+    margin-bottom: 50px;
+    margin-top: 70px;
+  }
+
+  .title2 {
+    margin-bottom: 50px;
+    margin-top: 70px;
+  }
+
+  .contacts {
+    font-size: 22px;
+  }
+
+  .btn {
+    margin-top: 50px;
+  }
 }
