@@ -1,7 +1,7 @@
 .card {
   width: 150px;
-  max-height: 20vh;
-  min-height: 18vh;
+  max-height: 18vh;
+  min-height: 17vh;
 
   border-radius: 40px;
   display: flex;
@@ -50,4 +50,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .card {
+    width: 300px;
+    max-height: 24vh;
+    min-height: 22vh;
+  }
 }

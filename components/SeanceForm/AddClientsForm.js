@@ -4,10 +4,12 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 
 export default function AddClientsForm() {
-  const { seanceData, setSeanceData } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData, setCompletedStep } =
+    useContext(createSeanceContext);
   const [clientList] = useState([]);
 
   useEffect(() => {
+    setCompletedStep(true);
     setSeanceData({ ...seanceData, clientList: clientList });
   }, [clientList]);
 
