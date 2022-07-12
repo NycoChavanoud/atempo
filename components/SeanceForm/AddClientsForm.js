@@ -3,7 +3,6 @@ import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 import LinkedClientModal from "../LinkedClientModal/LinkedClientModal";
-import { getClientData } from "../../model/client";
 import ClientCard from "../ClientCard/ClientCard";
 
 export default function AddClientsForm() {
@@ -13,28 +12,18 @@ export default function AddClientsForm() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [allClientData, setAllClientData] = useState([]);
-
-  const getAllClientData = async () => {
-    for (const id of seanceData.clientList) {
-      const newData = await getClientData(id);
-      setAllClientData([...allClientData, newData]);
-    }
-  };
-
   useEffect(() => {
     if (seanceData.clientList?.length > 0) {
       setCompletedStep(true);
-      getAllClientData();
     }
-  }, [seanceData.clientList, setCompletedStep]);
+  }, [seanceData, setCompletedStep]);
 
   return (
     <div className={styles.AddClientsContainer}>
       <h2 className={styles.create_label}>
         Associer un ou plusieurs clients à la séances :{" "}
       </h2>
-      {allClientData.map((client) => (
+      {seanceData.clientList?.map((client) => (
         <ClientCard key={client.id} id={client.id} circle={true} />
       ))}
       <button

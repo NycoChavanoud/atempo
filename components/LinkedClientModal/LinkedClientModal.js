@@ -21,8 +21,7 @@ export default function LinkedClientModal({ open, onClose }) {
     e.preventDefault();
 
     if (selectedClientList.length > 0) {
-      const idList = selectedClientList.map((client) => client.id);
-      setSeanceData({ ...seanceData, clientList: idList });
+      setSeanceData({ ...seanceData, clientList: selectedClientList });
       onClose();
     }
   };

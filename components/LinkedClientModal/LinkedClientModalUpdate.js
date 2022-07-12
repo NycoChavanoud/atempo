@@ -16,7 +16,7 @@ import { Box } from "@mui/system";
 export default function LinkedClientModalUpdate({
   open,
   onClose,
-  selectedClients,
+  setLoadingData,
 }) {
   const [clientList, setClientList] = useState([]);
   const [selectedClientList, setSelectedClientList] = useState([]);
@@ -24,11 +24,10 @@ export default function LinkedClientModalUpdate({
   const router = useRouter();
   const { id } = router.query;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const idList = selectedClientList.map((client) => client.id);
-    updateSeance(id, { clientList: idList });
+  const handleSubmit = () => {
+    updateSeance(id, { clientList: selectedClientList });
+    setLoadingData(true);
+    onClose();
   };
 
   const handleChange = (e) => {
@@ -42,7 +41,6 @@ export default function LinkedClientModalUpdate({
 
   useEffect(() => {
     getClientList().then(setClientList);
-    setSelectedClientList(selectedClients);
   }, [id]);
   return (
     <div>
