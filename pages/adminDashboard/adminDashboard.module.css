@@ -3,15 +3,26 @@
   justify-content: center;
   font-size: 1.5em;
   color: #412e68;
+  margin-top: 30px;
 }
 
-.canvas {
-  display: flex;
+.donut {
+  margin-top: 70px;
 }
 
 @media screen and (min-width: 1024px) {
-  .mainContainer {
+  .boxes {
     display: grid;
     grid-template-columns: 1fr 3fr;
+  }
+
+  .mainTitle {
+    margin-top: 40px;
+  }
+
+  .donut {
+    width: 65vh;
+    margin-top: 100px;
+    margin-left: 200px;
   }
 }

@@ -82,9 +82,9 @@ export default function DesktopMenuAdmin() {
                 height={40}
                 width={40}
                 src="/images/profil.png"
-                alt="icones profils d'utilisateurs"
+                alt="practitiens"
               />
-              <a>Profil</a>
+              <a>Practitiens</a>
             </div>
           </div>
         </Link>
