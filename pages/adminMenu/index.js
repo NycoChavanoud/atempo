@@ -5,7 +5,7 @@ import Image from "next/image";
 import Layout from "../../components/Layout/Layout";
 import Deconnexion from "../../components/Deconnexion/Deconnexion";
 
-export default function admin() {
+export default function AdminMenu() {
   return (
     <Layout pageTitle="Menu">
       <WaveAdminCross />

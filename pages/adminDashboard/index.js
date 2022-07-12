@@ -7,7 +7,7 @@ import DesktopMenuAdmin from "../../components/DesktopMenuAdmin/DesktopMenuAdmin
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function Dashboard() {
+export default function DashboardAdmin() {
   return (
     <Layout pageTitle="Tableau de bord admin">
       <div className={style.boxes}>

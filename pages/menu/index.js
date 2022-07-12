@@ -6,8 +6,12 @@ import Avatar from "../../components/Avatar/Avatar";
 import Layout from "../../components/Layout/Layout";
 import Deconnexion from "../../components/Deconnexion/Deconnexion";
 import DisplayCurrentUser from "../../components/DisplayCurrentUser/DisplayCurrentUser";
+import { useAuth } from "../../context/authContext";
 
 export default function MobileMenu() {
+  const { user } = useAuth();
+  const admin = user.admin;
+
   return (
     <Layout pageTitle="Menu">
       <WhiteCross />
@@ -113,6 +117,31 @@ export default function MobileMenu() {
             </div>
           </div>
         </Link>
+        {user === admin ? (
+          <Link href="/admin">
+            <div className={style.link}>
+              <div className={style.icon}>
+                <Image
+                  priority
+                  height={40}
+                  width={40}
+                  src="/images/ZENEGO-logo.jpg"
+                  alt="icone admin Zenego"
+                />
+              </div>
+              <a className={style.text}>Admin</a>
+              <div className={style.arrow}>
+                <Image
+                  priority
+                  height={20}
+                  width={10}
+                  src="/images/right_arrow.png"
+                  alt="flèche vers la droite"
+                />
+              </div>
+            </div>
+          </Link>
+        ) : null}
       </div>
       <Deconnexion />
     </Layout>

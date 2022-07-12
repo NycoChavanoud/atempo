@@ -3,7 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import DesktopMenuAdmin from "../../components/DesktopMenuAdmin/DesktopMenuAdmin";
 import WaveAdminMenu from "../../components/WaveAdminMenu/WaveAdminMenu";
 
-export default function index() {
+export default function AdminPractitiens() {
   return (
     <Layout pageTitle="Tableau de bord admin">
       <div className={style.boxes}>
