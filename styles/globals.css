@@ -34,3 +34,7 @@ a {
 button {
   cursor: pointer;
 }
+
+.MuiMobileStepper-dotActive {
+  background-color: var(--color1);
+}

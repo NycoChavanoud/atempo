@@ -1,9 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
 
 export default function MainDataForm() {
-  const { seanceData, setSeanceData } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData, setCompletedStep } =
+    useContext(createSeanceContext);
+
+  useEffect(() => {
+    if (seanceData.title && seanceData.thematic && seanceData.method)
+      setCompletedStep(true);
+    else setCompletedStep(false);
+  }, [seanceData.method, seanceData.thematic, seanceData.title]);
 
   return (
     <form className={styles.MainDataContainer}>
@@ -36,7 +43,7 @@ export default function MainDataForm() {
             setSeanceData({ ...seanceData, method: e.target.value })
           }
         >
-          <option value="">--Choisissez une méthode--</option>
+          <option value={null}>--Choisissez une méthode--</option>
           <option value="sophrologie">Sophrologie</option>
           <option value="meditation">Méditation</option>
           <option value="yoga">Yoga</option>
@@ -70,7 +77,7 @@ export default function MainDataForm() {
             setSeanceData({ ...seanceData, thematic: e.target.value })
           }
         >
-          <option value="">--Choisissez un théme--</option>
+          <option value={null}>--Choisissez un théme--</option>
           <option value="decouverte">Découverte</option>
           <option value="sommeil">Sommeil</option>
           <option value="energie">Energie</option>

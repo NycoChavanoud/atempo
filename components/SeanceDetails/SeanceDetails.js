@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getMethod, getSeanceData, getThematic } from "../../model/seances";
+import { getMethod, getThematic } from "../../model/seances";
 import styles from "./SeanceDetails.module.css";
 
-export default function SessionDetails({ id }) {
-  const [seanceData, setSeanceData] = useState({});
+export default function SessionDetails({ seanceData }) {
   const [thematic, setThematic] = useState({ name: "-" });
   const [method, setMethod] = useState({ name: "-" });
 
   useEffect(() => {
-    getSeanceData(id).then(setSeanceData);
     if (seanceData) {
       getThematic(seanceData.thematic).then(setThematic);
       getMethod(seanceData.method).then(setMethod);
     }
-  }, [id, seanceData, thematic, method]);
+  }, [seanceData]);
 
   if (seanceData && method && thematic) {
     return (

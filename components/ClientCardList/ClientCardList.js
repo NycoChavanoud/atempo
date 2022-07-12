@@ -22,9 +22,9 @@ export default function ClientCardList() {
       </div>
       <div className={style.center}>
         <div className={style.list}>
-          {clientList.map((c) => (
-            <ClientCard key={c.id} id={c.id} />
-          ))}
+          {clientList
+            ? clientList.map((c) => <ClientCard key={c.id} id={c.id} />)
+            : null}
         </div>
       </div>
     </>

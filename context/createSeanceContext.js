@@ -3,12 +3,10 @@ import { createContext, useState } from "react";
 const createSeanceContext = createContext();
 
 export function CreateSeanceContextProvider({ children }) {
-  const [seanceData, setSeanceData] = useState({});
+  const [seanceData, setSeanceData] = useState({ title: "" });
   const [media, setMedia] = useState({});
+  const [completedStep, setCompletedStep] = useState(false);
   const [currentSeanceId, setCurrentSeanceId] = useState();
-  const [submitStep, setSubmitStep] = useState(() => {
-    setSeanceData({ ...seanceData });
-  });
 
   return (
     <createSeanceContext.Provider
@@ -17,10 +15,10 @@ export function CreateSeanceContextProvider({ children }) {
         setCurrentSeanceId,
         seanceData,
         setSeanceData,
-        submitStep,
-        setSubmitStep,
         media,
         setMedia,
+        completedStep,
+        setCompletedStep,
       }}
     >
       {children}
