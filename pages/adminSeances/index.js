@@ -17,6 +17,9 @@ export default function index() {
             <div className={style.title}>
               <h2>Séances</h2>
             </div>
+            <div className={style.nombreSeances}>
+              <h3>Nombre de séances : {}</h3>
+            </div>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Avatar from "../../components/Avatar/Avatar";
 
 export default function Profile() {
-  const [practitionersData, setPractitionersData] = useState();
+  const [practitionersData, setPractitionersData] = useState("");
 
   useEffect(() => {
     getAllPractitionersData().then(setPractitionersData);

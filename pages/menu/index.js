@@ -117,7 +117,7 @@ export default function MobileMenu() {
             </div>
           </div>
         </Link>
-        {user === admin ? (
+        {user.uid === admin ? (
           <Link href="/admin">
             <div className={style.link}>
               <div className={style.icon}>
