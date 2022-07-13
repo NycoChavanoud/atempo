@@ -53,4 +53,12 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
+
+  .avatar {
+    display: none;
+  }
+
+  .sections {
+    height: 55vh;
+  }
 }
