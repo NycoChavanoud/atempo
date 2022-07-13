@@ -10,6 +10,7 @@ import {
 } from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
+import { getSeanceData, updateSeance } from "./seances";
 
 const user = auth.currentUser;
 
@@ -26,10 +27,25 @@ export async function createClient(clientData) {
   }
 }
 
-export function deleteClient(id) {
+export async function deleteClient(id) {
   if (user) {
+    const data = await getClientData(id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
     remove(deleteRef);
+
+    for (const seanceID of data.seanceList) {
+      const seanceData = await getSeanceData(seanceID);
+
+      if (seanceData) {
+        const index = seanceData.clientList?.indexOf(id);
+        if (seanceData.clientList && seanceData?.clientList?.includes(id)) {
+          delete seanceData.clientList[index];
+          updateSeance(seanceID, {
+            clientList: seanceData.clientList,
+          });
+        }
+      }
+    }
   }
 }
 

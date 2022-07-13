@@ -19,6 +19,11 @@
   color: #f98f83;
 }
 
+.emptyList {
+  grid-column: 1/3;
+  text-align: center;
+}
+
 .page_stepper {
   display: flex;
   justify-content: center;

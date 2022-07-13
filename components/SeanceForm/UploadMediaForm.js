@@ -3,6 +3,18 @@ import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
 import ReactPlayer from "react-player";
+import { toast } from "react-toastify";
+
+const warn = (m) =>
+  toast.warn(m, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
 export default function UploadMediaForm() {
   const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
@@ -16,12 +28,16 @@ export default function UploadMediaForm() {
   };
 
   const handleFile = () => {
-    setMedia(fileInput.current.files[0]);
-
-    setSeanceData({
-      ...seanceData,
-      media_name: fileInput.current.files[0].name,
-    });
+    if (
+      fileInput.current.files[0].type.indexOf("audio") !== -1 ||
+      fileInput.current.files[0].type.indexOf("video") !== -1
+    ) {
+      setMedia(fileInput.current.files[0]);
+      setSeanceData({
+        ...seanceData,
+        media_name: fileInput.current.files[0].name,
+      });
+    } else warn("Veuillez fournir un fichier audio ou vidéo au format valide");
   };
 
   const handleMediaDuration = (duration) => {
@@ -49,6 +65,7 @@ export default function UploadMediaForm() {
           className={styles.input_file}
           ref={fileInput}
           onChange={handleFile}
+          accept=".mp3, .aac, .avi, .mpeg, .wav"
         />
       </label>
 
@@ -82,7 +99,7 @@ export default function UploadMediaForm() {
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
       <ReactPlayer
         url={urlSource}
-        width="80%"
+        width="100%"
         height="20%"
         controls
         onDuration={handleMediaDuration}

@@ -6,6 +6,17 @@ export default function SessionDetails({ seanceData }) {
   const [thematic, setThematic] = useState({ name: "-" });
   const [method, setMethod] = useState({ name: "-" });
 
+  const getDate = (timestamp) => {
+    const date = new Date(timestamp);
+    let day = date.getDate();
+    if (day < 10) day = `0${day}`;
+    let month = date.getMonth();
+    if (month < 10) month = `0${month}`;
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
   useEffect(() => {
     if (seanceData) {
       getThematic(seanceData.thematic).then(setThematic);
@@ -15,11 +26,12 @@ export default function SessionDetails({ seanceData }) {
 
   if (seanceData && method && thematic) {
     return (
-      <div className="mb-5">
-        <h2 className={`${styles.h2} mb-5`}>{seanceData.title}</h2>
-        <h3>
+      <div className="mb-2">
+        <h2 className={`${styles.h2} mb-2`}>
+          {" "}
           {method.name} - {thematic.name}
-        </h3>
+        </h2>
+        <h3>créée le {getDate(seanceData.creation_date)}</h3>
 
         <p className={styles.p}>{seanceData.description}</p>
       </div>
