@@ -2,13 +2,21 @@ import { Avatar } from "@mui/material";
 import StatsClients from "../../components/Stats-clients";
 import StatsSeances from "../../components/Stats-seance";
 import style from "./dashboard.module.css";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import Layout from "../../components/Layout/Layout";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 
 export default function Dashboard() {
   const [tabToShow, setTabToShow] = useState("clients");
+
+  const [practitionersData, setPractitionersData] = useState();
+
+  useEffect(() => {
+    getAllPractitionersData().then(setPractitionersData);
+    console.log(practitionersData);
+  }, []);
 
   return (
     <Layout pageTitle="Tableau de bord">
@@ -21,7 +29,7 @@ export default function Dashboard() {
 
           <div className={style.user}>
             <Avatar className={style.avatar} />
-            <h2 className={style.name}>Hello Prénom</h2>
+            <h2 className={style.name}>Hello {practitionersData?.firstname}</h2>
           </div>
 
           <div className={style.container}>

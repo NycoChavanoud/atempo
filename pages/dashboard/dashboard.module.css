@@ -54,6 +54,10 @@
     grid-template-columns: 1fr 3fr;
   }
 
+  .user {
+    margin-top: 40px;
+  }
+
   .avatar {
     display: none;
   }
