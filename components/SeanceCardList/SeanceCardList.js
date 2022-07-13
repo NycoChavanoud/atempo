@@ -49,10 +49,10 @@ export default function SeanceCardList() {
     if (beingTouched) {
       const touchX = clientX;
       let deltaX = touchX - touchStartX + originalOffset;
-      if (deltaX < -200) {
+      if (deltaX < -100) {
         handleNextPage();
         deltaX = 0;
-      } else if (deltaX > 200) {
+      } else if (deltaX > 100) {
         handlePreviousPage();
         deltaX = 0;
       } else deltaX = 0;
