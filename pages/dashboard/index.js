@@ -28,7 +28,9 @@ export default function Dashboard() {
             <WaveWhiteBurger />
 
             <div className={style.user}>
-              <Avatar className={style.avatar} />
+              <div className={style.avatar}>
+                <Avatar />
+              </div>
               <h2
                 className={style.name}
               >{`${pratitionerData.firstname} ${pratitionerData.lastname}`}</h2>
