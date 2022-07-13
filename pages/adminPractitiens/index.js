@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { getAllPractitionersDataAdmin } from "../../model/adminData";
 
 export default function AdminPractitiens() {
-  const [practitionersData, setPractitionersData] = useState([]);
+  const [practitionersData, setPractitionersData] = useState("");
 
   useEffect(() => {
     getAllPractitionersDataAdmin().then(setPractitionersData);
@@ -26,7 +26,7 @@ export default function AdminPractitiens() {
               <h2>Practitiens</h2>
             </div>
             <div className={style.nombrePractitiens}>
-              <h3>Nombre de Practitiens : {practitionersData.length}</h3>
+              <h3>Nombre de Practitiens : {practitionersData.practitioners}</h3>
             </div>
           </div>
         </div>

@@ -27,3 +27,29 @@ export async function practitionersData() {
     }
   );
 }
+
+export async function getAllClientsDataAdmin() {
+  try {
+    const snapshot = await get(child(ref(db), `/practitioners`));
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getAllSeancesDataAdmin() {
+  try {
+    const snapshot = await get(child(ref(db), `/practitioners`));
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
