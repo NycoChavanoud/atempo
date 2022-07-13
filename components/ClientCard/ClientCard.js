@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getClientData, getThematic } from "../../model/client";
 
 export default function ClientCard({ id }) {
-  const [clientData, setClientData] = useState();
+  const [clientData, setClientData] = useState("");
   const [thematic, setThematic] = useState({ color: "#C5C5DB" });
 
   useEffect(() => {
