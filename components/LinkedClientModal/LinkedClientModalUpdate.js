@@ -107,7 +107,7 @@ export default function LinkedClientModalUpdate({
                 </Box>
               )}
             >
-              {clientList.map((client) => (
+              {clientList?.map((client) => (
                 <MenuItem key={client.id} value={client}>
                   {`${client.firstname} ${client.lastname}`}
                 </MenuItem>

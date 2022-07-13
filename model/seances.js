@@ -18,6 +18,7 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
+import { getClientData, updateClient } from "./client";
 
 export async function createSeance(seanceData) {
   const user = auth.currentUser;
@@ -51,6 +52,18 @@ export async function deleteSeance(id) {
 
     const seance_nb = await getSeanceNumber();
     update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
+
+    for (const client of data.clientList) {
+      const clientData = getClientData(client.id);
+
+      const index = clientData?.seanceList?.indexOf(id);
+      if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
+        delete clientData.seanceList[index];
+        updateClient(client.id, {
+          seanceList: clientData.seanceList,
+        });
+      }
+    }
   }
 }
 

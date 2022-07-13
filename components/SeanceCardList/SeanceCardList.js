@@ -116,11 +116,19 @@ export default function SeanceCardList() {
         onMouseUp={() => handleMouseUp()}
         onMouseLeave={() => handleMouseLeave()}
       >
-        {seanceList
-          ? seanceList.map((s) => (
-              <SeanceCard key={s.id} id={s.id}></SeanceCard>
-            ))
-          : null}
+        {seanceList ? (
+          seanceList.map((s) => <SeanceCard key={s.id} id={s.id}></SeanceCard>)
+        ) : (
+          <p
+            className={styles.emptyList}
+            style={{
+              color: "var(--main-bg-color)",
+              padding: "20px",
+            }}
+          >
+            Il semblerait que vous n&apos;ayez pas encore enregistré de séances.
+          </p>
+        )}
       </div>
 
       {seanceList?.length > 6 && (

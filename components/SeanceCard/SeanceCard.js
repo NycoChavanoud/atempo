@@ -13,9 +13,9 @@ export default function SeanceCard({ id, circle = false }) {
   const loadData = async () => {
     const newData = await getSeanceData(id);
     setSeanceData(newData);
-    const newMethod = await getMethod(newData.method);
+    const newMethod = await getMethod(newData?.method);
     setMethod(newMethod);
-    const newThematic = await getThematic(newData.thematic);
+    const newThematic = await getThematic(newData?.thematic);
     setThematic(newThematic);
     setIsLoading(false);
   };

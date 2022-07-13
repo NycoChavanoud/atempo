@@ -28,7 +28,13 @@ export default function ClientCardList() {
         <SearchIcon />
       </div>
       {!clientList && (
-        <p style={{ textAlign: "center", color: "var(--main-bg-color)" }}>
+        <p
+          style={{
+            textAlign: "center",
+            color: "var(--main-bg-color)",
+            padding: "20px",
+          }}
+        >
           Il semblerait que vous n'ayez pas encore enregistré de client.
         </p>
       )}
