@@ -8,7 +8,7 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
-import { getClientList } from "../../model/client";
+import { getClientData, getClientList, updateClient } from "../../model/client";
 import { updateSeance } from "../../model/seances";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
@@ -24,8 +24,20 @@ export default function LinkedClientModalUpdate({
   const router = useRouter();
   const { id } = router.query;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     updateSeance(id, { clientList: selectedClientList });
+
+    const clientIDList = clientList.map((client) => client.id);
+
+    for (const clientID of clientIDList) {
+      const clientData = await getClientData(clientID);
+      let newSeanceList = [id];
+      if (clientData.seanceList) newSeanceList = [...clientData.seanceList, id];
+      updateClient(clientID, {
+        seanceList: newSeanceList,
+      });
+    }
+
     setLoadingData(true);
     onClose();
   };

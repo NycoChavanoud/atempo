@@ -6,14 +6,17 @@ import { useRouter } from "next/router";
 import { getClientData } from "../../../model/client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SeanceCard from "../../../components/SeanceCard/SeanceCard";
 
 export default function Client() {
   const router = useRouter();
   const { id } = router.query;
   const [clientData, setClientData] = useState({});
+
   useEffect(() => {
     getClientData(id).then(setClientData);
-  }, [id, clientData]);
+  }, [id]);
+
   if (clientData) {
     return (
       <Layout pageTitle={"Client"}>
@@ -25,7 +28,16 @@ export default function Client() {
         </div>
         <ClientDetails id={id} />
         <p className={style.text}>{clientData.motif}</p>
-        <h2 className={style.title}>Séances écoutées</h2>
+        <div className="flex flex-col justify-center items-center">
+          <h2 className={style.title}>Séance.s associée.s : </h2>
+          <div className="flex flex-row overflow-x-auto">
+            {clientData.seanceList?.map((seanceID) => (
+              <SeanceCard key={seanceID} id={seanceID} circle={true} />
+            ))}
+          </div>
+          {!clientData.seanceList && <p>Pas de séance associée</p>}
+        </div>
+
         <div className={style.box}>
           <Link href={`/clients/${id}/edit`}>
             <button className={style.btn}>Modifier la fiche</button>
