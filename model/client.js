@@ -1,4 +1,13 @@
-import { ref, set, child, get, update } from "firebase/database";
+import {
+  ref,
+  set,
+  child,
+  get,
+  update,
+  orderByChild,
+  query,
+  remove,
+} from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 
@@ -14,6 +23,13 @@ export async function createClient(clientData) {
       console.log("Une erreur est survenue lors de l'enregistrement.") + error;
     });
     return id;
+  }
+}
+
+export function deleteClient(id) {
+  if (user) {
+    const deleteRef = ref(db, `clients/${user.uid}/${id}`);
+    remove(deleteRef);
   }
 }
 
@@ -45,12 +61,14 @@ export async function updateClient(clientId, data) {
 export async function getClientList() {
   if (user) {
     try {
-      const snapshot = await get(child(ref(db), `clients/${user.uid}`));
+      const querySearch = [orderByChild("lastname")];
+      const clientRef = ref(db, `clients/${user.uid}`);
+      const snapshot = await get(query(clientRef, ...querySearch));
       if (snapshot.exists()) {
         const showClient = Object.keys(snapshot.val()).map(
           (client) => snapshot.val()[client]
         );
-        return showClient;
+        return showClient.reverse();
       } else {
         console.log("No data available");
       }

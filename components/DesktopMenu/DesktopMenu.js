@@ -3,13 +3,16 @@ import Avatar from "../../components/Avatar/Avatar";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Deconnexion from "../Deconnexion/Deconnexion";
 
 export default function DesktopMenu() {
   const router = useRouter();
   const currentRoute = router.pathname;
   return (
     <div className={style.bg}>
-      <Avatar />
+      <div className={style.user}>
+        <Avatar />
+      </div>
 
       <div className={style.box}>
         <Link href="/dashboard">
@@ -90,9 +93,10 @@ export default function DesktopMenu() {
           background: white;
           color: var(--main-bg-color);
           border-radius: 80px 0 0 80px;
-          width: 25vw;
         }
       `}</style>
+
+      <Deconnexion />
     </div>
   );
 }

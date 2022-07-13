@@ -2,16 +2,10 @@
   color: white;
   text-align: center;
   letter-spacing: 0.01em;
-  font-weight: normal;
+  font-weight: bold;
   margin-top: 0;
-  margin-bottom: 2%;
+  margin-bottom: 25%;
   font-size: 2rem;
-}
-
-.user {
-  margin-left: 70%;
-  margin-bottom: 2vh;
-  border: solid #ff9083;
 }
 
 .probTitle {
@@ -27,5 +21,18 @@
 @media screen and (min-width: 740px) {
   .title {
     font-size: 3rem;
+    margin-bottom: 8%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+  }
+  .title {
+    color: var(--main-bg-color);
+    margin-top: 5vh;
+    margin-bottom: 5vh;
   }
 }
