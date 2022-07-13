@@ -14,7 +14,7 @@ export default function WaveWhiteBurger() {
         src="/images/header.jpg"
         alt="vagues violettes"
       />
-      <Link href="/menu">
+      <Link href="/adminMenu">
         <a className={style.whiteBurger}>
           <Image
             layout="responsive"
