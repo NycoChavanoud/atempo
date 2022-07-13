@@ -6,6 +6,7 @@ import {
   update,
   orderByChild,
   query,
+  remove,
 } from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
@@ -22,6 +23,13 @@ export async function createClient(clientData) {
       console.log("Une erreur est survenue lors de l'enregistrement.") + error;
     });
     return id;
+  }
+}
+
+export function deleteClient(id) {
+  if (user) {
+    const deleteRef = ref(db, `clients/${user.uid}/${id}`);
+    remove(deleteRef);
   }
 }
 

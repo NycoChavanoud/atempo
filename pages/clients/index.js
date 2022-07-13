@@ -12,7 +12,7 @@ export default function Clients() {
   return (
     <Layout pageTitle="Mes Clients">
       <div className={style.boxes}>
-        <div>
+        <div className={style.bg}>
           <DesktopMenu />
         </div>
         <div>
