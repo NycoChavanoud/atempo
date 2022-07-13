@@ -25,18 +25,42 @@ export default function LinkedClientModalUpdate({
   const router = useRouter();
   const { id } = router.query;
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     updateSeance(id, { clientList: selectedClientList });
 
-    const clientIDList = clientList.map((client) => client.id);
+    const selectedClientIDList = selectedClientList.map((client) => client.id);
+    const currentClientIDList = clientList.map((client) => client.id);
 
-    for (const clientID of clientIDList) {
+    const removeClientIDList = [];
+
+    currentClientIDList.forEach((clientID) => {
+      if (!selectedClientIDList.includes(clientID))
+        removeClientIDList.push(clientID);
+    });
+
+    for (const clientID of selectedClientIDList) {
       const clientData = await getClientData(clientID);
       let newSeanceList = [id];
-      if (clientData.seanceList) newSeanceList = [...clientData.seanceList, id];
+      if (clientData.seanceList && !clientData.seanceList?.includes(id))
+        newSeanceList = [...clientData.seanceList, id];
+      if (clientData.seanceList && clientData.seanceList?.includes(id))
+        newSeanceList = clientData.seanceList;
       updateClient(clientID, {
         seanceList: newSeanceList,
       });
+    }
+
+    for (const clientID of removeClientIDList) {
+      const clientData = await getClientData(clientID);
+      const index = clientData.seanceList.indexOf(id);
+      if (clientData.seanceList && clientData.seanceList?.includes(id)) {
+        delete clientData.seanceList[index];
+        updateClient(clientID, {
+          seanceList: clientData.seanceList,
+        });
+      }
     }
 
     setLoadingData(true);
