@@ -23,9 +23,12 @@ export default function AddClientsForm() {
       <h2 className={styles.create_label}>
         Associer un ou plusieurs clients à la séances :{" "}
       </h2>
-      {seanceData.clientList?.map((client) => (
-        <ClientCard key={client.id} id={client.id} circle={true} />
-      ))}
+      <div className="flex flex-row justify-center flex-wrap gap-1">
+        {seanceData.clientList?.map((client) => (
+          <ClientCard key={client.id} id={client.id} circle={true} />
+        ))}
+      </div>
+
       <button
         className="flex justify-center items-center m-auto"
         onClick={handleOpen}

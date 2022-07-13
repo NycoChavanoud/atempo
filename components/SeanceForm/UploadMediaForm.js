@@ -99,7 +99,7 @@ export default function UploadMediaForm() {
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
       <ReactPlayer
         url={urlSource}
-        width="80%"
+        width="100%"
         height="20%"
         controls
         onDuration={handleMediaDuration}

@@ -11,6 +11,7 @@ import {
 import { getClientList } from "../../model/client";
 import { Box } from "@mui/system";
 import createSeanceContext from "../../context/createSeanceContext";
+import styles from "./LinkedClientModal.module.css";
 
 export default function LinkedClientModal({ open, onClose }) {
   const [clientList, setClientList] = useState([]);
@@ -41,59 +42,53 @@ export default function LinkedClientModal({ open, onClose }) {
   return (
     <div>
       <Modal open={open} onClose={onClose}>
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "80%",
-            height: "250px",
-            backgroundColor: "white",
-            boxShadow: 50,
-            borderRadius: "20px",
-            textAlign: "justify",
-            padding: 25,
-          }}
-        >
-          {" "}
-          <form onSubmit={handleSubmit}>
-            <h2>Sélectionner les patients à associer :</h2>
-            <FormControl>
-              <InputLabel id="demo-multiple-chip-label">
-                Patient.es associé.es
-              </InputLabel>
-              <Select
-                labelId="demo-multiple-chip-label"
-                id="demo-multiple-chip"
-                multiple
-                value={selectedClientList}
-                onChange={handleChange}
-                input={<OutlinedInput label="Patient.es associé.es" />}
-                renderValue={(selected) => (
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                    {selected.map((client) => (
-                      <Chip
-                        key={client.id}
-                        label={`${client.firstname} ${client.lastname}`}
-                      />
-                    ))}
-                  </Box>
-                )}
-              >
-                {clientList?.map((client) => (
-                  <MenuItem key={client.id} value={client}>
-                    {`${client.firstname} ${client.lastname}`}
-                  </MenuItem>
-                ))}
-              </Select>{" "}
-              <div>
-                <button type="submit">Confirmer</button>
-                <button onClick={onClose}>Annuler</button>
-              </div>
-            </FormControl>{" "}
-          </form>
-        </div>
+        <form onSubmit={handleSubmit} className={styles.modale}>
+          <h2>Sélectionner les patients à associer :</h2>
+          <FormControl>
+            <InputLabel id="demo-multiple-chip-label">
+              Patient.es associé.es
+            </InputLabel>
+            <Select
+              className={styles.select}
+              labelId="demo-multiple-chip-label"
+              id="demo-multiple-chip"
+              multiple
+              value={selectedClientList}
+              onChange={handleChange}
+              input={<OutlinedInput label="Patient.es associé.es" />}
+              renderValue={(selected) => (
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                  {selected.map((client) => (
+                    <Chip
+                      key={client.id}
+                      label={`${client.firstname} ${client.lastname}`}
+                    />
+                  ))}
+                </Box>
+              )}
+            >
+              {clientList?.map((client) => (
+                <MenuItem key={client.id} value={client}>
+                  {`${client.firstname} ${client.lastname}`}
+                </MenuItem>
+              ))}
+            </Select>{" "}
+          </FormControl>{" "}
+          <div className={styles.btn_container}>
+            <button
+              className={`${styles.btn} ${styles.confirmation}`}
+              type="submit"
+            >
+              Confirmer
+            </button>
+            <button
+              className={`${styles.btn} ${styles.annulation}`}
+              onClick={onClose}
+            >
+              Annuler
+            </button>
+          </div>
+        </form>
       </Modal>
     </div>
   );
