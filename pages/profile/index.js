@@ -28,7 +28,9 @@ export default function Profile() {
           <h1 className={style.title}>Votre profil</h1>
 
           <div className={style.user}>
-            <Avatar className={style.avatar} />
+            <div className={style.avatar}>
+              <Avatar />
+            </div>
             <div>
               <h3 className={style.name}>{practitionersData?.firstname}</h3>
               <h3 className={style.name}>{practitionersData?.lastname}</h3>

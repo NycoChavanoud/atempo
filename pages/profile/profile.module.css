@@ -151,6 +151,9 @@
     grid-template-columns: 1fr 5fr;
   }
 
+  .avatar {
+    display: none;
+  }
   .title {
     margin-bottom: 50px;
     margin-top: 70px;

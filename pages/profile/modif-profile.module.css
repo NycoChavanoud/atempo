@@ -12,8 +12,8 @@
 
 .imgBack {
   position: relative;
-  height: 25px;
-  width: 25px;
+  height: 35px;
+  width: 35px;
   top: 20px;
   left: 20px;
 }
@@ -37,7 +37,7 @@
 }
 
 .form {
-  margin-top: 12%;
+  margin-top: 7%;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -130,10 +130,6 @@
 
 @media screen and (min-height: 740px) {
   .form {
-    margin-top: 10%;
-  }
-
-  .title {
     margin-top: 5%;
   }
 
@@ -152,12 +148,12 @@
   }
 
   .imgBack {
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 45px;
   }
 
   .form {
-    margin-top: 20%;
+    margin-top: 14%;
   }
 
   .field {
@@ -180,7 +176,7 @@
 
 @media screen and (min-height: 900px) {
   .form {
-    margin-top: 25%;
+    margin-top: 20%;
   }
 
   .field {
@@ -195,8 +191,8 @@
 
 @media screen and (min-height: 1000px) {
   .imgBack {
-    height: 35px;
-    width: 35px;
+    height: 65px;
+    width: 65px;
   }
 
   .title {
@@ -204,7 +200,7 @@
   }
 
   .form {
-    margin-top: 17%;
+    margin-top: 14%;
   }
 
   .field {
@@ -229,7 +225,7 @@
 
 @media screen and (min-height: 1100px) {
   .form {
-    margin-top: 20%;
+    margin-top: 17%;
   }
 
   .field {
@@ -253,9 +249,6 @@
 }
 
 @media screen and (min-width: 1100px) {
-  .title {
-    margin-top: 2%;
-  }
   .form {
     margin-top: 5%;
   }
