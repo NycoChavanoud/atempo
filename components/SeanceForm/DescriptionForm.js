@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
 
 export default function DescriptionForm() {
-  const { seanceData, setSeanceData } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData, setCompletedStep } =
+    useContext(createSeanceContext);
+
+  useEffect(() => {
+    setCompletedStep(true);
+  }, []);
 
   return (
     <form className={styles.DescriptionContainer}>

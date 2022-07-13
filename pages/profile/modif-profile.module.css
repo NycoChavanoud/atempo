@@ -1,6 +1,6 @@
 .purple {
   background-color: var(--main-bg-color);
-  background-image: url("/bg_shape_white.png");
+  background-image: url("/images/bg_shape_white.png");
   background-repeat: no-repeat;
   z-index: -1;
   background-size: 94% 83%;
@@ -25,9 +25,15 @@
   font-size: 24px;
 }
 
-.circleIcon {
+.userAvatar {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.pencil {
+  margin-top: 70px;
+  color: #ff9083;
 }
 
 .form {
