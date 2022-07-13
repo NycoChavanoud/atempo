@@ -1,40 +1,46 @@
-import { Avatar } from "@mui/material";
+import Avatar from "../../components/Avatar/Avatar";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "../../components/Layout/Layout";
 import SeanceCardList from "../../components/SeanceCardList/SeanceCardList";
-import { getSeancesList } from "../../model/seances.js";
 import styles from "../../styles/Seances.module.css";
-import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
+import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 
 export default function MySeances() {
-  const [seanceList, setSeanceList] = useState([]);
-
-  useEffect(() => {
-    getSeancesList().then(setSeanceList);
-  }, []);
-
   return (
     <Layout pageTitle={"Mes séances"}>
       <div className={styles.boxes}>
         <div>
           <DesktopMenu />
         </div>
-
         <div>
           <WaveWhiteBurger />
-
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center lg:mt-10">
             <div className="flex flex-row items-center justify-around">
-              <Avatar sx={{ width: 80, height: 80, margin: "10px" }} />
+              <div className="xl:hidden">
+                <Avatar />
+              </div>
+
               <h1 className={styles.title}>Mes séances</h1>
             </div>
 
-            <SeanceCardList seanceList={seanceList} />
-
+            <SeanceCardList />
+            <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
             <Link href="/seances/create">
-              <button className={styles.add_btn}>Ajouter une séance</button>
+              <button className={styles.btn}>Ajouter une séance</button>
             </Link>
           </div>
         </div>

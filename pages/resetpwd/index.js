@@ -47,6 +47,7 @@ export default function PasswordReset() {
               name="passwordReset"
               id="passwordReset"
               placeholder="Votre e-mail"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />

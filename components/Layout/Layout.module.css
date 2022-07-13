@@ -6,7 +6,7 @@
 
 .shape_layout {
   background-color: #412e68;
-  background-image: url(/bg_shape_white.png);
+  background-image: url(/images/bg_shape_white.png);
   background-repeat: no-repeat;
   background-size: 95vw 90vh;
   width: 100vw;
@@ -17,4 +17,15 @@
 .header {
   width: 100%;
   height: 100px;
+}
+
+@media screen and (min-width: 1024px) {
+  .shape_layout {
+    background-color: initial;
+    background-image: initial;
+    background-repeat: initial;
+    background-size: initial;
+    height: initial;
+    background-position: initial;
+  }
 }

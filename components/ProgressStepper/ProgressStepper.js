@@ -11,12 +11,40 @@ import {
   updateSeance,
 } from "../../model/seances";
 import Link from "next/link";
+import { toast } from "react-toastify";
+import { getClientData, updateClient } from "../../model/client";
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
-  const { seanceData, setSeanceData, media } = useContext(createSeanceContext);
+  const { seanceData, setSeanceData, media, completedStep, setCompletedStep } =
+    useContext(createSeanceContext);
+
+  const warn = (m) =>
+    toast.warn(m, {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+  const success = () =>
+    toast.success("La séance a été enregistré", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (completedStep) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setCompletedStep(false);
+    } else warn("Veuillez remplir tous les champs");
   };
 
   const handleBack = () => {
@@ -24,15 +52,28 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
   };
 
   const submitSeanceForm = async () => {
-    const id = await createSeance(seanceData);
+    const seanceID = await createSeance(seanceData);
     const media_url = await postSeanceMedia(
       media,
-      id,
+      seanceID,
       `${seanceData.title}-${seanceData.media_name}`
     );
-    updateSeance(id, {
+    updateSeance(seanceID, {
       media_url,
     });
+
+    const clientIDList = seanceData.clientList.map((client) => client.id);
+
+    for (const clientID of clientIDList) {
+      const clientData = await getClientData(clientID);
+      let newSeanceList = [seanceID];
+      if (clientData.seanceList)
+        newSeanceList = [...clientData.seanceList, seanceID];
+      updateClient(clientID, {
+        seanceList: newSeanceList,
+      });
+    }
+    success();
     setSeanceData({});
   };
 

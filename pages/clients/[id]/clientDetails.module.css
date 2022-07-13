@@ -21,6 +21,7 @@
 .text {
   text-align: center;
   margin-top: 5vh;
+  padding: 20px;
 }
 
 .title {
@@ -47,6 +48,39 @@
   margin-top: 5vh;
 }
 
+.modal {
+  background-color: white;
+  border: solid 2px var(--main-bg-color);
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  width: 80%;
+  margin: 50% auto 0 auto;
+}
+
+.span {
+  color: red;
+  font-weight: bolder;
+}
+
+.modalInput {
+  border: solid 2px var(--main-bg-color);
+  border-radius: 80px;
+  text-align: center;
+  margin-top: 2vh;
+  width: 50vw;
+}
+
+.modalInput::placeholder {
+  color: var(--main-bg-color);
+  opacity: 0.7;
+}
+
+.modalBtn {
+  display: flex;
+  justify-content: space-around;
+}
+
 @media screen and (min-width: 740px) {
   .backBtn {
     height: 100px;
@@ -62,5 +96,15 @@
   .btn {
     height: 70px;
     font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .boxes {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+  }
+  .modal {
+    margin-top: 20%;
   }
 }

@@ -21,7 +21,9 @@ export default function Summary() {
           <h3 className={styles.summaryDataTitle}>Clients associés : </h3>
           {seanceData.clientList ? (
             seanceData.clientList.map((client) => (
-              <div key={client}>{client}</div>
+              <div
+                key={client.id}
+              >{`${client.firstname} ${client.lastname}`}</div>
             ))
           ) : (
             <p>Aucun client associé</p>

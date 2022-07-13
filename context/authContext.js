@@ -8,10 +8,15 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithRedirect,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../config/firebaseConfig";
 
 const UserContext = createContext();
+
+// ======================AUTHENTIFICATION===================== //
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -51,6 +56,22 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  // ====================STORAGE===================== //
+
+  const upload = async (file, user, setLoading) => {
+    const fileRef = ref(storage, `avatars/${user.uid}`);
+
+    setLoading(true);
+
+    // eslint-disable-next-line no-unused-vars
+    const snapshot = await uploadBytes(fileRef, file);
+    const photoURL = await getDownloadURL(fileRef);
+
+    updateProfile(user, { photoURL });
+
+    setLoading(false);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -61,6 +82,7 @@ export const AuthContextProvider = ({ children }) => {
         resetPwd,
         googleSignInMobile,
         googleSignInDesktop,
+        upload,
       }}
     >
       {children}

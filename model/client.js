@@ -1,6 +1,16 @@
-import { ref, set, child, get, update } from "firebase/database";
+import {
+  ref,
+  set,
+  child,
+  get,
+  update,
+  orderByChild,
+  query,
+  remove,
+} from "firebase/database";
 import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
+import { getSeanceData, updateSeance } from "./seances";
 
 const user = auth.currentUser;
 
@@ -14,6 +24,28 @@ export async function createClient(clientData) {
       console.log("Une erreur est survenue lors de l'enregistrement.") + error;
     });
     return id;
+  }
+}
+
+export async function deleteClient(id) {
+  if (user) {
+    const data = await getClientData(id);
+    const deleteRef = ref(db, `clients/${user.uid}/${id}`);
+    remove(deleteRef);
+
+    for (const seanceID of data.seanceList) {
+      const seanceData = await getSeanceData(seanceID);
+
+      if (seanceData) {
+        const index = seanceData.clientList?.indexOf(id);
+        if (seanceData.clientList && seanceData?.clientList?.includes(id)) {
+          delete seanceData.clientList[index];
+          updateSeance(seanceID, {
+            clientList: seanceData.clientList,
+          });
+        }
+      }
+    }
   }
 }
 
@@ -45,12 +77,14 @@ export async function updateClient(clientId, data) {
 export async function getClientList() {
   if (user) {
     try {
-      const snapshot = await get(child(ref(db), `clients/${user.uid}`));
+      const querySearch = [orderByChild("lastname")];
+      const clientRef = ref(db, `clients/${user.uid}`);
+      const snapshot = await get(query(clientRef, ...querySearch));
       if (snapshot.exists()) {
         const showClient = Object.keys(snapshot.val()).map(
           (client) => snapshot.val()[client]
         );
-        return showClient;
+        return showClient.reverse();
       } else {
         console.log("No data available");
       }

@@ -55,7 +55,7 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
       <div className={style.container}>
         <button
           onClick={handleBack}
-          style={{ position: "absolute", left: "45px" }}
+          style={{ position: "absolute", left: "18%" }}
         >
           <ArrowCircleLeftIcon
             style={{ width: "10vw", height: "10vh", color: "var(--color1)" }}
