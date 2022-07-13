@@ -14,10 +14,7 @@ export default function AssociatedClients({ clientList, setLoadingData }) {
     <div className="mt-5 mb-5">
       <h2 className={styles.h2}>Clients associés</h2>
 
-      <div className="flex flex-row">
-        {clientList?.map((client) => (
-          <ClientCard key={client.id} id={client.id} circle={true} />
-        ))}
+      <div className="flex flex-row justify-center items-center ">
         <button onClick={handleOpen}>
           <AddCircleIcon
             sx={{
@@ -27,7 +24,12 @@ export default function AssociatedClients({ clientList, setLoadingData }) {
               margin: "10px",
             }}
           />
-        </button>
+        </button>{" "}
+        <div className="flex flex-row overflow-x-auto justify-between">
+          {clientList?.map((client) => (
+            <ClientCard key={client.id} id={client.id} circle={true} />
+          ))}
+        </div>
       </div>
       <LinkedClientModalUpdate
         open={open}

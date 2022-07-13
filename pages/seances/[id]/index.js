@@ -83,9 +83,9 @@ export default function Seance() {
           <WaveWhiteBurger />
           <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
             <div>
-              <h1 className={`${styles.title} mb-8`}>Séance</h1>
+              <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
               <SeanceDetails seanceData={seanceData} />
-              <ReactPlayer url={urlSource} width="75%" height="20%" controls />
+              <ReactPlayer url={urlSource} width="100%" height="20%" controls />
               <AssociatedClients
                 clientList={seanceData.clientList}
                 setLoadingData={setLoadingData}
