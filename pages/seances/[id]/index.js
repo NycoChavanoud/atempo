@@ -126,7 +126,7 @@ export default function Seance() {
           >
             <p>
               Afin de confirmer la suppression, veuillez rentrer
-              &quot;supprimer&quot; dans le champs suivant :
+              &quot;supprimer&quot; dans le champ suivant:
             </p>
             <input
               value={deleteInput}

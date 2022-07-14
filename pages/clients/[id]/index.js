@@ -8,20 +8,53 @@ import { getClientData, deleteClient } from "../../../model/client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import SeanceCard from "../../../components/SeanceCard/SeanceCard";
+import { Modal } from "@mui/material";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Client() {
+  const [open, setOpen] = useState(false);
+  const [deleteInput, setDeleteInput] = useState("");
   const router = useRouter();
   const { id } = router.query;
   const [clientData, setClientData] = useState({});
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     getClientData(id).then(setClientData);
   }, [id]);
 
+  const warn = () => {
+    toast.warn({
+      position: "bottom-center",
+      autoClose: 2000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
+  const success = () => {
+    toast.success("Client supprimé.", {
+      position: "bottom-center",
+      autoClose: 2000,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+  };
+
   const handleDelete = (e) => {
     e.preventDefault();
-    deleteClient(id);
-    router.push("/clients");
+    if (deleteInput === "SUPPRIMER") {
+      deleteClient(id);
+      success();
+      router.push("/clients");
+    } else {
+      warn();
+    }
   };
 
   if (clientData) {
@@ -54,12 +87,42 @@ export default function Client() {
               <Link href={`/clients/${id}/edit`}>
                 <button className={style.btn}>Modifier la fiche</button>
               </Link>
-              <button onClick={handleDelete} className={style.btn}>
+              <button onClick={handleOpen} className={style.btn}>
                 Supprimer
               </button>
             </div>
           </div>
         </div>
+        <Modal open={open} onClose={handleClose}>
+          <form onSubmit={handleDelete} className={style.modal}>
+            <p>
+              Afin de confirmer la suppression <br /> veuillez rentrer{" "}
+              <span className={style.span}>SUPPRIMER</span> dans le champ
+              suivant:
+            </p>
+            <input
+              placeholder="tapez ici"
+              required
+              value={deleteInput}
+              onChange={(e) => {
+                setDeleteInput(e.target.value);
+              }}
+              className={style.modalInput}
+            />
+            <div className={style.modalBtn}>
+              <button
+                type="submit"
+                className={style.btn}
+                style={{ backgroundColor: "red" }}
+              >
+                Confirmer
+              </button>
+              <button className={style.btn} onClick={handleClose}>
+                Annuler
+              </button>
+            </div>
+          </form>
+        </Modal>
       </Layout>
     );
   }

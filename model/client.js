@@ -12,10 +12,10 @@ import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 import { getSeanceData, updateSeance } from "./seances";
 
-const user = auth.currentUser;
-
 export async function createClient(clientData) {
+  const user = auth.currentUser;
   const id = uniqid();
+
   if (user) {
     await set(ref(db, `clients/${user.uid}/${id}`), {
       ...clientData,
@@ -28,6 +28,8 @@ export async function createClient(clientData) {
 }
 
 export async function deleteClient(id) {
+  const user = auth.currentUser;
+
   if (user) {
     const data = await getClientData(id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
@@ -50,6 +52,8 @@ export async function deleteClient(id) {
 }
 
 export async function getClientData(clientId) {
+  const user = auth.currentUser;
+
   if (user) {
     try {
       const snapshot = await get(
@@ -67,6 +71,8 @@ export async function getClientData(clientId) {
 }
 
 export async function updateClient(clientId, data) {
+  const user = auth.currentUser;
+
   if (user) {
     update(ref(db, `clients/${user.uid}/${clientId}`), {
       ...data,
@@ -75,6 +81,8 @@ export async function updateClient(clientId, data) {
 }
 
 export async function getClientList() {
+  const user = auth.currentUser;
+
   if (user) {
     try {
       const querySearch = [orderByChild("lastname")];
