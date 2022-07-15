@@ -64,10 +64,10 @@ export const AuthContextProvider = ({ children }) => {
     setLoading(true);
 
     // eslint-disable-next-line no-unused-vars
-    const snapshot = await uploadBytes(fileRef, file);
+    await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
 
-    updateProfile(user, { photoURL });
+    await updateProfile(user, { photoURL: photoURL });
 
     setLoading(false);
   };

@@ -49,10 +49,10 @@ export default function SeanceCardList() {
     if (beingTouched) {
       const touchX = clientX;
       let deltaX = touchX - touchStartX + originalOffset;
-      if (deltaX < -200) {
+      if (deltaX < -100) {
         handleNextPage();
         deltaX = 0;
-      } else if (deltaX > 200) {
+      } else if (deltaX > 100) {
         handlePreviousPage();
         deltaX = 0;
       } else deltaX = 0;
@@ -97,7 +97,7 @@ export default function SeanceCardList() {
 
   useEffect(() => {
     getSeanceNumber().then((nb) =>
-      nb > 0 ? setPageNumber(Math.ceil(nb / 6)) : setPageNumber(1)
+      nb > 0 ? setPageNumber(Math.ceil(nb / 6) - 1) : setPageNumber(1)
     );
 
     getSeancesList(page, lastDate).then(setSeanceList);
@@ -131,7 +131,7 @@ export default function SeanceCardList() {
         )}
       </div>
 
-      {seanceList?.length > 6 && (
+      {pageNumber > 1 && (
         <MobileStepper
           variant="dots"
           steps={pageNumber}
@@ -140,6 +140,7 @@ export default function SeanceCardList() {
           sx={{
             width: "100%",
             flexGrow: 1,
+            justifyContent: "center",
           }}
           className={styles.page_stepper}
           nextButton={
