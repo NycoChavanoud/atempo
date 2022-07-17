@@ -24,11 +24,6 @@
   text-align: center;
 }
 
-.page_stepper {
-  display: flex;
-  justify-content: center;
-}
-
 @media screen and (min-width: 1024px) {
   .list {
     grid-template-columns: repeat(3, 1fr);

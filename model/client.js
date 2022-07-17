@@ -14,6 +14,7 @@ import { getSeanceData, updateSeance } from "./seances";
 
 export async function createClient(clientData) {
   const user = auth.currentUser;
+
   const id = uniqid();
 
   if (user) {
