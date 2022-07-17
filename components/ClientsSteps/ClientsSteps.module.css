@@ -4,17 +4,15 @@
 }
 
 .btn {
-  width: 150px;
+  width: 40vw;
   height: 50px;
   background-color: var(--color1);
   border-radius: 20px;
   padding: 20px;
   color: white;
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1em;
   letter-spacing: 1px;
-  position: absolute;
-  bottom: 6vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,29 +22,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+}
+
+.arrowBtn {
+  position: absolute;
+  left: 10vw;
+  color: var(--color1);
 }
 
 .smtBtn {
-  width: 150px;
+  width: 40vw;
   height: 50px;
   background: var(--color1);
   color: white;
   border-radius: 20px;
   font-weight: bolder;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 @media screen and (min-width: 740px) {
   .btn {
     width: 180px;
     height: 65px;
-  }
-  .container {
-    margin-top: 10vh;
+    font-size: 1.5em;
   }
   .smtBtn {
     width: 180px;
+    height: 90px;
+    font-size: 1.5em;
+    border-radius: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .arrowBtn {
+    left: 35vw;
+  }
+  .smtBtn {
     height: 65px;
+    border-radius: 20px;
   }
 }

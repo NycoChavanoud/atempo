@@ -5,6 +5,7 @@
   width: 70%;
   height: 50vh;
   margin-left: 15%;
+  margin-bottom: 15vh;
 }
 
 .input::placeholder {
@@ -33,7 +34,7 @@
   width: 80%;
   height: 300px;
   border-radius: 20px;
-  margin: 20px 0 20px 0;
+  margin: 10vh 0 5vh 0;
   font-size: 1em;
   padding: 20px;
   color: var(--main-bg-color);
@@ -49,6 +50,7 @@
 @media screen and (min-width: 740px) {
   .form {
     height: 60vh;
+    margin-bottom: 5vh;
   }
   .input {
     font-size: 1.5em;
@@ -58,5 +60,17 @@
   .motif {
     height: 500px;
     margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .form {
+    margin-bottom: 12vh;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .form {
+    margin-bottom: 35vh;
   }
 }

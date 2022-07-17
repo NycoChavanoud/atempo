@@ -80,7 +80,9 @@ export default function Client() {
                   <SeanceCard key={seanceID} id={seanceID} circle={true} />
                 ))}
               </div>
-              {!clientData.seanceList && <p>Pas de séance associée</p>}
+              {!clientData.seanceList && (
+                <p className={style.noSeance}>Pas de séance associée</p>
+              )}
             </div>
 
             <div className={style.box}>

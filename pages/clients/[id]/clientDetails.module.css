@@ -91,7 +91,10 @@
     font-size: 22px;
   }
   .title {
-    font-size: 30px;
+    font-size: 2em;
+  }
+  .noSeance {
+    font-size: 1.5em;
   }
   .btn {
     height: 70px;

@@ -116,7 +116,7 @@ export default function ClientForm() {
         <option value="enfants">Enfant</option>
         <option value="emotion">Emotion</option>
         <option value="mental">Mental</option>
-        <option value="autre">Autre</option>
+        <option value="autre">Précisez</option>
       </select>
       {clientData.thematic === "autre" && (
         <input

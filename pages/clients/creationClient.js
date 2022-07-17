@@ -29,8 +29,8 @@ export default function CreateClient() {
               activeStep={activeStep}
               setActiveStep={setActiveStep}
             />
-            <ToastContainer />
           </div>
+          <ToastContainer />
         </div>
       </Layout>
     </CreateClientContextProvider>

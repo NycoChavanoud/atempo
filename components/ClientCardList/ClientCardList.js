@@ -23,7 +23,7 @@ export default function ClientCardList() {
             setSearchTerm(e.target.value);
           }}
           id="lastname"
-          placeholder="Rechercher par nom."
+          placeholder="Rechercher par nom"
         />
         <SearchIcon />
       </div>
