@@ -171,10 +171,6 @@
   cursor: pointer;
 }
 
-.boxes {
-  position: relative;
-}
-
 @media screen and (min-width: 1024px) {
   .boxes {
     display: grid;
