@@ -65,7 +65,7 @@ export default function UploadMediaForm() {
           className={styles.input_file}
           ref={fileInput}
           onChange={handleFile}
-          accept=".mp3, .aac, .avi, .mpeg, .wav"
+          accept="audio/*, video/*"
         />
       </label>
 

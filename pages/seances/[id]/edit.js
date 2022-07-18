@@ -4,18 +4,45 @@ import styles from "../../../styles/Seances.module.css";
 import { useRouter } from "next/router";
 import {
   getSeanceData,
+  getSeanceMediaUrl,
   updateSeance,
   updateSeanceMedia,
 } from "../../../model/seances";
 import EditIcon from "@mui/icons-material/Edit";
 import WhiteBurger from "../../../components/WhiteBurger/WhiteBurger";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
 import { useAuth } from "../../../context/authContext";
+import ReactPlayer from "react-player";
+
+const warn = (m) =>
+  toast.warn(m, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+const success = () =>
+  toast.success("Les modifications ont été enregistrées", {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
 
 export default function EditSeance() {
   const [seanceData, setSeanceData] = useState();
   const [media, setMedia] = useState();
+  const [urlSource, setUrlSource] = useState();
+  const [loadingData, setLoadingData] = useState(true);
+
   const router = useRouter();
   const { id } = router.query;
   const { user } = useAuth();
@@ -26,25 +53,23 @@ export default function EditSeance() {
   };
 
   const handleFile = () => {
-    setSeanceData({
-      ...seanceData,
-      media_name: fileInput.current.files[0].name,
-    });
-    setMedia(fileInput.current.files[0]);
+    if (
+      fileInput.current.files[0].type.indexOf("audio") !== -1 ||
+      fileInput.current.files[0].type.indexOf("video") !== -1
+    ) {
+      setSeanceData({
+        ...seanceData,
+        media_name: fileInput.current.files[0].name,
+      });
+      setMedia(fileInput.current.files[0]);
+    } else warn("Veuillez fournir un fichier audio ou vidéo au format valide");
   };
 
-  const success = () =>
-    toast.success("Les modifications ont été enregistrées", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
   const submitChange = () => {
+    if (seanceData.thematic !== "autre" && seanceData.method !== "autre") {
+      delete seanceData.other_method;
+      delete seanceData.other_thematic;
+    }
     updateSeance(user, id, {
       ...seanceData,
     });
@@ -65,8 +90,10 @@ export default function EditSeance() {
   };
 
   useEffect(() => {
-    getSeanceData(user, id).then(setSeanceData);
-  }, [id, user]);
+    if (loadingData)
+      getSeanceData(user, id).then(setSeanceData).then(setLoadingData(false));
+    else getSeanceMediaUrl(seanceData?.media_url).then(setUrlSource);
+  }, [id, loadingData, user]);
 
   return (
     seanceData && (
@@ -190,32 +217,56 @@ export default function EditSeance() {
                   />
                 )}
               </label>
-              <label className={styles.edit_media} htmlFor="mp3_url">
-                {" "}
-                <p className="w-[80%]">
-                  {seanceData.media_name || "Aucun média associé"}
-                </p>
-                <input
-                  type="file"
-                  className="hidden"
-                  ref={fileInput}
-                  onChange={handleFile}
+              <div className="flex flex-col justify-between">
+                <label className={styles.edit_media} htmlFor="mp3_url">
+                  {" "}
+                  <p className="w-[80%]">
+                    {seanceData.media_name || "Aucun média associé"}
+                  </p>
+                  <input
+                    type="file"
+                    className="hidden"
+                    ref={fileInput}
+                    onChange={handleFile}
+                    accept="audio/*, video/*"
+                  />
+                  <button
+                    onClick={selectFile}
+                    type="button"
+                    className={styles.edit_btn}
+                  >
+                    <EditIcon />
+                  </button>
+                </label>
+                <ReactPlayer
+                  url={urlSource}
+                  width="100%"
+                  height="20vh"
+                  controls
                 />
-                <button
-                  onClick={selectFile}
-                  type="button"
-                  className={styles.edit_btn}
-                >
-                  <EditIcon />
+              </div>
+              <div className="flex flex-row item-center justify-center w-[100%]">
+                <button className={styles.btn} onClick={submitChange}>
+                  Soumettre
                 </button>
-              </label>
-
-              <button className={styles.submitEdit_btn} onClick={submitChange}>
-                Soumettre
-              </button>
+                <button className={styles.btn} onClick={() => router.back()}>
+                  Annuler
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </Layout>
     )
   );

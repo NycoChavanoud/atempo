@@ -94,7 +94,7 @@ export default function Seance() {
               />
             </div>
 
-            <div className="flex flex-row lexitem-center justify-center">
+            <div className="flex flex-row item-center justify-center">
               <Link href={`/seances/${id}/edit`}>
                 <button className={styles.btn}>Modifier</button>
               </Link>
