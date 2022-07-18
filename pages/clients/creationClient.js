@@ -16,7 +16,7 @@ export default function CreateClient() {
     <CreateClientContextProvider>
       <Layout pageTitle="Création d'un client" shape>
         <div className={style.boxes}>
-          <div>
+          <div className={style.bg}>
             <DesktopMenu />
           </div>
           <div>

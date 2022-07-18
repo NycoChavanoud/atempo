@@ -29,9 +29,12 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
   }
+  .bg {
+    background-color: var(--main-bg-color);
+  }
   .title {
     color: var(--main-bg-color);
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 0;
   }
 }

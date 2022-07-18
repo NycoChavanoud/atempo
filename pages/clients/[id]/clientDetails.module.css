@@ -107,7 +107,14 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
   }
+  .btn {
+    width: 30%;
+  }
   .modal {
     margin-top: 20%;
+    width: 50%;
+  }
+  .modalInput {
+    width: 20vw;
   }
 }
