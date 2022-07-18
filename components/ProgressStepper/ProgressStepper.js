@@ -13,10 +13,12 @@ import {
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { getClientData, updateClient } from "../../model/client";
+import { useAuth } from "../../context/authContext";
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
   const { seanceData, setSeanceData, media, completedStep, setCompletedStep } =
     useContext(createSeanceContext);
+  const { user } = useAuth();
 
   const warn = (m) =>
     toast.warn(m, {
@@ -52,24 +54,25 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
   };
 
   const submitSeanceForm = async () => {
-    const seanceID = await createSeance(seanceData);
+    const seanceID = await createSeance(user, seanceData);
     const media_url = await postSeanceMedia(
+      user,
       media,
       seanceID,
       `${seanceData.title}-${seanceData.media_name}`
     );
-    updateSeance(seanceID, {
+    updateSeance(user, seanceID, {
       media_url,
     });
 
-    const clientIDList = seanceData.clientList.map((client) => client.id);
+    const clientIDList = seanceData.clientList?.map((client) => client.id);
 
     for (const clientID of clientIDList) {
-      const clientData = await getClientData(clientID);
+      const clientData = await getClientData(user, clientID);
       let newSeanceList = [seanceID];
       if (clientData.seanceList)
         newSeanceList = [...clientData.seanceList, seanceID];
-      updateClient(clientID, {
+      updateClient(user, clientID, {
         seanceList: newSeanceList,
       });
     }

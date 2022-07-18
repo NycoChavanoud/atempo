@@ -13,10 +13,8 @@ export default function AddClientsForm() {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    if (seanceData.clientList?.length > 0) {
-      setCompletedStep(true);
-    }
-  }, [seanceData, setCompletedStep]);
+    setCompletedStep(true);
+  }, []);
 
   return (
     <div className={styles.AddClientsContainer}>

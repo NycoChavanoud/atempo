@@ -7,10 +7,24 @@ export default function MainDataForm() {
     useContext(createSeanceContext);
 
   useEffect(() => {
-    if (seanceData.title && seanceData.thematic && seanceData.method)
-      setCompletedStep(true);
-    else setCompletedStep(false);
-  }, [seanceData.method, seanceData.thematic, seanceData.title]);
+    if (seanceData.title && seanceData.thematic && seanceData.method) {
+      if (seanceData.thematic !== "autre" && seanceData.method !== "autre") {
+        delete seanceData.other_method;
+        delete seanceData.other_thematic;
+        setCompletedStep(true);
+      } else if (seanceData.method === "autre" && seanceData.other_method)
+        setCompletedStep(true);
+      else if (seanceData.thematic === "autre" && seanceData.other_thematic)
+        setCompletedStep(true);
+    } else setCompletedStep(false);
+  }, [
+    seanceData.method,
+    seanceData.other_method,
+    seanceData.other_thematic,
+    seanceData.thematic,
+    seanceData.title,
+    setCompletedStep,
+  ]);
 
   return (
     <form className={styles.MainDataContainer}>

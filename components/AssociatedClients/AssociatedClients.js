@@ -12,7 +12,7 @@ export default function AssociatedClients({ clientList, setLoadingData }) {
 
   return (
     <div className="mt-5 mb-5">
-      <h2 className={styles.h2}>Clients associés</h2>
+      <h2 className={styles.h2}>Patient.es associé.es :</h2>
 
       <div className="flex flex-row justify-center items-center ">
         <button onClick={handleOpen}>

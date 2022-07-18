@@ -17,6 +17,7 @@ import {
 import { Modal } from "@mui/material";
 import ReactPlayer from "react-player";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
+import { useAuth } from "../../../context/authContext";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,7 @@ export default function Seance() {
   const [seanceData, setSeanceData] = useState({});
   const [urlSource, setUrlSource] = useState();
   const [loadingData, setLoadingData] = useState(true);
+  const { user } = useAuth();
 
   const router = useRouter();
   const { id } = router.query;
@@ -58,7 +60,7 @@ export default function Seance() {
 
     if (deleteInput === "supprimer") {
       deleteSeanceMedia(seanceData.media_url);
-      deleteSeance(id);
+      deleteSeance(user, id);
       success();
       router.push("/seances");
     } else
@@ -69,9 +71,9 @@ export default function Seance() {
 
   useEffect(() => {
     if (loadingData)
-      getSeanceData(id).then(setSeanceData).then(setLoadingData(false));
+      getSeanceData(user, id).then(setSeanceData).then(setLoadingData(false));
     else getSeanceMediaUrl(seanceData.media_url).then(setUrlSource);
-  }, [id, loadingData, seanceData.media_url]);
+  }, [id, loadingData, user]);
 
   return (
     <Layout pageTitle={"Séance"}>

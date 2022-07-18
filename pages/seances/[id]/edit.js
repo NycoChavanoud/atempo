@@ -11,12 +11,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import WhiteBurger from "../../../components/WhiteBurger/WhiteBurger";
 import { toast } from "react-toastify";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
+import { useAuth } from "../../../context/authContext";
 
 export default function EditSeance() {
   const [seanceData, setSeanceData] = useState();
   const [media, setMedia] = useState();
   const router = useRouter();
   const { id } = router.query;
+  const { user } = useAuth();
 
   const fileInput = useRef();
   const selectFile = () => {
@@ -43,17 +45,18 @@ export default function EditSeance() {
     });
 
   const submitChange = () => {
-    updateSeance(id, {
+    updateSeance(user, id, {
       ...seanceData,
     });
     if (media) {
       const newMediaUrl = updateSeanceMedia(
+        user,
         media,
         id,
         seanceData.media_name,
         seanceData.media_url
       );
-      updateSeance(id, {
+      updateSeance(user, id, {
         media_url: newMediaUrl,
       });
     }
@@ -62,8 +65,8 @@ export default function EditSeance() {
   };
 
   useEffect(() => {
-    getSeanceData(id).then(setSeanceData);
-  }, [id]);
+    getSeanceData(user, id).then(setSeanceData);
+  }, [id, user]);
 
   return (
     seanceData && (
