@@ -14,7 +14,7 @@ export default function WaveAdminMenu() {
         src="/images/headerAdmin.png"
         alt="vagues violettes"
       />
-      <Link href="/menu">
+      <Link href="/adminMenu">
         <a className={style.whiteBurger}>
           <Image
             layout="responsive"
