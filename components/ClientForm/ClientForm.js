@@ -16,6 +16,10 @@ export default function ClientForm() {
       clientData.lastname &&
       clientData.email?.match(emailRegex) &&
       clientData.phoneNumber?.match(phoneRegex) &&
+      clientData.streetNumber?.length >= 1 &&
+      clientData.streetName?.length >= 5 &&
+      clientData.postalCode?.length === 5 &&
+      clientData.city?.length >= 1 &&
       clientData.thematic
     ) {
       setValidation(true);
@@ -90,6 +94,13 @@ export default function ClientForm() {
           min={0}
           id="streetNumber"
           placeholder="n°"
+          value={clientData.streetNumber || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              streetNumber: e.target.value,
+            })
+          }
         />
         <label htmlFor="nom de la voie"> </label>
         <input
@@ -97,6 +108,13 @@ export default function ClientForm() {
           type="text"
           id="streetName"
           placeholder="Nom de la voie"
+          value={clientData.streetName || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              streetName: e.target.value,
+            })
+          }
         />
       </div>
       <div
@@ -111,6 +129,13 @@ export default function ClientForm() {
           min={0}
           id="postalCode"
           placeholder="code postal"
+          value={clientData.postalCode || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              postalCode: e.target.value,
+            })
+          }
         />
         <label htmlFor="ville"> </label>
         <input
@@ -118,6 +143,13 @@ export default function ClientForm() {
           type="text"
           id="city"
           placeholder="Ville"
+          value={clientData.city || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              city: e.target.value,
+            })
+          }
         />
       </div>
       <label htmlFor="thématique-select"> </label>{" "}
