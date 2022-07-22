@@ -26,11 +26,12 @@
 
 .text {
   font-size: 20px;
+  overflow: auto;
 }
 
 @media screen and (min-width: 740px) {
   .box {
-    height: 300px;
+    height: 360px;
   }
   .title {
     font-size: 30px;
@@ -40,5 +41,6 @@
   }
   .text {
     font-size: 24px;
+    overflow: visible;
   }
 }

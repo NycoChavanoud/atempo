@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { getSeanceNumber, getSeancesList } from "../../model/seances";
 import SeanceCard from "../SeanceCard/SeanceCard";
 import styles from "./SeanceCardList.module.css";
+import { useAuth } from "../../context/authContext";
 
 export default function SeanceCardList() {
   const [seanceList, setSeanceList] = useState([]);
@@ -17,6 +18,7 @@ export default function SeanceCardList() {
   const [pageNumber, setPageNumber] = useState(1);
   const [lastDate, setLastDate] = useState(Date.now());
   const [PreviousLastDate, setPreviousLastDate] = useState(Date.now());
+  const { user } = useAuth();
 
   const handleStart = (clientX) => {
     if (intervalId !== null) {
@@ -49,10 +51,10 @@ export default function SeanceCardList() {
     if (beingTouched) {
       const touchX = clientX;
       let deltaX = touchX - touchStartX + originalOffset;
-      if (deltaX < -200) {
+      if (deltaX < -100) {
         handleNextPage();
         deltaX = 0;
-      } else if (deltaX > 200) {
+      } else if (deltaX > 100) {
         handlePreviousPage();
         deltaX = 0;
       } else deltaX = 0;
@@ -96,12 +98,12 @@ export default function SeanceCardList() {
   };
 
   useEffect(() => {
-    getSeanceNumber().then((nb) =>
-      nb > 0 ? setPageNumber(Math.ceil(nb / 6)) : setPageNumber(1)
+    getSeanceNumber(user).then((nb) =>
+      nb > 0 ? setPageNumber(Math.ceil(nb / 6) - 1) : setPageNumber(1)
     );
 
-    getSeancesList(page, lastDate).then(setSeanceList);
-  }, [page, lastDate]);
+    getSeancesList(user, page, lastDate).then(setSeanceList);
+  }, [page, lastDate, user]);
 
   return (
     <div className={styles.container}>
@@ -131,7 +133,7 @@ export default function SeanceCardList() {
         )}
       </div>
 
-      {seanceList?.length > 6 && (
+      {pageNumber > 1 && (
         <MobileStepper
           variant="dots"
           steps={pageNumber}
@@ -140,6 +142,7 @@ export default function SeanceCardList() {
           sx={{
             width: "100%",
             flexGrow: 1,
+            justifyContent: "center",
           }}
           className={styles.page_stepper}
           nextButton={

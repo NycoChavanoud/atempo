@@ -12,22 +12,25 @@ import { db, auth } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 import { getSeanceData, updateSeance } from "./seances";
 
-const user = auth.currentUser;
-
 export async function createClient(clientData) {
+  const user = auth.currentUser;
+
   const id = uniqid();
+
   if (user) {
     await set(ref(db, `clients/${user.uid}/${id}`), {
       ...clientData,
       id,
     }).catch((error) => {
-      console.log("Une erreur est survenue lors de l'enregistrement.") + error;
+      console.error(error);
     });
     return id;
   }
 }
 
 export async function deleteClient(id) {
+  const user = auth.currentUser;
+
   if (user) {
     const data = await getClientData(id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
@@ -50,6 +53,8 @@ export async function deleteClient(id) {
 }
 
 export async function getClientData(clientId) {
+  const user = auth.currentUser;
+
   if (user) {
     try {
       const snapshot = await get(
@@ -67,6 +72,8 @@ export async function getClientData(clientId) {
 }
 
 export async function updateClient(clientId, data) {
+  const user = auth.currentUser;
+
   if (user) {
     update(ref(db, `clients/${user.uid}/${clientId}`), {
       ...data,
@@ -74,23 +81,19 @@ export async function updateClient(clientId, data) {
   }
 }
 
-export async function getClientList() {
-  if (user) {
-    try {
-      const querySearch = [orderByChild("lastname")];
-      const clientRef = ref(db, `clients/${user.uid}`);
-      const snapshot = await get(query(clientRef, ...querySearch));
-      if (snapshot.exists()) {
-        const showClient = Object.keys(snapshot.val()).map(
-          (client) => snapshot.val()[client]
-        );
-        return showClient.reverse();
-      } else {
-        console.log("No data available");
-      }
-    } catch (error) {
-      console.error(error);
+export async function getClientList(user) {
+  try {
+    const querySearch = [orderByChild("lastname")];
+    const clientRef = ref(db, `clients/${user.uid}`);
+    const snapshot = await get(query(clientRef, ...querySearch));
+    if (snapshot.exists()) {
+      const showClient = Object.keys(snapshot.val()).map(
+        (client) => snapshot.val()[client]
+      );
+      return showClient.reverse();
     }
+  } catch (error) {
+    console.error(error);
   }
 }
 
