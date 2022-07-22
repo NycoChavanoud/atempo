@@ -61,7 +61,7 @@ export default function Client() {
     return (
       <Layout pageTitle={"Client"}>
         <div className={style.boxes}>
-          <div>
+          <div className={style.bg}>
             <DesktopMenu />
           </div>
           <div>

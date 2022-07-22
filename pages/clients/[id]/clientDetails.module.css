@@ -107,6 +107,9 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
   }
+  .bg {
+    background-color: var(--main-bg-color);
+  }
   .btn {
     width: 30%;
   }
