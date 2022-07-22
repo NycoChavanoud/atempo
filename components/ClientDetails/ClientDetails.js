@@ -16,6 +16,12 @@ export default function ClientDetails({ id }) {
         </h1>
         <h2 className={style.subtitle}>Informations personnelles</h2>
         <p className={style.text}>{clientData.email}</p>
+        <p className={style.text}>
+          {clientData.streetNumber} {clientData.streetName}
+        </p>
+        <p className={style.text}>
+          {clientData.postalCode} {clientData.city}
+        </p>
         <p className={style.text}>{clientData.phoneNumber}</p>
         <h3 className={style.subtitle}>Thématique</h3>
         <p className={style.text}>{clientData.thematic}</p>

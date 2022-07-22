@@ -58,13 +58,8 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
   } else {
     return (
       <div className={style.container}>
-        <button
-          onClick={handleBack}
-          style={{ position: "absolute", left: "18%" }}
-        >
-          <ArrowCircleLeftIcon
-            style={{ width: "10vw", height: "10vh", color: "var(--color1)" }}
-          />
+        <button onClick={handleBack} className={style.arrowBtn}>
+          <ArrowCircleLeftIcon style={{ width: "10vw", height: "8vh" }} />
         </button>
 
         <Link href="/clients">
