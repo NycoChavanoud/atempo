@@ -11,7 +11,7 @@ export default function DescriptionForm() {
   }, []);
 
   return (
-    <form className={styles.DescriptionContainer}>
+    <form className={styles.container}>
       <label className={styles.create_label_description} htmlFor="description">
         {" "}
         <h2>

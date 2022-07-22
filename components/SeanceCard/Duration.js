@@ -6,6 +6,7 @@ function format(seconds) {
   const hh = date.getUTCHours();
   const mm = date.getUTCMinutes();
   const ss = pad(date.getUTCSeconds());
+
   if (hh) {
     return `${hh}:${pad(mm)}:${ss}`;
   }
@@ -17,9 +18,11 @@ function pad(string) {
 }
 
 export default function Duration({ seconds }) {
-  return (
-    <time dateTime={`P${Math.round(seconds)}S`} className={styles.number}>
-      {format(seconds)}
-    </time>
-  );
+  if (isNaN(seconds)) return null;
+  else
+    return (
+      <time dateTime={`P${Math.round(seconds)}S`} className={styles.number}>
+        {format(seconds)}
+      </time>
+    );
 }

@@ -42,53 +42,53 @@ export default function LinkedClientModal({ open, onClose }) {
   return (
     <div>
       <Modal open={open} onClose={onClose}>
-        <form onSubmit={handleSubmit} className={styles.modale}>
-          <h2>Sélectionner les patients à associer :</h2>
-          <FormControl>
-            <InputLabel id="demo-multiple-chip-label">
-              Patient.es associé.es
-            </InputLabel>
-            <Select
-              className={styles.select}
-              labelId="demo-multiple-chip-label"
-              id="demo-multiple-chip"
-              multiple
-              value={selectedClientList}
-              onChange={handleChange}
-              input={<OutlinedInput label="Patient.es associé.es" />}
-              renderValue={(selected) => (
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                  {selected.map((client) => (
-                    <Chip
-                      key={client.id}
-                      label={`${client.firstname} ${client.lastname}`}
-                    />
-                  ))}
-                </Box>
-              )}
-            >
-              {clientList?.map((client) => (
-                <MenuItem key={client.id} value={client}>
-                  {`${client.firstname} ${client.lastname}`}
-                </MenuItem>
-              ))}
-            </Select>{" "}
-          </FormControl>{" "}
-          <div className={styles.btn_container}>
-            <button
-              className={`${styles.btn} ${styles.confirmation}`}
-              type="submit"
-            >
-              Confirmer
-            </button>
-            <button
-              className={`${styles.btn} ${styles.annulation}`}
-              onClick={onClose}
-            >
-              Annuler
-            </button>
+        {clientList?.length > 0 ? (
+          <form onSubmit={handleSubmit} className={styles.modale}>
+            <h2>Sélectionner les patients à associer :</h2>{" "}
+            <FormControl>
+              <InputLabel id="demo-multiple-chip-label">
+                Patient.es associé.es
+              </InputLabel>
+              <Select
+                className={styles.select}
+                labelId="demo-multiple-chip-label"
+                id="demo-multiple-chip"
+                multiple
+                value={selectedClientList}
+                onChange={handleChange}
+                input={<OutlinedInput label="Patient.es associé.es" />}
+                renderValue={(selected) => (
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                    {selected.map((client) => (
+                      <Chip
+                        key={client.id}
+                        label={`${client.firstname} ${client.lastname}`}
+                      />
+                    ))}
+                  </Box>
+                )}
+              >
+                {clientList?.map((client) => (
+                  <MenuItem key={client.id} value={client}>
+                    {`${client.firstname} ${client.lastname}`}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </form>
+        ) : (
+          <div className={styles.modale}>
+            <p>Vous n&apos;avez pas encore enregistré de patient !</p>
+            <div className={styles.btn_container}>
+              <button
+                className={`${styles.btn} ${styles.annulation}`}
+                onClick={onClose}
+              >
+                Annuler
+              </button>
+            </div>
           </div>
-        </form>
+        )}
       </Modal>
     </div>
   );
