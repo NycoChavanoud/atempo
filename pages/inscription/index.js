@@ -32,7 +32,9 @@ const Inscription = () => {
 
       router.push("/menu");
     } catch (error) {
-      setError("Vérifié vos données");
+      setError(
+        "Une erreur est survenue, merci de vérifier vos informations de connexion"
+      );
     }
   };
 

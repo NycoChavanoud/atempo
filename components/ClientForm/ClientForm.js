@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { useContext, useEffect } from "react";
 import createClientContext from "../../context/createClientContext";
 import style from "./ClientForm.module.css";
@@ -6,13 +7,19 @@ export default function ClientForm() {
   const { clientData, setClientData, setValidation } =
     useContext(createClientContext);
 
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+
   useEffect(() => {
     if (
       clientData.firstname &&
       clientData.lastname &&
-      clientData.email &&
-      clientData.phoneNumber &&
-      clientData.adress &&
+      clientData.email?.match(emailRegex) &&
+      clientData.phoneNumber?.match(phoneRegex) &&
+      clientData.streetNumber?.length >= 1 &&
+      clientData.streetName?.length >= 5 &&
+      clientData.postalCode?.length === 5 &&
+      clientData.city?.length >= 1 &&
       clientData.thematic
     ) {
       setValidation(true);
@@ -72,7 +79,6 @@ export default function ClientForm() {
         id="phoneNumber"
         placeholder="Téléphone"
         value={clientData.phoneNumber || ""}
-        pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         onChange={(e) =>
           setClientData({
             ...clientData,
@@ -80,20 +86,72 @@ export default function ClientForm() {
           })
         }
       />
-      <label htmlFor="adresse"> </label>
-      <input
-        className={style.input}
-        type="text"
-        id="adress"
-        placeholder="Adresse"
-        value={clientData.adress || ""}
-        onChange={(e) =>
-          setClientData({
-            ...clientData,
-            adress: e.target.value,
-          })
-        }
-      />
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <label htmlFor="numéro de voie"> </label>
+        <input
+          className={style.streetInput}
+          type="number"
+          min={0}
+          id="streetNumber"
+          placeholder="n°"
+          value={clientData.streetNumber || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              streetNumber: e.target.value,
+            })
+          }
+        />
+        <label htmlFor="nom de la voie"> </label>
+        <input
+          className={style.input}
+          type="text"
+          id="streetName"
+          placeholder="Nom de la voie"
+          value={clientData.streetName || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              streetName: e.target.value,
+            })
+          }
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <label htmlFor="code postal"> </label>
+        <input
+          className={style.codeInput}
+          type="number"
+          min={0}
+          id="postalCode"
+          placeholder="code postal"
+          value={clientData.postalCode || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              postalCode: e.target.value,
+            })
+          }
+        />
+        <label htmlFor="ville"> </label>
+        <input
+          className={style.codeInput}
+          type="text"
+          id="city"
+          placeholder="Ville"
+          value={clientData.city || ""}
+          onChange={(e) =>
+            setClientData({
+              ...clientData,
+              city: e.target.value,
+            })
+          }
+        />
+      </div>
       <label htmlFor="thématique-select"> </label>{" "}
       <select
         className={style.input}
@@ -116,7 +174,7 @@ export default function ClientForm() {
         <option value="enfants">Enfant</option>
         <option value="emotion">Emotion</option>
         <option value="mental">Mental</option>
-        <option value="autre">Autre</option>
+        <option value="autre">Précisez</option>
       </select>
       {clientData.thematic === "autre" && (
         <input

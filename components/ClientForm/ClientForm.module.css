@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: center;
   width: 70%;
-  height: 50vh;
   margin-left: 15%;
+  margin-bottom: 10vh;
 }
 
 .input::placeholder {
@@ -15,7 +15,7 @@
 
 .input {
   width: 80%;
-  height: 35px;
+  height: 30px;
   border: 1px solid #ffff;
   border-radius: 20px;
   box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
@@ -23,8 +23,47 @@
   text-align: center;
   font-size: 1rem;
   font-family: "Roboto", sans-serif;
-  margin-top: 35px;
+  margin-top: 10%;
   color: var(--main-bg-color);
+}
+
+.streetInput {
+  width: 25%;
+  height: 30px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10%;
+  color: var(--main-bg-color);
+}
+
+.streetInput::placeholder {
+  color: var(--main-bg-color);
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+.codeInput {
+  width: 50%;
+  height: 30px;
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  box-shadow: rgba(65, 46, 104, 0.2) 0px 10px 25px -5px inset,
+    rgba(65, 46, 104, 0.2) 0px 10px 10px -5px inset;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  margin-top: 10%;
+  color: var(--main-bg-color);
+}
+
+.codeInput::placeholder {
+  color: var(--main-bg-color);
+  opacity: 0.7;
 }
 
 .motif {
@@ -33,7 +72,7 @@
   width: 80%;
   height: 300px;
   border-radius: 20px;
-  margin: 20px 0 20px 0;
+  margin: 10vh 0 5vh 0;
   font-size: 1em;
   padding: 20px;
   color: var(--main-bg-color);
@@ -48,15 +87,43 @@
 
 @media screen and (min-width: 740px) {
   .form {
-    height: 60vh;
+    margin-bottom: 5vh;
   }
   .input {
     font-size: 1.5em;
     height: 60px;
     margin-top: 50px;
   }
+  .streetInput {
+    height: 60px;
+    font-size: 1.5em;
+    margin-top: 50px;
+  }
+  .codeInput {
+    height: 60px;
+    font-size: 1.5em;
+    margin-top: 50px;
+  }
   .motif {
     height: 500px;
     margin-top: 5vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .input {
+    font-size: 1.5em;
+    height: 60px;
+    margin-top: 40px;
+  }
+  .streetInput {
+    height: 60px;
+    font-size: 1.5em;
+    margin-top: 40px;
+  }
+  .codeInput {
+    height: 60px;
+    font-size: 1.5em;
+    margin-top: 40px;
   }
 }
