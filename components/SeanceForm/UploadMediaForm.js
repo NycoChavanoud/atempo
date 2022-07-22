@@ -56,7 +56,7 @@ export default function UploadMediaForm() {
   }, [seanceData, setCompletedStep, media]);
 
   return (
-    <form className={styles.uploadFileContainer}>
+    <form className={styles.container}>
       <label className={styles.create_label} htmlFor="mp3_url">
         {" "}
         Télécharger le fichier de la séance :
@@ -97,13 +97,19 @@ export default function UploadMediaForm() {
         )}
       </button>
       <h1>{media.name || "Aucun fichier sélectionné"}</h1>
-      <ReactPlayer
-        url={urlSource}
-        width="100%"
-        height="20%"
-        controls
-        onDuration={handleMediaDuration}
-      />
+      <div>
+        <ReactPlayer
+          url={urlSource}
+          width="100%"
+          height="200px"
+          style={{
+            maxWidth: "500px",
+            margin: "auto",
+          }}
+          controls
+          onDuration={handleMediaDuration}
+        />
+      </div>
     </form>
   );
 }

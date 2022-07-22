@@ -7,7 +7,7 @@ export default function Summary() {
 
   if (seanceData) {
     return (
-      <div className={styles.summaryContainer}>
+      <div className={styles.container}>
         <h2 className={styles.summaryTitle}>{seanceData.title}</h2>
         <h3 className={styles.summaryMethod}>
           {seanceData.method} / {seanceData.thematic}

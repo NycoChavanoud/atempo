@@ -17,7 +17,7 @@ export default function AddClientsForm() {
   }, []);
 
   return (
-    <div className={styles.AddClientsContainer}>
+    <div className={styles.container}>
       <h2 className={styles.create_label}>
         Associer un ou plusieurs clients à la séances :{" "}
       </h2>

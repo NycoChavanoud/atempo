@@ -27,7 +27,7 @@ export default function MainDataForm() {
   ]);
 
   return (
-    <form className={styles.MainDataContainer}>
+    <form className={styles.container}>
       <label className={styles.create_label} htmlFor="titre">
         {" "}
         <input

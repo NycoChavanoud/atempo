@@ -92,8 +92,6 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
           height: "80px",
           width: "80%",
           background: "none",
-          position: "fixed",
-          bottom: "5vh",
           flexGrow: 1,
           "& .MuiLinearProgress-bar": {
             background: "#F98F83",
