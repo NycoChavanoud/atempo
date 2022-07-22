@@ -15,32 +15,32 @@ import { toast } from "react-toastify";
 import { getClientData, updateClient } from "../../model/client";
 import { useAuth } from "../../context/authContext";
 
+const warn = (m) =>
+  toast.warn(m, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
+const success = () =>
+  toast.success("La séance a été enregistré", {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+
 export default function ProgressStepper({ activeStep, setActiveStep }) {
   const { seanceData, setSeanceData, media, completedStep, setCompletedStep } =
     useContext(createSeanceContext);
   const { user } = useAuth();
-
-  const warn = (m) =>
-    toast.warn(m, {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-  const success = () =>
-    toast.success("La séance a été enregistré", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   const handleNext = () => {
     if (completedStep) {
