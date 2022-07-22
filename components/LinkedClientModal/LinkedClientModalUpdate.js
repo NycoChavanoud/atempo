@@ -13,6 +13,7 @@ import { updateSeance } from "../../model/seances";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import styles from "./LinkedClientModal.module.css";
+import { useAuth } from "../../context/authContext";
 
 export default function LinkedClientModalUpdate({
   open,
@@ -21,14 +22,15 @@ export default function LinkedClientModalUpdate({
 }) {
   const [clientList, setClientList] = useState([]);
   const [selectedClientList, setSelectedClientList] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
+  const { user } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    updateSeance(id, { clientList: selectedClientList });
+    updateSeance(user, id, { clientList: selectedClientList });
 
     const selectedClientIDList = selectedClientList.map((client) => client.id);
     const currentClientIDList = clientList.map((client) => client.id);
@@ -77,8 +79,10 @@ export default function LinkedClientModalUpdate({
   };
 
   useEffect(() => {
-    getClientList().then(setClientList);
-  }, [id]);
+    getClientList(user)
+      .then(setClientList)
+      .then(() => setIsLoading(false));
+  }, [id, isLoading]);
   return (
     <div>
       <Modal open={open} onClose={onClose}>
