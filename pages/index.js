@@ -21,7 +21,9 @@ const Connexion = () => {
       await signIn(email, password);
       router.push("/profile");
     } catch (error) {
-      setError(error.message);
+      setError(
+        "Une erreur est survenue, merci de vérifier vos informations de connexion"
+      );
     }
   };
 
@@ -29,7 +31,7 @@ const Connexion = () => {
     try {
       await googleSignInMobile();
     } catch (error) {
-      setError(error.message);
+      setError("Les informations renseignées semblent incorrectes");
     }
   };
 

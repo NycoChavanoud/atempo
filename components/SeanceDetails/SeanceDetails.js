@@ -29,7 +29,13 @@ export default function SessionDetails({ seanceData }) {
       <div className="mb-2">
         <h2 className={`${styles.h2} mb-2`}>
           {" "}
-          {method.name} - {thematic.name}
+          {seanceData.method === "autre"
+            ? seanceData.other_method
+            : method.name}{" "}
+          -{" "}
+          {seanceData.thematic === "autre"
+            ? seanceData.other_thematic
+            : thematic.name}
         </h2>
         <h3>créée le {getDate(seanceData.creation_date)}</h3>
 
