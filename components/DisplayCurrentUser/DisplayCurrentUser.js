@@ -9,13 +9,12 @@ const DisplayCurrentUser = () => {
   const [practitionersData, setPractitionersData] = useState("");
 
   useEffect(() => {
-    getAllPractitionersData().then(setPractitionersData);
+    getAllPractitionersData(user).then(setPractitionersData);
   }, []);
   return (
     <div className={style.displayCurrentUserContainer}>
       <p className={style.displayUser}>
         {practitionersData?.firstname} {practitionersData?.lastname}{" "}
-        {user.displayName}
       </p>
     </div>
   );
