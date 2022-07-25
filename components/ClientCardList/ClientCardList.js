@@ -4,14 +4,16 @@ import ClientCard from "../ClientCard/ClientCard";
 import { getClientList } from "../../model/client.js";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAuth } from "../../context/authContext";
 
 export default function ClientCardList() {
   const [clientList, setClientList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const { user } = useAuth();
 
   useEffect(() => {
-    getClientList().then(setClientList);
-  }, []);
+    getClientList(user).then(setClientList);
+  }, [user]);
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function ClientCardList() {
             setSearchTerm(e.target.value);
           }}
           id="lastname"
-          placeholder="Rechercher par nom."
+          placeholder="Rechercher par nom"
         />
         <SearchIcon />
       </div>

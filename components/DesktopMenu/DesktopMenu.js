@@ -96,7 +96,7 @@ export default function DesktopMenu() {
         }
       `}</style>
 
-      <Deconnexion />
+      <Deconnexion color="white" />
     </div>
   );
 }

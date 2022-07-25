@@ -5,10 +5,12 @@ import createClientContext from "../../context/createClientContext";
 import { createClient } from "../../model/client";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/authContext";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
   const { clientData, setClientData, validation, setValidation } =
     useContext(createClientContext);
+  const { user } = useAuth();
 
   const warn = () => {
     toast.warn("Veuillez renseigner tout les champs.", {
@@ -42,7 +44,7 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   const handleSubmit = async () => {
-    await createClient(clientData);
+    await createClient(user, clientData);
     setClientData({});
     success();
     setTimeout(2000);
@@ -58,13 +60,8 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
   } else {
     return (
       <div className={style.container}>
-        <button
-          onClick={handleBack}
-          style={{ position: "absolute", left: "18%" }}
-        >
-          <ArrowCircleLeftIcon
-            style={{ width: "10vw", height: "10vh", color: "var(--color1)" }}
-          />
+        <button onClick={handleBack} className={style.arrowBtn}>
+          <ArrowCircleLeftIcon style={{ width: "10vw", height: "8vh" }} />
         </button>
 
         <Link href="/clients">

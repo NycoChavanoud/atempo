@@ -8,26 +8,27 @@ import {
   query,
   remove,
 } from "firebase/database";
-import { db, auth } from "../config/firebaseConfig";
+import { db } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 import { getSeanceData, updateSeance } from "./seances";
 
-const user = auth.currentUser;
-
-export async function createClient(clientData) {
+export async function createClient(user, clientData) {
   const id = uniqid();
+  const creation_date = Date.now();
+
   if (user) {
     await set(ref(db, `clients/${user.uid}/${id}`), {
       ...clientData,
       id,
+      creation_date,
     }).catch((error) => {
-      console.log("Une erreur est survenue lors de l'enregistrement.") + error;
+      console.error(error);
     });
     return id;
   }
 }
 
-export async function deleteClient(id) {
+export async function deleteClient(user, id) {
   if (user) {
     const data = await getClientData(id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
@@ -49,7 +50,7 @@ export async function deleteClient(id) {
   }
 }
 
-export async function getClientData(clientId) {
+export async function getClientData(user, clientId) {
   if (user) {
     try {
       const snapshot = await get(
@@ -57,8 +58,6 @@ export async function getClientData(clientId) {
       );
       if (snapshot.exists()) {
         return snapshot.val();
-      } else {
-        console.log("No data available");
       }
     } catch (error) {
       console.error(error);
@@ -66,31 +65,30 @@ export async function getClientData(clientId) {
   }
 }
 
-export async function updateClient(clientId, data) {
+export async function updateClient(user, clientId, data) {
+  const last_update = Date.now();
+
   if (user) {
     update(ref(db, `clients/${user.uid}/${clientId}`), {
       ...data,
+      last_update,
     });
   }
 }
 
-export async function getClientList() {
-  if (user) {
-    try {
-      const querySearch = [orderByChild("lastname")];
-      const clientRef = ref(db, `clients/${user.uid}`);
-      const snapshot = await get(query(clientRef, ...querySearch));
-      if (snapshot.exists()) {
-        const showClient = Object.keys(snapshot.val()).map(
-          (client) => snapshot.val()[client]
-        );
-        return showClient.reverse();
-      } else {
-        console.log("No data available");
-      }
-    } catch (error) {
-      console.error(error);
+export async function getClientList(user) {
+  try {
+    const querySearch = [orderByChild("lastname")];
+    const clientRef = ref(db, `clients/${user.uid}`);
+    const snapshot = await get(query(clientRef, ...querySearch));
+    if (snapshot.exists()) {
+      const showClient = Object.keys(snapshot.val()).map(
+        (client) => snapshot.val()[client]
+      );
+      return showClient.reverse();
     }
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -99,8 +97,6 @@ export async function getThematic(thematic) {
     const snapshot = await get(child(ref(db), `/thematics/${thematic}`));
     if (snapshot.exists()) {
       return await snapshot.val();
-    } else {
-      console.log("No data available");
     }
   } catch (error) {
     console.error(error);

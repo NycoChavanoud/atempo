@@ -17,58 +17,50 @@ import {
   ref as refStorage,
   uploadBytes,
 } from "firebase/storage";
-import { db, auth, storage } from "../config/firebaseConfig";
+import { db, storage } from "../config/firebaseConfig";
 import { getClientData, updateClient } from "./client";
 
-export async function createSeance(seanceData) {
-  const user = auth.currentUser;
+export async function createSeance(user, seanceData) {
   const creation_date = Date.now();
 
-  if (user) {
-    const seanceRef = ref(db, `seances/${user.uid}`);
-    const newSeanceRef = push(seanceRef);
-    set(newSeanceRef, {
-      ...seanceData,
-      id: newSeanceRef.key,
-      creation_date,
-    });
+  const seanceRef = ref(db, `seances/${user.uid}`);
+  const newSeanceRef = push(seanceRef);
+  set(newSeanceRef, {
+    ...seanceData,
+    id: newSeanceRef.key,
+    creation_date,
+  });
 
-    const seance_nb = await getSeanceNumber();
-    update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb + 1 });
+  const seance_nb = await getSeanceNumber(user);
+  update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb + 1 });
 
-    return newSeanceRef.key;
-  }
+  return newSeanceRef.key;
 }
 
-export async function deleteSeance(id) {
-  const user = auth.currentUser;
+export async function deleteSeance(user, id) {
+  const data = await getSeanceData(user, id);
+  deleteSeanceMedia(data.media_url);
 
-  if (user) {
-    const data = await getSeanceData(id);
-    deleteSeanceMedia(data.media_url);
+  const deletedRef = ref(db, `seances/${user.uid}/${id}`);
+  remove(deletedRef);
 
-    const deletedRef = ref(db, `seances/${user.uid}/${id}`);
-    remove(deletedRef);
+  const seance_nb = await getSeanceNumber(user);
+  update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
 
-    const seance_nb = await getSeanceNumber();
-    update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
+  for (const client of data.clientList) {
+    const clientData = getClientData(user, client.id);
 
-    for (const client of data.clientList) {
-      const clientData = getClientData(client.id);
-
-      const index = clientData?.seanceList?.indexOf(id);
-      if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
-        delete clientData.seanceList[index];
-        updateClient(client.id, {
-          seanceList: clientData.seanceList,
-        });
-      }
+    const index = clientData?.seanceList?.indexOf(id);
+    if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
+      delete clientData.seanceList[index];
+      updateClient(user, client.id, {
+        seanceList: clientData.seanceList,
+      });
     }
   }
 }
 
-export async function getSeanceNumber() {
-  const user = auth.currentUser;
+export async function getSeanceNumber(user) {
   const seance_nb = await get(ref(db, `practitioners/${user.uid}/seance_nb`));
 
   if (seance_nb) {
@@ -76,81 +68,47 @@ export async function getSeanceNumber() {
   }
 }
 
-export async function updateSeance(sessionId, data) {
-  const user = auth.currentUser;
+export async function updateSeance(user, sessionId, data) {
   const last_update = Date.now();
-  if (user) {
-    update(ref(db, `seances/${user.uid}/${sessionId}`), {
-      ...data,
-      last_update,
-    });
+  update(ref(db, `seances/${user.uid}/${sessionId}`), {
+    ...data,
+    last_update,
+  });
+}
+
+export async function getSeanceData(user, seanceId) {
+  try {
+    const snapshot = await get(
+      child(ref(db), `/seances/${user.uid}/${seanceId}`)
+    );
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
 
-export async function getSeanceData(seanceId) {
-  const user = auth.currentUser;
-
-  if (user) {
-    try {
-      const snapshot = await get(
-        child(ref(db), `/seances/${user.uid}/${seanceId}`)
-      );
-      if (snapshot.exists()) {
-        return snapshot.val();
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  } else return null;
-}
-
-export async function getSeancesList(page, lastDate, limit = 6) {
-  const user = auth.currentUser;
+export async function getSeancesList(user, page, lastDate, limit = 6) {
   if (!lastDate || page === 1) lastDate = Date.now();
   else lastDate = lastDate - 2000;
 
-  if (user) {
-    try {
-      const queryConstraints = [
-        orderByChild("creation_date"),
-        endAt(lastDate, "creation_date"),
-        limitToLast(limit),
-      ];
-      const seancesRef = ref(db, `seances/${user.uid}`);
-      const snapshot = await get(query(seancesRef, ...queryConstraints));
-      if (snapshot.exists()) {
-        const seanceTab = Object.keys(snapshot.val()).map(
-          (seance) => snapshot.val()[seance]
-        );
-        return seanceTab.reverse();
-      }
-    } catch (error) {
-      console.error(error);
+  try {
+    const queryConstraints = [
+      orderByChild("creation_date"),
+      endAt(lastDate, "creation_date"),
+      limitToLast(limit),
+    ];
+    const seancesRef = ref(db, `seances/${user.uid}`);
+    const snapshot = await get(query(seancesRef, ...queryConstraints));
+    if (snapshot.exists()) {
+      const seanceTab = Object.keys(snapshot.val()).map(
+        (seance) => snapshot.val()[seance]
+      );
+      return seanceTab.reverse();
     }
-  } else return null;
-}
-
-/* MODIF */
-
-export async function getAllSeances() {
-  const user = auth.currentUser;
-
-  if (user) {
-    try {
-      const queryConstraints = [orderByChild("creation_date")];
-      const seancesRef = ref(db, `seances/${user.uid}`);
-      const snapshot = await get(query(seancesRef, ...queryConstraints));
-      if (snapshot.exists()) {
-        const seanceTab = Object.keys(snapshot.val()).map(
-          (seance) => snapshot.val()[seance]
-        );
-        return seanceTab.reverse();
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  } else {
-    return null;
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -204,43 +162,37 @@ export async function getMethodList() {
   }
 }
 
-export function postSeanceMedia(file, seanceId, fileName) {
-  const user = auth.currentUser;
-
-  if (user) {
-    const storageRef = refStorage(
-      storage,
-      `practitioners/${user.uid}/seances/${seanceId}/${fileName}`
-    );
-    uploadBytes(storageRef, file);
-    return storageRef._location.path_;
-  }
+export function postSeanceMedia(user, file, seanceId, fileName) {
+  const storageRef = refStorage(
+    storage,
+    `practitioners/${user.uid}/seances/${seanceId}/${fileName}`
+  );
+  uploadBytes(storageRef, file);
+  return storageRef._location.path_;
 }
 
 export function deleteSeanceMedia(oldMediaUrl) {
-  const user = auth.currentUser;
-
-  if (user) {
-    const oldStorageRef = refStorage(storage, oldMediaUrl);
-    deleteObject(oldStorageRef);
-  }
+  const oldStorageRef = refStorage(storage, oldMediaUrl);
+  deleteObject(oldStorageRef);
 }
 
-export async function updateSeanceMedia(file, seanceId, fileName, oldMediaUrl) {
-  const newMediaUrl = postSeanceMedia(file, seanceId, fileName);
+export async function updateSeanceMedia(
+  user,
+  file,
+  seanceId,
+  fileName,
+  oldMediaUrl
+) {
+  const newMediaUrl = postSeanceMedia(user, file, seanceId, fileName);
   deleteSeanceMedia(oldMediaUrl);
   return newMediaUrl;
 }
 
 export async function getSeanceMediaUrl(media_url) {
-  const user = auth.currentUser;
-
   try {
-    if (user) {
-      const storageRef = refStorage(storage, media_url);
-      const url = await getDownloadURL(storageRef);
-      return url;
-    }
+    const storageRef = refStorage(storage, media_url);
+    const url = await getDownloadURL(storageRef);
+    return url;
   } catch (error) {
     switch (error.code) {
       case "storage/object-not-found":

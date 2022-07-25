@@ -4,8 +4,8 @@
   letter-spacing: 0.01em;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 25%;
-  font-size: 2rem;
+  margin-bottom: 8vh;
+  font-size: 1.5em;
 }
 
 .probTitle {
@@ -21,7 +21,6 @@
 @media screen and (min-width: 740px) {
   .title {
     font-size: 3rem;
-    margin-bottom: 8%;
   }
 }
 
@@ -30,9 +29,12 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
   }
+  .bg {
+    background-color: var(--main-bg-color);
+  }
   .title {
     color: var(--main-bg-color);
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-top: 2vh;
+    margin-bottom: 0;
   }
 }

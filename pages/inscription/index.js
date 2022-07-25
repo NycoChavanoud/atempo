@@ -30,9 +30,11 @@ const Inscription = () => {
         email,
       });
 
-      router.push("/menu");
+      router.push("/profile");
     } catch (error) {
-      setError("Vérifié vos données");
+      setError(
+        "Une erreur est survenue, merci de vérifier vos informations de connexion"
+      );
     }
   };
 

@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { getAllSeances, getMethodList } from "../model/seances";
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,46 +21,7 @@ ChartJS.register(
   Legend
 );
 
-function strNoAccent(a) {
-  var b = "áàâäãåçéèêëíïîìñóòôöõúùûüýÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ",
-    c = "aaaaaaceeeeiiiinooooouuuuyAAAAAACEEEEIIIINOOOOOUUUUY",
-    d = "";
-  for (var i = 0, j = a.length; i < j; i++) {
-    var e = a.substr(i, 1);
-    d += b.indexOf(e) !== -1 ? c.substr(b.indexOf(e), 1) : e;
-  }
-  return d;
-}
-
 export default function StatsSeances() {
-  const [AllSeances, setAllSeances] = useState([]);
-  const [AllMethods, setAllMethods] = useState([]);
-
-  useEffect(() => {
-    getAllSeances().then(setAllSeances);
-    getMethodList().then(setAllMethods);
-  }, []);
-
-  const test = [];
-
-  AllMethods.map(function (item) {
-    const name = strNoAccent(item.name.toLowerCase());
-
-    var d = 0;
-
-    AllSeances.map(function (item) {
-      if (item.method != name) {
-        return false;
-      }
-
-      d++;
-    });
-
-    test[name] = d;
-  });
-
-  console.log(test);
-
   return (
     <div className={style.content}>
       <Line

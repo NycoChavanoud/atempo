@@ -5,17 +5,34 @@ import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 import Link from "next/link";
 import style from "./profile.module.css";
 import { useEffect, useState } from "react";
-import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import {
+  getAllPractitionersData,
+  updateDataIfGoogleSignIn,
+} from "../../model/PractitionersData/practitionersData";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Avatar from "../../components/Avatar/Avatar";
+import { useAuth } from "../../context/authContext";
 
 export default function Profile() {
+  const { user } = useAuth();
   const [practitionersData, setPractitionersData] = useState();
+  const [dataLoading, setDataLoading] = useState(true);
+  const [googleUpdateLoading, setGoogleUpdateLoading] = useState(true);
+
+  const getData = async (user) => {
+    const data = await getAllPractitionersData(user);
+    setPractitionersData(data);
+    setDataLoading(false);
+    if (!data && !dataLoading) {
+      updateDataIfGoogleSignIn(user);
+      setGoogleUpdateLoading(false);
+    }
+  };
 
   useEffect(() => {
-    getAllPractitionersData().then(setPractitionersData);
-  }, []);
+    getData(user);
+  }, [user, dataLoading, googleUpdateLoading]);
 
   return (
     <Layout pageTitle="Profile">

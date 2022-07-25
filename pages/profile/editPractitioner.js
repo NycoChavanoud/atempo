@@ -34,10 +34,16 @@ export default function Profile() {
     if (e.target.files[0]) {
       setAvatar(e.target.files[0]);
       setPhotoURL(URL.createObjectURL(e.target.files[0]));
+      setPractitionersData(user, {
+        ...practitionersData,
+        photoURL: photoURL,
+      });
     }
   };
 
   useEffect(() => {
+    getAllPractitionersData(user).then(setPractitionersData);
+
     if (user?.photoURL) {
       setPhotoURL(user.photoURL);
     }
@@ -48,17 +54,16 @@ export default function Profile() {
 
     try {
       const user = auth.currentUser;
-      upload(avatar, user, setLoading);
+      if (avatar) {
+        upload(avatar, user, setLoading);
+      }
+
       update(ref(db, `practitioners/${user.uid}`), practitionersData);
       router.push("/profile");
     } catch (error) {
       setError("erreur");
     }
   };
-
-  useEffect(() => {
-    getAllPractitionersData().then(setPractitionersData);
-  }, []);
 
   const notify = () => toast("Données sauvegardées !");
 
@@ -81,16 +86,14 @@ export default function Profile() {
               <Avatar src={photoURL} className={styles.avatar} />
             </div>
 
-            <form className={styles.form}>
-              <input
-                id="avatar"
-                accept="image/png, image/jpeg, image/jpg"
-                type="file"
-                ref={fileImputRef}
-                onChange={handleAvatarSelection}
-                style={{ display: "none" }}
-              />
-            </form>
+            <input
+              id="avatar"
+              accept="image/png, image/jpeg, image/jpg"
+              type="file"
+              ref={fileImputRef}
+              onChange={handleAvatarSelection}
+              style={{ display: "none" }}
+            />
           </div>
 
           <BsPencil className={styles.pencil} />
@@ -249,19 +252,12 @@ export default function Profile() {
               className={styles.btn}
               type="submit"
               id="submitBtn"
-              disabled={loading || !avatar}
+              disabled={loading}
               onChange={notify}
               data-cy="submitBtn"
             >
               Sauvegarder
             </button>
-          </div>
-          <div className={styles.btnPasswordContainer}>
-            <Link href="/profile/editPassword">
-              <button className={styles.btnPassword}>
-                Changer mon mot de passe ?
-              </button>
-            </Link>
           </div>
         </form>
       </div>

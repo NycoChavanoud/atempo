@@ -128,15 +128,6 @@
   cursor: pointer;
 }
 
-.btnPasswordContainer {
-  display: flex;
-  justify-content: center;
-}
-
-.btnPassword {
-  text-decoration: underline;
-}
-
 @media screen and (min-height: 740px) {
   .form {
     margin-top: 5%;
