@@ -35,7 +35,7 @@ export default function Profile() {
     if (e.target.files[0]) {
       setAvatar(e.target.files[0]);
       setPhotoURL(URL.createObjectURL(e.target.files[0]));
-      setPractitionersData({
+      setPractitionersData(user, {
         ...practitionersData,
         photoURL: photoURL,
       });
@@ -43,7 +43,7 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    getAllPractitionersData().then(setPractitionersData);
+    getAllPractitionersData(user).then(setPractitionersData);
 
     if (user?.photoURL) {
       setPhotoURL(user.photoURL);
