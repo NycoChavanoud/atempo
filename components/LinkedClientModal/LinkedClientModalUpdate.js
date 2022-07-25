@@ -43,23 +43,23 @@ export default function LinkedClientModalUpdate({
     });
 
     for (const clientID of selectedClientIDList) {
-      const clientData = await getClientData(clientID);
+      const clientData = await getClientData(user, clientID);
       let newSeanceList = [id];
       if (clientData.seanceList && !clientData.seanceList?.includes(id))
         newSeanceList = [...clientData.seanceList, id];
       if (clientData.seanceList && clientData.seanceList?.includes(id))
         newSeanceList = clientData.seanceList;
-      updateClient(clientID, {
+      updateClient(user, clientID, {
         seanceList: newSeanceList,
       });
     }
 
     for (const clientID of removeClientIDList) {
-      const clientData = await getClientData(clientID);
+      const clientData = await getClientData(user, clientID);
       const index = clientData.seanceList.indexOf(id);
       if (clientData.seanceList && clientData.seanceList?.includes(id)) {
         delete clientData.seanceList[index];
-        updateClient(clientID, {
+        updateClient(user, clientID, {
           seanceList: clientData.seanceList,
         });
       }
@@ -82,7 +82,7 @@ export default function LinkedClientModalUpdate({
     getClientList(user)
       .then(setClientList)
       .then(() => setIsLoading(false));
-  }, [id, isLoading]);
+  }, [id, isLoading, user]);
   return (
     <div>
       <Modal open={open} onClose={onClose}>
