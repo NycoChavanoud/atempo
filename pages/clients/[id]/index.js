@@ -11,6 +11,7 @@ import SeanceCard from "../../../components/SeanceCard/SeanceCard";
 import { Modal } from "@mui/material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../../../context/authContext";
 
 export default function Client() {
   const [open, setOpen] = useState(false);
@@ -18,12 +19,13 @@ export default function Client() {
   const router = useRouter();
   const { id } = router.query;
   const [clientData, setClientData] = useState({});
+  const { user } = useAuth();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    getClientData(id).then(setClientData);
+    getClientData(user, id).then(setClientData);
   }, [id]);
 
   const warn = () => {
