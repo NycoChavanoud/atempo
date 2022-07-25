@@ -14,59 +14,60 @@ export default function Dashboard() {
   const [tabToShow, setTabToShow] = useState("clients");
   const [pratitionerData, setPratitionerData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const { user } = useAuth;
+  const { user } = useAuth();
 
   useEffect(() => {
+    console.log(user);
     getAllPractitionersData(user)
       .then(setPratitionerData)
       .then(setIsLoading(false));
   }, [user, isLoading]);
 
-  if (pratitionerData) {
-    return (
-      <Layout pageTitle="Tableau de bord">
-        <div className={style.boxes}>
-          <div>
-            <DesktopMenu />
-          </div>
-          <div>
-            <WaveWhiteBurger />
+  return (
+    <Layout pageTitle="Tableau de bord">
+      <div className={style.boxes}>
+        <div>
+          <DesktopMenu />
+        </div>
+        <div>
+          <WaveWhiteBurger />
 
-            <div className={style.user}>
-              <Avatar className={style.avatar} />
+          <div className={style.user}>
+            <Avatar className={style.avatar} />
+            {!isLoading && (
               <h2
                 className={style.name}
               >{`${pratitionerData.firstname} ${pratitionerData.lastname}`}</h2>
+            )}
+          </div>
+
+          <div className={style.container}>
+            <div className={style.tabs}>
+              <div
+                className={style.button}
+                onClick={() => setTabToShow("clients")}
+                style={{ opacity: tabToShow === "clients" ? "1" : "0.60" }}
+                data-cy="clients"
+              >
+                Clients
+              </div>
+              <div
+                className={style.button}
+                onClick={() => setTabToShow("sessions")}
+                style={{ opacity: tabToShow === "sessions" ? "1" : "0.60" }}
+                data-cy="sessions"
+              >
+                Séances
+              </div>
             </div>
 
-            <div className={style.container}>
-              <div className={style.tabs}>
-                <div
-                  className={style.button}
-                  onClick={() => setTabToShow("clients")}
-                  style={{ opacity: tabToShow === "clients" ? "1" : "0.60" }}
-                  data-cy="clients"
-                >
-                  Clients
-                </div>
-                <div
-                  className={style.button}
-                  onClick={() => setTabToShow("sessions")}
-                  style={{ opacity: tabToShow === "sessions" ? "1" : "0.60" }}
-                  data-cy="sessions"
-                >
-                  Séances
-                </div>
-              </div>
-
-              <div className={style.sections}>
-                {tabToShow === "clients" && <StatsClients />}
-                {tabToShow === "sessions" && <StatsSeances />}
-              </div>
+            <div className={style.sections}>
+              {tabToShow === "clients" && <StatsClients />}
+              {tabToShow === "sessions" && <StatsSeances />}
             </div>
           </div>
         </div>
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  );
 }

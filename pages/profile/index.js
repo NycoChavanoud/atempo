@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Avatar from "../../components/Avatar/Avatar";
 import { useAuth } from "../../context/authContext";
+import { CircularProgress } from "@mui/material";
 
 export default function Profile() {
   const { user } = useAuth();
@@ -45,7 +46,11 @@ export default function Profile() {
           <h1 className={style.title}>Votre profil</h1>
 
           <div className={style.user}>
-            <Avatar className={style.avatar} />
+            {dataLoading ? (
+              <CircularProgress color="inherit" className={style.avatar} />
+            ) : (
+              <Avatar className={style.avatar} />
+            )}
             <div>
               <h3 className={style.name}>{practitionersData?.firstname}</h3>
               <h3 className={style.name}>{practitionersData?.lastname}</h3>
