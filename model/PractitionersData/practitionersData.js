@@ -1,29 +1,35 @@
-import { db, auth } from "../../config/firebaseConfig";
+import { db } from "../../config/firebaseConfig";
 import { child, get, ref, update } from "firebase/database";
 
-export async function getAllPractitionersData() {
-  const user = auth.currentUser;
-  if (user) {
-    try {
-      const snapshot = await get(child(ref(db), `/practitioners/${user.uid}`));
-      if (snapshot.exists()) {
-        return snapshot.val();
-      } else {
-        console.log("No data available");
-      }
-    } catch (error) {
-      console.error(error);
+export async function getAllPractitionersData(user) {
+  try {
+    const snapshot = await get(child(ref(db), `/practitioners/${user.uid}`));
+    if (snapshot.exists()) {
+      return snapshot.val();
     }
-  } else return null;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export async function updatePractitionersData(data) {
-  const user = auth.currentUser;
+export async function updatePractitionersData(user, data) {
   const last_update = Date.now();
-  if (user) {
+  if (user && data) {
     update(ref(db, `practitioners/${user.uid}`), {
       ...data,
       last_update,
     });
+  }
+}
+
+export async function updateDataIfGoogleSignIn(user) {
+  if (user.displayName) {
+    const googleData = {
+      firstname: user.displayName.split(" ")[0],
+      lastname: user.displayName.split(" ")[1],
+      email: user.email,
+      photoURL: user.photoURL,
+    };
+    await updatePractitionersData(user, googleData);
   }
 }
