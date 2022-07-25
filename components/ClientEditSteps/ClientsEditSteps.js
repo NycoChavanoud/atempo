@@ -6,6 +6,7 @@ import { getClientData, updateClient } from "../../model/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/authContext";
 
 export default function ClientsSteps({ activeStep, setActiveStep }) {
   const { clientData, setClientData, validation, setValidation } =
@@ -13,6 +14,7 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
 
   const router = useRouter();
   const { id } = router.query;
+  const { user } = useAuth();
 
   const warn = () => {
     toast.warn("Veuillez renseigner tout les champs.", {
@@ -40,8 +42,8 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     router.push(`/clients/${id}`);
   };
   useEffect(() => {
-    getClientData(id).then(setClientData);
-  }, [id, setClientData]);
+    getClientData(user, id).then(setClientData);
+  }, [id, setClientData, user]);
   if (activeStep < 1) {
     return (
       <div className={style.box}>

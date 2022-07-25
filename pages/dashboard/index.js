@@ -8,14 +8,19 @@ import Layout from "../../components/Layout/Layout";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import { useAuth } from "../../context/authContext";
 
 export default function Dashboard() {
   const [tabToShow, setTabToShow] = useState("clients");
   const [pratitionerData, setPratitionerData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useAuth;
 
   useEffect(() => {
-    getAllPractitionersData().then(setPratitionerData);
-  }, [pratitionerData]);
+    getAllPractitionersData(user)
+      .then(setPratitionerData)
+      .then(setIsLoading(false));
+  }, [user, isLoading]);
 
   if (pratitionerData) {
     return (
