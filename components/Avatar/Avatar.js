@@ -9,11 +9,7 @@ export default function Avatar({ alt, src }) {
       {/* eslint-disable-next-line */}
       <img
         data-cy="currentUserAvatar"
-        src={
-          src ||
-          user.photoURL ||
-          "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg"
-        }
+        src={src || user.photoURL}
         alt={alt}
         className={style.avatar}
       />{" "}

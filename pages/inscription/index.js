@@ -13,13 +13,16 @@ const Inscription = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const defaultURL =
+    "https://d29fhpw069ctt2.cloudfront.net/icon/image/84587/preview.svg";
+
   let router = useRouter();
   const { createUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createUser(email, password, firstName, lastName);
+      await createUser(email, password);
       const user = auth.currentUser;
 
       await set(ref(db, `practitioners/${user.uid}`), {
@@ -27,6 +30,7 @@ const Inscription = () => {
         firstname: firstName,
         id: user.uid,
         seance_nb: 0,
+        photoURL: defaultURL,
         email,
       });
 
