@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -184,7 +183,6 @@ export default function Profile() {
               type="text"
               id="website_url"
               placeholder="Site web"
-              required
               value={practitionersData?.website_url}
               onChange={(e) =>
                 setPractitionersData({
@@ -208,7 +206,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="fb_url"
-                placeholder="URL"
+                placeholder="Facebook URL"
                 value={practitionersData?.fb_url}
                 onChange={(e) =>
                   setPractitionersData({
@@ -232,7 +230,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="insta_url"
-                placeholder="URL"
+                placeholder="Instagram URL"
                 value={practitionersData?.insta_url}
                 onChange={(e) =>
                   setPractitionersData({
@@ -257,6 +255,13 @@ export default function Profile() {
             >
               Sauvegarder
             </button>
+          </div>
+          <div className={styles.btnPasswordContainer}>
+            <Link href="/profile/editPassword">
+              <button className={styles.btnPassword}>
+                Changer mon mot de passe ?
+              </button>
+            </Link>
           </div>
         </form>
       </div>

@@ -102,7 +102,7 @@
 
 .inputNetwork::placeholder {
   color: var(--main-bg-color);
-  font-size: 1em;
+  font-size: 0.8em;
   opacity: 0.7;
   text-align: center;
 }
@@ -126,6 +126,15 @@
   border-radius: 50px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 5px 10px, rgba(0, 0, 0, 0.23) 0px 3px 3px;
   cursor: pointer;
+}
+
+.btnPasswordContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btnPassword {
+  text-decoration: underline;
 }
 
 @media screen and (min-height: 740px) {
@@ -176,7 +185,7 @@
 
 @media screen and (min-height: 900px) {
   .form {
-    margin-top: 20%;
+    margin-top: 15%;
   }
 
   .field {
@@ -225,7 +234,7 @@
 
 @media screen and (min-height: 1100px) {
   .form {
-    margin-top: 17%;
+    margin-top: 20%;
   }
 
   .field {

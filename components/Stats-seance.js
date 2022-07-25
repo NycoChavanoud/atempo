@@ -1,4 +1,6 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getAllSeances, getMethodList } from "../model/seances";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,7 +24,46 @@ ChartJS.register(
   Legend
 );
 
+function strNoAccent(a) {
+  var b = "áàâäãåçéèêëíïîìñóòôöõúùûüýÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ",
+    c = "aaaaaaceeeeiiiinooooouuuuyAAAAAACEEEEIIIINOOOOOUUUUY",
+    d = "";
+  for (var i = 0, j = a.length; i < j; i++) {
+    var e = a.substr(i, 1);
+    d += b.indexOf(e) !== -1 ? c.substr(b.indexOf(e), 1) : e;
+  }
+  return d;
+}
+
 export default function StatsSeances() {
+  const [AllSeances, setAllSeances] = useState([]);
+  const [AllMethods, setAllMethods] = useState([]);
+
+  useEffect(() => {
+    getAllSeances().then(setAllSeances);
+    getMethodList().then(setAllMethods);
+  }, []);
+
+  const test = [];
+
+  AllMethods.map(function (item) {
+    const name = strNoAccent(item.name.toLowerCase());
+
+    var d = 0;
+
+    AllSeances.map(function (item) {
+      if (item.method != name) {
+        return false;
+      }
+
+      d++;
+    });
+
+    test[name] = d;
+  });
+
+  console.log(test);
+
   return (
     <div className={style.content}>
       <Line
@@ -62,28 +103,9 @@ export default function StatsSeances() {
               borderColor: "rgb(255, 99, 132)",
               backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
-            {
-              label: "Sophrologie",
-              data: [
-                "200",
-                "400",
-                "600",
-                "700",
-                "300",
-                "1000",
-                "500",
-                "300",
-                "700",
-                "200",
-                "500",
-                "100",
-              ],
-              borderColor: "rgb(53, 162, 235)",
-              backgroundColor: "rgba(53, 162, 235, 0.5)",
-            },
           ],
         }}
-        options={{ maintainAspectRatio: false }}
+        options={{ responsive: true }}
       />
     </div>
   );

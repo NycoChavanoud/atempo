@@ -18,6 +18,7 @@ import {
   uploadBytes,
 } from "firebase/storage";
 import { db, auth, storage } from "../config/firebaseConfig";
+import { getClientData, updateClient } from "./client";
 
 export async function createSeance(seanceData) {
   const user = auth.currentUser;
@@ -51,6 +52,18 @@ export async function deleteSeance(id) {
 
     const seance_nb = await getSeanceNumber();
     update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
+
+    for (const client of data.clientList) {
+      const clientData = getClientData(client.id);
+
+      const index = clientData?.seanceList?.indexOf(id);
+      if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
+        delete clientData.seanceList[index];
+        updateClient(client.id, {
+          seanceList: clientData.seanceList,
+        });
+      }
+    }
   }
 }
 
@@ -115,6 +128,30 @@ export async function getSeancesList(page, lastDate, limit = 6) {
       console.error(error);
     }
   } else return null;
+}
+
+/* MODIF */
+
+export async function getAllSeances() {
+  const user = auth.currentUser;
+
+  if (user) {
+    try {
+      const queryConstraints = [orderByChild("creation_date")];
+      const seancesRef = ref(db, `seances/${user.uid}`);
+      const snapshot = await get(query(seancesRef, ...queryConstraints));
+      if (snapshot.exists()) {
+        const seanceTab = Object.keys(snapshot.val()).map(
+          (seance) => snapshot.val()[seance]
+        );
+        return seanceTab.reverse();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  } else {
+    return null;
+  }
 }
 
 export async function getThematic(thematic) {

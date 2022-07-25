@@ -20,23 +20,23 @@ ChartJS.register(
 );
 
 export default function StatsClients() {
+  console.log("test 30");
   return (
     <div className={style.content}>
       <Bar
-        className={style.bar}
         data={{
           labels: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
           datasets: [
             {
-              data: [5, 2, 10, 5, 3, 6, 4],
+              data: [5, 2, 10, 5, 3, 6, 4, 15],
               borderRadius: 20,
               label: "Sophrologie",
               backgroundColor: "blue",
-              barThickness: 10,
+              barThickness: 15,
             },
           ],
         }}
-        options={{ maintainAspectRatio: true }}
+        options={{ responsive: true }}
       />
     </div>
   );

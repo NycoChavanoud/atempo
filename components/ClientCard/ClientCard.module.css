@@ -7,6 +7,15 @@
   justify-content: space-around;
 }
 
+.circle_card {
+  width: 95px;
+  height: 95px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .title {
   text-align: center;
   letter-spacing: 2px;
@@ -14,6 +23,13 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 25px;
+}
+
+.initials {
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 25px;
 }
 
 @media screen and (min-width: 740px) {

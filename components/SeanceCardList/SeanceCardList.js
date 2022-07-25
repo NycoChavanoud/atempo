@@ -7,6 +7,8 @@ import SeanceCard from "../SeanceCard/SeanceCard";
 import styles from "./SeanceCardList.module.css";
 
 export default function SeanceCardList() {
+  console.log("60");
+
   const [seanceList, setSeanceList] = useState([]);
   const [page, setPage] = useState(1);
   const [left, setLeft] = useState(0);
@@ -116,11 +118,19 @@ export default function SeanceCardList() {
         onMouseUp={() => handleMouseUp()}
         onMouseLeave={() => handleMouseLeave()}
       >
-        {seanceList
-          ? seanceList.map((s) => (
-              <SeanceCard key={s.id} id={s.id}></SeanceCard>
-            ))
-          : null}
+        {seanceList ? (
+          seanceList.map((s) => <SeanceCard key={s.id} id={s.id}></SeanceCard>)
+        ) : (
+          <p
+            className={styles.emptyList}
+            style={{
+              color: "var(--main-bg-color)",
+              padding: "20px",
+            }}
+          >
+            Il semblerait que vous n&apos;ayez pas encore enregistré de séances.
+          </p>
+        )}
       </div>
 
       {seanceList?.length > 6 && (

@@ -1,4 +1,3 @@
-// import { Avatar } from "@mui/material";
 import Avatar from "../../components/Avatar/Avatar";
 import StatsClients from "../../components/Stats-clients";
 import StatsSeances from "../../components/Stats-seance";
