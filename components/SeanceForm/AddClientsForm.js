@@ -13,13 +13,11 @@ export default function AddClientsForm() {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    if (seanceData.clientList?.length > 0) {
-      setCompletedStep(true);
-    }
-  }, [seanceData, setCompletedStep]);
+    setCompletedStep(true);
+  }, []);
 
   return (
-    <div className={styles.AddClientsContainer}>
+    <div className={styles.container}>
       <h2 className={styles.create_label}>
         Associer un ou plusieurs clients à la séances :{" "}
       </h2>

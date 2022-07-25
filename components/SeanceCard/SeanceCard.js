@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../../context/authContext";
 import { getMethod, getThematic, getSeanceData } from "../../model/seances";
 import Duration from "./Duration";
 import styles from "./SeanceCard.module.css";
@@ -9,9 +10,10 @@ export default function SeanceCard({ id, circle = false }) {
   const [thematic, setThematic] = useState({ color: "#C5C5DB", name: "" });
   const [method, setMethod] = useState({ name: "" });
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useAuth();
 
   const loadData = async () => {
-    const newData = await getSeanceData(id);
+    const newData = await getSeanceData(user, id);
     setSeanceData(newData);
     const newMethod = await getMethod(newData?.method);
     setMethod(newMethod);
