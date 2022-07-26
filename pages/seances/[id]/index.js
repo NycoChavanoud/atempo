@@ -5,7 +5,6 @@ import styles from "../../../styles/Seances.module.css";
 import SeanceDetails from "../../../components/SeanceDetails/SeanceDetails";
 import AssociatedClients from "../../../components/AssociatedClients/AssociatedClients";
 import { useRouter } from "next/router";
-import WaveWhiteBurger from "../../../components/WaveWhiteBurger/WaveWhiteBurger";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -18,6 +17,7 @@ import { CircularProgress, Modal } from "@mui/material";
 import ReactPlayer from "react-player";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
 import { useAuth } from "../../../context/authContext";
+import GreyBurger from "../../../components/GreyBurger/GreyBurger";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
@@ -90,10 +90,11 @@ export default function Seance() {
           <DesktopMenu />
         </div>
         <div>
-          <WaveWhiteBurger />
+          <GreyBurger />
           <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
             {loadingData ? (
               <div className="flex justify-center">
+                <h2>Chargement...</h2>
                 <CircularProgress color="inherit" />
               </div>
             ) : (

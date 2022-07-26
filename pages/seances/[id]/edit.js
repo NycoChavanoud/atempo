@@ -116,6 +116,7 @@ export default function EditSeance() {
             <h1 className={styles.create_title}>Modifier la séance</h1>
             {loadingData ? (
               <div className="flex justify-center items-center w-[100%] h-[400px]">
+                <h2>Chargement...</h2>
                 <CircularProgress color="inherit" />
               </div>
             ) : (

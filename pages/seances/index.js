@@ -6,7 +6,7 @@ import styles from "../../styles/Seances.module.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
-import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
+import GreyBurger from "../../components/GreyBurger/GreyBurger";
 
 export default function MySeances() {
   return (
@@ -16,7 +16,7 @@ export default function MySeances() {
           <DesktopMenu />
         </div>
         <div>
-          <WaveWhiteBurger />
+          <GreyBurger />
           <div className="flex flex-col justify-center items-center lg:mt-10">
             <div className="flex flex-row items-center justify-around">
               <h1 className={styles.title}>Mes séances</h1>

@@ -9,7 +9,7 @@ import { useAuth } from "../../context/authContext";
 
 export default function SeanceCardList() {
   const [seanceList, setSeanceList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [page, setPage] = useState(1);
   const [left, setLeft] = useState(0);
@@ -99,19 +99,30 @@ export default function SeanceCardList() {
     handleMouseUp();
   };
 
+  const getList = async (user, page, lastDate) => {
+    try {
+      setIsLoading(true);
+      const list = await getSeancesList(user, page, lastDate);
+      setSeanceList(list);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     getSeanceNumber(user).then((nb) =>
       nb > 0 ? setPageNumber(Math.ceil(nb / 6) - 1) : setPageNumber(1)
     );
 
-    getSeancesList(user, page, lastDate)
-      .then(setSeanceList)
-      .then(setIsLoading(false));
+    getList(user, page, lastDate);
   }, [page, lastDate, user, isLoading]);
 
   if (isLoading) {
     return (
       <div className={styles.loader}>
+        <h2>Chargement...</h2>
         <CircularProgress color="inherit" />
       </div>
     );

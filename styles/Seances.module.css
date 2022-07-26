@@ -23,7 +23,7 @@
 .btn {
   width: 80%;
   height: 50px;
-  background-color: #ff9083;
+  background-color: var(--color1);
   border-radius: 80px;
   padding: 20px;
   margin: 10px;
