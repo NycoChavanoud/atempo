@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import styles from "./SeanceForm.module.css";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import createSeanceContext from "../../context/createSeanceContext";
@@ -17,10 +17,15 @@ const warn = (m) =>
   });
 
 export default function UploadMediaForm() {
-  const { seanceData, setSeanceData, setMedia, media, setCompletedStep } =
-    useContext(createSeanceContext);
-
-  const [urlSource, setUrlSource] = useState();
+  const {
+    seanceData,
+    setSeanceData,
+    setMedia,
+    media,
+    setCompletedStep,
+    urlSource,
+    setUrlSource,
+  } = useContext(createSeanceContext);
 
   const fileInput = useRef();
   const selectFile = () => {

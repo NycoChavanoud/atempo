@@ -1,10 +1,11 @@
 import { CircularProgress } from "@mui/material";
 import React, { useContext } from "react";
+import ReactPlayer from "react-player";
 import createSeanceContext from "../../context/createSeanceContext";
 import styles from "./SeanceForm.module.css";
 
 export default function Summary() {
-  const { seanceData, isLoading } = useContext(createSeanceContext);
+  const { seanceData, isLoading, urlSource } = useContext(createSeanceContext);
 
   if (seanceData) {
     return (
@@ -24,7 +25,16 @@ export default function Summary() {
             <p className={styles.summaryData}>{seanceData.description}</p>
             <h3 className={styles.summaryDataTitle}>Fichier Audio :</h3>
             <p>{seanceData.media_name || "Aucun média associé"}</p>
-
+            {urlSource && (
+              <div className="flex justify-center items-center w-[100%] mb-5">
+                <ReactPlayer
+                  url={urlSource}
+                  width="100%"
+                  height="100%"
+                  controls
+                />
+              </div>
+            )}
             <div>
               <h3 className={styles.summaryDataTitle}>Clients associés : </h3>
               {seanceData.clientList ? (

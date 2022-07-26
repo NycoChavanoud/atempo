@@ -197,15 +197,22 @@ export async function getSeanceMediaUrl(media_url) {
     switch (error.code) {
       case "storage/object-not-found":
         // File doesn't exist
+        console.error("File doesn't exist");
         break;
       case "storage/unauthorized":
-        // User doesn't have permission to access the object
+        //
+        console.error("User doesn't have permission to access the object");
+
         break;
       case "storage/canceled":
         // User canceled the upload
+        console.error(" User canceled the upload");
+
         break;
       case "storage/unknown":
         // Unknown error occurred, inspect the server response
+        console.error(" Unknown error occurred, inspect the server response");
+
         break;
     }
   }

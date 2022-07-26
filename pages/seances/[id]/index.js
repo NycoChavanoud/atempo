@@ -14,7 +14,7 @@ import {
   getSeanceData,
   getSeanceMediaUrl,
 } from "../../../model/seances";
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 import ReactPlayer from "react-player";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
 import { useAuth } from "../../../context/authContext";
@@ -69,10 +69,18 @@ export default function Seance() {
       );
   };
 
+  const getData = async (user, id) => {
+    const sData = await getSeanceData(user, id);
+    setSeanceData(sData);
+    if (sData) {
+      const url = await getSeanceMediaUrl(sData.media_url);
+      setUrlSource(url);
+    }
+    setLoadingData(false);
+  };
+
   useEffect(() => {
-    if (loadingData)
-      getSeanceData(user, id).then(setSeanceData).then(setLoadingData(false));
-    else getSeanceMediaUrl(seanceData.media_url).then(setUrlSource);
+    getData(user, id);
   }, [id, loadingData, user]);
 
   return (
@@ -84,15 +92,32 @@ export default function Seance() {
         <div>
           <WaveWhiteBurger />
           <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
-            <div>
-              <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
-              <SeanceDetails seanceData={seanceData} />
-              <ReactPlayer url={urlSource} width="100%" height="20%" controls />
-              <AssociatedClients
-                clientList={seanceData.clientList}
-                setLoadingData={setLoadingData}
-              />
-            </div>
+            {loadingData ? (
+              <div className="flex justify-center">
+                <CircularProgress color="inherit" />
+              </div>
+            ) : (
+              <div>
+                <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
+                <SeanceDetails seanceData={seanceData} />
+                {loadingData ? (
+                  <div className="flex justify-center">
+                    <CircularProgress color="inherit" />
+                  </div>
+                ) : (
+                  <ReactPlayer
+                    url={urlSource}
+                    width="100%"
+                    height="20%"
+                    controls
+                  />
+                )}{" "}
+                <AssociatedClients
+                  clientList={seanceData.clientList}
+                  setLoadingData={setLoadingData}
+                />
+              </div>
+            )}
 
             <div className="flex flex-row item-center justify-center">
               <Link href={`/seances/${id}/edit`}>
