@@ -111,7 +111,7 @@ export default function SeanceCardList() {
 
   if (isLoading) {
     return (
-      <div className={styles.container}>
+      <div className={styles.loader}>
         <CircularProgress color="inherit" />
       </div>
     );
@@ -156,7 +156,7 @@ export default function SeanceCardList() {
             sx={{
               width: "100%",
               flexGrow: 1,
-              justifyContent: "center",
+              justifyContent: "space-between",
             }}
             className={styles.page_stepper}
             nextButton={

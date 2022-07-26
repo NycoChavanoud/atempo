@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layout/Layout";
 import { set, ref } from "firebase/database";
 import { db, auth } from "../../config/firebaseConfig";
+import { updateProfile } from "firebase/auth";
 
 const Inscription = () => {
   const [lastName, setLastName] = useState("");
@@ -33,6 +34,8 @@ const Inscription = () => {
         photoURL: defaultURL,
         email,
       });
+
+      await updateProfile(user, { photoURL: defaultURL });
 
       router.push("/profile");
     } catch (error) {

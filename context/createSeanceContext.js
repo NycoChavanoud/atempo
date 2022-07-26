@@ -7,10 +7,13 @@ export function CreateSeanceContextProvider({ children }) {
   const [media, setMedia] = useState({});
   const [completedStep, setCompletedStep] = useState(false);
   const [currentSeanceId, setCurrentSeanceId] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <createSeanceContext.Provider
       value={{
+        isLoading,
+        setIsLoading,
         currentSeanceId,
         setCurrentSeanceId,
         seanceData,

@@ -126,6 +126,12 @@
   cursor: pointer;
 }
 
+.loader {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+
 @media screen and (min-height: 740px) {
   .imgBack {
     height: 40px;

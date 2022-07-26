@@ -15,13 +15,21 @@
 }
 
 .pagination_btn {
-  display: none;
   color: #f98f83;
+  display: flex;
 }
 
 .emptyList {
   grid-column: 1/3;
   text-align: center;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -31,9 +39,6 @@
     gap: 60px 60px;
   }
 
-  .pagination_btn {
-    display: flex;
-  }
   .page_stepper {
     justify-content: space-between;
   }

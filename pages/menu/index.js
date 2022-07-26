@@ -6,13 +6,16 @@ import Avatar from "../../components/Avatar/Avatar";
 import Layout from "../../components/Layout/Layout";
 import Deconnexion from "../../components/Deconnexion/Deconnexion";
 import DisplayCurrentUser from "../../components/DisplayCurrentUser/DisplayCurrentUser";
+import { useAuth } from "../../context/authContext";
 
 export default function MobileMenu() {
+  const { user } = useAuth();
+
   return (
     <Layout pageTitle="Menu">
       <WhiteCross />
       <div className={style.container}>
-        <Avatar />
+        <Avatar src={user.photoURL} />
         <Link href="/seances/createFromMenu">
           <button className={style.button}>Créer une séance</button>
         </Link>

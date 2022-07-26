@@ -1,18 +1,25 @@
 import style from "../Avatar/avatar.module.css";
-import { useAuth } from "../../context/authContext";
+import { CircularProgress } from "@mui/material";
 
-export default function Avatar({ alt, src }) {
-  const { user } = useAuth();
-
+export default function Avatar({
+  alt = "avatar picture",
+  src,
+  loading = false,
+}) {
   return (
     <>
       {/* eslint-disable-next-line */}
-      <img
-        data-cy="currentUserAvatar"
-        src={src || user.photoURL}
-        alt={alt}
-        className={style.avatar}
-      />{" "}
+      {loading ? (
+        <CircularProgress color="inherit" />
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          data-cy="currentUserAvatar"
+          src={src}
+          alt={alt}
+          className={style.avatar}
+        />
+      )}
     </>
   );
 }

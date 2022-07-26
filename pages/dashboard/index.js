@@ -33,7 +33,7 @@ export default function Dashboard() {
           <WaveWhiteBurger />
 
           <div className={style.user}>
-            <Avatar className={style.avatar} />
+            <Avatar className={style.avatar} src={user.photoURL} />
             {!isLoading && (
               <h2
                 className={style.name}
