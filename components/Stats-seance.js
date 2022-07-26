@@ -25,7 +25,7 @@ export default function StatsSeances() {
   return (
     <div className={style.content}>
       <Line
-        height={"300px"}
+        className={style.line}
         data={{
           labels: [
             "January",
