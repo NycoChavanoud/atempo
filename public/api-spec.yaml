@@ -1,0 +1,113 @@
+openapi: 3.0.2
+servers:
+  - url: https://console.firebase.google.com/u/0/project/zenegopro/database/zenegopro-default-rtdb/data/~2F
+info:
+  title: "Zenego API"
+  version: 0.0.1
+  description: "Zenego API description"
+tags:
+  - name: client
+  description: Everything about clients
+paths:
+  `/clients/{user.uid}`:
+    get:
+      tags:
+        - client
+      summary: Get all clients of a practitioners
+      operationId: getAllClients
+      responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientArray'
+  `/clients/{user.uid}/{id}`:
+    get:
+      tags:
+        - client
+      summary: Find a client by id
+      description: return a client
+      operationId: getClientById
+      parameters:
+        - name: clientId
+          in: path
+          example: 1
+          description: ID of client to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref:'#/components/schemas/ClientDetail'
+        '404':
+          description: Client not found
+components:
+  schemas:
+    Client:
+      required:
+        - id
+        - firstname
+        - lastname
+      properties:
+        id:
+          type: string
+          example: '179pa54r'
+        firstname:
+          type: string
+          example: 'Lulu'
+        lastname:
+          type: string
+          example: 'Lolo'
+      type: object
+    ClientDetail:
+      required:
+        - id
+        - firstname
+        - lastname
+        - email
+        - phoneNumber
+        - streetNumber
+        - streetName
+        - postalCode
+        - city
+      properties:
+        id:
+          type: string
+          example: '179pa54r'
+        firstname:
+          type: string
+          example: 'Lulu'
+        lastname:
+          type: string
+          example: 'Lolo'
+        email: 
+          type: string
+          example: 'lololulu@gmail.com'
+        phoneNumber:
+          type: integer
+          format: int64
+          example: 0236598745
+        streetNumber:
+          type: integer
+          format: int64
+          example: 12
+        streetName:
+          type: string
+          example: 'av rép'
+        postalCode:
+          type: integer
+          format: int64
+          example: 69190
+        city:
+          type: string
+          example:'Bron'
+      type: object         
+    ClientArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Client'
