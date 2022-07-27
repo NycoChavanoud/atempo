@@ -83,6 +83,7 @@
 
 .lnkString {
   color: #412e68;
+  font-size: large;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -128,6 +129,10 @@
 
   .btn {
     margin-top: 28px;
+  }
+
+  .lnkString {
+    font-size: larger;
   }
 }
 

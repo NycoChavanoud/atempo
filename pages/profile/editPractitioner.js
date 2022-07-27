@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
@@ -195,13 +194,11 @@ export default function Profile() {
               }
             />
           </div>
-
           <div className={styles.network}>
             <div className={styles.networkLink}>
-              <Image
-                width={35}
-                height={35}
-                src="/img/fb.png"
+              <img
+                className={styles.logo}
+                src="/images/fb.png"
                 alt="logo facebook"
               />
               <input
@@ -221,10 +218,9 @@ export default function Profile() {
             </div>
 
             <div className={styles.networkLink}>
-              <Image
-                width={35}
-                height={35}
-                src="/img/insta.png"
+              <img
+                className={styles.logo}
+                src="/images/insta.png"
                 alt="logo instagram"
               />
 
