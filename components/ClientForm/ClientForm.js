@@ -170,7 +170,7 @@ export default function ClientForm() {
         <option value="energie">Energie</option>
         <option value="grossesse">Grossesse</option>
         <option value="stress">Stress</option>
-        <option value="enfants">Enfant</option>
+        <option value="enfants">Enfants</option>
         <option value="emotion">Emotion</option>
         <option value="mental">Mental</option>
         <option value="autre">Précisez</option>

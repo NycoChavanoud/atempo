@@ -51,7 +51,7 @@ export default function Client() {
   const handleDelete = (e) => {
     e.preventDefault();
     if (deleteInput === "SUPPRIMER") {
-      deleteClient(id);
+      deleteClient(user, id);
       success();
       router.push("/clients");
     } else {

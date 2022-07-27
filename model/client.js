@@ -56,7 +56,7 @@ export async function getClientNumber(user) {
 
 export async function deleteClient(user, id) {
   if (user) {
-    const data = await getClientData(id);
+    const data = await getClientData(user, id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
     remove(deleteRef);
 
@@ -64,13 +64,13 @@ export async function deleteClient(user, id) {
     update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb - 1 });
 
     for (const seanceID of data.seanceList) {
-      const seanceData = await getSeanceData(seanceID);
+      const seanceData = await getSeanceData(user, seanceID);
 
       if (seanceData) {
         const index = seanceData.clientList?.indexOf(id);
         if (seanceData.clientList && seanceData?.clientList?.includes(id)) {
           delete seanceData.clientList[index];
-          updateSeance(seanceID, {
+          updateSeance(user, seanceID, {
             clientList: seanceData.clientList,
           });
         }
