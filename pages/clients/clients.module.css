@@ -20,6 +20,9 @@
 }
 
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
 }
 
@@ -35,7 +38,8 @@
   font-weight: bold;
   font-size: 18px;
   letter-spacing: 1px;
-  margin: 10% auto 0 auto;
+  padding: 20px;
+  margin: 10px;
 }
 
 @media screen and (min-width: 740px) {
