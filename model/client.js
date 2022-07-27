@@ -50,12 +50,10 @@ export async function deleteClient(user, id) {
   }
 }
 
-export async function getClientData(user, clientId) {
+export async function getClientData(user, id) {
   if (user) {
     try {
-      const snapshot = await get(
-        child(ref(db), `/clients/${user.uid}/${clientId}`)
-      );
+      const snapshot = await get(child(ref(db), `/clients/${user.uid}/${id}`));
       if (snapshot.exists()) {
         return snapshot.val();
       }
@@ -65,11 +63,11 @@ export async function getClientData(user, clientId) {
   }
 }
 
-export async function updateClient(user, clientId, data) {
+export async function updateClient(user, id, data) {
   const last_update = Date.now();
 
   if (user) {
-    update(ref(db, `clients/${user.uid}/${clientId}`), {
+    update(ref(db, `clients/${user.uid}/${id}`), {
       ...data,
       last_update,
     });

@@ -12,15 +12,17 @@
 
 .imgBack {
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
+  top: 20px;
+  left: 20px;
 }
 
 .title {
   display: flex;
   justify-content: center;
   color: #fff;
-  font-size: 28px;
+  font-size: 24px;
 }
 
 .userAvatar {
@@ -35,7 +37,7 @@
 }
 
 .form {
-  margin-top: 10%;
+  margin-top: 7%;
   margin-left: 5px;
   margin-right: 10px;
 }
@@ -71,16 +73,25 @@
   text-align: center;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+}
+
 .network {
   display: flex;
   justify-content: center;
   margin-top: 20px;
   margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 .networkLink {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .inputNetwork {
@@ -100,7 +111,7 @@
 
 .inputNetwork::placeholder {
   color: var(--main-bg-color);
-  font-size: 1em;
+  font-size: 0.8em;
   opacity: 0.7;
   text-align: center;
 }
@@ -109,7 +120,6 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 20px;
 }
 
 .btn {
@@ -127,39 +137,31 @@
 }
 
 @media screen and (min-height: 740px) {
-  .imgBack {
-    height: 40px;
-    width: 40px;
-  }
   .form {
-    margin-top: 10%;
-  }
-
-  .title {
     margin-top: 5%;
   }
 
   .field {
     margin-top: 45px;
   }
-
-  .buttonContainer {
-    margin-top: 30px;
-  }
 }
 
 @media screen and (min-height: 840px) {
+  .title {
+    font-size: 28px;
+  }
+
   .imgBack {
     height: 45px;
     width: 45px;
   }
 
   .form {
-    margin-top: 20%;
+    margin-top: 14%;
   }
 
   .field {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
 
   .input {
@@ -168,19 +170,21 @@
   }
 
   .network {
+    display: block;
     margin-top: 30px;
   }
 
-  .buttonContainer {
-    margin-top: 40px;
+  .inputNetwork {
+    width: 70%;
+    height: 45px;
+    font-size: 1.2rem;
   }
 }
 
 @media screen and (min-height: 900px) {
   .form {
-    margin-top: 25%;
+    margin-top: 15%;
   }
-
   .field {
     margin-bottom: 50px;
   }
@@ -188,5 +192,89 @@
   .input {
     height: 45px;
     font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .imgBack {
+    height: 65px;
+    width: 65px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .form {
+    margin-top: 14%;
+  }
+
+  .field {
+    margin-bottom: 50px;
+  }
+
+  .input {
+    height: 50px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  .form {
+    margin-top: 20%;
+  }
+
+  .field {
+    margin-bottom: 55px;
+  }
+
+  .input {
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .form {
+    margin-top: 5%;
+  }
+  .field {
+    margin-bottom: 40px;
+  }
+
+  .input {
+    width: 50%;
+    height: 40px;
+    font-size: 1.8rem;
+  }
+
+  .inputNetwork {
+    width: 65%;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    font-size: 20px;
   }
 }

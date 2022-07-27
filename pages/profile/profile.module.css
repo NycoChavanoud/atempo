@@ -9,7 +9,7 @@
 
 .user {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   margin-bottom: 30px;
 }
@@ -44,7 +44,7 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  width: 80%;
+  width: 90%;
   height: 20vh;
   border-radius: 50px;
   background-color: #412e68;
@@ -83,6 +83,7 @@
 
 .lnkString {
   color: #412e68;
+  font-size: large;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -129,6 +130,10 @@
   .btn {
     margin-top: 28px;
   }
+
+  .lnkString {
+    font-size: larger;
+  }
 }
 
 @media screen and (min-height: 840px) {
@@ -149,5 +154,26 @@
   .boxes {
     display: grid;
     grid-template-columns: 1fr 5fr;
+  }
+
+  .avatar {
+    display: none;
+  }
+  .title {
+    margin-bottom: 50px;
+    margin-top: 70px;
+  }
+
+  .title2 {
+    margin-bottom: 50px;
+    margin-top: 70px;
+  }
+
+  .contacts {
+    font-size: 22px;
+  }
+
+  .btn {
+    margin-top: 50px;
   }
 }
