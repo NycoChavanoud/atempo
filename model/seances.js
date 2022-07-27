@@ -7,8 +7,6 @@ import {
   orderByChild,
   push,
   query,
-  limitToLast,
-  endAt,
   remove,
 } from "firebase/database";
 import {
@@ -89,16 +87,9 @@ export async function getSeanceData(user, seanceId) {
   }
 }
 
-export async function getSeancesList(user, page, lastDate, limit = 6) {
-  if (!lastDate || page === 1) lastDate = Date.now();
-  else lastDate = lastDate - 2000;
-
+export async function getSeancesList(user) {
   try {
-    const queryConstraints = [
-      orderByChild("creation_date"),
-      endAt(lastDate, "creation_date"),
-      limitToLast(limit),
-    ];
+    const queryConstraints = [orderByChild("creation_date")];
     const seancesRef = ref(db, `seances/${user.uid}`);
     const snapshot = await get(query(seancesRef, ...queryConstraints));
     if (snapshot.exists()) {

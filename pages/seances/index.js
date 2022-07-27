@@ -18,7 +18,7 @@ export default function MySeances() {
         <div>
           <GreyBurger />
           <div className="flex flex-col justify-center items-center lg:mt-10">
-            <div className="flex flex-row items-center justify-around">
+            <div className="flex flex-row items-center justify-around mb-[2vh]">
               <h1 className={styles.title}>Mes séances</h1>
             </div>
 

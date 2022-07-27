@@ -27,7 +27,7 @@ export default function ClientCardList() {
 
   useEffect(() => {
     getList(user);
-  }, [user, isLoading]);
+  }, [user]);
 
   if (isLoading) {
     return (

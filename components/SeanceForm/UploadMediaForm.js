@@ -106,7 +106,7 @@ export default function UploadMediaForm() {
         <ReactPlayer
           url={urlSource}
           width="100%"
-          height="200px"
+          height="150px"
           style={{
             maxWidth: "500px",
             margin: "auto",

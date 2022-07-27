@@ -2,24 +2,25 @@ import { CircularProgress, MobileStepper } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import React, { useEffect, useState } from "react";
-import { getSeanceNumber, getSeancesList } from "../../model/seances";
+import { getSeancesList } from "../../model/seances";
 import SeanceCard from "../SeanceCard/SeanceCard";
 import styles from "./SeanceCardList.module.css";
 import { useAuth } from "../../context/authContext";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function SeanceCardList() {
   const [seanceList, setSeanceList] = useState([]);
+  const [filterList, setFilterList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [left, setLeft] = useState(0);
   const [originalOffset, setOriginalOffset] = useState(0);
   const [touchStartX, setTouchStartX] = useState(0);
   const [beingTouched, setBeingTouched] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [lastDate, setLastDate] = useState(Date.now());
-  const [PreviousLastDate, setPreviousLastDate] = useState(Date.now());
   const { user } = useAuth();
 
   const handleStart = (clientX) => {
@@ -34,18 +35,14 @@ export default function SeanceCardList() {
   };
 
   const handleNextPage = () => {
-    if (page < pageNumber) {
-      setPreviousLastDate(lastDate);
-      setLastDate(seanceList[seanceList.length - 1].creation_date);
+    if (page < pageNumber - 1) {
       setTimeout(() => setPage(page + 1), 500);
     }
   };
 
   const handlePreviousPage = () => {
-    if (page > 1) {
-      setLastDate(PreviousLastDate);
+    if (page > 0) {
       setTimeout(() => setPage(page - 1), 500);
-      setPreviousLastDate(seanceList[0].creation_date);
     }
   };
 
@@ -99,11 +96,19 @@ export default function SeanceCardList() {
     handleMouseUp();
   };
 
-  const getList = async (user, page, lastDate) => {
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  };
+
+  const getList = async (user) => {
     try {
       setIsLoading(true);
-      const list = await getSeancesList(user, page, lastDate);
+      const list = await getSeancesList(user);
+      setFilterList(list);
       setSeanceList(list);
+      if (list?.length > 0) setPageNumber(Math.ceil(list.length / 6));
+      else setPageNumber(1);
     } catch (error) {
       console.error(error);
     } finally {
@@ -112,12 +117,24 @@ export default function SeanceCardList() {
   };
 
   useEffect(() => {
-    getSeanceNumber(user).then((nb) =>
-      nb > 0 ? setPageNumber(Math.ceil(nb / 6) - 1) : setPageNumber(1)
-    );
+    if (isLoading) {
+      getList(user);
+    }
 
-    getList(user, page, lastDate);
-  }, [page, lastDate, user, isLoading]);
+    if (searchTerm !== "") {
+      const newFilterList = seanceList.filter((c) => {
+        if (c.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return c;
+        }
+      });
+      setFilterList(newFilterList);
+      setPage(0);
+      setPageNumber(Math.ceil(newFilterList.length / 6));
+    } else {
+      setFilterList(seanceList);
+      setPageNumber(Math.ceil(seanceList.length / 6));
+    }
+  }, [user, searchTerm]);
 
   if (isLoading) {
     return (
@@ -129,6 +146,17 @@ export default function SeanceCardList() {
   } else {
     return (
       <div className={styles.container}>
+        <form className={styles.search}>
+          <input
+            type="text"
+            className={styles.input}
+            value={searchTerm}
+            onChange={handleChange}
+            id="lastname"
+            placeholder="Rechercher par titre"
+          />
+          <SearchIcon />
+        </form>
         <div
           className={styles.list}
           onTouchStart={(e) => handleTouchStart(e)}
@@ -141,9 +169,9 @@ export default function SeanceCardList() {
           onMouseLeave={() => handleMouseLeave()}
         >
           {seanceList ? (
-            seanceList.map((s) => (
-              <SeanceCard key={s.id} id={s.id}></SeanceCard>
-            ))
+            filterList
+              .slice(page * 6, page * 6 + 6)
+              .map((s) => <SeanceCard key={s.id} id={s.id}></SeanceCard>)
           ) : (
             <p
               className={styles.emptyList}
@@ -158,12 +186,12 @@ export default function SeanceCardList() {
           )}
         </div>
 
-        {pageNumber > 1 && (
+        {filterList?.length > 6 && (
           <MobileStepper
             variant="dots"
             steps={pageNumber}
             position="static"
-            activeStep={page - 1}
+            activeStep={page}
             sx={{
               width: "100%",
               flexGrow: 1,
@@ -188,7 +216,7 @@ export default function SeanceCardList() {
               <button
                 className={styles.pagination_btn}
                 onClick={handlePreviousPage}
-                disabled={page - 1 === 0}
+                disabled={page === 0}
               >
                 <ArrowCircleLeftIcon
                   sx={{

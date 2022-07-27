@@ -32,6 +32,26 @@
   margin: 200px;
 }
 
+.search {
+  text-align: center;
+  align-items: center;
+  margin-bottom: 2vh;
+  color: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+  width: 100%;
+}
+
+.input {
+  border: solid 2px var(--main-bg-color);
+  border-radius: 80px;
+  text-align: center;
+  font-weight: 500;
+  width: 80%;
+}
+
 @media screen and (min-width: 1024px) {
   .list {
     grid-template-columns: repeat(3, 1fr);
