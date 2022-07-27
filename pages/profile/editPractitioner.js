@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
@@ -179,31 +178,11 @@ export default function Profile() {
             />
           </div>
 
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="website_url"></label>
-            <input
-              data-cy="website_url"
-              className={styles.input}
-              type="text"
-              id="website_url"
-              placeholder="Site web"
-              required
-              value={practitionersData?.website_url}
-              onChange={(e) =>
-                setPractitionersData({
-                  ...practitionersData,
-                  website_url: e.target.value,
-                })
-              }
-            />
-          </div>
-
           <div className={styles.network}>
             <div className={styles.networkLink}>
-              <Image
-                width={35}
-                height={35}
-                src="/img/fb.png"
+              <img
+                className={styles.logo}
+                src="/images/fb.png"
                 alt="logo facebook"
               />
               <input
@@ -223,10 +202,9 @@ export default function Profile() {
             </div>
 
             <div className={styles.networkLink}>
-              <Image
-                width={35}
-                height={35}
-                src="/img/insta.png"
+              <img
+                className={styles.logo}
+                src="/images/insta.png"
                 alt="logo instagram"
               />
 

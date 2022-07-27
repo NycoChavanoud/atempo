@@ -71,16 +71,25 @@
   text-align: center;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 35px;
+}
+
 .network {
   display: flex;
   justify-content: center;
   margin-top: 20px;
   margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 .networkLink {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .inputNetwork {
@@ -109,7 +118,6 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 20px;
 }
 
 .btn {
@@ -142,10 +150,6 @@
   .field {
     margin-top: 45px;
   }
-
-  .buttonContainer {
-    margin-top: 30px;
-  }
 }
 
 @media screen and (min-height: 840px) {
@@ -155,11 +159,11 @@
   }
 
   .form {
-    margin-top: 20%;
+    margin-top: 15%;
   }
 
   .field {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
 
   .input {
@@ -168,19 +172,18 @@
   }
 
   .network {
+    display: block;
     margin-top: 30px;
   }
 
-  .buttonContainer {
-    margin-top: 40px;
+  .inputNetwork {
+    width: 70%;
+    height: 45px;
+    font-size: 1.2rem;
   }
 }
 
 @media screen and (min-height: 900px) {
-  .form {
-    margin-top: 25%;
-  }
-
   .field {
     margin-bottom: 50px;
   }
