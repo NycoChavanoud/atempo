@@ -1,6 +1,7 @@
 import { db } from "../../config/firebaseConfig";
 import { child, get, ref, update } from "firebase/database";
 
+// Pour appeler les données de la base de données du praticien
 export async function getAllPractitionersData(user) {
   try {
     const snapshot = await get(child(ref(db), `/practitioners/${user.uid}`));
@@ -12,6 +13,7 @@ export async function getAllPractitionersData(user) {
   }
 }
 
+// Pour modifier les données de la base de données du praticien sur la page modif profil
 export async function updatePractitionersData(user, data) {
   const last_update = Date.now();
   if (user && data) {
@@ -22,6 +24,7 @@ export async function updatePractitionersData(user, data) {
   }
 }
 
+// Pour récupérer les données de google à la connexion
 export async function updateDataIfGoogleSignIn(user) {
   if (user.displayName) {
     const googleData = {

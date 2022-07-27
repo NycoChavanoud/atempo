@@ -45,7 +45,7 @@
 .field {
   display: flex;
   justify-content: center;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .label {
@@ -158,11 +158,6 @@
 
   .form {
     margin-top: 14%;
-
-  }
-
-  .field {
-    margin-bottom: 70px;
   }
 
   .input {

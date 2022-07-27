@@ -63,7 +63,7 @@ export default function StatsSeances() {
             },
           ],
         }}
-        options={{ responsive: true }}
+        options={{ maintainAspectRatio: true }}
       />
     </div>
   );

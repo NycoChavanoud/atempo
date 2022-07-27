@@ -58,6 +58,7 @@ export default function Profile() {
 
           <section className={style.form}>
             <div className={style.infos}>
+              <p className={style.contacts}>{practitionersData?.address}</p>
               <p className={style.contacts}>{practitionersData?.email}</p>
               <p className={style.contacts}>{practitionersData?.phone}</p>
             </div>
