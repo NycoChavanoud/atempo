@@ -1,44 +1,35 @@
-// import { Avatar } from "@mui/material";
 import Avatar from "../../components/Avatar/Avatar";
 import StatsClients from "../../components/Stats-clients";
 import StatsSeances from "../../components/Stats-seance";
 import style from "./dashboard.module.css";
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import Layout from "../../components/Layout/Layout";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
-import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
-import { useAuth } from "../../context/authContext";
 
 export default function Dashboard() {
   const [tabToShow, setTabToShow] = useState("clients");
-  const [pratitionerData, setPratitionerData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const { user } = useAuth;
+  const [practitionersData, setPractitionersData] = useState("");
 
   useEffect(() => {
-    getAllPractitionersData(user)
-      .then(setPratitionerData)
-      .then(setIsLoading(false));
-  }, [user, isLoading]);
+    getAllPractitionersData().then(setPractitionersData);
+  }, []);
 
-  if (pratitionerData) {
-    return (
-      <Layout pageTitle="Tableau de bord">
-        <div className={style.boxes}>
-          <div>
-            <DesktopMenu />
+  return (
+    <Layout pageTitle="Tableau de bord">
+      <div className={style.boxes}>
+        <div>
+          <DesktopMenu />
+        </div>
+        <div>
+          <WaveWhiteBurger />
+
+          <div className={style.user}>
+            <Avatar className={style.avatar} />
+            <h2 className={style.name}>Hello {practitionersData?.firstname}</h2>
           </div>
           <div>
-            <WaveWhiteBurger />
-
-            <div className={style.user}>
-              <Avatar className={style.avatar} />
-              <h2
-                className={style.name}
-              >{`${pratitionerData.firstname} ${pratitionerData.lastname}`}</h2>
-            </div>
-
             <div className={style.container}>
               <div className={style.tabs}>
                 <div
@@ -66,7 +57,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </Layout>
-    );
-  }
+      </div>
+    </Layout>
+  );
 }
