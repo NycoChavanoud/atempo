@@ -35,7 +35,7 @@ export default function Dashboard() {
             {!isLoading && (
               <h2
                 className={style.name}
-              >{`${pratitionerData.firstname} ${pratitionerData.lastname}`}</h2>
+              >{`${pratitionerData?.firstname} ${pratitionerData?.lastname}`}</h2>
             )}
           </div>
 

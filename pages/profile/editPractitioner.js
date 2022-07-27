@@ -104,8 +104,7 @@ export default function Profile() {
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.field}>
-              <label htmlFor="firstName"></label>
+            <label className={styles.label} htmlFor="firstName">
               <input
                 data-cy="firstName"
                 className={styles.input}
@@ -121,10 +120,9 @@ export default function Profile() {
                   })
                 }
               />
-            </div>
+            </label>
 
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="lastName"></label>
+            <label className={styles.label} htmlFor="lastName">
               <input
                 data-cy="lastName"
                 className={styles.input}
@@ -140,10 +138,9 @@ export default function Profile() {
                   })
                 }
               />
-            </div>
+            </label>
 
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="phone"></label>
+            <label className={styles.label} htmlFor="phone">
               <input
                 data-cy="phone"
                 className={styles.input}
@@ -161,10 +158,9 @@ export default function Profile() {
                   })
                 }
               />
-            </div>
+            </label>
 
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="address"></label>
+            <label className={styles.label} htmlFor="address">
               <input
                 data-cy="address"
                 className={styles.input}
@@ -180,10 +176,9 @@ export default function Profile() {
                   })
                 }
               />
-            </div>
+            </label>
 
-            <div className={styles.field}>
-              <label className={styles.label} htmlFor="website_url"></label>
+            <label className={styles.label} htmlFor="website_url">
               <input
                 data-cy="website_url"
                 className={styles.input}
@@ -199,43 +194,41 @@ export default function Profile() {
                   })
                 }
               />
-            </div>
+            </label>
 
-            <div className={styles.network}>
-              <div className={styles.networkLink}>
-                <input
-                  data-cy="fb_url"
-                  className={styles.inputNetwork}
-                  type="text"
-                  id="fb_url"
-                  placeholder="Facebook"
-                  value={practitionersData?.fb_url}
-                  onChange={(e) =>
-                    setPractitionersData({
-                      ...practitionersData,
-                      fb_url: e.target.value,
-                    })
-                  }
-                />
-              </div>
+            <label className={styles.label} htmlFor="fb_url">
+              <input
+                data-cy="fb_url"
+                className={styles.input}
+                type="text"
+                id="fb_url"
+                placeholder="Facebook"
+                value={practitionersData?.fb_url}
+                onChange={(e) =>
+                  setPractitionersData({
+                    ...practitionersData,
+                    fb_url: e.target.value,
+                  })
+                }
+              />
+            </label>
 
-              <div className={styles.networkLink}>
-                <input
-                  data-cy="insta_url"
-                  className={styles.inputNetwork}
-                  type="text"
-                  id="insta_url"
-                  placeholder="Instagram"
-                  value={practitionersData?.insta_url}
-                  onChange={(e) =>
-                    setPractitionersData({
-                      ...practitionersData,
-                      insta_url: e.target.value,
-                    })
-                  }
-                />
-              </div>
-            </div>
+            <label className={styles.label} htmlFor="insta_url">
+              <input
+                data-cy="insta_url"
+                className={styles.input}
+                type="text"
+                id="insta_url"
+                placeholder="Instagram"
+                value={practitionersData?.insta_url}
+                onChange={(e) =>
+                  setPractitionersData({
+                    ...practitionersData,
+                    insta_url: e.target.value,
+                  })
+                }
+              />
+            </label>
 
             <div className={styles.buttonContainer}>
               <button

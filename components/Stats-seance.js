@@ -29,7 +29,7 @@ export default function StatsSeances() {
   const { user } = useAuth();
 
   useEffect(() => {
-    getSeanceNumber(user).then(setSeanceNumber);
+    getSeanceNumber(user).then((nb) => (nb ? setSeanceNumber(nb) : 0));
   }, [user]);
 
   return (

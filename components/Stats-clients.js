@@ -27,7 +27,7 @@ export default function StatsClients() {
   const { user } = useAuth();
 
   useEffect(() => {
-    getClientNumber(user).then(setClientNumber);
+    getClientNumber(user).then((nb) => (nb ? setClientNumber(nb) : 0));
   }, [user]);
 
   return (
