@@ -24,7 +24,7 @@ export default function StatsClients() {
   return (
     <div className={style.content}>
       <Bar
-        className={style.bar}
+        height={300}
         data={{
           labels: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
           datasets: [
@@ -37,7 +37,7 @@ export default function StatsClients() {
             },
           ],
         }}
-        options={{ responsive: false }}
+        options={{ responsive: true }}
       />
     </div>
   );

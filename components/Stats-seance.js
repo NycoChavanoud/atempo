@@ -25,7 +25,7 @@ export default function StatsSeances() {
   return (
     <div className={style.content}>
       <Line
-        className={style.line}
+        height={300}
         data={{
           labels: [
             "January",
@@ -63,7 +63,7 @@ export default function StatsSeances() {
             },
           ],
         }}
-        options={{ maintainAspectRatio: true }}
+        options={{ responsive: true }}
       />
     </div>
   );
