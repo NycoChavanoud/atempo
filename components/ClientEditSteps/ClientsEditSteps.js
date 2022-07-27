@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 import style from "../ClientsSteps/ClientsSteps.module.css";
 import React, { useContext, useEffect } from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
@@ -16,8 +18,11 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
   const { id } = router.query;
   const { user } = useAuth();
 
-  const warn = () => {
-    toast.warn("Veuillez renseigner tout les champs.", {
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+
+  const warn = (m) => {
+    toast.warn(m, {
       position: "bottom-center",
       autoClose: 2000,
       closeOnClick: true,
@@ -31,7 +36,24 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
       setValidation(true);
     } else {
-      warn();
+      clientData.firstname ? "" : warn("Veuillez renseigner le prénom");
+      clientData.lastname ? "" : warn("Veuillez renseigner le nom");
+      clientData.email?.match(emailRegex)
+        ? ""
+        : warn("Veuillez renseigner un email valide");
+      clientData.phoneNumber?.match(phoneRegex)
+        ? ""
+        : warn("Veuillez renseigner un numéro de téléphone valide");
+      clientData.streetNumber?.length >= 1
+        ? ""
+        : warn("Veuillez renseigner le numéro de rue");
+      clientData.streetName?.length >= 3
+        ? ""
+        : warn("Veuillez renseigner la rue");
+      clientData.postalCode?.length === 5
+        ? ""
+        : warn("Veuillez renseigner le code postal");
+      clientData.city?.length >= 1 ? "" : warn("Veuillez renseigner la ville");
     }
   };
   const handleBack = () => {

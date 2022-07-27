@@ -9,11 +9,6 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "migrateDB": "npx prisma migrate dev",
-    "resetDB": "npx prisma migrate reset",
-    "generate-db-client": "npx prisma generate",
-    "showDB": "npx prisma studio",
-    "migrate:deploy": "npx prisma migrate deploy",
     "pre-start": "NODE_ENV=production npm-run-all migrate:deploy generate-db-client build",
     "serve:lhci": "npm start",
     "test:gui": "cypress open",
@@ -63,9 +58,6 @@
     "postcss": "^8.4.14",
     "prettier": "2.6.2",
     "tailwindcss": "^3.0.24"
-  },
-  "prisma": {
-    "seed": "node prisma/seed.js"
   },
   "lint-staged": {
     "*.{json,js,ts,jsx,tsx,html,css}": [
