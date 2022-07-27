@@ -12,6 +12,12 @@ import { db } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 import { getSeanceData, updateSeance } from "./seances";
 
+/** Créer un client
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {object} - clientData - enregistrement des données clients.
+ * @return {string} - retourne l'identifiant du client créé.
+ */
+
 export async function createClient(user, clientData) {
   const id = uniqid();
   const creation_date = Date.now();
@@ -31,13 +37,23 @@ export async function createClient(user, clientData) {
   update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb + 1 });
 }
 
-export async function getClientNumber(user) {
-  const seance_nb = await get(ref(db, `clients/${user.uid}/client_nb`));
+/** Récupérer le nombre de clients
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @return {number} - retourne le nombre de clients.
+ */
 
-  if (seance_nb) {
-    return seance_nb.val();
+export async function getClientNumber(user) {
+  const client_nb = await get(ref(db, `clients/${user.uid}/client_nb`));
+
+  if (client_nb) {
+    return client_nb.val();
   } else return 0;
 }
+
+/** Supprimer un client
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - id - récupère l'identifiant du client ciblé.
+ */
 
 export async function deleteClient(user, id) {
   if (user) {
@@ -64,6 +80,12 @@ export async function deleteClient(user, id) {
   }
 }
 
+/** Récupère les informations d'un client
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - id - récupère l'identifiant du client ciblé.
+ * @return {object} - retourne les différentes informations du client.
+ */
+
 export async function getClientData(user, id) {
   if (user) {
     try {
@@ -77,6 +99,12 @@ export async function getClientData(user, id) {
   }
 }
 
+/** Mise à jour des information d'un client
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - id - récupère l'identifiant du client ciblé.
+ * @param {object} - data - informations du client.
+ */
+
 export async function updateClient(user, id, data) {
   const last_update = Date.now();
 
@@ -87,6 +115,11 @@ export async function updateClient(user, id, data) {
     });
   }
 }
+
+/** Récupère l'ensemble des clients du praticien connecté.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @return {array} - retourne un tableau regroupant tous les clients.
+ */
 
 export async function getClientList(user) {
   try {
@@ -103,6 +136,11 @@ export async function getClientList(user) {
     console.error(error);
   }
 }
+
+/** Récupère les différentes thématiques.
+ * @param {object} - thematic - récupère les différentes thématiques.
+ * @return {array} - retourne un tableau regroupant toutes les thématiques.
+ */
 
 export async function getThematic(thematic) {
   try {
