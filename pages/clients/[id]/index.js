@@ -26,7 +26,7 @@ export default function Client() {
 
   useEffect(() => {
     getClientData(user, id).then(setClientData);
-  }, [id]);
+  }, [user, id]);
 
   const warn = () => {
     toast.warn({

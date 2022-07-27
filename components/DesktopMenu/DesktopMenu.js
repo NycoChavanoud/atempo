@@ -4,14 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Deconnexion from "../Deconnexion/Deconnexion";
+import { useAuth } from "../../context/authContext";
 
 export default function DesktopMenu() {
   const router = useRouter();
   const currentRoute = router.pathname;
+  const { user } = useAuth();
   return (
     <div className={style.bg}>
       <div className={style.user}>
-        <Avatar />
+        <Avatar src={user.photoURL} />
       </div>
 
       <div className={style.box}>

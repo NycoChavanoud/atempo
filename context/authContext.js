@@ -13,6 +13,7 @@ import {
 import { auth } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../config/firebaseConfig";
+import { updatePractitionersData } from "../model/PractitionersData/practitionersData";
 
 const UserContext = createContext();
 
@@ -62,12 +63,12 @@ export const AuthContextProvider = ({ children }) => {
     const fileRef = ref(storage, `avatars/${user.uid}`);
 
     setLoading(true);
-
     // eslint-disable-next-line no-unused-vars
     await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
-
     await updateProfile(user, { photoURL: photoURL });
+
+    await updatePractitionersData(user, { photoURL: photoURL });
 
     setLoading(false);
   };
