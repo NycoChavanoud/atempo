@@ -43,8 +43,7 @@ export async function createClient(user, clientData) {
  */
 
 export async function getClientNumber(user) {
-  const client_nb = await get(ref(db, `clients/${user.uid}/client_nb`));
-
+  const client_nb = await get(ref(db, `practitioners/${user.uid}/client_nb`));
   if (client_nb) {
     return client_nb.val();
   } else return 0;
