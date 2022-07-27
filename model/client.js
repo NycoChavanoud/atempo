@@ -36,7 +36,7 @@ export async function getClientNumber(user) {
 
   if (seance_nb) {
     return seance_nb.val();
-  }
+  } else return 0;
 }
 
 export async function deleteClient(user, id) {
