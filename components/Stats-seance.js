@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,7 +25,7 @@ export default function StatsSeances() {
   return (
     <div className={style.content}>
       <Line
-        height={"300px"}
+        className={style.line}
         data={{
           labels: [
             "January",
@@ -62,28 +61,9 @@ export default function StatsSeances() {
               borderColor: "rgb(255, 99, 132)",
               backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
-            {
-              label: "Sophrologie",
-              data: [
-                "200",
-                "400",
-                "600",
-                "700",
-                "300",
-                "1000",
-                "500",
-                "300",
-                "700",
-                "200",
-                "500",
-                "100",
-              ],
-              borderColor: "rgb(53, 162, 235)",
-              backgroundColor: "rgba(53, 162, 235, 0.5)",
-            },
           ],
         }}
-        options={{ maintainAspectRatio: false }}
+        options={{ responsive: true }}
       />
     </div>
   );

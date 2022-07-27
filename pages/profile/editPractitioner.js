@@ -1,6 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
 import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../../components/Layout/Layout";
@@ -64,7 +62,7 @@ export default function Profile() {
   return (
     <Layout pageTitle="Modifier votre profil">
       <div className={styles.purple}>
-        <button className="btnBack">
+        <button className={styles.btnBack}>
           <Link href="/profile">
             <img
               className={styles.imgBack}
@@ -205,12 +203,6 @@ export default function Profile() {
 
             <div className={styles.network}>
               <div className={styles.networkLink}>
-                <Image
-                  width={35}
-                  height={35}
-                  src="/img/fb.png"
-                  alt="logo facebook"
-                />
                 <input
                   data-cy="fb_url"
                   className={styles.inputNetwork}
@@ -228,13 +220,6 @@ export default function Profile() {
               </div>
 
               <div className={styles.networkLink}>
-                <Image
-                  width={35}
-                  height={35}
-                  src="/img/insta.png"
-                  alt="logo instagram"
-                />
-
                 <input
                   data-cy="insta_url"
                   className={styles.inputNetwork}
