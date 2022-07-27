@@ -185,7 +185,6 @@ export default function Profile() {
                 type="text"
                 id="website_url"
                 placeholder="Site web"
-                required
                 value={practitionersData?.website_url}
                 onChange={(e) =>
                   setPractitionersData({

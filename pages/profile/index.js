@@ -60,29 +60,59 @@ export default function Profile() {
 
           <section className={style.form}>
             <div className={style.infos}>
+              <p className={style.contacts}>{practitionersData?.address}</p>
               <p className={style.contacts}>{practitionersData?.email}</p>
               <p className={style.contacts}>{practitionersData?.phone}</p>
             </div>
           </section>
 
           <div className={style.reseaux}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={practitionersData?.fb_url}
-              className={style.link}
-            >
-              <p className={style.lnkString}>Facebook</p>
-            </a>
+            {practitionersData?.website_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.website_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/website.png"
+                  className={style.logo}
+                  alt="website logo"
+                />
+                <p className={style.lnkString}>Site web</p>
+              </a>
+            )}
+            {practitionersData?.fb_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.fb_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/fb.png"
+                  className={style.logo}
+                  alt="Facebook logo"
+                />
+                <p className={style.lnkString}>Facebook</p>
+              </a>
+            )}
 
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={practitionersData?.insta_url}
-              className={style.link}
-            >
-              <p className={style.lnkString}>Instagram</p>
-            </a>
+            {practitionersData?.insta_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.insta_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/insta.png"
+                  className={style.logo}
+                  alt="Instagram logo"
+                />
+                <p className={style.lnkString}>Instagram</p>
+              </a>
+            )}
           </div>
 
           <div className={style.btn}>
