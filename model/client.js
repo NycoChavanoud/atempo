@@ -12,7 +12,7 @@ import { db } from "../config/firebaseConfig";
 import uniqid from "uniqid";
 import { getSeanceData, updateSeance } from "./seances";
 
-/** Créer un client
+/** Créer un client.
  * @param {object} - user - confirmation de la connection d'un praticien.
  * @param {object} - clientData - enregistrement des données clients.
  * @return {string} - retourne l'identifiant du client créé.
@@ -37,7 +37,7 @@ export async function createClient(user, clientData) {
   update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb + 1 });
 }
 
-/** Récupérer le nombre de clients
+/** Récupérer le nombre de clients.
  * @param {object} - user - confirmation de la connection d'un praticien.
  * @return {number} - retourne le nombre de clients.
  */
@@ -50,7 +50,7 @@ export async function getClientNumber(user) {
   } else return 0;
 }
 
-/** Supprimer un client
+/** Supprimer un client.
  * @param {object} - user - confirmation de la connection d'un praticien.
  * @param {string} - id - récupère l'identifiant du client ciblé.
  */
@@ -80,7 +80,7 @@ export async function deleteClient(user, id) {
   }
 }
 
-/** Récupère les informations d'un client
+/** Récupère les informations d'un client.
  * @param {object} - user - confirmation de la connection d'un praticien.
  * @param {string} - id - récupère l'identifiant du client ciblé.
  * @return {object} - retourne les différentes informations du client.
@@ -99,7 +99,7 @@ export async function getClientData(user, id) {
   }
 }
 
-/** Mise à jour des information d'un client
+/** Mise à jour des information d'un client.
  * @param {object} - user - confirmation de la connection d'un praticien.
  * @param {string} - id - récupère l'identifiant du client ciblé.
  * @param {object} - data - informations du client.
@@ -137,9 +137,9 @@ export async function getClientList(user) {
   }
 }
 
-/** Récupère les différentes thématiques.
- * @param {object} - thematic - récupère les différentes thématiques.
- * @return {array} - retourne un tableau regroupant toutes les thématiques.
+/** Récupère les couleurs des différentes thématiques.
+ * @param {object} - thematic - récupère la thématique appelée par le formulaire
+ * @return {object} - retourne la couleur liée à la thématique appelée.
  */
 
 export async function getThematic(thematic) {
