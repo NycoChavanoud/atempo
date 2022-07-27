@@ -21,7 +21,7 @@ export default function ClientCard({ id, circle = false }) {
       <Link href={`/clients/${id}`}>
         <a
           className={circle ? style.circle_card : style.card}
-          style={{ backgroundColor: thematic.color }}
+          style={{ backgroundColor: thematic?.color || "grey" }}
         >
           {circle ? (
             <h2 className={style.initials}>
