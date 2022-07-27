@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -70,7 +69,7 @@ export default function Profile() {
   return (
     <Layout pageTitle="Modifier votre profil">
       <div className={styles.purple}>
-        <button className="btnBack">
+        <button className={styles.btnBack}>
           <Link href="/profile">
             <img
               className={styles.imgBack}
@@ -178,6 +177,23 @@ export default function Profile() {
             />
           </div>
 
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="website_url"></label>
+            <input
+              data-cy="website_url"
+              className={styles.input}
+              type="text"
+              id="website_url"
+              placeholder="Site web"
+              value={practitionersData?.website_url}
+              onChange={(e) =>
+                setPractitionersData({
+                  ...practitionersData,
+                  website_url: e.target.value,
+                })
+              }
+            />
+          </div>
           <div className={styles.network}>
             <div className={styles.networkLink}>
               <img
@@ -190,7 +206,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="fb_url"
-                placeholder="Facebook"
+                placeholder="Facebook URL"
                 value={practitionersData?.fb_url}
                 onChange={(e) =>
                   setPractitionersData({
@@ -213,7 +229,7 @@ export default function Profile() {
                 className={styles.inputNetwork}
                 type="text"
                 id="insta_url"
-                placeholder="Instagram"
+                placeholder="Instagram URL"
                 value={practitionersData?.insta_url}
                 onChange={(e) =>
                   setPractitionersData({

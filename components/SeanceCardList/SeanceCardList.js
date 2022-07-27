@@ -8,6 +8,8 @@ import styles from "./SeanceCardList.module.css";
 import { useAuth } from "../../context/authContext";
 
 export default function SeanceCardList() {
+  console.log("60");
+
   const [seanceList, setSeanceList] = useState([]);
   const [page, setPage] = useState(1);
   const [left, setLeft] = useState(0);
