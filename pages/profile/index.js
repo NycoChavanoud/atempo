@@ -58,7 +58,6 @@ export default function Profile() {
             <div className={style.infos}>
               <p className={style.contacts}>{practitionersData?.email}</p>
               <p className={style.contacts}>{practitionersData?.phone}</p>
-              <p className={style.contacts}>{practitionersData?.website_url}</p>
             </div>
           </section>
 
@@ -69,11 +68,6 @@ export default function Profile() {
               href={practitionersData?.fb_url}
               className={style.link}
             >
-              <img
-                className={style.logo}
-                src="/images/fb.png"
-                alt="logo facebook"
-              />
               <p className={style.lnkString}>Facebook</p>
             </a>
 
@@ -83,11 +77,6 @@ export default function Profile() {
               href={practitionersData?.insta_url}
               className={style.link}
             >
-              <img
-                className={style.logo}
-                src="/images/insta.png"
-                alt="logo instagram"
-              />
               <p className={style.lnkString}>Instagram</p>
             </a>
           </div>
