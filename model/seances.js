@@ -7,8 +7,6 @@ import {
   orderByChild,
   push,
   query,
-  limitToLast,
-  endAt,
   remove,
 } from "firebase/database";
 import {
@@ -65,7 +63,7 @@ export async function getSeanceNumber(user) {
 
   if (seance_nb) {
     return seance_nb.val();
-  }
+  } else return 0;
 }
 
 export async function updateSeance(user, sessionId, data) {
@@ -89,16 +87,9 @@ export async function getSeanceData(user, seanceId) {
   }
 }
 
-export async function getSeancesList(user, page, lastDate, limit = 6) {
-  if (!lastDate || page === 1) lastDate = Date.now();
-  else lastDate = lastDate - 2000;
-
+export async function getSeancesList(user) {
   try {
-    const queryConstraints = [
-      orderByChild("creation_date"),
-      endAt(lastDate, "creation_date"),
-      limitToLast(limit),
-    ];
+    const queryConstraints = [orderByChild("creation_date")];
     const seancesRef = ref(db, `seances/${user.uid}`);
     const snapshot = await get(query(seancesRef, ...queryConstraints));
     if (snapshot.exists()) {
@@ -197,15 +188,22 @@ export async function getSeanceMediaUrl(media_url) {
     switch (error.code) {
       case "storage/object-not-found":
         // File doesn't exist
+        console.error("File doesn't exist");
         break;
       case "storage/unauthorized":
-        // User doesn't have permission to access the object
+        //
+        console.error("User doesn't have permission to access the object");
+
         break;
       case "storage/canceled":
         // User canceled the upload
+        console.error(" User canceled the upload");
+
         break;
       case "storage/unknown":
         // Unknown error occurred, inspect the server response
+        console.error(" Unknown error occurred, inspect the server response");
+
         break;
     }
   }

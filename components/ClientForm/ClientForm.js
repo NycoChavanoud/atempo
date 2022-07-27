@@ -19,8 +19,7 @@ export default function ClientForm() {
       clientData.streetNumber?.length >= 1 &&
       clientData.streetName?.length >= 5 &&
       clientData.postalCode?.length === 5 &&
-      clientData.city?.length >= 1 &&
-      clientData.thematic
+      clientData.city?.length >= 1
     ) {
       setValidation(true);
     } else {

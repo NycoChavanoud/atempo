@@ -7,7 +7,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
+import { useAuth } from "../context/authContext";
+import { getClientList, getClientNumber } from "../model/client";
 import style from "../pages/dashboard/dashboard.module.css";
 
 ChartJS.register(
@@ -20,20 +23,65 @@ ChartJS.register(
 );
 
 export default function StatsClients() {
-  console.log("test 30");
+  const [clientNumber, setClientNumber] = useState(0);
+  const [monthStats, setMonthStats] = useState([]);
+  const { user } = useAuth();
+
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const year = new Date().getFullYear();
+
+  const getData = async (user) => {
+    const number = await getClientNumber(user);
+    number ? setClientNumber(number) : 0;
+    const list = await getClientList(user);
+    const creationList = list?.map((c) => new Date(c.creation_date));
+    const clientPerMonth = [];
+    for (let i = 0; i < 11; i++) {
+      const nb = creationList?.filter(
+        (date) => date.getMonth() === i && date.getFullYear() === year
+      ).length;
+      clientPerMonth.push(nb);
+    }
+    setMonthStats(clientPerMonth);
+  };
+
+  useEffect(() => {
+    getData(user);
+  }, [user]);
+
   return (
     <div className={style.content}>
-      <Bar
+      <h2 className={style.statTitle}>
+        Nombre total de patient.es :{" "}
+        <span className={style.number}>{clientNumber}</span>
+      </h2>
+      <h2 className={style.statTitle}>
+        Nouveaux patients par mois en {year} :{" "}
+      </h2>
+      <Line
         height={300}
+        className={style.line}
         data={{
-          labels: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+          labels: month,
           datasets: [
             {
-              data: [5, 2, 10, 5, 3, 6, 4, 15],
-              borderRadius: 20,
-              label: "Sophrologie",
-              backgroundColor: "blue",
-              barThickness: 15,
+              data: monthStats,
+              label: "Patient.es",
+              borderColor: "rgb(255, 99, 132)",
+              backgroundColor: "rgba(255, 99, 132, 0.5)",
             },
           ],
         }}

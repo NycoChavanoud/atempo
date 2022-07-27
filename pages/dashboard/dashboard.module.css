@@ -1,30 +1,37 @@
 .user {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  margin-left: 50px;
-  margin-bottom: 10px;
+  padding: 20px;
 }
 
 .avatar {
   width: 100px;
   height: 100px;
-  margin-right: 20px;
 }
 
 .name {
   color: #412e68;
   font-size: 29px;
   text-align: center;
-  margin-top: 50px;
   font-weight: bold;
-  margin-left: 40px;
+}
+
+.statTitle {
+  color: #412e68;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tabs {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  margin-top: 1rem;
   border-bottom: 10px;
 }
 
@@ -46,7 +53,12 @@
 .sections {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 20px;
+}
+
+.number {
+  font-size: 3rem;
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 1024px) {

@@ -10,10 +10,10 @@ import {
   postSeanceMedia,
   updateSeance,
 } from "../../model/seances";
-import Link from "next/link";
 import { toast } from "react-toastify";
 import { getClientData, updateClient } from "../../model/client";
 import { useAuth } from "../../context/authContext";
+import { useRouter } from "next/router";
 
 const warn = (m) =>
   toast.warn(m, {
@@ -38,9 +38,17 @@ const success = () =>
   });
 
 export default function ProgressStepper({ activeStep, setActiveStep }) {
-  const { seanceData, setSeanceData, media, completedStep, setCompletedStep } =
-    useContext(createSeanceContext);
+  const {
+    seanceData,
+    setSeanceData,
+    media,
+    completedStep,
+    setCompletedStep,
+    setIsLoading,
+    isLoading,
+  } = useContext(createSeanceContext);
   const { user } = useAuth();
+  const router = useRouter();
 
   const handleNext = () => {
     if (completedStep) {
@@ -54,30 +62,42 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
   };
 
   const submitSeanceForm = async () => {
-    const seanceID = await createSeance(user, seanceData);
-    const media_url = await postSeanceMedia(
-      user,
-      media,
-      seanceID,
-      `${seanceData.title}-${seanceData.media_name}`
-    );
-    updateSeance(user, seanceID, {
-      media_url,
-    });
-
-    const clientIDList = seanceData.clientList?.map((client) => client.id);
-
-    for (const clientID of clientIDList) {
-      const clientData = await getClientData(user, clientID);
-      let newSeanceList = [seanceID];
-      if (clientData.seanceList)
-        newSeanceList = [...clientData.seanceList, seanceID];
-      updateClient(user, clientID, {
-        seanceList: newSeanceList,
+    try {
+      setIsLoading(true);
+      const seanceID = await createSeance(user, seanceData);
+      const media_url = await postSeanceMedia(
+        user,
+        media,
+        seanceID,
+        `${seanceData.title}-${seanceData.media_name}`
+      );
+      updateSeance(user, seanceID, {
+        media_url,
       });
+
+      const clientIDList = seanceData.clientList?.map((client) => client.id);
+
+      if (clientIDList) {
+        for (const clientID of clientIDList) {
+          const clientData = await getClientData(user, clientID);
+          let newSeanceList = [seanceID];
+          if (clientData.seanceList)
+            newSeanceList = [...clientData.seanceList, seanceID];
+          updateClient(user, clientID, {
+            seanceList: newSeanceList,
+          });
+        }
+      }
+      success();
+      setSeanceData({});
+      router.push("/seances");
+    } catch (error) {
+      console.error(error);
+      warn(`Une erreur est survenue : ${error}`);
+      router.push("/seances");
+    } finally {
+      setIsLoading(false);
     }
-    success();
-    setSeanceData({});
   };
 
   if (activeStep < 4) {
@@ -154,22 +174,20 @@ export default function ProgressStepper({ activeStep, setActiveStep }) {
             }}
           />
         </Button>
-
-        <Link href="/seances">
-          <Button
-            onClick={submitSeanceForm}
-            style={{
-              width: "150px",
-              height: "50px",
-              background: "#F98F83",
-              color: "white",
-              borderRadius: "20px",
-              fontWeight: "bolder",
-            }}
-          >
-            Confirmer
-          </Button>
-        </Link>
+        <button
+          onClick={submitSeanceForm}
+          style={{
+            width: "150px",
+            height: "50px",
+            background: "#F98F83",
+            color: "white",
+            borderRadius: "20px",
+            fontWeight: "bolder",
+          }}
+          disabled={isLoading}
+        >
+          Confirmer
+        </button>
       </div>
     );
   }
