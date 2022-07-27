@@ -37,8 +37,15 @@
 }
 
 .form {
-  margin: 40px;
-  padding: 20px;
+  margin-top: 7%;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .label {
@@ -124,10 +131,6 @@
 
   .form {
     margin-top: 14%;
-  }
-
-  .field {
-    margin-bottom: 70px;
   }
 
   .input {
