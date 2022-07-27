@@ -5,7 +5,6 @@ import styles from "../../../styles/Seances.module.css";
 import SeanceDetails from "../../../components/SeanceDetails/SeanceDetails";
 import AssociatedClients from "../../../components/AssociatedClients/AssociatedClients";
 import { useRouter } from "next/router";
-import WaveWhiteBurger from "../../../components/WaveWhiteBurger/WaveWhiteBurger";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -14,10 +13,11 @@ import {
   getSeanceData,
   getSeanceMediaUrl,
 } from "../../../model/seances";
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 import ReactPlayer from "react-player";
 import DesktopMenu from "../../../components/DesktopMenu/DesktopMenu";
 import { useAuth } from "../../../context/authContext";
+import GreyBurger from "../../../components/GreyBurger/GreyBurger";
 
 export default function Seance() {
   const [open, setOpen] = useState(false);
@@ -69,10 +69,18 @@ export default function Seance() {
       );
   };
 
+  const getData = async (user, id) => {
+    const sData = await getSeanceData(user, id);
+    setSeanceData(sData);
+    if (sData) {
+      const url = await getSeanceMediaUrl(sData.media_url);
+      setUrlSource(url);
+    }
+    setLoadingData(false);
+  };
+
   useEffect(() => {
-    if (loadingData)
-      getSeanceData(user, id).then(setSeanceData).then(setLoadingData(false));
-    else getSeanceMediaUrl(seanceData.media_url).then(setUrlSource);
+    getData(user, id);
   }, [id, loadingData, user]);
 
   return (
@@ -82,17 +90,41 @@ export default function Seance() {
           <DesktopMenu />
         </div>
         <div>
-          <WaveWhiteBurger />
-          <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
-            <div>
-              <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
-              <SeanceDetails seanceData={seanceData} />
-              <ReactPlayer url={urlSource} width="100%" height="20%" controls />
-              <AssociatedClients
-                clientList={seanceData.clientList}
-                setLoadingData={setLoadingData}
-              />
-            </div>
+          <div className={styles.headerContainer}>
+            <GreyBurger />
+            <Link href="/seances">
+              <button className={styles.backBtn}>Mes séances</button>
+            </Link>
+          </div>
+
+          <div className="flex flex-col p-10 justify-between h-[80vh] lg:mt-10">
+            {loadingData ? (
+              <div className="flex justify-center">
+                <h2>Chargement...</h2>
+                <CircularProgress color="inherit" />
+              </div>
+            ) : (
+              <div>
+                <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
+                <SeanceDetails seanceData={seanceData} />
+                {loadingData ? (
+                  <div className="flex justify-center">
+                    <CircularProgress color="inherit" />
+                  </div>
+                ) : (
+                  <ReactPlayer
+                    url={urlSource}
+                    width="100%"
+                    height="20%"
+                    controls
+                  />
+                )}{" "}
+                <AssociatedClients
+                  clientList={seanceData.clientList}
+                  setLoadingData={setLoadingData}
+                />
+              </div>
+            )}
 
             <div className="flex flex-row item-center justify-center">
               <Link href={`/seances/${id}/edit`}>
@@ -128,7 +160,8 @@ export default function Seance() {
           >
             <p>
               Afin de confirmer la suppression, veuillez rentrer
-              &quot;supprimer&quot; dans le champ suivant:
+              <span className={styles.deleteWord}> SUPPRIMER </span> dans le
+              champ suivant:
             </p>
             <input
               value={deleteInput}

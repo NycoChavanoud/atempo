@@ -1,17 +1,20 @@
 .title {
   display: flex;
   justify-content: center;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: -40px;
+  letter-spacing: 0.01em;
   color: #412e68;
-  font-size: 30px;
-  margin-bottom: 30px;
-  letter-spacing: 0.01px;
+  text-decoration: underline #ff9083 10px;
+  text-underline-offset: -5px;
 }
 
 .user {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 30px;
+  margin: 30px;
 }
 
 .name {
@@ -27,8 +30,9 @@
   justify-content: center;
   text-align: center;
   font-size: 24px;
+  font-weight: bolder;
   color: #ff9083;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   letter-spacing: 1px;
 }
 

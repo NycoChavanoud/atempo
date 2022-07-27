@@ -3,7 +3,6 @@ import Layout from "../../components/Layout/Layout";
 import GreyBurger from "../../components/GreyBurger/GreyBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 import Link from "next/link";
-import Avatar from "../../components/Avatar/Avatar";
 import ClientCardList from "../../components/ClientCardList/ClientCardList";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,9 +18,6 @@ export default function Clients() {
           <GreyBurger />
           <div className={style.purple}>
             <div className={style.box}>
-              <div className={style.user}>
-                <Avatar />
-              </div>
               <h1 className={style.title}>Mes clients</h1>
             </div>
             <ClientCardList />

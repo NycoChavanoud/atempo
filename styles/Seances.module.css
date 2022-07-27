@@ -17,13 +17,13 @@
   color: #ffffff;
   position: absolute;
   top: 10vh;
-  left: 15%;
+  left: 20%;
 }
 
 .btn {
   width: 80%;
   height: 50px;
-  background-color: #ff9083;
+  background-color: var(--color1);
   border-radius: 80px;
   padding: 20px;
   margin: 10px;
@@ -80,7 +80,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 15vh;
+  gap: 10px;
+  padding-top: 18vh;
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -173,7 +174,37 @@
   cursor: pointer;
 }
 
+.deleteWord {
+  color: red;
+  font-weight: bolder;
+}
+
+.backBtn {
+  border-radius: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 75px;
+  width: 100px;
+  background-color: var(--color1);
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 100%;
+  margin-top: 2vh;
+  margin-left: 50vw;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 @media screen and (min-width: 1024px) {
+  .backBtn {
+    height: 100px;
+    width: 170px;
+    font-size: 150%;
+  }
   .boxes {
     display: grid;
     grid-template-columns: 1fr 5fr;

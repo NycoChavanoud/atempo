@@ -124,6 +124,7 @@
   min-height: 400px;
   max-height: 500px;
   margin-top: 15vh;
+  gap: 15px;
 }
 
 .summaryTitle {
