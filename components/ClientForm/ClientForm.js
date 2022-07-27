@@ -85,10 +85,10 @@ export default function ClientForm() {
           })
         }
       />
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ display: "flex" }}>
         <label htmlFor="numéro de voie"> </label>
         <input
-          className={style.streetInput}
+          className={`${style.streetInput} ${"mr-5"}`}
           type="number"
           min={0}
           id="streetNumber"
@@ -123,7 +123,7 @@ export default function ClientForm() {
       >
         <label htmlFor="code postal"> </label>
         <input
-          className={style.codeInput}
+          className={`${style.codeInput} ${"mr-5"}`}
           type="number"
           min={0}
           id="postalCode"
