@@ -15,7 +15,11 @@ export default function MobileMenu() {
     <Layout pageTitle="Menu">
       <WhiteCross />
       <div className={style.container}>
-        <Avatar src={user.photoURL} />
+        <Link href="/profile">
+          <div>
+            <Avatar src={user.photoURL} />
+          </div>
+        </Link>
         <Link href="/seances/createFromMenu">
           <button className={style.button}>Créer une séance</button>
         </Link>

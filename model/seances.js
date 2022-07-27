@@ -63,7 +63,7 @@ export async function getSeanceNumber(user) {
 
   if (seance_nb) {
     return seance_nb.val();
-  }
+  } else return 0;
 }
 
 export async function updateSeance(user, sessionId, data) {

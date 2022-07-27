@@ -90,8 +90,14 @@ export default function Seance() {
           <DesktopMenu />
         </div>
         <div>
-          <GreyBurger />
-          <div className="flex flex-col pl-10 pr-10 pb-5 justify-between h-[80vh] lg:mt-10">
+          <div className={styles.headerContainer}>
+            <GreyBurger />
+            <Link href="/seances">
+              <button className={styles.backBtn}>Mes séances</button>
+            </Link>
+          </div>
+
+          <div className="flex flex-col p-10 justify-between h-[80vh] lg:mt-10">
             {loadingData ? (
               <div className="flex justify-center">
                 <h2>Chargement...</h2>
@@ -154,7 +160,8 @@ export default function Seance() {
           >
             <p>
               Afin de confirmer la suppression, veuillez rentrer
-              &quot;supprimer&quot; dans le champ suivant:
+              <span className={styles.deleteWord}> SUPPRIMER </span> dans le
+              champ suivant:
             </p>
             <input
               value={deleteInput}

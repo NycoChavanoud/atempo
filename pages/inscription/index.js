@@ -31,6 +31,7 @@ const Inscription = () => {
         firstname: firstName,
         id: user.uid,
         seance_nb: 0,
+        client_nb: 0,
         photoURL: defaultURL,
         email,
       });

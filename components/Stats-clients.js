@@ -7,7 +7,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { useAuth } from "../context/authContext";
+import { getClientNumber } from "../model/client";
 import style from "../pages/dashboard/dashboard.module.css";
 
 ChartJS.register(
@@ -20,8 +23,17 @@ ChartJS.register(
 );
 
 export default function StatsClients() {
+  const [clientNumber, setClientNumber] = useState(0);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    getClientNumber(user).then((nb) => (nb ? setClientNumber(nb) : 0));
+  }, [user]);
+
   return (
     <div className={style.content}>
+      <p>Nombre de patient.es : {clientNumber}</p>
+
       <Bar
         className={style.bar}
         data={{
