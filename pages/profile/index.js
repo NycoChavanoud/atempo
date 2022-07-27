@@ -5,17 +5,34 @@ import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 import Link from "next/link";
 import style from "./profile.module.css";
 import { useEffect, useState } from "react";
-import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
+import {
+  getAllPractitionersData,
+  updateDataIfGoogleSignIn,
+} from "../../model/PractitionersData/practitionersData";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Avatar from "../../components/Avatar/Avatar";
+import { useAuth } from "../../context/authContext";
 
 export default function Profile() {
+  const { user } = useAuth();
   const [practitionersData, setPractitionersData] = useState();
+  const [dataLoading, setDataLoading] = useState(true);
+  const [googleUpdateLoading, setGoogleUpdateLoading] = useState(true);
+
+  const getData = async (user) => {
+    const data = await getAllPractitionersData(user);
+    setPractitionersData(data);
+    setDataLoading(false);
+    if (!data && !dataLoading) {
+      updateDataIfGoogleSignIn(user);
+      setGoogleUpdateLoading(false);
+    }
+  };
 
   useEffect(() => {
-    getAllPractitionersData().then(setPractitionersData);
-  }, []);
+    getData(user);
+  }, [user, dataLoading, googleUpdateLoading]);
 
   return (
     <Layout pageTitle="Profile">
@@ -28,7 +45,11 @@ export default function Profile() {
           <h1 className={style.title}>Votre profil</h1>
 
           <div className={style.user}>
-            <Avatar className={style.avatar} />
+            <Avatar
+              className={style.avatar}
+              loading={dataLoading}
+              src={user.photoURL}
+            />
             <div>
               <h3 className={style.name}>{practitionersData?.firstname}</h3>
               <h3 className={style.name}>{practitionersData?.lastname}</h3>
@@ -39,40 +60,59 @@ export default function Profile() {
 
           <section className={style.form}>
             <div className={style.infos}>
+              <p className={style.contacts}>{practitionersData?.address}</p>
               <p className={style.contacts}>{practitionersData?.email}</p>
               <p className={style.contacts}>{practitionersData?.phone}</p>
-              <p className={style.contacts}>{practitionersData?.website_url}</p>
             </div>
           </section>
 
           <div className={style.reseaux}>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={practitionersData?.fb_url}
-              className={style.link}
-            >
-              <img
-                className={style.logo}
-                src="/images/fb.png"
-                alt="logo facebook"
-              />
-              <p className={style.lnkString}>Facebook</p>
-            </a>
+            {practitionersData?.website_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.website_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/website.png"
+                  className={style.logo}
+                  alt="website logo"
+                />
+                <p className={style.lnkString}>Site web</p>
+              </a>
+            )}
+            {practitionersData?.fb_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.fb_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/fb.png"
+                  className={style.logo}
+                  alt="Facebook logo"
+                />
+                <p className={style.lnkString}>Facebook</p>
+              </a>
+            )}
 
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={practitionersData?.insta_url}
-              className={style.link}
-            >
-              <img
-                className={style.logo}
-                src="/images/insta.png"
-                alt="logo instagram"
-              />
-              <p className={style.lnkString}>Instagram</p>
-            </a>
+            {practitionersData?.insta_url && (
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={practitionersData?.insta_url}
+                className={style.link}
+              >
+                <img
+                  src="/images/insta.png"
+                  className={style.logo}
+                  alt="Instagram logo"
+                />
+                <p className={style.lnkString}>Instagram</p>
+              </a>
+            )}
           </div>
 
           <div className={style.btn}>

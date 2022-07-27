@@ -10,6 +10,7 @@ import WhiteBurger from "../../components/WhiteBurger/WhiteBurger";
 import AddClientsForm from "../../components/SeanceForm/AddClientsForm";
 import Summary from "../../components/SeanceForm/Summary";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
 
 export default function CreateSeance() {

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../../context/authContext";
 import { getClientData } from "../../model/client";
 import style from "./ClientDetails.module.css";
 
 export default function ClientDetails({ id }) {
   const [clientData, setClientData] = useState({});
+  const { user } = useAuth();
 
   useEffect(() => {
-    getClientData(id).then(setClientData);
-  }, [id, clientData]);
+    getClientData(user, id).then(setClientData);
+  }, [id, clientData, user]);
   if (clientData) {
     return (
       <section className={style.box}>

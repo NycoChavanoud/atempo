@@ -43,7 +43,7 @@ export default function LinkedClientModal({ open, onClose }) {
     getClientList(user)
       .then(setClientList)
       .then(() => setIsLoading(false));
-  }, [isLoading]);
+  }, [isLoading, user]);
   return (
     <div>
       <Modal open={open} onClose={onClose}>

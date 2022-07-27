@@ -7,8 +7,6 @@ import {
   orderByChild,
   push,
   query,
-  limitToLast,
-  endAt,
   remove,
 } from "firebase/database";
 import {
@@ -19,6 +17,12 @@ import {
 } from "firebase/storage";
 import { db, storage } from "../config/firebaseConfig";
 import { getClientData, updateClient } from "./client";
+
+/** Créer une séance.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {object} - seanceData - enregistrements des données de la séance
+ * @return {string} - retourne l'identifiant de la séance créée.
+ */
 
 export async function createSeance(user, seanceData) {
   const creation_date = Date.now();
@@ -36,6 +40,11 @@ export async function createSeance(user, seanceData) {
 
   return newSeanceRef.key;
 }
+
+/** Supprimer une séance.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - id - récupère l'identifiant de la séance ciblée.
+ */
 
 export async function deleteSeance(user, id) {
   const data = await getSeanceData(user, id);
@@ -60,13 +69,24 @@ export async function deleteSeance(user, id) {
   }
 }
 
+/** Récupérer le nombre de séances.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @return {number} - retourne le nombre de clients.
+ */
+
 export async function getSeanceNumber(user) {
   const seance_nb = await get(ref(db, `practitioners/${user.uid}/seance_nb`));
 
   if (seance_nb) {
     return seance_nb.val();
-  }
+  } else return 0;
 }
+
+/** Mise à jour des information d'une séance.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - sessionId - récupère l'identifiant de la séance ciblée.
+ * @param {object} - data - informations de la séance.
+ */
 
 export async function updateSeance(user, sessionId, data) {
   const last_update = Date.now();
@@ -75,6 +95,12 @@ export async function updateSeance(user, sessionId, data) {
     last_update,
   });
 }
+
+/** Récupère les informations d'une séance.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {string} - seanceId - récupère l'identifiant de la séance ciblée.
+ * @return {object} - retourne les différentes informations de la séance.
+ */
 
 export async function getSeanceData(user, seanceId) {
   try {
@@ -89,16 +115,14 @@ export async function getSeanceData(user, seanceId) {
   }
 }
 
-export async function getSeancesList(user, page, lastDate, limit = 6) {
-  if (!lastDate || page === 1) lastDate = Date.now();
-  else lastDate = lastDate - 2000;
+/** Récupère l'ensemble des séances du praticien connecté.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @return {array} - retourne un tableau regroupant toutes les séances.
+ */
 
+export async function getSeancesList(user) {
   try {
-    const queryConstraints = [
-      orderByChild("creation_date"),
-      endAt(lastDate, "creation_date"),
-      limitToLast(limit),
-    ];
+    const queryConstraints = [orderByChild("creation_date")];
     const seancesRef = ref(db, `seances/${user.uid}`);
     const snapshot = await get(query(seancesRef, ...queryConstraints));
     if (snapshot.exists()) {
@@ -112,6 +136,11 @@ export async function getSeancesList(user, page, lastDate, limit = 6) {
   }
 }
 
+/** Récupère les couleurs des différentes thématiques.
+ * @param {object} - thematic - récupère la thématique appelée par le formulaire
+ * @return {object} - retourne la couleur liée à la thématique appelée.
+ */
+
 export async function getThematic(thematic) {
   try {
     const snapshot = await get(child(ref(db), `/thematics/${thematic}`));
@@ -122,6 +151,10 @@ export async function getThematic(thematic) {
     console.error(error);
   }
 }
+
+/** Récupère l'ensemble des thématiques.
+ * @return {array} - retourne un tableau regroupant toutes les thématiques.
+ */
 
 export async function getThematicList() {
   try {
@@ -138,6 +171,11 @@ export async function getThematicList() {
   }
 }
 
+/** Récupère les couleurs des différentes method.
+ * @param {object} - method - récupère la méthode appelée par le formulaire
+ * @return {object} - retourne la couleur liée à la méthode appelée.
+ */
+
 export async function getMethod(method) {
   try {
     const snapshot = await get(child(ref(db), `/methods/${method}`));
@@ -148,6 +186,10 @@ export async function getMethod(method) {
     console.error(error);
   }
 }
+
+/** Récupère l'ensemble des méthodes.
+ * @return {array} - retourne un tableau regroupant toutes les méthodes.
+ */
 
 export async function getMethodList() {
   try {
@@ -162,6 +204,14 @@ export async function getMethodList() {
   }
 }
 
+/** Enregistrement d'un média.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {blob} - file - séléction du média.
+ * @param {string} - seanceId - récupère l'identifiant de la séance ciblée.
+ * @param {string} - fileName - nom du média concerné.
+ * @return {array} - retourne un tableau regroupant toutes les méthodes.
+ */
+
 export function postSeanceMedia(user, file, seanceId, fileName) {
   const storageRef = refStorage(
     storage,
@@ -171,10 +221,23 @@ export function postSeanceMedia(user, file, seanceId, fileName) {
   return storageRef._location.path_;
 }
 
+/** Suppression d'un média.
+ * @param {string} - oldMediaUrl - l'url du média à supprimer.
+ */
+
 export function deleteSeanceMedia(oldMediaUrl) {
   const oldStorageRef = refStorage(storage, oldMediaUrl);
   deleteObject(oldStorageRef);
 }
+
+/** Modification d'un média.
+ * @param {object} - user - confirmation de la connection d'un praticien.
+ * @param {blob} - file - séléction du média.
+ * @param {string} - seanceId - récupère l'identifiant de la séance ciblée.
+ * @param {string} - fileName - nom du média concerné.
+ * @param {string} - oldMediaUrl - l'url du média concerné à supprimer.
+ * @return {string} - retourne l'url du nouveau média.
+ */
 
 export async function updateSeanceMedia(
   user,
@@ -188,6 +251,10 @@ export async function updateSeanceMedia(
   return newMediaUrl;
 }
 
+/** Récupération d'un média.
+ * @param {string} - media_url - cible l'url du média selectionné.
+ */
+
 export async function getSeanceMediaUrl(media_url) {
   try {
     const storageRef = refStorage(storage, media_url);
@@ -197,15 +264,22 @@ export async function getSeanceMediaUrl(media_url) {
     switch (error.code) {
       case "storage/object-not-found":
         // File doesn't exist
+        console.error("File doesn't exist");
         break;
       case "storage/unauthorized":
-        // User doesn't have permission to access the object
+        //
+        console.error("User doesn't have permission to access the object");
+
         break;
       case "storage/canceled":
         // User canceled the upload
+        console.error(" User canceled the upload");
+
         break;
       case "storage/unknown":
         // Unknown error occurred, inspect the server response
+        console.error(" Unknown error occurred, inspect the server response");
+
         break;
     }
   }

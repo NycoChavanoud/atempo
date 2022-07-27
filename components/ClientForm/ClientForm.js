@@ -19,8 +19,7 @@ export default function ClientForm() {
       clientData.streetNumber?.length >= 1 &&
       clientData.streetName?.length >= 5 &&
       clientData.postalCode?.length === 5 &&
-      clientData.city?.length >= 1 &&
-      clientData.thematic
+      clientData.city?.length >= 1
     ) {
       setValidation(true);
     } else {
@@ -86,10 +85,10 @@ export default function ClientForm() {
           })
         }
       />
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ display: "flex" }}>
         <label htmlFor="numéro de voie"> </label>
         <input
-          className={style.streetInput}
+          className={`${style.streetInput} ${"mr-5"}`}
           type="number"
           min={0}
           id="streetNumber"
@@ -124,7 +123,7 @@ export default function ClientForm() {
       >
         <label htmlFor="code postal"> </label>
         <input
-          className={style.codeInput}
+          className={`${style.codeInput} ${"mr-5"}`}
           type="number"
           min={0}
           id="postalCode"
