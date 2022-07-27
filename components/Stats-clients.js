@@ -20,7 +20,6 @@ ChartJS.register(
 );
 
 export default function StatsClients() {
-  console.log("test 30");
   return (
     <div className={style.content}>
       <Bar

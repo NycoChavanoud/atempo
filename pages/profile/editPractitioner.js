@@ -46,11 +46,11 @@ export default function Profile() {
     e.preventDefault();
     try {
       setSubmit(true);
-      await upload(avatar, user, setLoading);
+      if (avatar) await upload(avatar, user, setLoading);
       await updatePractitionersData(user, { ...practitionersData });
       router.push("/profile");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
       setSubmit(false);

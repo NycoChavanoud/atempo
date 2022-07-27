@@ -8,10 +8,13 @@ export function CreateSeanceContextProvider({ children }) {
   const [completedStep, setCompletedStep] = useState(false);
   const [currentSeanceId, setCurrentSeanceId] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [urlSource, setUrlSource] = useState();
 
   return (
     <createSeanceContext.Provider
       value={{
+        urlSource,
+        setUrlSource,
         isLoading,
         setIsLoading,
         currentSeanceId,

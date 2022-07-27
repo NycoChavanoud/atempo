@@ -17,13 +17,13 @@
   color: #ffffff;
   position: absolute;
   top: 10vh;
-  left: 15%;
+  left: 20%;
 }
 
 .btn {
   width: 80%;
   height: 50px;
-  background-color: #ff9083;
+  background-color: var(--color1);
   border-radius: 80px;
   padding: 20px;
   margin: 10px;
@@ -80,7 +80,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 15vh;
+  gap: 10px;
+  padding-top: 18vh;
   margin-left: 50px;
   margin-right: 50px;
 }

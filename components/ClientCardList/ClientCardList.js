@@ -13,13 +13,26 @@ export default function ClientCardList() {
   const [isLoading, setIsLoading] = useState(false);
   const { user } = useAuth();
 
+  const getList = async (user) => {
+    try {
+      setIsLoading(true);
+      const list = await getClientList(user);
+      setClientList(list);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    getClientList(user).then(setClientList).then(setIsLoading(false));
+    getList(user);
   }, [user]);
 
   if (isLoading) {
     return (
       <div className={style.loader}>
+        <h2>Chargement...</h2>
         <CircularProgress color="inherit" />
       </div>
     );

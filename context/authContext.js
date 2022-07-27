@@ -63,7 +63,6 @@ export const AuthContextProvider = ({ children }) => {
     const fileRef = ref(storage, `avatars/${user.uid}`);
 
     setLoading(true);
-    console.log(user);
     // eslint-disable-next-line no-unused-vars
     await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
