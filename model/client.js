@@ -26,6 +26,17 @@ export async function createClient(user, clientData) {
     });
     return id;
   }
+
+  const client_nb = await getClientNumber(user);
+  update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb + 1 });
+}
+
+export async function getClientNumber(user) {
+  const seance_nb = await get(ref(db, `clients/${user.uid}/client_nb`));
+
+  if (seance_nb) {
+    return seance_nb.val();
+  }
 }
 
 export async function deleteClient(user, id) {
@@ -33,6 +44,9 @@ export async function deleteClient(user, id) {
     const data = await getClientData(id);
     const deleteRef = ref(db, `clients/${user.uid}/${id}`);
     remove(deleteRef);
+
+    const client_nb = await getClientNumber(user);
+    update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb - 1 });
 
     for (const seanceID of data.seanceList) {
       const seanceData = await getSeanceData(seanceID);

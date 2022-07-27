@@ -31,6 +31,8 @@ export async function updateDataIfGoogleSignIn(user) {
       lastname: user.displayName.split(" ")[1],
       email: user.email,
       photoURL: user.photoURL,
+      client_nb: 0,
+      seance_nb: 0,
     };
     await updatePractitionersData(user, googleData);
   }
