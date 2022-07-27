@@ -1,13 +1,12 @@
-// import { Avatar } from "@mui/material";
 import Avatar from "../../components/Avatar/Avatar";
 import StatsClients from "../../components/Stats-clients";
 import StatsSeances from "../../components/Stats-seance";
 import style from "./dashboard.module.css";
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import Layout from "../../components/Layout/Layout";
 import WaveWhiteBurger from "../../components/WaveWhiteBurger/WaveWhiteBurger";
 import DesktopMenu from "../../components/DesktopMenu/DesktopMenu";
-import { getAllPractitionersData } from "../../model/PractitionersData/practitionersData";
 import { useAuth } from "../../context/authContext";
 
 export default function Dashboard() {
@@ -17,7 +16,6 @@ export default function Dashboard() {
   const { user } = useAuth();
 
   useEffect(() => {
-    console.log(user);
     getAllPractitionersData(user)
       .then(setPratitionerData)
       .then(setIsLoading(false));

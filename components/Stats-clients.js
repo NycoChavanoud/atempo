@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -24,27 +23,20 @@ export default function StatsClients() {
   return (
     <div className={style.content}>
       <Bar
-        height={"300px"}
+        className={style.bar}
         data={{
           labels: ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
           datasets: [
             {
-              data: [1, 2, 4, 5, 6, 10, 11],
-              borderRadius: 30,
-              label: "Yoga",
-              backgroundColor: "green",
-              barThickness: 10,
-            },
-            {
-              data: [5, 2, 10, 5, 3, 6, 4],
+              data: [5, 2, 10, 5, 3, 6, 4, 15],
               borderRadius: 20,
               label: "Sophrologie",
               backgroundColor: "blue",
-              barThickness: 10,
+              barThickness: 15,
             },
           ],
         }}
-        options={{ maintainAspectRatio: false }}
+        options={{ responsive: false }}
       />
     </div>
   );
