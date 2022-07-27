@@ -1,4 +1,3 @@
-import Avatar from "../../components/Avatar/Avatar";
 import Link from "next/link";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
@@ -20,10 +19,6 @@ export default function MySeances() {
           <WaveWhiteBurger />
           <div className="flex flex-col justify-center items-center lg:mt-10">
             <div className="flex flex-row items-center justify-around">
-              <div className="xl:hidden">
-                <Avatar />
-              </div>
-
               <h1 className={styles.title}>Mes séances</h1>
             </div>
 

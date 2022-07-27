@@ -29,6 +29,14 @@
   padding-right: 10px;
 }
 
+.loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px;
+}
+
 .center {
   display: flex;
   justify-content: center;

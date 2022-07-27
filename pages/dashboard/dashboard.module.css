@@ -49,29 +49,6 @@
   margin-top: 50px;
 }
 
-/* .bar {
-  height: 200px!important;
-  width: 300px!important;
-}
-
-.line {
-  height: 200px!important;
-  width: 300px!important;
-}
-
-@media screen and (min-height: 740px) {
-  .bar {
-    height: 250px!important;
-    width: 300px!important;
-  }
-  
-  .line {
-    height: 250px!important;
-    width: 300px!important;
-  }
-
-} */
-
 @media screen and (min-width: 1024px) {
   .boxes {
     display: grid;

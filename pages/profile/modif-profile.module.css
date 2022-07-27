@@ -136,6 +136,12 @@
   cursor: pointer;
 }
 
+.loader {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}
+
 @media screen and (min-height: 740px) {
   .form {
     margin-top: 5%;
@@ -158,7 +164,6 @@
 
   .form {
     margin-top: 14%;
-
   }
 
   .field {

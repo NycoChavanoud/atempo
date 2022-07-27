@@ -1,4 +1,4 @@
-import { MobileStepper } from "@mui/material";
+import { CircularProgress, MobileStepper } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import React, { useEffect, useState } from "react";
@@ -8,9 +8,9 @@ import styles from "./SeanceCardList.module.css";
 import { useAuth } from "../../context/authContext";
 
 export default function SeanceCardList() {
-  console.log("60");
-
   const [seanceList, setSeanceList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [page, setPage] = useState(1);
   const [left, setLeft] = useState(0);
   const [originalOffset, setOriginalOffset] = useState(0);
@@ -104,79 +104,92 @@ export default function SeanceCardList() {
       nb > 0 ? setPageNumber(Math.ceil(nb / 6) - 1) : setPageNumber(1)
     );
 
-    getSeancesList(user, page, lastDate).then(setSeanceList);
-  }, [page, lastDate, user]);
+    getSeancesList(user, page, lastDate)
+      .then(setSeanceList)
+      .then(setIsLoading(false));
+  }, [page, lastDate, user, isLoading]);
 
-  return (
-    <div className={styles.container}>
-      <div
-        className={styles.list}
-        onTouchStart={(e) => handleTouchStart(e)}
-        onTouchMove={(e) => handleTouchMove(e)}
-        onTouchEnd={() => handleTouchEnd()}
-        // The following event handlers are for mouse compatibility:
-        onMouseDown={(e) => handleMouseDown(e)}
-        onMouseMove={(e) => handleMouseMove(e)}
-        onMouseUp={() => handleMouseUp()}
-        onMouseLeave={() => handleMouseLeave()}
-      >
-        {seanceList ? (
-          seanceList.map((s) => <SeanceCard key={s.id} id={s.id}></SeanceCard>)
-        ) : (
-          <p
-            className={styles.emptyList}
-            style={{
-              color: "var(--main-bg-color)",
-              padding: "20px",
+  if (isLoading) {
+    return (
+      <div className={styles.loader}>
+        <CircularProgress color="inherit" />
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.container}>
+        <div
+          className={styles.list}
+          onTouchStart={(e) => handleTouchStart(e)}
+          onTouchMove={(e) => handleTouchMove(e)}
+          onTouchEnd={() => handleTouchEnd()}
+          // The following event handlers are for mouse compatibility:
+          onMouseDown={(e) => handleMouseDown(e)}
+          onMouseMove={(e) => handleMouseMove(e)}
+          onMouseUp={() => handleMouseUp()}
+          onMouseLeave={() => handleMouseLeave()}
+        >
+          {seanceList ? (
+            seanceList.map((s) => (
+              <SeanceCard key={s.id} id={s.id}></SeanceCard>
+            ))
+          ) : (
+            <p
+              className={styles.emptyList}
+              style={{
+                color: "var(--main-bg-color)",
+                padding: "20px",
+              }}
+            >
+              Il semblerait que vous n&apos;ayez pas encore enregistré de
+              séances.
+            </p>
+          )}
+        </div>
+
+        {pageNumber > 1 && (
+          <MobileStepper
+            variant="dots"
+            steps={pageNumber}
+            position="static"
+            activeStep={page - 1}
+            sx={{
+              width: "100%",
+              flexGrow: 1,
+              justifyContent: "space-between",
             }}
-          >
-            Il semblerait que vous n&apos;ayez pas encore enregistré de séances.
-          </p>
+            className={styles.page_stepper}
+            nextButton={
+              <button
+                onClick={handleNextPage}
+                disabled={page - 1 > pageNumber}
+                className={styles.pagination_btn}
+              >
+                <ArrowCircleRightIcon
+                  sx={{
+                    width: "50px",
+                    height: "50px",
+                  }}
+                />
+              </button>
+            }
+            backButton={
+              <button
+                className={styles.pagination_btn}
+                onClick={handlePreviousPage}
+                disabled={page - 1 === 0}
+              >
+                <ArrowCircleLeftIcon
+                  sx={{
+                    width: "50px",
+                    height: "50px",
+                  }}
+                />
+              </button>
+            }
+          />
         )}
       </div>
-
-      {pageNumber > 1 && (
-        <MobileStepper
-          variant="dots"
-          steps={pageNumber}
-          position="static"
-          activeStep={page - 1}
-          sx={{
-            width: "100%",
-            flexGrow: 1,
-            justifyContent: "center",
-          }}
-          className={styles.page_stepper}
-          nextButton={
-            <button
-              onClick={handleNextPage}
-              disabled={page - 1 > pageNumber}
-              className={styles.pagination_btn}
-            >
-              <ArrowCircleRightIcon
-                sx={{
-                  width: "50px",
-                  height: "50px",
-                }}
-              />
-            </button>
-          }
-          backButton={
-            <button
-              className={styles.pagination_btn}
-              onClick={handlePreviousPage}
-              disabled={page - 1 === 0}
-            >
-              <ArrowCircleLeftIcon
-                sx={{
-                  width: "50px",
-                  height: "50px",
-                }}
-              />
-            </button>
-          }
-        />
-      )}
-    </div>
-  );
+    );
+  }
 }
