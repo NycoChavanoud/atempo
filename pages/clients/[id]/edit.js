@@ -14,7 +14,7 @@ export default function UpdateClient() {
   const [activeStep, setActiveStep] = useState(0);
   return (
     <CreateClientContextProvider>
-      <Layout shape pageTitle={"Modification d'une fiche client"}>
+      <Layout shape pageTitle={"Modification d'une fiche patient"}>
         <div className={style.boxes}>
           <div className={style.bg}>
             <DesktopMenu />

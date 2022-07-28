@@ -47,7 +47,7 @@ export default function Dashboard() {
                 style={{ opacity: tabToShow === "clients" ? "1" : "0.60" }}
                 data-cy="clients"
               >
-                Clients
+                Patients
               </div>
               <div
                 className={style.button}

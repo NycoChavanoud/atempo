@@ -23,18 +23,23 @@ export async function createClient(user, clientData) {
   const creation_date = Date.now();
 
   if (user) {
-    await set(ref(db, `clients/${user.uid}/${id}`), {
-      ...clientData,
-      id,
-      creation_date,
-    }).catch((error) => {
-      console.error(error);
-    });
-    return id;
-  }
+    try {
+      await set(ref(db, `clients/${user.uid}/${id}`), {
+        ...clientData,
+        id,
+        creation_date,
+      });
 
-  const client_nb = await getClientNumber(user);
-  update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb + 1 });
+      const client_nb = await getClientNumber(user);
+      update(ref(db, `practitioners/${user.uid}`), {
+        client_nb: client_nb + 1,
+      });
+
+      return id;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
 /** Récupérer le nombre de clients.
@@ -63,16 +68,18 @@ export async function deleteClient(user, id) {
     const client_nb = await getClientNumber(user);
     update(ref(db, `practitioners/${user.uid}`), { client_nb: client_nb - 1 });
 
-    for (const seanceID of data.seanceList) {
-      const seanceData = await getSeanceData(user, seanceID);
+    if (data.seanceList) {
+      for (const seanceID of data.seanceList) {
+        const seanceData = await getSeanceData(user, seanceID);
 
-      if (seanceData) {
-        const index = seanceData.clientList?.indexOf(id);
-        if (seanceData.clientList && seanceData?.clientList?.includes(id)) {
-          delete seanceData.clientList[index];
-          updateSeance(user, seanceID, {
-            clientList: seanceData.clientList,
-          });
+        if (seanceData) {
+          const index = seanceData.clientList?.indexOf(id);
+          if (seanceData.clientList && seanceData?.clientList?.includes(id)) {
+            delete seanceData.clientList[index];
+            updateSeance(user, seanceID, {
+              clientList: seanceData.clientList,
+            });
+          }
         }
       }
     }

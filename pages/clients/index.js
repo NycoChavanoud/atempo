@@ -18,12 +18,12 @@ export default function Clients() {
           <GreyBurger />
           <div className={style.purple}>
             <div className={style.box}>
-              <h1 className={style.title}>Mes clients</h1>
+              <h1 className={style.title}>Mes Patients</h1>
             </div>
             <ClientCardList />
             <div className={style.container}>
               <Link href="/clients/creationClient">
-                <button className={style.btn}>Ajouter une fiche client</button>
+                <button className={style.btn}>Ajouter une fiche patient</button>
               </Link>
             </div>
           </div>

@@ -28,8 +28,8 @@ export default function Client() {
     getClientData(user, id).then(setClientData);
   }, [user, id]);
 
-  const warn = () => {
-    toast.warn({
+  const warn = (m) => {
+    toast.warn(m, {
       position: "bottom-center",
       autoClose: 2000,
       closeOnClick: true,
@@ -55,7 +55,7 @@ export default function Client() {
       success();
       router.push("/clients");
     } else {
-      warn();
+      warn("Veuillez entrer 'SUPRRIMER' ");
     }
   };
 
@@ -70,7 +70,7 @@ export default function Client() {
             <div className={style.container}>
               <GreyBurger />
               <Link href="/clients">
-                <button className={style.backBtn}>Mes clients</button>
+                <button className={style.backBtn}>Mes Patients</button>
               </Link>
             </div>
             <ClientDetails id={id} />
