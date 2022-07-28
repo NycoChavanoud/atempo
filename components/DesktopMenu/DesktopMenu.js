@@ -49,7 +49,7 @@ export default function DesktopMenu() {
                 src="/images/clients.png"
                 alt="deux coeurs"
               />
-              <a>Clients</a>
+              <a>Patients</a>
             </div>
           </div>
         </Link>
