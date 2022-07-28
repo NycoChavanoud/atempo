@@ -39,7 +39,7 @@ export default function MobileMenu() {
                 alt="deux tableaux de bord"
               />
             </div>
-            <a className={style.text}>Tableaux de bord</a>
+            <a className={style.text}>Tableau de bord</a>
             <div className={style.arrow}>
               <Image
                 priority
