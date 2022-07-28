@@ -56,7 +56,7 @@ export default function LinkedClientModalUpdate({
 
     for (const clientID of removeClientIDList) {
       const clientData = await getClientData(user, clientID);
-      const index = clientData.seanceList.indexOf(id);
+      const index = clientData.seanceList?.indexOf(id);
       if (clientData.seanceList && clientData.seanceList?.includes(id)) {
         delete clientData.seanceList[index];
         updateClient(user, clientID, {

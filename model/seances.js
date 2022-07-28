@@ -47,25 +47,30 @@ export async function createSeance(user, seanceData) {
  */
 
 export async function deleteSeance(user, id) {
-  const data = await getSeanceData(user, id);
-  deleteSeanceMedia(data.media_url);
+  try {
+    const data = await getSeanceData(user, id);
 
-  const deletedRef = ref(db, `seances/${user.uid}/${id}`);
-  remove(deletedRef);
+    const deletedRef = ref(db, `seances/${user.uid}/${id}`);
+    remove(deletedRef);
 
-  const seance_nb = await getSeanceNumber(user);
-  update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
+    const seance_nb = await getSeanceNumber(user);
+    update(ref(db, `practitioners/${user.uid}`), { seance_nb: seance_nb - 1 });
 
-  for (const client of data.clientList) {
-    const clientData = getClientData(user, client.id);
+    if (data.clientList) {
+      for (const client of data.clientList) {
+        const clientData = getClientData(user, client.id);
 
-    const index = clientData?.seanceList?.indexOf(id);
-    if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
-      delete clientData.seanceList[index];
-      updateClient(user, client.id, {
-        seanceList: clientData.seanceList,
-      });
+        const index = clientData?.seanceList?.indexOf(id);
+        if (clientData.seanceList && clientData?.seanceList?.includes(id)) {
+          delete clientData.seanceList[index];
+          updateClient(user, client.id, {
+            seanceList: clientData.seanceList,
+          });
+        }
+      }
     }
+  } catch (error) {
+    console.error(error);
   }
 }
 

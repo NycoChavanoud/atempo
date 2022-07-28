@@ -62,7 +62,7 @@ export default function MobileMenu() {
                 alt="deux coeurs"
               />
             </div>
-            <a className={style.text}>Clients</a>
+            <a className={style.text}>Patients</a>
             <div className={style.arrow}>
               <Image
                 priority
