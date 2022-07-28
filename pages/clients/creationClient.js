@@ -14,14 +14,14 @@ export default function CreateClient() {
   const [activeStep, setActiveStep] = useState(0);
   return (
     <CreateClientContextProvider>
-      <Layout pageTitle="Création d'un client" shape>
+      <Layout pageTitle="Création d'une fiche patient" shape>
         <div className={style.boxes}>
           <div className={style.bg}>
             <DesktopMenu />
           </div>
           <div>
             <WhiteBurger />
-            <h1 className={style.title}>Création du profil client</h1>
+            <h1 className={style.title}>Création du profil patient</h1>
             {activeStep === 0 && <ClientForm />}
             {activeStep === 1 && <MotifForm />}
 
