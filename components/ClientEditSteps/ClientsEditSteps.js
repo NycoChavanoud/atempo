@@ -60,7 +60,7 @@ export default function ClientsSteps({ activeStep, setActiveStep }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   const handleSubmit = async () => {
-    await updateClient(id, { ...clientData });
+    await updateClient(user, id, { ...clientData });
     router.push(`/clients/${id}`);
   };
   useEffect(() => {

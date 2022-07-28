@@ -58,7 +58,7 @@ export default function Seance() {
   const handleDelete = (e) => {
     e.preventDefault();
 
-    if (deleteInput === "supprimer") {
+    if (deleteInput === "SUPPRIMER") {
       deleteSeanceMedia(seanceData.media_url);
       deleteSeance(user, id);
       success();
@@ -105,7 +105,7 @@ export default function Seance() {
               </div>
             ) : (
               <div>
-                <h1 className={`${styles.title} mb-5`}>{seanceData.title}</h1>
+                <h1 className={`${styles.title} mb-5`}>{seanceData?.title}</h1>
                 <SeanceDetails seanceData={seanceData} />
                 {loadingData ? (
                   <div className="flex justify-center">
@@ -120,7 +120,7 @@ export default function Seance() {
                   />
                 )}{" "}
                 <AssociatedClients
-                  clientList={seanceData.clientList}
+                  clientList={seanceData?.clientList}
                   setLoadingData={setLoadingData}
                 />
               </div>

@@ -25,7 +25,10 @@ export default function ClientCard({ id, circle = false }) {
         >
           {circle ? (
             <h2 className={style.initials}>
-              {`${clientData.firstname[0]} ${clientData.lastname[0]}`}
+              {`${clientData.firstname?.substr(
+                0,
+                1
+              )} ${clientData.lastname?.substr(0, 1)}`}
             </h2>
           ) : (
             <h2 className={style.title}>
